@@ -1,0 +1,2983 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I. -I..\..\device -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\output\objects\icum_crypto.dbo -source=icum_crypto.c -comp -o output\objects\gh_0000il01.o -list=output\list\icum_crypto.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+Source File: icum_crypto.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I. -I..\..\device -G
+                           2 --		-object_dir=output\objects -list -list_dir=output/list
+                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
+                           4 --		-filetype.c icum_crypto.c -o output\objects\icum_crypto.o
+                           5 --Source File:   icum_crypto.c
+                           6 --Directory:     
+                           7 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
+                           8 --Compile Date:  Tue Oct 20 14:27:12 2026
+                           9 --Host OS:       Win64
+                          10 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          11 --Release:       Compiler v2023.5.4
+                          12 --Revision Date: Wed Sep 06 02:44:56 2023
+                          13 --Release Date:  Wed Sep 06 02:00:00 2023
+                          14 -- ecom  -g -w
+                          15 
+                          16 --1: #include "icum_crypto.h"
+                          17 --2: #include "dr7f701649i.dvf.h"
+                          18 --4: #define AES_CTRL_CTX0          (0u << 16)
+                          19 --5: #define AES_CTRL_BYTE_ORDER    (1u << 9)
+                          20 --6: #define AES_CTRL_KEY_DEST      (1u << 24)
+                          21 --7: #define AES_CTRL_BCI_DEST      (0u << 24)
+                          22 --8: #define AES_CTRL_RST0          (1u << 0)
+                          23 --9: #define AES_CTRL_IDATDEST_MASK (3u << 24)
+                          24 --11: #define AES_DCTL_NEW_KEY       (1u << 0)
+                          25 --12: #define AES_DCTL_IVSEL         (1u << 2)
+                          26 --13: #define AES_DCTL_LAST          (1u << 15)
+                          27 --14: #define AES_DCTL_ATTR_EMPTY    (1u << 16)
+                          28 --15: #define AES_STR_BUSY           (1u << 0)
+                          29 --16: #define AES_CCTL_CMAC          8u
+                          30 --18: #define TRNG_SR_RRDY           (1u << 0)
+                          31 --19: #define TRNG_SR_RCHKERR        (1u << 2)
+                          32 --20: #define TRNG_SCLR_RRDY         (1u << 0)
+                          33 --21: #define TRNG_SCLR_RCHK          (1u << 1)
+                          34 --22: #define TRNG_CR_GE             (1u << 0)
+                          35 --24: static uint32 aes_pack_word(const unsigned char *data, unsigned int word_index)
+                          36 	.text
+                          37 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD709C0..0::
+                          38 	.align	2
+                          39 	.align	2
+                          40 ..gh.f.a.2.e.0:
+                          41 	.type	..gh.f.a.2.e.0,@object
+                          42 	.size	..gh.f.a.2.e.0,0
+                          43 	.global	_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                          44 _aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.:
+                          45 _aes_pack_word:
+00000000 0610             46 	mov	r6,r2
+00000002 0798             47 	mov	r7,r19
+                          48 --	    .bf
+                          49 .LDW01:
+                          50 --25: {
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                          51 --26:     unsigned int offset;
+                          52 --28:     offset = word_index * 4u;
+00000004 1308             53 	mov	r19,r1
+00000006 c20a             54 	shl	2,r1
+                          55 --29:     return ((uint32)data[offset] << 24)
+00000008 01f0             56 	mov	r1,ep
+0000000a c2f1             57 	add	r2,ep
+0000000c 6090             58 	sld.bu	0[ep],r18
+0000000e 01f60100         59 	addi	1,r1,ep
+00000012 c2f1             60 	add	r2,ep
+00000014 6088             61 	sld.bu	0[ep],r17
+00000016 d892             62 	shl	24,r18
+00000018 01f60200         63 	addi	2,r1,ep
+0000001c c2f1             64 	add	r2,ep
+0000001e d08a             65 	shl	16,r17
+00000020 1191             66 	or	r17,r18
+00000022 6088             67 	sld.bu	0[ep],r17
+00000024 01f60300         68 	addi	3,r1,ep
+00000028 c2f1             69 	add	r2,ep
+0000002a c88a             70 	shl	8,r17
+0000002c 1191             71 	or	r17,r18
+0000002e 6088             72 	sld.bu	0[ep],r17
+00000030 1150             73 	mov	r17,r10
+00000032 1251             74 	or	r18,r10
+                          75 --	    .ef
+                          76 .LDW11:
+                          77 .L49:
+                          78 	.jumptype return
+00000034 7f00             79 	jmp	[lp]
+                          80 --line25
+                          81 ..lin.321acdb9..158de8f6.0_1::
+                          82 	.type	_aes_pack_word,@function
+                          83 	.size	_aes_pack_word,.-_aes_pack_word
+                          84 	.type	_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,@function
+                          85 	.size	_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,.-_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                          86 	.align	2
+                          87 --_offset	r1	local
+                          88 
+                          89 --_data	r2	param
+                          90 --_word_index	r19	param
+                          91 
+                          92 	.section ".bss","awb"
+                          93 .L34:
+                          94 	.type	.L34,@object
+                          95 	.size	.L34,0
+                          96 	.section ".ghrettbl",""
+                          97 	.align	4
+00000000 00000000*        98 .L50:	.word	.L49
+                          99 	.type	.L50,@object
+                         100 	.size	.L50,4
+                         101 	.data
+                         102 	.text
+                         103 
+                         104 --30:          | ((uint32)data[offset + 1u] << 16)
+                         105 --31:          | ((uint32)data[offset + 2u] << 8)
+                         106 --32:          | (uint32)data[offset + 3u];
+                         107 --33: }
+                         108 
+                         109 --35: static void aes_unpack_word(unsigned char *data,
+                         110 	.align	2
+                         111 	.align	2
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         112 	.align	2
+                         113 ..gh.f.a.2.e.1:
+                         114 	.type	..gh.f.a.2.e.1,@object
+                         115 	.size	..gh.f.a.2.e.1,0
+                         116 	.global	_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                         117 _aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.:
+                         118 _aes_unpack_word:
+00000036 0610            119 	mov	r6,r2
+00000038 0790            120 	mov	r7,r18
+0000003a 0898            121 	mov	r8,r19
+                         122 --	    .bf
+                         123 .LDW21:
+                         124 --36:                             unsigned int word_index,
+                         125 --37:                             uint32 word)
+                         126 --38: {
+                         127 --39:     unsigned int offset;
+                         128 --41:     offset = word_index * 4u;
+0000003c 1208            129 	mov	r18,r1
+0000003e c20a            130 	shl	2,r1
+                         131 --42:     data[offset] = (unsigned char)(word >> 24);
+00000040 01f0            132 	mov	r1,ep
+00000042 c2f1            133 	add	r2,ep
+00000044 1388            134 	mov	r19,r17
+00000046 988a            135 	shr	24,r17
+00000048 808b            136 	sst.b	r17,0[ep]
+                         137 --43:     data[offset + 1u] = (unsigned char)(word >> 16);
+0000004a 01f60100        138 	addi	1,r1,ep
+0000004e c2f1            139 	add	r2,ep
+00000050 1388            140 	mov	r19,r17
+00000052 908a            141 	shr	16,r17
+00000054 808b            142 	sst.b	r17,0[ep]
+                         143 --44:     data[offset + 2u] = (unsigned char)(word >> 8);
+00000056 01f60200        144 	addi	2,r1,ep
+0000005a c2f1            145 	add	r2,ep
+0000005c 1388            146 	mov	r19,r17
+0000005e 888a            147 	shr	8,r17
+00000060 808b            148 	sst.b	r17,0[ep]
+                         149 --45:     data[offset + 3u] = (unsigned char)word;
+00000062 01f60300        150 	addi	3,r1,ep
+00000066 c2f1            151 	add	r2,ep
+00000068 809b            152 	sst.b	r19,0[ep]
+                         153 --46: }
+                         154 --	    .ef
+                         155 .LDW31:
+                         156 .L125:
+                         157 	.jumptype return
+0000006a 7f00            158 	jmp	[lp]
+                         159 --line38
+                         160 ..lin.321acdb9..4690d2d9.0_2::
+                         161 	.type	_aes_unpack_word,@function
+                         162 	.size	_aes_unpack_word,.-_aes_unpack_word
+                         163 	.type	_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,@function
+                         164 	.size	_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,.-_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                         165 	.align	2
+                         166 --_offset	r1	local
+                         167 
+                         168 --_data	r2	param
+                         169 --_word_index	r18	param
+                         170 --_word	r19	param
+                         171 
+                         172 	.section ".bss","awb"
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         173 .L98:
+                         174 	.type	.L98,@object
+                         175 	.size	.L98,0
+                         176 	.section ".ghrettbl",""
+00000004 00000000*       177 .L126:	.word	.L125
+                         178 	.type	.L126,@object
+                         179 	.size	.L126,4
+                         180 	.data
+                         181 	.text
+                         182 
+                         183 
+                         184 --48: static int aes_wait_status(unsigned int busy, icum_u32 timeout)
+                         185 	.align	2
+                         186 	.align	2
+                         187 	.align	2
+                         188 	.align	2
+                         189 ..gh.f.a.2.e.2:
+                         190 	.type	..gh.f.a.2.e.2,@object
+                         191 	.size	..gh.f.a.2.e.2,0
+                         192 	.global	_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                         193 _aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.:
+                         194 _aes_wait_status:
+0000006c 0610            195 	mov	r6,r2
+0000006e 0708            196 	mov	r7,r1
+                         197 --	    .bf
+                         198 .LDW41:
+                         199 --49: {
+                         200 --50:     while (timeout != 0u) {
+00000070 e50d*           201 	br	.L129
+                         202 .L131:
+                         203 --51:         if (((ICUM_AESB0STR & AES_STR_BUSY) != 0u) == (busy != 0u)) {
+                         204 --line51
+                         205 ..lin.321acdb9..566cee54.0_3::
+                         206 .LDWlin3:
+00000072 80070999c2fd    207 	ld.w	4294893840[zero],r19
+00000078 d39e0100        208 	andi	1,r19,r19
+0000007c e011            209 	cmp	zero,r2
+0000007e ea970000        210 	setfne	r18
+00000082 f299            211 	cmp	r18,r19
+00000084 ba05*           212 	bne	.L132
+                         213 --52:             return 1;
+                         214 --line52
+                         215 ..lin.321acdb9..566cee54.0_4::
+                         216 .LDWlin4:
+00000086 0152            217 	mov	1,r10
+00000088 f50d*           218 	br	.L127
+                         219 .L132:
+                         220 --53:         }
+                         221 --54:         --timeout;
+                         222 --line54
+                         223 ..lin.321acdb9..566cee54.0_5::
+                         224 .LDWlin5:
+0000008a 5f0a            225 	add	-1,r1
+                         226 .L129:
+0000008c e009            227 	cmp	zero,r1
+0000008e aaf5*           228 	bne	.L131
+                         229 --55:     }
+                         230 --57:     return (((ICUM_AESB0STR & AES_STR_BUSY) != 0u) == (busy != 0u));
+                         231 --line57
+                         232 ..lin.321acdb9..566cee54.0_6::
+                         233 .LDWlin6:
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+00000090 80070999c2fd    234 	ld.w	4294893840[zero],r19
+00000096 d39e0100        235 	andi	1,r19,r19
+0000009a e011            236 	cmp	zero,r2
+0000009c ea970000        237 	setfne	r18
+000000a0 f299            238 	cmp	r18,r19
+000000a2 e2570000        239 	setfe	r10
+                         240 .L127:
+                         241 --	    .ef
+                         242 .LDW51:
+                         243 .L212:
+                         244 --line58
+                         245 ..lin.321acdb9..566cee54.0_7::
+                         246 .LDWlin7:
+                         247 	.jumptype return
+000000a6 7f00            248 	jmp	[lp]
+                         249 --line58
+                         250 ..lin.321acdb9..566cee54.0_8::
+                         251 	.type	_aes_wait_status,@function
+                         252 	.size	_aes_wait_status,.-_aes_wait_status
+                         253 	.type	_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,@function
+                         254 	.size	_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,.-_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                         255 	.align	2
+                         256 
+                         257 --_busy	r2	param
+                         258 --_timeout	r1	param
+                         259 
+                         260 	.section ".bss","awb"
+                         261 .L182:
+                         262 	.type	.L182,@object
+                         263 	.size	.L182,0
+                         264 	.section ".ghrettbl",""
+00000008 00000000*       265 .L213:	.word	.L212
+                         266 	.type	.L213,@object
+                         267 	.size	.L213,4
+                         268 	.data
+                         269 	.text
+                         270 
+                         271 --58: }
+                         272 
+                         273 --60: int icum_aes128_ecb_crypt(const unsigned char *key,
+                         274 	.align	2
+                         275 	.align	2
+                         276 	.align	2
+                         277 ..gh.f.a.2.e.3:
+                         278 	.type	..gh.f.a.2.e.3,@object
+                         279 	.size	..gh.f.a.2.e.3,0
+                         280 	.global	_icum_aes128_ecb_crypt
+                         281 _icum_aes128_ecb_crypt:
+000000a8 031ed4ff        282 	addi	-44,sp,sp
+000000ac 63ff2900        283 	st.w	lp,40[sp]
+000000b0 63ef0100        284 	st.w	r29,0[sp]
+000000b4 63e70500        285 	st.w	r28,4[sp]
+000000b8 63df0900        286 	st.w	r27,8[sp]
+000000bc 63d70d00        287 	st.w	r26,12[sp]
+000000c0 63cf1100        288 	st.w	r25,16[sp]
+000000c4 63c71500        289 	st.w	r24,20[sp]
+000000c8 63bf1900        290 	st.w	r23,24[sp]
+000000cc 63b71d00        291 	st.w	r22,28[sp]
+000000d0 63af2100        292 	st.w	r21,32[sp]
+000000d4 63a72500        293 	st.w	r20,36[sp]
+000000d8 23e73100        294 	ld.w	48[sp],r28
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000000dc 09c0            295 	mov	r9,r24
+000000de 08a8            296 	mov	r8,r21
+000000e0 07b0            297 	mov	r7,r22
+000000e2 06b8            298 	mov	r6,r23
+                         299 --	    .bf
+                         300 .LDW61:
+                         301 --61:                           const unsigned char *input,
+                         302 --62:                           unsigned char *output,
+                         303 --63:                           unsigned long length,
+                         304 --64:                           int decrypt,
+                         305 --65:                           icum_u32 timeout)
+                         306 --66: {
+                         307 --67:     unsigned long offset;
+                         308 --68:     unsigned long remaining;
+                         309 --69:     unsigned int word_index;
+                         310 --70:     uint32 control;
+                         311 --71:     uint32 context_control;
+                         312 --73:     if ((key == (const unsigned char *)0)
+000000e4 e0b9            313 	cmp	zero,r23
+000000e6 c20d*           314 	be	.L217
+                         315 --line74
+                         316 ..lin.321acdb9..85ded89f.0_9::
+                         317 .LDWlin9:
+000000e8 e0b1            318 	cmp	zero,r22
+000000ea a20d*           319 	be	.L217
+                         320 --line75
+                         321 ..lin.321acdb9..85ded89f.0_10::
+                         322 .LDWlin10:
+000000ec e0a9            323 	cmp	zero,r21
+000000ee 820d*           324 	be	.L217
+                         325 --line76
+                         326 ..lin.321acdb9..85ded89f.0_11::
+                         327 .LDWlin11:
+000000f0 e0c1            328 	cmp	zero,r24
+000000f2 e205*           329 	be	.L217
+                         330 --line77
+                         331 ..lin.321acdb9..85ded89f.0_12::
+                         332 .LDWlin12:
+000000f4 d8060f00        333 	andi	15,r24,zero
+000000f8 ba05*           334 	bne	.L217
+                         335 --line78
+                         336 ..lin.321acdb9..85ded89f.0_13::
+                         337 .LDWlin13:
+000000fa e0e1            338 	cmp	zero,r28
+000000fc ba05*           339 	bne	.L216
+                         340 .L217:
+                         341 --74:         || (input == (const unsigned char *)0)
+                         342 --75:         || (output == (unsigned char *)0)
+                         343 --76:         || (length == 0ul)
+                         344 --77:         || ((length & 15ul) != 0ul)
+                         345 --78:         || (timeout == 0u)) {
+                         346 --79:         return 0;
+                         347 --line79
+                         348 ..lin.321acdb9..85ded89f.0_14::
+                         349 .LDWlin14:
+000000fe 0052            350 	mov	0,r10
+00000100 e575*           351 	br	.L214
+                         352 .L216:
+                         353 --80:     }
+                         354 --82:     if (!aes_wait_status(0u, timeout)) {
+                         355 --line82
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         356 ..lin.321acdb9..85ded89f.0_15::
+                         357 .LDWlin15:
+00000102 1c38            358 	mov	r28,r7
+00000104 0032            359 	mov	0,r6
+                         360 .L636:
+                         361 	jarl	_aes_wait_status,lp
+                         361 <EXPANSION BEGIN>
+                         361 jarl22 _aes_wait_status , lp 
+00000106 bfff66ff*       361 <EXPANSION END>
+0000010a e051            362 	cmp	zero,r10
+0000010c ba05*           363 	bne	.L224
+                         364 --83:         return 0;
+                         365 --line83
+                         366 ..lin.321acdb9..85ded89f.0_16::
+                         367 .LDWlin16:
+0000010e 0052            368 	mov	0,r10
+00000110 e56d*           369 	br	.L214
+                         370 .L224:
+                         371 --84:     }
+                         372 --86:     ICUM_AESB0CTRL = AES_CTRL_RST0;
+                         373 --line86
+                         374 ..lin.321acdb9..85ded89f.0_17::
+                         375 .LDWlin17:
+00000112 010a            376 	mov	1,r1
+00000114 80070f08c2fd    377 	st.w	r1,4294893824[zero]
+                         378 --87:     while ((ICUM_AESB0CTRL & AES_CTRL_RST0) != 0u) {
+                         379 --line87
+                         380 ..lin.321acdb9..85ded89f.0_18::
+                         381 .LDWlin18:
+0000011a e505*           382 	br	.L227
+                         383 .L229:
+                         384 --88:         if (timeout == 0u) {
+                         385 --line88
+                         386 ..lin.321acdb9..85ded89f.0_19::
+                         387 .LDWlin19:
+0000011c e0e1            388 	cmp	zero,r28
+0000011e ba05*           389 	bne	.L230
+                         390 --89:             return 0;
+                         391 --line89
+                         392 ..lin.321acdb9..85ded89f.0_20::
+                         393 .LDWlin20:
+00000120 0052            394 	mov	0,r10
+00000122 d565*           395 	br	.L214
+                         396 .L230:
+                         397 --90:         }
+                         398 --91:         --timeout;
+                         399 --line91
+                         400 ..lin.321acdb9..85ded89f.0_21::
+                         401 .LDWlin21:
+00000124 5fe2            402 	add	-1,r28
+                         403 .L227:
+00000126 80070908c2fd    404 	ld.w	4294893824[zero],r1
+0000012c 810a            405 	shr	1,r1
+0000012e f1f5*           406 	bl	.L229
+                         407 --92:     }
+                         408 --94:     context_control = (decrypt != 0) ? (1u << 4) : 0u;
+                         409 --line94
+                         410 ..lin.321acdb9..85ded89f.0_22::
+                         411 .LDWlin22:
+00000130 235f2d00        412 	ld.w	44[sp],r11
+00000134 200e1000        413 	movea	16,zero,r1
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+00000138 e059            414 	cmp	zero,r11
+0000013a e00f24a3        415 	cmove	zero,r1,r20
+                         416 --95:     ICUM_AESB0CCTL0 = context_control;
+0000013e 80078fa0c2fd    417 	st.w	r20,4294893832[zero]
+                         418 --97:     control = AES_CTRL_CTX0 | AES_CTRL_BYTE_ORDER;
+                         419 --line97
+                         420 ..lin.321acdb9..85ded89f.0_23::
+                         421 .LDWlin23:
+00000144 20ce0002        422 	movea	512,zero,r25
+                         423 --98:     ICUM_AESB0CTRL = control | AES_CTRL_KEY_DEST;
+00000148 400e0001        424 	movhi	hi(16777216),zero,r1
+0000014c 1909            425 	or	r25,r1
+0000014e 80070f08c2fd    426 	st.w	r1,4294893824[zero]
+                         427 --99:     for (word_index = 0u; word_index < 4u; ++word_index) {
+                         428 --line99
+                         429 ..lin.321acdb9..85ded89f.0_24::
+                         430 .LDWlin24:
+00000154 00ea            431 	mov	0,r29
+00000156 950d*           432 	br	.L239
+                         433 .L238:
+                         434 --100:         ICUM_AESB0IDAT = aes_pack_word(key, word_index);
+                         435 --line100
+                         436 ..lin.321acdb9..85ded89f.0_25::
+                         437 .LDWlin25:
+00000158 1730            438 	mov	r23,r6
+0000015a 1d38            439 	mov	r29,r7
+                         440 .L638:
+                         441 	jarl	_aes_pack_word,lp
+                         441 <EXPANSION BEGIN>
+                         441 jarl22 _aes_pack_word , lp 
+0000015c bfffa4fe*       441 <EXPANSION END>
+00000160 80070f52c2fd    442 	st.w	r10,4294893856[zero]
+                         443 --line99
+                         444 ..lin.321acdb9..85ded89f.0_26::
+                         445 .LDWlin26:
+00000166 41ea            446 	add	1,r29
+                         447 .L239:
+00000168 64ea            448 	cmp	4,r29
+0000016a f1f5*           449 	bl	.L238
+                         450 --101:     }
+                         451 --103:     ICUM_AESB0CTRL = control | AES_CTRL_BCI_DEST;
+                         452 --line103
+                         453 ..lin.321acdb9..85ded89f.0_27::
+                         454 .LDWlin27:
+0000016c 80070fc8c2fd    455 	st.w	r25,4294893824[zero]
+                         456 --104:     offset = 0ul;
+                         457 --line104
+                         458 ..lin.321acdb9..85ded89f.0_28::
+                         459 .LDWlin28:
+00000172 00da            460 	mov	0,r27
+                         461 --105:     remaining = length;
+00000174 18d0            462 	mov	r24,r26
+                         463 --106:     while (remaining != 0ul) {
+00000176 853d*           464 	br	.L240
+                         465 .L242:
+                         466 --107:         ICUM_AESB0DCTL = (offset == 0ul) ? AES_DCTL_NEW_KEY : 0u;
+                         467 --line107
+                         468 ..lin.321acdb9..85ded89f.0_29::
+                         469 .LDWlin29:
+00000178 e0d9            470 	cmp	zero,r27
+0000017a e20f0000        471 	setfe	r1
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+0000017e 80074f08c2fd    472 	st.w	r1,4294893828[zero]
+                         473 --108:         for (word_index = 0u; word_index < 4u; ++word_index) {
+                         474 --line108
+                         475 ..lin.321acdb9..85ded89f.0_30::
+                         476 .LDWlin30:
+00000184 00ea            477 	mov	0,r29
+00000186 a50d*           478 	br	.L246
+                         479 .L245:
+                         480 --109:             ICUM_AESB0IDAT = aes_pack_word(input + offset, word_index);
+                         481 --line109
+                         482 ..lin.321acdb9..85ded89f.0_31::
+                         483 .LDWlin31:
+00000188 1630            484 	mov	r22,r6
+0000018a db31            485 	add	r27,r6
+0000018c 1d38            486 	mov	r29,r7
+                         487 .L640:
+                         488 	jarl	_aes_pack_word,lp
+                         488 <EXPANSION BEGIN>
+                         488 jarl22 _aes_pack_word , lp 
+0000018e bfff72fe*       488 <EXPANSION END>
+00000192 80070f52c2fd    489 	st.w	r10,4294893856[zero]
+                         490 --line108
+                         491 ..lin.321acdb9..85ded89f.0_32::
+                         492 .LDWlin32:
+00000198 41ea            493 	add	1,r29
+                         494 .L246:
+0000019a 64ea            495 	cmp	4,r29
+0000019c e1f5*           496 	bl	.L245
+                         497 --110:         }
+                         498 --112:         if (!aes_wait_status(0u, timeout)) {
+                         499 --line112
+                         500 ..lin.321acdb9..85ded89f.0_33::
+                         501 .LDWlin33:
+0000019e 1c38            502 	mov	r28,r7
+000001a0 0032            503 	mov	0,r6
+                         504 .L642:
+                         505 	jarl	_aes_wait_status,lp
+                         505 <EXPANSION BEGIN>
+                         505 jarl22 _aes_wait_status , lp 
+000001a2 bfffcafe*       505 <EXPANSION END>
+000001a6 e051            506 	cmp	zero,r10
+000001a8 fa05*           507 	bne	.L247
+                         508 --113:             ICUM_AESB0CTRL = AES_CTRL_RST0;
+                         509 --line113
+                         510 ..lin.321acdb9..85ded89f.0_34::
+                         511 .LDWlin34:
+000001aa 010a            512 	mov	1,r1
+000001ac 80070f08c2fd    513 	st.w	r1,4294893824[zero]
+                         514 --114:             return 0;
+                         515 --line114
+                         516 ..lin.321acdb9..85ded89f.0_35::
+                         517 .LDWlin35:
+000001b2 0052            518 	mov	0,r10
+000001b4 c51d*           519 	br	.L214
+                         520 .L247:
+                         521 --115:         }
+                         522 --117:         ICUM_AESB0CTRL = control;
+                         523 --line117
+                         524 ..lin.321acdb9..85ded89f.0_36::
+                         525 .LDWlin36:
+000001b6 80070fc8c2fd    526 	st.w	r25,4294893824[zero]
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         527 --118:         for (word_index = 0u; word_index < 4u; ++word_index) {
+                         528 --line118
+                         529 ..lin.321acdb9..85ded89f.0_37::
+                         530 .LDWlin37:
+000001bc 00ea            531 	mov	0,r29
+000001be a50d*           532 	br	.L253
+                         533 .L252:
+                         534 --119:             aes_unpack_word(output + offset, word_index, ICUM_AESB0ODAT);
+                         535 --line119
+                         536 ..lin.321acdb9..85ded89f.0_38::
+                         537 .LDWlin38:
+000001c0 80074942c2fd    538 	ld.w	4294893860[zero],r8
+000001c6 1530            539 	mov	r21,r6
+000001c8 db31            540 	add	r27,r6
+000001ca 1d38            541 	mov	r29,r7
+                         542 .L644:
+                         543 	jarl	_aes_unpack_word,lp
+                         543 <EXPANSION BEGIN>
+                         543 jarl22 _aes_unpack_word , lp 
+000001cc bfff6afe*       543 <EXPANSION END>
+                         544 --line118
+                         545 ..lin.321acdb9..85ded89f.0_39::
+                         546 .LDWlin39:
+000001d0 41ea            547 	add	1,r29
+                         548 .L253:
+000001d2 64ea            549 	cmp	4,r29
+000001d4 e1f5*           550 	bl	.L252
+                         551 --120:         }
+                         552 --121:         remaining -= 16ul;
+                         553 --line121
+                         554 ..lin.321acdb9..85ded89f.0_40::
+                         555 .LDWlin40:
+000001d6 50d2            556 	add	-16,r26
+                         557 --122:         if (remaining != 0ul) {
+000001d8 e0d1            558 	cmp	zero,r26
+000001da e205*           559 	be	.L240
+                         560 --123:             ICUM_AESB0CTRL = control | AES_CTRL_BCI_DEST;
+                         561 --line123
+                         562 ..lin.321acdb9..85ded89f.0_41::
+                         563 .LDWlin41:
+000001dc 80070fc8c2fd    564 	st.w	r25,4294893824[zero]
+                         565 --124:             offset += 16ul;
+                         566 --line124
+                         567 ..lin.321acdb9..85ded89f.0_42::
+                         568 .LDWlin42:
+000001e2 1bde1000        569 	addi	16,r27,r27
+                         570 .L240:
+000001e6 e0d1            571 	cmp	zero,r26
+000001e8 8acd*           572 	bne	.L242
+                         573 --125:         }
+                         574 --126:     }
+                         575 --128:     return 1;
+                         576 --line128
+                         577 ..lin.321acdb9..85ded89f.0_43::
+                         578 .LDWlin43:
+000001ea 0152            579 	mov	1,r10
+                         580 .L214:
+                         581 --	    .ef
+                         582 .LDW71:
+000001ec 23ff2900        583 	ld.w	40[sp],lp
+000001f0 23ef0100        584 	ld.w	0[sp],r29
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000001f4 23e70500        585 	ld.w	4[sp],r28
+000001f8 23df0900        586 	ld.w	8[sp],r27
+000001fc 23d70d00        587 	ld.w	12[sp],r26
+00000200 23cf1100        588 	ld.w	16[sp],r25
+00000204 23c71500        589 	ld.w	20[sp],r24
+00000208 23bf1900        590 	ld.w	24[sp],r23
+0000020c 23b71d00        591 	ld.w	28[sp],r22
+00000210 23af2100        592 	ld.w	32[sp],r21
+00000214 23a72500        593 	ld.w	36[sp],r20
+00000218 031e2c00        594 	addi	44,sp,sp
+                         595 .L646:
+                         596 	.jumptype return
+0000021c 7f00            597 	jmp	[lp]
+                         598 --line128
+                         599 ..lin.321acdb9..85ded89f.0_44::
+                         600 	.type	_icum_aes128_ecb_crypt,@function
+                         601 	.size	_icum_aes128_ecb_crypt,.-_icum_aes128_ecb_crypt
+                         602 	.align	2
+                         603 --_offset	r27	local
+                         604 --_remaining	r26	local
+                         605 --_word_index	r29	local
+                         606 --_control	r25	local
+                         607 --_context_control	r20	local
+                         608 
+                         609 --_key	r23	param
+                         610 --_input	r22	param
+                         611 --_output	r21	param
+                         612 --_length	r24	param
+                         613 --_decrypt	44[sp]	param
+                         614 --_timeout	r28	param
+                         615 
+                         616 	.section ".bss","awb"
+                         617 .L474:
+                         618 	.type	.L474,@object
+                         619 	.size	.L474,0
+                         620 	.section ".ghcalltbl",""
+                         621 	.align	4
+00000000 00000000*       622 .L637:	.word	.L636
+                         623 	.type	.L637,@object
+                         624 	.size	.L637,4
+00000004 00000000*       625 .L639:	.word	.L638
+                         626 	.type	.L639,@object
+                         627 	.size	.L639,4
+00000008 00000000*       628 .L641:	.word	.L640
+                         629 	.type	.L641,@object
+                         630 	.size	.L641,4
+0000000c 00000000*       631 .L643:	.word	.L642
+                         632 	.type	.L643,@object
+                         633 	.size	.L643,4
+00000010 00000000*       634 .L645:	.word	.L644
+                         635 	.type	.L645,@object
+                         636 	.size	.L645,4
+                         637 	.section ".ghrettbl",""
+0000000c 00000000*       638 .L647:	.word	.L646
+                         639 	.type	.L647,@object
+                         640 	.size	.L647,4
+                         641 	.data
+                         642 	.text
+                         643 
+                         644 --129: }
+                         645 
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         646 --131: static void xor_block(unsigned char *output,
+                         647 	.align	2
+                         648 	.align	2
+                         649 	.align	2
+                         650 ..gh.f.a.2.e.4:
+                         651 	.type	..gh.f.a.2.e.4,@object
+                         652 	.size	..gh.f.a.2.e.4,0
+                         653 	.global	_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                         654 _xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.:
+                         655 _xor_block:
+0000021e 0610            656 	mov	r6,r2
+00000220 0798            657 	mov	r7,r19
+00000222 0890            658 	mov	r8,r18
+                         659 --	    .bf
+                         660 .LDW81:
+                         661 --132:                       const unsigned char *left,
+                         662 --133:                       const unsigned char *right)
+                         663 --134: {
+                         664 --135:     unsigned int index;
+                         665 --137:     for (index = 0u; index < 16u; ++index) {
+00000224 000a            666 	mov	0,r1
+00000226 e50d*           667 	br	.L653
+                         668 .L652:
+                         669 --138:         output[index] = left[index] ^ right[index];
+                         670 --line138
+                         671 ..lin.321acdb9..ecada1e7.0_45::
+                         672 .LDWlin45:
+00000228 0188            673 	mov	r1,r17
+0000022a d389            674 	add	r19,r17
+0000022c 0180            675 	mov	r1,r16
+0000022e d281            676 	add	r18,r16
+00000230 90870100        677 	ld.bu	0[r16],r16
+00000234 918f0100        678 	ld.bu	0[r17],r17
+00000238 01f0            679 	mov	r1,ep
+0000023a c2f1            680 	add	r2,ep
+0000023c 3089            681 	xor	r16,r17
+0000023e 808b            682 	sst.b	r17,0[ep]
+00000240 410a            683 	add	1,r1
+                         684 .L653:
+00000242 0106f0ff        685 	addi	-16,r1,zero
+00000246 99f5*           686 	bnl	.L652
+                         687 --139:     }
+                         688 --140: }
+                         689 --	    .ef
+                         690 .LDW91:
+                         691 .L710:
+                         692 --line140
+                         693 ..lin.321acdb9..ecada1e7.0_46::
+                         694 .LDWlin46:
+                         695 	.jumptype return
+00000248 7f00            696 	jmp	[lp]
+                         697 --line140
+                         698 ..lin.321acdb9..ecada1e7.0_47::
+                         699 	.type	_xor_block,@function
+                         700 	.size	_xor_block,.-_xor_block
+                         701 	.type	_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,@function
+                         702 	.size	_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,.-_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                         703 	.align	2
+                         704 --_index	r1	local
+                         705 
+                         706 --_output	r2	param
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         707 --_left	r19	param
+                         708 --_right	r18	param
+                         709 
+                         710 	.section ".bss","awb"
+                         711 .L686:
+                         712 	.type	.L686,@object
+                         713 	.size	.L686,0
+                         714 	.section ".ghrettbl",""
+00000010 00000000*       715 .L711:	.word	.L710
+                         716 	.type	.L711,@object
+                         717 	.size	.L711,4
+                         718 	.data
+                         719 	.text
+                         720 
+                         721 
+                         722 --142: int icum_aes128_cbc_crypt(const unsigned char *key,
+                         723 	.align	2
+                         724 	.align	2
+                         725 	.align	2
+                         726 ..gh.f.a.2.e.5:
+                         727 	.type	..gh.f.a.2.e.5,@object
+                         728 	.size	..gh.f.a.2.e.5,0
+                         729 	.global	_icum_aes128_cbc_crypt
+                         730 _icum_aes128_cbc_crypt:
+0000024a 031ea0ff        731 	addi	-96,sp,sp
+0000024e 63ff5d00        732 	st.w	lp,92[sp]
+00000252 63ef3900        733 	st.w	r29,56[sp]
+00000256 63e73d00        734 	st.w	r28,60[sp]
+0000025a 63df4100        735 	st.w	r27,64[sp]
+0000025e 63d74500        736 	st.w	r26,68[sp]
+00000262 63cf4900        737 	st.w	r25,72[sp]
+00000266 63c74d00        738 	st.w	r24,76[sp]
+0000026a 63bf5100        739 	st.w	r23,80[sp]
+0000026e 63b75500        740 	st.w	r22,84[sp]
+00000272 63af5900        741 	st.w	r21,88[sp]
+00000276 23c76900        742 	ld.w	104[sp],r24
+0000027a 23af6500        743 	ld.w	100[sp],r21
+0000027e 23cf6100        744 	ld.w	96[sp],r25
+00000282 09d0            745 	mov	r9,r26
+00000284 08b0            746 	mov	r8,r22
+00000286 07b8            747 	mov	r7,r23
+00000288 06d8            748 	mov	r6,r27
+                         749 --	    .bf
+                         750 .LDW02:
+                         751 --143:                           const unsigned char *iv,
+                         752 --144:                           const unsigned char *input,
+                         753 --145:                           unsigned char *output,
+                         754 --146:                           unsigned long length,
+                         755 --147:                           int decrypt,
+                         756 --148:                           icum_u32 timeout)
+                         757 --149: {
+                         758 --150:     unsigned long offset;
+                         759 --151:     unsigned int index;
+                         760 --152:     unsigned char chain[16];
+                         761 --153:     unsigned char block[16];
+                         762 --154:     unsigned char transformed[16];
+                         763 --156:     if ((key == (const unsigned char *)0)
+0000028a e0d9            764 	cmp	zero,r27
+0000028c e20d*           765 	be	.L715
+                         766 --line157
+                         767 ..lin.321acdb9..fd9e5e7d.0_48::
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         768 .LDWlin48:
+0000028e e0b9            769 	cmp	zero,r23
+00000290 c20d*           770 	be	.L715
+                         771 --line158
+                         772 ..lin.321acdb9..fd9e5e7d.0_49::
+                         773 .LDWlin49:
+00000292 e0b1            774 	cmp	zero,r22
+00000294 a20d*           775 	be	.L715
+                         776 --line159
+                         777 ..lin.321acdb9..fd9e5e7d.0_50::
+                         778 .LDWlin50:
+00000296 e0d1            779 	cmp	zero,r26
+00000298 820d*           780 	be	.L715
+                         781 --line160
+                         782 ..lin.321acdb9..fd9e5e7d.0_51::
+                         783 .LDWlin51:
+0000029a e0c9            784 	cmp	zero,r25
+0000029c e205*           785 	be	.L715
+                         786 --line161
+                         787 ..lin.321acdb9..fd9e5e7d.0_52::
+                         788 .LDWlin52:
+0000029e d9060f00        789 	andi	15,r25,zero
+000002a2 ba05*           790 	bne	.L715
+                         791 --line162
+                         792 ..lin.321acdb9..fd9e5e7d.0_53::
+                         793 .LDWlin53:
+000002a4 e0c1            794 	cmp	zero,r24
+000002a6 ca05*           795 	bne	.L714
+                         796 .L715:
+                         797 --157:         || (iv == (const unsigned char *)0)
+                         798 --158:         || (input == (const unsigned char *)0)
+                         799 --159:         || (output == (unsigned char *)0)
+                         800 --160:         || (length == 0ul)
+                         801 --161:         || ((length & 15ul) != 0ul)
+                         802 --162:         || (timeout == 0u)) {
+                         803 --163:         return 0;
+                         804 --line163
+                         805 ..lin.321acdb9..fd9e5e7d.0_54::
+                         806 .LDWlin54:
+000002a8 0052            807 	mov	0,r10
+000002aa 80071601*       808 	br	.L712
+                         809 .L714:
+                         810 --164:     }
+                         811 --166:     for (index = 0u; index < 16u; ++index) {
+                         812 --line166
+                         813 ..lin.321acdb9..fd9e5e7d.0_55::
+                         814 .LDWlin55:
+000002ae 00ea            815 	mov	0,r29
+000002b0 a50d*           816 	br	.L726
+                         817 .L725:
+                         818 --167:         chain[index] = iv[index];
+                         819 --line167
+                         820 ..lin.321acdb9..fd9e5e7d.0_56::
+                         821 .LDWlin56:
+000002b2 1d08            822 	mov	r29,r1
+000002b4 d709            823 	add	r23,r1
+000002b6 810f0100        824 	ld.bu	0[r1],r1
+000002ba 23f62800        825 	movea	40,sp,ep
+000002be ddf1            826 	add	r29,ep
+000002c0 800b            827 	sst.b	r1,0[ep]
+000002c2 41ea            828 	add	1,r29
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         829 .L726:
+000002c4 1d06f0ff        830 	addi	-16,r29,zero
+000002c8 d9f5*           831 	bnl	.L725
+                         832 --168:     }
+                         833 --170:     for (offset = 0ul; offset < length; offset += 16ul) {
+                         834 --line170
+                         835 ..lin.321acdb9..fd9e5e7d.0_57::
+                         836 .LDWlin57:
+000002ca 00e2            837 	mov	0,r28
+000002cc f575*           838 	br	.L730
+                         839 .L729:
+                         840 --171:         for (index = 0u; index < 16u; ++index) {
+                         841 --line171
+                         842 ..lin.321acdb9..fd9e5e7d.0_58::
+                         843 .LDWlin58:
+000002ce 00ea            844 	mov	0,r29
+000002d0 b50d*           845 	br	.L734
+                         846 .L733:
+                         847 --172:             block[index] = input[offset + index];
+                         848 --line172
+                         849 ..lin.321acdb9..fd9e5e7d.0_59::
+                         850 .LDWlin59:
+000002d2 1d08            851 	mov	r29,r1
+000002d4 dc09            852 	add	r28,r1
+000002d6 d609            853 	add	r22,r1
+000002d8 810f0100        854 	ld.bu	0[r1],r1
+000002dc 23f61800        855 	movea	24,sp,ep
+000002e0 ddf1            856 	add	r29,ep
+000002e2 800b            857 	sst.b	r1,0[ep]
+000002e4 41ea            858 	add	1,r29
+                         859 .L734:
+000002e6 1d06f0ff        860 	addi	-16,r29,zero
+000002ea c9f5*           861 	bnl	.L733
+                         862 --173:         }
+                         863 --175:         if (decrypt != 0) {
+                         864 --line175
+                         865 ..lin.321acdb9..fd9e5e7d.0_60::
+                         866 .LDWlin60:
+000002ec e0a9            867 	cmp	zero,r21
+000002ee b235*           868 	be	.L735
+                         869 --176:             if (!icum_aes128_ecb_crypt(key, block, transformed,
+                         870 --line176
+                         871 ..lin.321acdb9..fd9e5e7d.0_61::
+                         872 .LDWlin61:
+000002f0 010a            873 	mov	1,r1
+000002f2 1b30            874 	mov	r27,r6
+000002f4 630f0100        875 	st.w	r1,0[sp]
+000002f8 63c70500        876 	st.w	r24,4[sp]
+000002fc 233e1800        877 	movea	24,sp,r7
+00000300 23460800        878 	movea	8,sp,r8
+00000304 204e1000        879 	movea	16,zero,r9
+                         880 .L1065:
+                         881 	jarl	_icum_aes128_ecb_crypt,lp
+                         881 <EXPANSION BEGIN>
+                         881 jarl22 _icum_aes128_ecb_crypt , lp 
+00000308 bfffa0fd*       881 <EXPANSION END>
+0000030c e051            882 	cmp	zero,r10
+0000030e ba05*           883 	bne	.L737
+                         884 --177:                                         16ul, 1, timeout)) {
+                         885 --178:                 return 0;
+                         886 --line178
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         887 ..lin.321acdb9..fd9e5e7d.0_62::
+                         888 .LDWlin62:
+00000310 0052            889 	mov	0,r10
+00000312 f555*           890 	br	.L712
+                         891 .L737:
+                         892 --179:             }
+                         893 --180:             xor_block(transformed, transformed, chain);
+                         894 --line180
+                         895 ..lin.321acdb9..fd9e5e7d.0_63::
+                         896 .LDWlin63:
+00000314 23360800        897 	movea	8,sp,r6
+00000318 0638            898 	mov	r6,r7
+0000031a 23462800        899 	movea	40,sp,r8
+                         900 .L1067:
+                         901 	jarl	_xor_block,lp
+                         901 <EXPANSION BEGIN>
+                         901 jarl22 _xor_block , lp 
+0000031e bfff00ff*       901 <EXPANSION END>
+                         902 --181:             for (index = 0u; index < 16u; ++index) {
+                         903 --line181
+                         904 ..lin.321acdb9..fd9e5e7d.0_64::
+                         905 .LDWlin64:
+00000322 00ea            906 	mov	0,r29
+00000324 c515*           907 	br	.L743
+                         908 .L742:
+                         909 --182:                 chain[index] = block[index];
+                         910 --line182
+                         911 ..lin.321acdb9..fd9e5e7d.0_65::
+                         912 .LDWlin65:
+00000326 230e1800        913 	movea	24,sp,r1
+0000032a dd09            914 	add	r29,r1
+0000032c 810f0100        915 	ld.bu	0[r1],r1
+00000330 23f62800        916 	movea	40,sp,ep
+00000334 ddf1            917 	add	r29,ep
+00000336 800b            918 	sst.b	r1,0[ep]
+                         919 --183:                 output[offset + index] = transformed[index];
+00000338 230e0800        920 	movea	8,sp,r1
+0000033c dd09            921 	add	r29,r1
+0000033e 810f0100        922 	ld.bu	0[r1],r1
+00000342 1cf0            923 	mov	r28,ep
+00000344 ddf1            924 	add	r29,ep
+00000346 daf1            925 	add	r26,ep
+00000348 800b            926 	sst.b	r1,0[ep]
+0000034a 41ea            927 	add	1,r29
+                         928 .L743:
+0000034c 1d06f0ff        929 	addi	-16,r29,zero
+00000350 b9ed*           930 	bnl	.L742
+00000352 a535*           931 	br	.L728
+                         932 .L735:
+                         933 --184:             }
+                         934 --185:         } else {
+                         935 --186:             xor_block(transformed, block, chain);
+                         936 --line186
+                         937 ..lin.321acdb9..fd9e5e7d.0_66::
+                         938 .LDWlin66:
+00000354 23360800        939 	movea	8,sp,r6
+00000358 233e1800        940 	movea	24,sp,r7
+0000035c 23462800        941 	movea	40,sp,r8
+                         942 .L1069:
+                         943 	jarl	_xor_block,lp
+                         943 <EXPANSION BEGIN>
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                         943 jarl22 _xor_block , lp 
+00000360 bfffbefe*       943 <EXPANSION END>
+                         944 --187:             if (!icum_aes128_ecb_crypt(key, transformed, block,
+                         945 --line187
+                         946 ..lin.321acdb9..fd9e5e7d.0_67::
+                         947 .LDWlin67:
+00000364 1b30            948 	mov	r27,r6
+00000366 63070100        949 	st.w	zero,0[sp]
+0000036a 63c70500        950 	st.w	r24,4[sp]
+0000036e 233e0800        951 	movea	8,sp,r7
+00000372 23461800        952 	movea	24,sp,r8
+00000376 204e1000        953 	movea	16,zero,r9
+                         954 .L1071:
+                         955 	jarl	_icum_aes128_ecb_crypt,lp
+                         955 <EXPANSION BEGIN>
+                         955 jarl22 _icum_aes128_ecb_crypt , lp 
+0000037a bfff2efd*       955 <EXPANSION END>
+0000037e e051            956 	cmp	zero,r10
+00000380 ba05*           957 	bne	.L745
+                         958 --188:                                        16ul, 0, timeout)) {
+                         959 --189:                 return 0;
+                         960 --line189
+                         961 ..lin.321acdb9..fd9e5e7d.0_68::
+                         962 .LDWlin68:
+00000382 0052            963 	mov	0,r10
+00000384 e51d*           964 	br	.L712
+                         965 .L745:
+                         966 --190:             }
+                         967 --191:             for (index = 0u; index < 16u; ++index) {
+                         968 --line191
+                         969 ..lin.321acdb9..fd9e5e7d.0_69::
+                         970 .LDWlin69:
+00000386 00ea            971 	mov	0,r29
+00000388 c515*           972 	br	.L751
+                         973 .L750:
+                         974 --192:                 chain[index] = block[index];
+                         975 --line192
+                         976 ..lin.321acdb9..fd9e5e7d.0_70::
+                         977 .LDWlin70:
+0000038a 230e1800        978 	movea	24,sp,r1
+0000038e dd09            979 	add	r29,r1
+00000390 810f0100        980 	ld.bu	0[r1],r1
+00000394 23f62800        981 	movea	40,sp,ep
+00000398 ddf1            982 	add	r29,ep
+0000039a 800b            983 	sst.b	r1,0[ep]
+                         984 --193:                 output[offset + index] = block[index];
+0000039c 230e1800        985 	movea	24,sp,r1
+000003a0 dd09            986 	add	r29,r1
+000003a2 810f0100        987 	ld.bu	0[r1],r1
+000003a6 1cf0            988 	mov	r28,ep
+000003a8 ddf1            989 	add	r29,ep
+000003aa daf1            990 	add	r26,ep
+000003ac 800b            991 	sst.b	r1,0[ep]
+000003ae 41ea            992 	add	1,r29
+                         993 .L751:
+000003b0 1d06f0ff        994 	addi	-16,r29,zero
+000003b4 b9ed*           995 	bnl	.L750
+                         996 .L728:
+                         997 --line170
+                         998 ..lin.321acdb9..fd9e5e7d.0_71::
+                         999 .LDWlin71:
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000003b6 1ce61000       1000 	addi	16,r28,r28
+                        1001 .L730:
+000003ba f9e1           1002 	cmp	r25,r28
+000003bc 918d*          1003 	bl	.L729
+                        1004 --194:             }
+                        1005 --195:         }
+                        1006 --196:     }
+                        1007 --198:     return 1;
+                        1008 --line198
+                        1009 ..lin.321acdb9..fd9e5e7d.0_72::
+                        1010 .LDWlin72:
+000003be 0152           1011 	mov	1,r10
+                        1012 .L712:
+                        1013 --	    .ef
+                        1014 .LDW12:
+000003c0 23ff5d00       1015 	ld.w	92[sp],lp
+000003c4 23ef3900       1016 	ld.w	56[sp],r29
+000003c8 23e73d00       1017 	ld.w	60[sp],r28
+000003cc 23df4100       1018 	ld.w	64[sp],r27
+000003d0 23d74500       1019 	ld.w	68[sp],r26
+000003d4 23cf4900       1020 	ld.w	72[sp],r25
+000003d8 23c74d00       1021 	ld.w	76[sp],r24
+000003dc 23bf5100       1022 	ld.w	80[sp],r23
+000003e0 23b75500       1023 	ld.w	84[sp],r22
+000003e4 23af5900       1024 	ld.w	88[sp],r21
+000003e8 031e6000       1025 	addi	96,sp,sp
+                        1026 .L1073:
+                        1027 	.jumptype return
+000003ec 7f00           1028 	jmp	[lp]
+                        1029 --line198
+                        1030 ..lin.321acdb9..fd9e5e7d.0_73::
+                        1031 	.type	_icum_aes128_cbc_crypt,@function
+                        1032 	.size	_icum_aes128_cbc_crypt,.-_icum_aes128_cbc_crypt
+                        1033 	.align	2
+                        1034 --_offset	r28	local
+                        1035 --_index	r29	local
+                        1036 --_chain	40[sp]	local
+                        1037 --_block	24[sp]	local
+                        1038 --_transformed	8[sp]	local
+                        1039 
+                        1040 --_key	r27	param
+                        1041 --_iv	r23	param
+                        1042 --_input	r22	param
+                        1043 --_output	r26	param
+                        1044 --_length	r25	param
+                        1045 --_decrypt	r21	param
+                        1046 --_timeout	r24	param
+                        1047 
+                        1048 	.section ".bss","awb"
+                        1049 .L930:
+                        1050 	.type	.L930,@object
+                        1051 	.size	.L930,0
+                        1052 	.section ".ghcalltbl",""
+00000014 00000000*      1053 .L1066:	.word	.L1065
+                        1054 	.type	.L1066,@object
+                        1055 	.size	.L1066,4
+00000018 00000000*      1056 .L1068:	.word	.L1067
+                        1057 	.type	.L1068,@object
+                        1058 	.size	.L1068,4
+0000001c 00000000*      1059 .L1070:	.word	.L1069
+                        1060 	.type	.L1070,@object
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1061 	.size	.L1070,4
+00000020 00000000*      1062 .L1072:	.word	.L1071
+                        1063 	.type	.L1072,@object
+                        1064 	.size	.L1072,4
+                        1065 	.section ".ghrettbl",""
+00000014 00000000*      1066 .L1074:	.word	.L1073
+                        1067 	.type	.L1074,@object
+                        1068 	.size	.L1074,4
+                        1069 	.data
+                        1070 	.text
+                        1071 
+                        1072 --199: }
+                        1073 
+                        1074 --201: int icum_aes128_cmac(const unsigned char *key,
+                        1075 	.align	2
+                        1076 	.align	2
+                        1077 	.align	2
+                        1078 ..gh.f.a.2.e.6:
+                        1079 	.type	..gh.f.a.2.e.6,@object
+                        1080 	.size	..gh.f.a.2.e.6,0
+                        1081 	.global	_icum_aes128_cmac
+                        1082 _icum_aes128_cmac:
+000003ee 031ebcff       1083 	addi	-68,sp,sp
+000003f2 63ff4100       1084 	st.w	lp,64[sp]
+000003f6 634f0500       1085 	st.w	r9,4[sp]
+000003fa 63ef1900       1086 	st.w	r29,24[sp]
+000003fe 63e71d00       1087 	st.w	r28,28[sp]
+00000402 63df2100       1088 	st.w	r27,32[sp]
+00000406 63d72500       1089 	st.w	r26,36[sp]
+0000040a 63cf2900       1090 	st.w	r25,40[sp]
+0000040e 63c72d00       1091 	st.w	r24,44[sp]
+00000412 63bf3100       1092 	st.w	r23,48[sp]
+00000416 63b73500       1093 	st.w	r22,52[sp]
+0000041a 63af3900       1094 	st.w	r21,56[sp]
+0000041e 63a73d00       1095 	st.w	r20,60[sp]
+00000422 23cf4500       1096 	ld.w	68[sp],r25
+00000426 08c0           1097 	mov	r8,r24
+00000428 07a0           1098 	mov	r7,r20
+0000042a 06a8           1099 	mov	r6,r21
+                        1100 --	    .bf
+                        1101 .LDW22:
+                        1102 --202:                      const unsigned char *message,
+                        1103 --203:                      unsigned long message_length,
+                        1104 --204:                      unsigned char *tag,
+                        1105 --205:                      icum_u32 timeout)
+                        1106 --206: {
+                        1107 --207:     unsigned long block_count;
+                        1108 --208:     unsigned long block_index;
+                        1109 --209:     unsigned long final_offset;
+                        1110 --210:     unsigned int index;
+                        1111 --211:     unsigned int final_bytes;
+                        1112 --212:     uint32 control;
+                        1113 --213:     uint32 data_control;
+                        1114 --214:     unsigned char block[16];
+                        1115 --216:     if ((key == (const unsigned char *)0)
+0000042c e0a9           1116 	cmp	zero,r21
+0000042e b20d*          1117 	be	.L1078
+                        1118 --line217
+                        1119 ..lin.321acdb9..65dfb378.0_74::
+                        1120 .LDWlin74:
+00000430 e0a1           1121 	cmp	zero,r20
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+00000432 ba05*          1122 	bne	.L1080
+00000434 e0c1           1123 	cmp	zero,r24
+00000436 fa05*          1124 	bne	.L1078
+                        1125 .L1080:
+                        1126 --line218
+                        1127 ..lin.321acdb9..65dfb378.0_75::
+                        1128 .LDWlin75:
+00000438 235f0500       1129 	ld.w	4[sp],r11
+0000043c e059           1130 	cmp	zero,r11
+0000043e b205*          1131 	be	.L1078
+                        1132 --line219
+                        1133 ..lin.321acdb9..65dfb378.0_76::
+                        1134 .LDWlin76:
+00000440 e0c9           1135 	cmp	zero,r25
+00000442 ca05*          1136 	bne	.L1077
+                        1137 .L1078:
+                        1138 --217:         || ((message == (const unsigned char *)0) && (message_length != 0ul))
+                        1139 --218:         || (tag == (unsigned char *)0)
+                        1140 --219:         || (timeout == 0u)) {
+                        1141 --220:         return 0;
+                        1142 --line220
+                        1143 ..lin.321acdb9..65dfb378.0_77::
+                        1144 .LDWlin77:
+00000444 0052           1145 	mov	0,r10
+00000446 8007c601*      1146 	br	.L1075
+                        1147 .L1077:
+                        1148 --221:     }
+                        1149 --223:     if (!aes_wait_status(0u, timeout)) {
+                        1150 --line223
+                        1151 ..lin.321acdb9..65dfb378.0_78::
+                        1152 .LDWlin78:
+0000044a 1938           1153 	mov	r25,r7
+0000044c 0032           1154 	mov	0,r6
+                        1155 .L1802:
+                        1156 	jarl	_aes_wait_status,lp
+                        1156 <EXPANSION BEGIN>
+                        1156 jarl22 _aes_wait_status , lp 
+0000044e bfff1efc*      1156 <EXPANSION END>
+00000452 e051           1157 	cmp	zero,r10
+00000454 ca05*          1158 	bne	.L1084
+                        1159 --224:         return 0;
+                        1160 --line224
+                        1161 ..lin.321acdb9..65dfb378.0_79::
+                        1162 .LDWlin79:
+00000456 0052           1163 	mov	0,r10
+00000458 8007b401*      1164 	br	.L1075
+                        1165 .L1084:
+                        1166 --225:     }
+                        1167 --227:     ICUM_AESB0CTRL = AES_CTRL_RST0;
+                        1168 --line227
+                        1169 ..lin.321acdb9..65dfb378.0_80::
+                        1170 .LDWlin80:
+0000045c 010a           1171 	mov	1,r1
+0000045e 80070f08c2fd   1172 	st.w	r1,4294893824[zero]
+                        1173 --228:     while ((ICUM_AESB0CTRL & AES_CTRL_RST0) != 0u) {
+                        1174 --line228
+                        1175 ..lin.321acdb9..65dfb378.0_81::
+                        1176 .LDWlin81:
+00000464 f505*          1177 	br	.L1087
+                        1178 .L1089:
+                        1179 --229:         if (timeout == 0u) {
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1180 --line229
+                        1181 ..lin.321acdb9..65dfb378.0_82::
+                        1182 .LDWlin82:
+00000466 e0c9           1183 	cmp	zero,r25
+00000468 ca05*          1184 	bne	.L1090
+                        1185 --230:             return 0;
+                        1186 --line230
+                        1187 ..lin.321acdb9..65dfb378.0_83::
+                        1188 .LDWlin83:
+0000046a 0052           1189 	mov	0,r10
+0000046c 8007a001*      1190 	br	.L1075
+                        1191 .L1090:
+                        1192 --231:         }
+                        1193 --232:         --timeout;
+                        1194 --line232
+                        1195 ..lin.321acdb9..65dfb378.0_84::
+                        1196 .LDWlin84:
+00000470 5fca           1197 	add	-1,r25
+                        1198 .L1087:
+00000472 80070908c2fd   1199 	ld.w	4294893824[zero],r1
+00000478 810a           1200 	shr	1,r1
+0000047a e1f5*          1201 	bl	.L1089
+                        1202 --233:     }
+                        1203 --235:     ICUM_AESB0CCTL0 = AES_CCTL_CMAC;
+                        1204 --line235
+                        1205 ..lin.321acdb9..65dfb378.0_85::
+                        1206 .LDWlin85:
+0000047c 080a           1207 	mov	8,r1
+0000047e 80078f08c2fd   1208 	st.w	r1,4294893832[zero]
+                        1209 --236:     control = AES_CTRL_CTX0 | AES_CTRL_BYTE_ORDER;
+                        1210 --line236
+                        1211 ..lin.321acdb9..65dfb378.0_86::
+                        1212 .LDWlin86:
+00000484 20be0002       1213 	movea	512,zero,r23
+                        1214 --237:     ICUM_AESB0CTRL = control | AES_CTRL_KEY_DEST;
+00000488 400e0001       1215 	movhi	hi(16777216),zero,r1
+0000048c 1709           1216 	or	r23,r1
+0000048e 80070f08c2fd   1217 	st.w	r1,4294893824[zero]
+                        1218 --238:     for (index = 0u; index < 4u; ++index) {
+                        1219 --line238
+                        1220 ..lin.321acdb9..65dfb378.0_87::
+                        1221 .LDWlin87:
+00000494 00ea           1222 	mov	0,r29
+00000496 950d*          1223 	br	.L1096
+                        1224 .L1095:
+                        1225 --239:         ICUM_AESB0IDAT = aes_pack_word(key, index);
+                        1226 --line239
+                        1227 ..lin.321acdb9..65dfb378.0_88::
+                        1228 .LDWlin88:
+00000498 1530           1229 	mov	r21,r6
+0000049a 1d38           1230 	mov	r29,r7
+                        1231 .L1804:
+                        1232 	jarl	_aes_pack_word,lp
+                        1232 <EXPANSION BEGIN>
+                        1232 jarl22 _aes_pack_word , lp 
+0000049c bfff64fb*      1232 <EXPANSION END>
+000004a0 80070f52c2fd   1233 	st.w	r10,4294893856[zero]
+                        1234 --line238
+                        1235 ..lin.321acdb9..65dfb378.0_89::
+                        1236 .LDWlin89:
+000004a6 41ea           1237 	add	1,r29
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1238 .L1096:
+000004a8 64ea           1239 	cmp	4,r29
+000004aa f1f5*          1240 	bl	.L1095
+                        1241 --240:     }
+                        1242 --242:     ICUM_AESB0CTRL = control | AES_CTRL_BCI_DEST;
+                        1243 --line242
+                        1244 ..lin.321acdb9..65dfb378.0_90::
+                        1245 .LDWlin90:
+000004ac 80070fb8c2fd   1246 	st.w	r23,4294893824[zero]
+                        1247 --243:     block_count = (message_length == 0ul)
+                        1248 --line243
+                        1249 ..lin.321acdb9..65dfb378.0_91::
+                        1250 .LDWlin91:
+000004b2 e0c1           1251 	cmp	zero,r24
+000004b4 01d2           1252 	mov	1,r26
+000004b6 e205*          1253 	be	.L1224
+000004b8 180effff       1254 	addi	-1,r24,r1
+000004bc 840a           1255 	shr	4,r1
+000004be 01d60100       1256 	addi	1,r1,r26
+                        1257 .L1224:
+                        1258 --244:                 ? 1ul
+                        1259 --245:                 : (1ul + ((message_length - 1ul) / 16ul));
+                        1260 --246:     final_offset = (block_count - 1ul) * 16ul;
+                        1261 --line246
+                        1262 ..lin.321acdb9..65dfb378.0_92::
+                        1263 .LDWlin92:
+000004c2 1a0effff       1264 	addi	-1,r26,r1
+000004c6 c40a           1265 	shl	4,r1
+000004c8 630f0100       1266 	st.w	r1,0[sp]
+                        1267 --248:     if (message_length == 0ul) {
+000004cc e0c1           1268 	cmp	zero,r24
+000004ce aa2d*          1269 	bne	.L1100
+                        1270 --249:         data_control = AES_DCTL_IVSEL | AES_DCTL_NEW_KEY
+                        1271 --line249
+                        1272 ..lin.321acdb9..65dfb378.0_93::
+                        1273 .LDWlin93:
+000004d0 3b0605800100   1274 	mov	98309,r27
+                        1275 --250:                      | AES_DCTL_LAST | AES_DCTL_ATTR_EMPTY;
+                        1276 --251:         ICUM_AESB0DCTL = data_control;
+                        1277 --line251
+                        1278 ..lin.321acdb9..65dfb378.0_94::
+                        1279 .LDWlin94:
+000004d6 80074fd8c2fd   1280 	st.w	r27,4294893828[zero]
+                        1281 --252:         for (index = 0u; index < 16u; ++index) {
+                        1282 --line252
+                        1283 ..lin.321acdb9..65dfb378.0_95::
+                        1284 .LDWlin95:
+000004dc 00ea           1285 	mov	0,r29
+000004de e505*          1286 	br	.L1105
+                        1287 .L1104:
+                        1288 --253:             block[index] = 0u;
+                        1289 --line253
+                        1290 ..lin.321acdb9..65dfb378.0_96::
+                        1291 .LDWlin96:
+000004e0 23f60800       1292 	movea	8,sp,ep
+000004e4 ddf1           1293 	add	r29,ep
+000004e6 8003           1294 	sst.b	zero,0[ep]
+000004e8 41ea           1295 	add	1,r29
+                        1296 .L1105:
+000004ea 1d06f0ff       1297 	addi	-16,r29,zero
+000004ee 99fd*          1298 	bnl	.L1104
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1299 --254:         }
+                        1300 --255:         for (index = 0u; index < 4u; ++index) {
+                        1301 --line255
+                        1302 ..lin.321acdb9..65dfb378.0_97::
+                        1303 .LDWlin97:
+000004f0 00ea           1304 	mov	0,r29
+000004f2 a50d*          1305 	br	.L1109
+                        1306 .L1108:
+                        1307 --256:             ICUM_AESB0IDAT = aes_pack_word(block, index);
+                        1308 --line256
+                        1309 ..lin.321acdb9..65dfb378.0_98::
+                        1310 .LDWlin98:
+000004f4 1d38           1311 	mov	r29,r7
+000004f6 23360800       1312 	movea	8,sp,r6
+                        1313 .L1806:
+                        1314 	jarl	_aes_pack_word,lp
+                        1314 <EXPANSION BEGIN>
+                        1314 jarl22 _aes_pack_word , lp 
+000004fa bfff06fb*      1314 <EXPANSION END>
+000004fe 80070f52c2fd   1315 	st.w	r10,4294893856[zero]
+                        1316 --line255
+                        1317 ..lin.321acdb9..65dfb378.0_99::
+                        1318 .LDWlin99:
+00000504 41ea           1319 	add	1,r29
+                        1320 .L1109:
+00000506 64ea           1321 	cmp	4,r29
+00000508 e1f5*          1322 	bl	.L1108
+                        1323 --257:         }
+                        1324 --258:         if (!aes_wait_status(0u, timeout)) {
+                        1325 --line258
+                        1326 ..lin.321acdb9..65dfb378.0_100::
+                        1327 .LDWlin100:
+0000050a 1938           1328 	mov	r25,r7
+0000050c 0032           1329 	mov	0,r6
+                        1330 .L1808:
+                        1331 	jarl	_aes_wait_status,lp
+                        1331 <EXPANSION BEGIN>
+                        1331 jarl22 _aes_wait_status , lp 
+0000050e bfff5efb*      1331 <EXPANSION END>
+00000512 e051           1332 	cmp	zero,r10
+00000514 ba6d*          1333 	bne	.L1113
+                        1334 --259:             ICUM_AESB0CTRL = AES_CTRL_RST0;
+                        1335 --line259
+                        1336 ..lin.321acdb9..65dfb378.0_101::
+                        1337 .LDWlin101:
+00000516 010a           1338 	mov	1,r1
+00000518 80070f08c2fd   1339 	st.w	r1,4294893824[zero]
+                        1340 --260:             return 0;
+                        1341 --line260
+                        1342 ..lin.321acdb9..65dfb378.0_102::
+                        1343 .LDWlin102:
+0000051e 0052           1344 	mov	0,r10
+00000520 e575*          1345 	br	.L1075
+                        1346 .L1100:
+                        1347 --261:         }
+                        1348 --262:     } else {
+                        1349 --263:         for (block_index = 0ul; block_index < block_count; ++block_index) {
+                        1350 --line263
+                        1351 ..lin.321acdb9..65dfb378.0_103::
+                        1352 .LDWlin103:
+00000522 00e2           1353 	mov	0,r28
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+00000524 9565*          1354 	br	.L1117
+                        1355 .L1116:
+                        1356 --264:             final_bytes = (block_index + 1ul == block_count)
+                        1357 --line264
+                        1358 ..lin.321acdb9..65dfb378.0_104::
+                        1359 .LDWlin104:
+00000526 235f0100       1360 	ld.w	0[sp],r11
+0000052a 1c9e0100       1361 	addi	1,r28,r19
+0000052e 20161000       1362 	movea	16,zero,r2
+00000532 9859           1363 	subr	r24,r11
+00000534 fa99           1364 	cmp	r26,r19
+00000536 e25f34b3       1365 	cmovne	r2,r11,r22
+                        1366 --265:                         ? (unsigned int)(message_length - final_offset)
+                        1367 --266:                         : 16u;
+                        1368 --267:             data_control = (block_index == 0ul)
+0000053a e0e1           1369 	cmp	zero,r28
+0000053c e50704db       1370 	cmove	5,zero,r27
+                        1371 --268:                          ? (AES_DCTL_IVSEL | AES_DCTL_NEW_KEY)
+                        1372 --269:                          : 0u;
+                        1373 --270:             if (block_index + 1ul == block_count) {
+00000540 1c0e0100       1374 	addi	1,r28,r1
+00000544 fa09           1375 	cmp	r26,r1
+00000546 9a0d*          1376 	bne	.L1124
+                        1377 --271:                 data_control |= AES_DCTL_LAST;
+                        1378 --line271
+                        1379 ..lin.321acdb9..65dfb378.0_105::
+                        1380 .LDWlin105:
+00000548 9bde0080       1381 	ori	32768,r27,r27
+                        1382 --272:                 if (final_bytes != 16u) {
+0000054c 1606f0ff       1383 	addi	-16,r22,zero
+00000550 c205*          1384 	be	.L1124
+                        1385 --273:                     data_control |= (uint32)(final_bytes * 8u) << 8;
+                        1386 --line273
+                        1387 ..lin.321acdb9..65dfb378.0_106::
+                        1388 .LDWlin106:
+00000552 1608           1389 	mov	r22,r1
+00000554 cb0a           1390 	shl	11,r1
+00000556 01d9           1391 	or	r1,r27
+                        1392 .L1124:
+                        1393 --274:                 }
+                        1394 --275:             }
+                        1395 --276:             ICUM_AESB0DCTL = data_control;
+00000558 80074fd8c2fd   1396 	st.w	r27,4294893828[zero]
+                        1397 --278:             for (index = 0u; index < 16u; ++index) {
+                        1398 --line278
+                        1399 ..lin.321acdb9..65dfb378.0_107::
+                        1400 .LDWlin107:
+0000055e 00ea           1401 	mov	0,r29
+00000560 f50d*          1402 	br	.L1131
+                        1403 .L1130:
+                        1404 --279:                 block[index] = (index < final_bytes)
+                        1405 --line279
+                        1406 ..lin.321acdb9..65dfb378.0_108::
+                        1407 .LDWlin108:
+00000562 f6e9           1408 	cmp	r22,r29
+00000564 f905*          1409 	bnl	.L1132
+00000566 1cf0           1410 	mov	r28,ep
+00000568 c4f2           1411 	shl	4,ep
+0000056a ddf1           1412 	add	r29,ep
+0000056c d4f1           1413 	add	r20,ep
+0000056e 6008           1414 	sld.bu	0[ep],r1
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+00000570 a505*          1415 	br	.L1134
+                        1416 .L1132:
+00000572 000a           1417 	mov	0,r1
+                        1418 .L1134:
+00000574 23f60800       1419 	movea	8,sp,ep
+00000578 ddf1           1420 	add	r29,ep
+0000057a 800b           1421 	sst.b	r1,0[ep]
+                        1422 --line278
+                        1423 ..lin.321acdb9..65dfb378.0_109::
+                        1424 .LDWlin109:
+0000057c 41ea           1425 	add	1,r29
+                        1426 .L1131:
+0000057e 1d06f0ff       1427 	addi	-16,r29,zero
+00000582 89f5*          1428 	bnl	.L1130
+                        1429 --280:                              ? message[block_index * 16ul + index]
+                        1430 --281:                              : 0u;
+                        1431 --282:             }
+                        1432 --283:             for (index = 0u; index < 4u; ++index) {
+                        1433 --line283
+                        1434 ..lin.321acdb9..65dfb378.0_110::
+                        1435 .LDWlin110:
+00000584 00ea           1436 	mov	0,r29
+00000586 a50d*          1437 	br	.L1138
+                        1438 .L1137:
+                        1439 --284:                 ICUM_AESB0IDAT = aes_pack_word(block, index);
+                        1440 --line284
+                        1441 ..lin.321acdb9..65dfb378.0_111::
+                        1442 .LDWlin111:
+00000588 1d38           1443 	mov	r29,r7
+0000058a 23360800       1444 	movea	8,sp,r6
+                        1445 .L1810:
+                        1446 	jarl	_aes_pack_word,lp
+                        1446 <EXPANSION BEGIN>
+                        1446 jarl22 _aes_pack_word , lp 
+0000058e bfff72fa*      1446 <EXPANSION END>
+00000592 80070f52c2fd   1447 	st.w	r10,4294893856[zero]
+                        1448 --line283
+                        1449 ..lin.321acdb9..65dfb378.0_112::
+                        1450 .LDWlin112:
+00000598 41ea           1451 	add	1,r29
+                        1452 .L1138:
+0000059a 64ea           1453 	cmp	4,r29
+0000059c e1f5*          1454 	bl	.L1137
+                        1455 --285:             }
+                        1456 --287:             if (!aes_wait_status(0u, timeout)) {
+                        1457 --line287
+                        1458 ..lin.321acdb9..65dfb378.0_113::
+                        1459 .LDWlin113:
+0000059e 1938           1460 	mov	r25,r7
+000005a0 0032           1461 	mov	0,r6
+                        1462 .L1812:
+                        1463 	jarl	_aes_wait_status,lp
+                        1463 <EXPANSION BEGIN>
+                        1463 jarl22 _aes_wait_status , lp 
+000005a2 bfffcafa*      1463 <EXPANSION END>
+000005a6 e051           1464 	cmp	zero,r10
+000005a8 fa05*          1465 	bne	.L1139
+                        1466 --288:                 ICUM_AESB0CTRL = AES_CTRL_RST0;
+                        1467 --line288
+                        1468 ..lin.321acdb9..65dfb378.0_114::
+                        1469 .LDWlin114:
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000005aa 010a           1470 	mov	1,r1
+000005ac 80070f08c2fd   1471 	st.w	r1,4294893824[zero]
+                        1472 --289:                 return 0;
+                        1473 --line289
+                        1474 ..lin.321acdb9..65dfb378.0_115::
+                        1475 .LDWlin115:
+000005b2 0052           1476 	mov	0,r10
+000005b4 c52d*          1477 	br	.L1075
+                        1478 .L1139:
+                        1479 --290:             }
+                        1480 --292:             if (block_index + 1ul < block_count) {
+                        1481 --line292
+                        1482 ..lin.321acdb9..65dfb378.0_116::
+                        1483 .LDWlin116:
+000005b6 1c0e0100       1484 	addi	1,r28,r1
+000005ba fa09           1485 	cmp	r26,r1
+000005bc c915*          1486 	bnl	.L1115
+                        1487 --293:                 ICUM_AESB0CTRL = control;
+                        1488 --line293
+                        1489 ..lin.321acdb9..65dfb378.0_117::
+                        1490 .LDWlin117:
+000005be 80070fb8c2fd   1491 	st.w	r23,4294893824[zero]
+                        1492 --294:                 for (index = 0u; index < 4u; ++index) {
+                        1493 --line294
+                        1494 ..lin.321acdb9..65dfb378.0_118::
+                        1495 .LDWlin118:
+000005c4 00ea           1496 	mov	0,r29
+000005c6 a50d*          1497 	br	.L1147
+                        1498 .L1146:
+                        1499 --295:                     aes_unpack_word(block, index, ICUM_AESB0ODAT);
+                        1500 --line295
+                        1501 ..lin.321acdb9..65dfb378.0_119::
+                        1502 .LDWlin119:
+000005c8 80074942c2fd   1503 	ld.w	4294893860[zero],r8
+000005ce 1d38           1504 	mov	r29,r7
+000005d0 23360800       1505 	movea	8,sp,r6
+                        1506 .L1814:
+                        1507 	jarl	_aes_unpack_word,lp
+                        1507 <EXPANSION BEGIN>
+                        1507 jarl22 _aes_unpack_word , lp 
+000005d4 bfff62fa*      1507 <EXPANSION END>
+                        1508 --line294
+                        1509 ..lin.321acdb9..65dfb378.0_120::
+                        1510 .LDWlin120:
+000005d8 41ea           1511 	add	1,r29
+                        1512 .L1147:
+000005da 64ea           1513 	cmp	4,r29
+000005dc e1f5*          1514 	bl	.L1146
+                        1515 --296:                 }
+                        1516 --297:                 ICUM_AESB0CTRL = control | AES_CTRL_BCI_DEST;
+                        1517 --line297
+                        1518 ..lin.321acdb9..65dfb378.0_121::
+                        1519 .LDWlin121:
+000005de 80070fb8c2fd   1520 	st.w	r23,4294893824[zero]
+                        1521 .L1115:
+                        1522 --line263
+                        1523 ..lin.321acdb9..65dfb378.0_122::
+                        1524 .LDWlin122:
+000005e4 41e2           1525 	add	1,r28
+                        1526 .L1117:
+000005e6 fae1           1527 	cmp	r26,r28
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000005e8 f19d*          1528 	bl	.L1116
+                        1529 .L1113:
+                        1530 --298:             }
+                        1531 --299:         }
+                        1532 --300:     }
+                        1533 --302:     ICUM_AESB0CTRL = control;
+                        1534 --line302
+                        1535 ..lin.321acdb9..65dfb378.0_123::
+                        1536 .LDWlin123:
+000005ea 80070fb8c2fd   1537 	st.w	r23,4294893824[zero]
+                        1538 --303:     for (index = 0u; index < 4u; ++index) {
+                        1539 --line303
+                        1540 ..lin.321acdb9..65dfb378.0_124::
+                        1541 .LDWlin124:
+000005f0 00ea           1542 	mov	0,r29
+000005f2 a50d*          1543 	br	.L1151
+                        1544 .L1150:
+                        1545 --304:         aes_unpack_word(tag, index, ICUM_AESB0ODAT);
+                        1546 --line304
+                        1547 ..lin.321acdb9..65dfb378.0_125::
+                        1548 .LDWlin125:
+000005f4 23370500       1549 	ld.w	4[sp],r6
+000005f8 80074942c2fd   1550 	ld.w	4294893860[zero],r8
+000005fe 1d38           1551 	mov	r29,r7
+                        1552 .L1816:
+                        1553 	jarl	_aes_unpack_word,lp
+                        1553 <EXPANSION BEGIN>
+                        1553 jarl22 _aes_unpack_word , lp 
+00000600 bfff36fa*      1553 <EXPANSION END>
+                        1554 --line303
+                        1555 ..lin.321acdb9..65dfb378.0_126::
+                        1556 .LDWlin126:
+00000604 41ea           1557 	add	1,r29
+                        1558 .L1151:
+00000606 64ea           1559 	cmp	4,r29
+00000608 e1f5*          1560 	bl	.L1150
+                        1561 --305:     }
+                        1562 --307:     return 1;
+                        1563 --line307
+                        1564 ..lin.321acdb9..65dfb378.0_127::
+                        1565 .LDWlin127:
+0000060a 0152           1566 	mov	1,r10
+                        1567 .L1075:
+                        1568 --	    .ef
+                        1569 .LDW32:
+0000060c 23ff4100       1570 	ld.w	64[sp],lp
+00000610 23ef1900       1571 	ld.w	24[sp],r29
+00000614 23e71d00       1572 	ld.w	28[sp],r28
+00000618 23df2100       1573 	ld.w	32[sp],r27
+0000061c 23d72500       1574 	ld.w	36[sp],r26
+00000620 23cf2900       1575 	ld.w	40[sp],r25
+00000624 23c72d00       1576 	ld.w	44[sp],r24
+00000628 23bf3100       1577 	ld.w	48[sp],r23
+0000062c 23b73500       1578 	ld.w	52[sp],r22
+00000630 23af3900       1579 	ld.w	56[sp],r21
+00000634 23a73d00       1580 	ld.w	60[sp],r20
+00000638 031e4400       1581 	addi	68,sp,sp
+                        1582 .L1818:
+                        1583 	.jumptype return
+0000063c 7f00           1584 	jmp	[lp]
+                        1585 --line307
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1586 ..lin.321acdb9..65dfb378.0_128::
+                        1587 	.type	_icum_aes128_cmac,@function
+                        1588 	.size	_icum_aes128_cmac,.-_icum_aes128_cmac
+                        1589 	.align	2
+                        1590 --_block_count	r26	local
+                        1591 --_block_index	r28	local
+                        1592 --_final_offset	0[sp]	local
+                        1593 --_index	r29	local
+                        1594 --_final_bytes	r22	local
+                        1595 --_control	r23	local
+                        1596 --_data_control	r27	local
+                        1597 --_block	8[sp]	local
+                        1598 
+                        1599 --_key	r21	param
+                        1600 --_message	r20	param
+                        1601 --_message_length	r24	param
+                        1602 --_tag	4[sp]	param
+                        1603 --_timeout	r25	param
+                        1604 
+                        1605 	.section ".bss","awb"
+                        1606 .L1526:
+                        1607 	.type	.L1526,@object
+                        1608 	.size	.L1526,0
+                        1609 	.section ".ghcalltbl",""
+00000024 00000000*      1610 .L1803:	.word	.L1802
+                        1611 	.type	.L1803,@object
+                        1612 	.size	.L1803,4
+00000028 00000000*      1613 .L1805:	.word	.L1804
+                        1614 	.type	.L1805,@object
+                        1615 	.size	.L1805,4
+0000002c 00000000*      1616 .L1807:	.word	.L1806
+                        1617 	.type	.L1807,@object
+                        1618 	.size	.L1807,4
+00000030 00000000*      1619 .L1809:	.word	.L1808
+                        1620 	.type	.L1809,@object
+                        1621 	.size	.L1809,4
+00000034 00000000*      1622 .L1811:	.word	.L1810
+                        1623 	.type	.L1811,@object
+                        1624 	.size	.L1811,4
+00000038 00000000*      1625 .L1813:	.word	.L1812
+                        1626 	.type	.L1813,@object
+                        1627 	.size	.L1813,4
+0000003c 00000000*      1628 .L1815:	.word	.L1814
+                        1629 	.type	.L1815,@object
+                        1630 	.size	.L1815,4
+00000040 00000000*      1631 .L1817:	.word	.L1816
+                        1632 	.type	.L1817,@object
+                        1633 	.size	.L1817,4
+                        1634 	.section ".ghrettbl",""
+00000018 00000000*      1635 .L1819:	.word	.L1818
+                        1636 	.type	.L1819,@object
+                        1637 	.size	.L1819,4
+                        1638 	.data
+                        1639 	.text
+                        1640 
+                        1641 --308: }
+                        1642 
+                        1643 --310: int icum_trng_read_words(icum_u32 *output,
+                        1644 	.align	2
+                        1645 	.align	2
+                        1646 	.align	2
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1647 ..gh.f.a.2.e.7:
+                        1648 	.type	..gh.f.a.2.e.7,@object
+                        1649 	.size	..gh.f.a.2.e.7,0
+                        1650 	.global	_icum_trng_read_words
+                        1651 _icum_trng_read_words:
+0000063e 0698           1652 	mov	r6,r19
+00000640 0790           1653 	mov	r7,r18
+00000642 0810           1654 	mov	r8,r2
+                        1655 --	    .bf
+                        1656 .LDW42:
+                        1657 --311:                          unsigned long word_count,
+                        1658 --312:                          icum_u32 timeout)
+                        1659 --313: {
+                        1660 --314:     unsigned long word_index;
+                        1661 --316:     if ((output == (icum_u32 *)0)
+00000644 e099           1662 	cmp	zero,r19
+00000646 d205*          1663 	be	.L1823
+                        1664 --line317
+                        1665 ..lin.321acdb9..5a514575.0_129::
+                        1666 .LDWlin129:
+00000648 e091           1667 	cmp	zero,r18
+0000064a b205*          1668 	be	.L1823
+                        1669 --line318
+                        1670 ..lin.321acdb9..5a514575.0_130::
+                        1671 .LDWlin130:
+0000064c e011           1672 	cmp	zero,r2
+0000064e ba05*          1673 	bne	.L1822
+                        1674 .L1823:
+                        1675 --317:         || (word_count == 0ul)
+                        1676 --318:         || (timeout == 0u)) {
+                        1677 --319:         return 0;
+                        1678 --line319
+                        1679 ..lin.321acdb9..5a514575.0_131::
+                        1680 .LDWlin131:
+00000650 0052           1681 	mov	0,r10
+00000652 c535*          1682 	br	.L1820
+                        1683 .L1822:
+                        1684 --320:     }
+                        1685 --322:     ICUM_TRNGC0CR = 0u;
+                        1686 --line322
+                        1687 ..lin.321acdb9..5a514575.0_132::
+                        1688 .LDWlin132:
+00000654 80078f02c1fd   1689 	st.w	zero,4294893736[zero]
+                        1690 --323:     ICUM_TRNGC0SCLR = TRNG_SCLR_RRDY | TRNG_SCLR_RCHK;
+                        1691 --line323
+                        1692 ..lin.321acdb9..5a514575.0_133::
+                        1693 .LDWlin133:
+0000065a 030a           1694 	mov	3,r1
+0000065c 80074f0ac1fd   1695 	st.w	r1,4294893732[zero]
+                        1696 --324:     ICUM_TRNGC0CR = TRNG_CR_GE;
+                        1697 --line324
+                        1698 ..lin.321acdb9..5a514575.0_134::
+                        1699 .LDWlin134:
+00000662 010a           1700 	mov	1,r1
+00000664 80078f0ac1fd   1701 	st.w	r1,4294893736[zero]
+                        1702 --326:     for (word_index = 0ul; word_index < word_count; ++word_index) {
+                        1703 --line326
+                        1704 ..lin.321acdb9..5a514575.0_135::
+                        1705 .LDWlin135:
+0000066a 000a           1706 	mov	0,r1
+0000066c 9525*          1707 	br	.L1830
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1708 .L1829:
+                        1709 --327:         while ((ICUM_TRNGC0SR & TRNG_SR_RRDY) == 0u) {
+                        1710 --line327
+                        1711 ..lin.321acdb9..5a514575.0_136::
+                        1712 .LDWlin136:
+0000066e 950d*          1713 	br	.L1831
+                        1714 .L1833:
+                        1715 --328:             if (timeout == 0u) {
+                        1716 --line328
+                        1717 ..lin.321acdb9..5a514575.0_137::
+                        1718 .LDWlin137:
+00000670 e011           1719 	cmp	zero,r2
+00000672 ea05*          1720 	bne	.L1834
+                        1721 --329:                 ICUM_TRNGC0CR = 0u;
+                        1722 --line329
+                        1723 ..lin.321acdb9..5a514575.0_138::
+                        1724 .LDWlin138:
+00000674 80078f02c1fd   1725 	st.w	zero,4294893736[zero]
+                        1726 --330:                 return 0;
+                        1727 --line330
+                        1728 ..lin.321acdb9..5a514575.0_139::
+                        1729 .LDWlin139:
+0000067a 0052           1730 	mov	0,r10
+0000067c f51d*          1731 	br	.L1820
+                        1732 .L1834:
+                        1733 --331:             }
+                        1734 --332:             --timeout;
+                        1735 --line332
+                        1736 ..lin.321acdb9..5a514575.0_140::
+                        1737 .LDWlin140:
+0000067e 5f12           1738 	add	-1,r2
+                        1739 .L1831:
+00000680 8007098ac1fd   1740 	ld.w	4294893728[zero],r17
+00000686 818a           1741 	shr	1,r17
+00000688 c9f5*          1742 	bnl	.L1833
+                        1743 --333:         }
+                        1744 --335:         output[word_index] = ICUM_TRNGC0RNRR;
+                        1745 --line335
+                        1746 ..lin.321acdb9..5a514575.0_141::
+                        1747 .LDWlin141:
+0000068a 8007c98ac1fd   1748 	ld.w	4294893740[zero],r17
+00000690 01f0           1749 	mov	r1,ep
+00000692 c2f2           1750 	shl	2,ep
+00000694 d3f1           1751 	add	r19,ep
+00000696 018d           1752 	sst.w	r17,0[ep]
+                        1753 --336:         if ((ICUM_TRNGC0SR & TRNG_SR_RCHKERR) != 0u) {
+                        1754 --line336
+                        1755 ..lin.321acdb9..5a514575.0_142::
+                        1756 .LDWlin142:
+00000698 8007098ac1fd   1757 	ld.w	4294893728[zero],r17
+0000069e 838a           1758 	shr	3,r17
+000006a0 e905*          1759 	bnl	.L1828
+                        1760 --337:             ICUM_TRNGC0CR = 0u;
+                        1761 --line337
+                        1762 ..lin.321acdb9..5a514575.0_143::
+                        1763 .LDWlin143:
+000006a2 80078f02c1fd   1764 	st.w	zero,4294893736[zero]
+                        1765 --338:             return 0;
+                        1766 --line338
+                        1767 ..lin.321acdb9..5a514575.0_144::
+                        1768 .LDWlin144:
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000006a8 0052           1769 	mov	0,r10
+000006aa 850d*          1770 	br	.L1820
+                        1771 .L1828:
+                        1772 --line326
+                        1773 ..lin.321acdb9..5a514575.0_145::
+                        1774 .LDWlin145:
+000006ac 410a           1775 	add	1,r1
+                        1776 .L1830:
+000006ae f209           1777 	cmp	r18,r1
+000006b0 f1dd*          1778 	bl	.L1829
+                        1779 --339:         }
+                        1780 --340:     }
+                        1781 --342:     ICUM_TRNGC0CR = 0u;
+                        1782 --line342
+                        1783 ..lin.321acdb9..5a514575.0_146::
+                        1784 .LDWlin146:
+000006b2 80078f02c1fd   1785 	st.w	zero,4294893736[zero]
+                        1786 --343:     return 1;
+                        1787 --line343
+                        1788 ..lin.321acdb9..5a514575.0_147::
+                        1789 .LDWlin147:
+000006b8 0152           1790 	mov	1,r10
+                        1791 .L1820:
+                        1792 --	    .ef
+                        1793 .LDW52:
+                        1794 .L2027:
+                        1795 	.jumptype return
+000006ba 7f00           1796 	jmp	[lp]
+                        1797 --line343
+                        1798 ..lin.321acdb9..5a514575.0_148::
+                        1799 	.type	_icum_trng_read_words,@function
+                        1800 	.size	_icum_trng_read_words,.-_icum_trng_read_words
+                        1801 	.align	2
+                        1802 --_word_index	r1	local
+                        1803 
+                        1804 --_output	r19	param
+                        1805 --_word_count	r18	param
+                        1806 --_timeout	r2	param
+                        1807 
+                        1808 	.section ".bss","awb"
+                        1809 .L1946:
+                        1810 	.type	.L1946,@object
+                        1811 	.size	.L1946,0
+                        1812 	.section ".ghrettbl",""
+0000001c 00000000*      1813 .L2028:	.word	.L2027
+                        1814 	.type	.L2028,@object
+                        1815 	.size	.L2028,4
+                        1816 	.data
+                        1817 	.text
+                        1818 
+                        1819 --344: }
+                        1820 
+                        1821 --346: static int bytes_equal(const unsigned char *left,
+                        1822 	.align	2
+                        1823 	.align	2
+                        1824 	.align	2
+                        1825 ..gh.f.a.2.e.8:
+                        1826 	.type	..gh.f.a.2.e.8,@object
+                        1827 	.size	..gh.f.a.2.e.8,0
+                        1828 	.global	_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                        1829 _bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.:
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1830 _bytes_equal:
+000006bc 0610           1831 	mov	r6,r2
+000006be 0798           1832 	mov	r7,r19
+000006c0 0890           1833 	mov	r8,r18
+                        1834 --	    .bf
+                        1835 .LDW62:
+                        1836 --347:                        const unsigned char *right,
+                        1837 --348:                        unsigned int length)
+                        1838 --349: {
+                        1839 --350:     unsigned int index;
+                        1840 --352:     for (index = 0u; index < length; ++index) {
+000006c2 000a           1841 	mov	0,r1
+000006c4 d50d*          1842 	br	.L2034
+                        1843 .L2033:
+                        1844 --353:         if (left[index] != right[index]) {
+                        1845 --line353
+                        1846 ..lin.321acdb9..f1319702.0_149::
+                        1847 .LDWlin149:
+000006c6 01f0           1848 	mov	r1,ep
+000006c8 c2f1           1849 	add	r2,ep
+000006ca 0188           1850 	mov	r1,r17
+000006cc d389           1851 	add	r19,r17
+000006ce 918f0100       1852 	ld.bu	0[r17],r17
+000006d2 6080           1853 	sld.bu	0[ep],r16
+000006d4 f181           1854 	cmp	r17,r16
+000006d6 b205*          1855 	be	.L2032
+                        1856 --354:             return 0;
+                        1857 --line354
+                        1858 ..lin.321acdb9..f1319702.0_150::
+                        1859 .LDWlin150:
+000006d8 0052           1860 	mov	0,r10
+000006da d505*          1861 	br	.L2029
+                        1862 .L2032:
+                        1863 --line352
+                        1864 ..lin.321acdb9..f1319702.0_151::
+                        1865 .LDWlin151:
+000006dc 410a           1866 	add	1,r1
+                        1867 .L2034:
+000006de f209           1868 	cmp	r18,r1
+000006e0 b1f5*          1869 	bl	.L2033
+                        1870 --355:         }
+                        1871 --356:     }
+                        1872 --358:     return 1;
+                        1873 --line358
+                        1874 ..lin.321acdb9..f1319702.0_152::
+                        1875 .LDWlin152:
+000006e2 0152           1876 	mov	1,r10
+                        1877 .L2029:
+                        1878 --	    .ef
+                        1879 .LDW72:
+                        1880 .L2116:
+                        1881 	.jumptype return
+000006e4 7f00           1882 	jmp	[lp]
+                        1883 --line358
+                        1884 ..lin.321acdb9..f1319702.0_153::
+                        1885 	.type	_bytes_equal,@function
+                        1886 	.size	_bytes_equal,.-_bytes_equal
+                        1887 	.type	_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,@function
+                        1888 	.size	_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.,.-_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+                        1889 	.align	2
+                        1890 --_index	r1	local
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1891 
+                        1892 --_left	r2	param
+                        1893 --_right	r19	param
+                        1894 --_length	r18	param
+                        1895 
+                        1896 	.section ".bss","awb"
+                        1897 .L2086:
+                        1898 	.type	.L2086,@object
+                        1899 	.size	.L2086,0
+                        1900 	.section ".ghrettbl",""
+00000020 00000000*      1901 .L2117:	.word	.L2116
+                        1902 	.type	.L2117,@object
+                        1903 	.size	.L2117,4
+                        1904 	.data
+                        1905 	.text
+                        1906 
+                        1907 --359: }
+                        1908 
+                        1909 --361: icum_u32 icum_crypto_self_test(icum_u32 timeout)
+                        1910 	.align	2
+                        1911 	.align	2
+                        1912 	.align	2
+                        1913 ..gh.f.a.2.e.9:
+                        1914 	.type	..gh.f.a.2.e.9,@object
+                        1915 	.size	..gh.f.a.2.e.9,0
+                        1916 	.global	_icum_crypto_self_test
+                        1917 _icum_crypto_self_test:
+000006e6 031e48ff       1918 	addi	-184,sp,sp
+000006ea 63ffb500       1919 	st.w	lp,180[sp]
+000006ee 63e7b100       1920 	st.w	r28,176[sp]
+000006f2 63efad00       1921 	st.w	r29,172[sp]
+000006f6 06e0           1922 	mov	r6,r28
+                        1923 --	    .bf
+                        1924 .LDW82:
+                        1925 --362: {
+                        1926 --363:     static const unsigned char key[16] = {
+                        1927 --364: #if 0
+                        1928 --365:         0x2bu, 0x7eu, 0x15u, 0x16u, 0x28u, 0xa6u, 0xd2u, 0xa6u,
+                        1929 --366:         0xabu, 0xf7u, 0x15u, 0x88u, 0x09u, 0xcfu, 0x4fu, 0x3cu
+                        1930 --367: #else
+                        1931 --368:         0x00u, 0x01u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u,
+                        1932 --369:         0x08u, 0x09u, 0x0au, 0x0bu, 0x0cu, 0x0du, 0x0eu, 0x0fu
+                        1933 --370: #endif
+                        1934 --371:     };
+                        1935 --372:     static const unsigned char plaintext[16] = {
+                        1936 --373: #if 0
+                        1937 --374:         0x6bu, 0xc0u, 0xbcu, 0xe1u, 0x2au, 0x45u, 0x99u, 0x91u,
+                        1938 --375:         0xe1u, 0x34u, 0x74u, 0x1au, 0x7fu, 0x9eu, 0x19u, 0x25u
+                        1939 --376: #else
+                        1940 --377:         0x00u, 0x11u, 0x22u, 0x33u, 0x44u, 0x55u, 0x66u, 0x77u,
+                        1941 --378:         0x88u, 0x99u, 0xaau, 0xbbu, 0xccu, 0xddu, 0xeeu, 0xffu
+                        1942 --379: #endif
+                        1943 --380:         };
+                        1944 --381:     static const unsigned char ciphertext_expected[16] = {
+                        1945 --382: #if 0
+                        1946 --383:         0x76u, 0x49u, 0xabu, 0xacu, 0x81u, 0x19u, 0xb2u, 0x46u,
+                        1947 --384:         0xceu, 0xe9u, 0x8eu, 0x9bu, 0x12u, 0xe9u, 0x19u, 0x7du
+                        1948 --385: #else
+                        1949 --386:         0x69u, 0xc4u, 0xe0u, 0xd8u, 0x6au, 0x7bu, 0x04u, 0x30u,
+                        1950 --387:         0xd8u, 0xcdu, 0xb7u, 0x80u, 0x70u, 0xb4u, 0xc5u, 0x5au
+                        1951 --388: #endif
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        1952 --389:         };
+                        1953 --390:     static const unsigned char cbc_key[16] = {
+                        1954 --391:         0x2bu, 0x7eu, 0x15u, 0x16u, 0x28u, 0xaeu, 0xd2u, 0xa6u,
+                        1955 --392:         0xabu, 0xf7u, 0x15u, 0x88u, 0x09u, 0xcfu, 0x4fu, 0x3cu
+                        1956 --393:     };
+                        1957 --394:     static const unsigned char cbc_iv[16] = {
+                        1958 --395:         0x00u, 0x01u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u,
+                        1959 --396:         0x08u, 0x09u, 0x0au, 0x0bu, 0x0cu, 0x0du, 0x0eu, 0x0fu
+                        1960 --397:     };
+                        1961 --398:     static const unsigned char cbc_plaintext[32] = {
+                        1962 --399:         0x6bu, 0xc1u, 0xbeu, 0xe2u, 0x2eu, 0x40u, 0x9fu, 0x96u,
+                        1963 --400:         0xe9u, 0x3du, 0x7eu, 0x11u, 0x73u, 0x93u, 0x17u, 0x2au,
+                        1964 --401:         0xaeu, 0x2du, 0x8au, 0x57u, 0x1eu, 0x03u, 0xacu, 0x9cu,
+                        1965 --402:         0x9eu, 0xb7u, 0x6fu, 0xacu, 0x45u, 0xafu, 0x8eu, 0x51u
+                        1966 --403:     };
+                        1967 --404:     static const unsigned char cbc_ciphertext_expected[32] = {
+                        1968 --405:         0x76u, 0x49u, 0xabu, 0xacu, 0x81u, 0x19u, 0xb2u, 0x46u,
+                        1969 --406:         0xceu, 0xe9u, 0x8eu, 0x9bu, 0x12u, 0xe9u, 0x19u, 0x7du,
+                        1970 --407:         0x50u, 0x86u, 0xcbu, 0x9bu, 0x50u, 0x72u, 0x19u, 0xeeu,
+                        1971 --408:         0x95u, 0xdbu, 0x11u, 0x3au, 0x91u, 0x76u, 0x78u, 0xb2u
+                        1972 --409:         };
+                        1973 --410:     static const unsigned char ecb_multiblock_expected[32] = {
+                        1974 --411:         0x3au, 0xd7u, 0x7bu, 0xb4u, 0x0du, 0x7au, 0x36u, 0x60u,
+                        1975 --412:         0xa8u, 0x9eu, 0xcau, 0xf3u, 0x24u, 0x66u, 0xefu, 0x97u,
+                        1976 --413:         0xf5u, 0xd3u, 0xd5u, 0x85u, 0x03u, 0xb9u, 0x69u, 0x9du,
+                        1977 --414:         0xe7u, 0x85u, 0x89u, 0x5au, 0x96u, 0xfdu, 0xbau, 0xafu
+                        1978 --415:     };
+                        1979 --416:     static const unsigned char cmac_empty_expected[16] = {
+                        1980 --417:         0xbbu, 0x1du, 0x69u, 0x29u, 0xe9u, 0x59u, 0x37u, 0x28u,
+                        1981 --418:         0x7fu, 0xa3u, 0x7du, 0x12u, 0x9bu, 0x75u, 0x67u, 0x46u
+                        1982 --419:     };
+                        1983 --420:     static const unsigned char cmac_full_expected[16] = {
+                        1984 --421:         0x07u, 0x0au, 0x16u, 0xb4u, 0x6bu, 0x4du, 0x41u, 0x44u,
+                        1985 --422:         0xf7u, 0x9bu, 0xddu, 0x9du, 0xd0u, 0x4au, 0x28u, 0x7cu
+                        1986 --423:     };
+                        1987 --424:     static const unsigned char cmac_multiblock_message[64] = {
+                        1988 --425:         0x6bu, 0xc1u, 0xbeu, 0xe2u, 0x2eu, 0x40u, 0x9fu, 0x96u,
+                        1989 --426:         0xe9u, 0x3du, 0x7eu, 0x11u, 0x73u, 0x93u, 0x17u, 0x2au,
+                        1990 --427:         0xaeu, 0x2du, 0x8au, 0x57u, 0x1eu, 0x03u, 0xacu, 0x9cu,
+                        1991 --428:         0x9eu, 0xb7u, 0x6fu, 0xacu, 0x45u, 0xafu, 0x8eu, 0x51u,
+                        1992 --429:         0x30u, 0xc8u, 0x1cu, 0x46u, 0xa3u, 0x5cu, 0xe4u, 0x11u,
+                        1993 --430:         0xe5u, 0xfbu, 0xc1u, 0x19u, 0x1au, 0x0au, 0x52u, 0xefu,
+                        1994 --431:         0xf6u, 0x9fu, 0x24u, 0x45u, 0xdfu, 0x4fu, 0x9bu, 0x17u,
+                        1995 --432:         0xadu, 0x2bu, 0x41u, 0x7bu, 0xe6u, 0x6cu, 0x37u, 0x10u
+                        1996 --433:     };
+                        1997 --434:     static const unsigned char cmac_multiblock_expected[16] = {
+                        1998 --435:         0x51u, 0xf0u, 0xbeu, 0xbfu, 0x7eu, 0x3bu, 0x9du, 0x92u,
+                        1999 --436:         0xfcu, 0x49u, 0x74u, 0x17u, 0x79u, 0x36u, 0x3cu, 0xfeu
+                        2000 --437:     };
+                        2001 --438:     static const unsigned char cmac_partial_message[40] = {
+                        2002 --439:         0x6bu, 0xc1u, 0xbeu, 0xe2u, 0x2eu, 0x40u, 0x9fu, 0x96u,
+                        2003 --440:         0xe9u, 0x3du, 0x7eu, 0x11u, 0x73u, 0x93u, 0x17u, 0x2au,
+                        2004 --441:         0xaeu, 0x2du, 0x8au, 0x57u, 0x1eu, 0x03u, 0xacu, 0x9cu,
+                        2005 --442:         0x9eu, 0xb7u, 0x6fu, 0xacu, 0x45u, 0xafu, 0x8eu, 0x51u,
+                        2006 --443:         0x30u, 0xc8u, 0x1cu, 0x46u, 0xa3u, 0x5cu, 0xe4u, 0x11u
+                        2007 --444:     };
+                        2008 --445:     static const unsigned char cmac_partial_expected[16] = {
+                        2009 --446:         0xdfu, 0xa6u, 0x67u, 0x47u, 0xdeu, 0x9au, 0xe6u, 0x30u,
+                        2010 --447:         0x30u, 0xcau, 0x32u, 0x61u, 0x14u, 0x97u, 0xc8u, 0x27u
+                        2011 --448:     };
+                        2012 --449:     unsigned char ciphertext[16];
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2013 --450:     unsigned char ecb_multiblock_ciphertext[32];
+                        2014 --451:     unsigned char plaintext_result[16];
+                        2015 --452:     unsigned char cbc_ciphertext[32];
+                        2016 --453:     unsigned char cbc_plaintext_result[32];
+                        2017 --454:     unsigned char cmac_result[16];
+                        2018 --455:     icum_u32 random_words[4];
+                        2019 --456:     icum_u32 result;
+                        2020 --458:     result = 0u;
+000006f8 00ea           2021 	mov	0,r29
+                        2022 --459:     if (icum_aes128_ecb_crypt(key, plaintext, ciphertext, 16ul, 0, timeout)
+000006fa 63070100       2023 	st.w	zero,0[sp]
+000006fe 63e70500       2024 	st.w	r28,4[sp]
+00000702 25360000*      2025 	movea	sdaoff2(.L2429),r5,r6
+00000706 253e0000*      2026 	movea	sdaoff2(.L2430),r5,r7
+0000070a 23469c00       2027 	movea	156,sp,r8
+0000070e 204e1000       2028 	movea	16,zero,r9
+                        2029 .L2487:
+                        2030 	jarl	_icum_aes128_ecb_crypt,lp
+                        2030 <EXPANSION BEGIN>
+                        2030 jarl22 _icum_aes128_ecb_crypt , lp 
+00000712 bfff96f9*      2030 <EXPANSION END>
+00000716 e051           2031 	cmp	zero,r10
+00000718 e20d*          2032 	be	.L2120
+                        2033 --line460
+                        2034 ..lin.321acdb9..639c217a.0_154::
+                        2035 .LDWlin154:
+0000071a 23369c00       2036 	movea	156,sp,r6
+0000071e 253e0000*      2037 	movea	sdaoff2(.L2431),r5,r7
+00000722 20461000       2038 	movea	16,zero,r8
+                        2039 .L2489:
+                        2040 	jarl	_bytes_equal,lp
+                        2040 <EXPANSION BEGIN>
+                        2040 jarl22 _bytes_equal , lp 
+00000726 bfff96ff*      2040 <EXPANSION END>
+0000072a e051           2041 	cmp	zero,r10
+0000072c c205*          2042 	be	.L2120
+                        2043 --460:         && bytes_equal(ciphertext, ciphertext_expected, 16u)) {
+                        2044 --461:         result |= ICUM_CRYPTO_TEST_AES_ENCRYPT_PASS;
+                        2045 --line461
+                        2046 ..lin.321acdb9..639c217a.0_155::
+                        2047 .LDWlin155:
+0000072e 9dee0100       2048 	ori	1,r29,r29
+00000732 b505*          2049 	br	.L2123
+                        2050 .L2120:
+                        2051 --462:     } else {
+                        2052 --463:         result |= ICUM_CRYPTO_TEST_AES_ENCRYPT_FAIL;
+                        2053 --line463
+                        2054 ..lin.321acdb9..639c217a.0_156::
+                        2055 .LDWlin156:
+00000734 9dee0001       2056 	ori	256,r29,r29
+                        2057 .L2123:
+                        2058 --464:     }
+                        2059 --466:     if (icum_aes128_ecb_crypt(key,
+00000738 010a           2060 	mov	1,r1
+0000073a 630f0100       2061 	st.w	r1,0[sp]
+0000073e 63e70500       2062 	st.w	r28,4[sp]
+00000742 25360000*      2063 	movea	sdaoff2(.L2429),r5,r6
+00000746 253e0000*      2064 	movea	sdaoff2(.L2431),r5,r7
+0000074a 23466c00       2065 	movea	108,sp,r8
+0000074e 204e1000       2066 	movea	16,zero,r9
+                        2067 .L2491:
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2068 	jarl	_icum_aes128_ecb_crypt,lp
+                        2068 <EXPANSION BEGIN>
+                        2068 jarl22 _icum_aes128_ecb_crypt , lp 
+00000752 bfff56f9*      2068 <EXPANSION END>
+00000756 e051           2069 	cmp	zero,r10
+00000758 e20d*          2070 	be	.L2124
+                        2071 --line472
+                        2072 ..lin.321acdb9..639c217a.0_157::
+                        2073 .LDWlin157:
+0000075a 23366c00       2074 	movea	108,sp,r6
+0000075e 253e0000*      2075 	movea	sdaoff2(.L2430),r5,r7
+00000762 20461000       2076 	movea	16,zero,r8
+                        2077 .L2493:
+                        2078 	jarl	_bytes_equal,lp
+                        2078 <EXPANSION BEGIN>
+                        2078 jarl22 _bytes_equal , lp 
+00000766 bfff56ff*      2078 <EXPANSION END>
+0000076a e051           2079 	cmp	zero,r10
+0000076c c205*          2080 	be	.L2124
+                        2081 --467:                               ciphertext_expected,
+                        2082 --468:                               plaintext_result,
+                        2083 --469:                               16ul,
+                        2084 --470:                               1,
+                        2085 --471:                               timeout)
+                        2086 --472:         && bytes_equal(plaintext_result, plaintext, 16u)) {
+                        2087 --473:         result |= ICUM_CRYPTO_TEST_AES_DECRYPT_PASS;
+                        2088 --line473
+                        2089 ..lin.321acdb9..639c217a.0_158::
+                        2090 .LDWlin158:
+0000076e 9dee0200       2091 	ori	2,r29,r29
+00000772 b505*          2092 	br	.L2127
+                        2093 .L2124:
+                        2094 --474:     } else {
+                        2095 --475:         result |= ICUM_CRYPTO_TEST_AES_DECRYPT_FAIL;
+                        2096 --line475
+                        2097 ..lin.321acdb9..639c217a.0_159::
+                        2098 .LDWlin159:
+00000774 9dee0002       2099 	ori	512,r29,r29
+                        2100 .L2127:
+                        2101 --476:     }
+                        2102 --478:     if (icum_aes128_ecb_crypt(cbc_key, cbc_plaintext,
+00000778 63070100       2103 	st.w	zero,0[sp]
+0000077c 63e70500       2104 	st.w	r28,4[sp]
+00000780 25360000*      2105 	movea	sdaoff2(.L2432),r5,r6
+00000784 253e0000*      2106 	movea	sdaoff2(.L2434),r5,r7
+00000788 23467c00       2107 	movea	124,sp,r8
+0000078c 204e2000       2108 	movea	32,zero,r9
+                        2109 .L2495:
+                        2110 	jarl	_icum_aes128_ecb_crypt,lp
+                        2110 <EXPANSION BEGIN>
+                        2110 jarl22 _icum_aes128_ecb_crypt , lp 
+00000790 bfff18f9*      2110 <EXPANSION END>
+00000794 e051           2111 	cmp	zero,r10
+00000796 f20d*          2112 	be	.L2128
+                        2113 --line480
+                        2114 ..lin.321acdb9..639c217a.0_160::
+                        2115 .LDWlin160:
+00000798 23367c00       2116 	movea	124,sp,r6
+0000079c 253e0000*      2117 	movea	sdaoff2(.L2436),r5,r7
+000007a0 20462000       2118 	movea	32,zero,r8
+                        2119 .L2497:
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2120 	jarl	_bytes_equal,lp
+                        2120 <EXPANSION BEGIN>
+                        2120 jarl22 _bytes_equal , lp 
+000007a4 bfff18ff*      2120 <EXPANSION END>
+000007a8 e051           2121 	cmp	zero,r10
+000007aa d205*          2122 	be	.L2128
+                        2123 --479:                               ecb_multiblock_ciphertext, 32ul, 0, timeout)
+                        2124 --480:         && bytes_equal(ecb_multiblock_ciphertext,
+                        2125 --481:                        ecb_multiblock_expected, 32u)) {
+                        2126 --482:         result |= ICUM_CRYPTO_TEST_AES_MULTIBLOCK_PASS;
+                        2127 --line482
+                        2128 ..lin.321acdb9..639c217a.0_161::
+                        2129 .LDWlin161:
+000007ac 400e0400       2130 	movhi	hi(262144),zero,r1
+000007b0 01e9           2131 	or	r1,r29
+000007b2 c505*          2132 	br	.L2131
+                        2133 .L2128:
+                        2134 --483:     } else {
+                        2135 --484:         result |= ICUM_CRYPTO_TEST_AES_MULTIBLOCK_FAIL;
+                        2136 --line484
+                        2137 ..lin.321acdb9..639c217a.0_162::
+                        2138 .LDWlin162:
+000007b4 400e0800       2139 	movhi	hi(524288),zero,r1
+000007b8 01e9           2140 	or	r1,r29
+                        2141 .L2131:
+                        2142 --485:     }
+                        2143 --487:     if (icum_aes128_cbc_crypt(cbc_key, cbc_iv, cbc_plaintext,
+                        2144 --line487
+                        2145 ..lin.321acdb9..639c217a.0_163::
+                        2146 .LDWlin163:
+000007ba 200e2000       2147 	movea	32,zero,r1
+000007be 630f0100       2148 	st.w	r1,0[sp]
+000007c2 63070500       2149 	st.w	zero,4[sp]
+000007c6 63e70900       2150 	st.w	r28,8[sp]
+000007ca 25360000*      2151 	movea	sdaoff2(.L2432),r5,r6
+000007ce 253e0000*      2152 	movea	sdaoff2(.L2433),r5,r7
+000007d2 25460000*      2153 	movea	sdaoff2(.L2434),r5,r8
+000007d6 234e4c00       2154 	movea	76,sp,r9
+                        2155 .L2499:
+                        2156 	jarl	_icum_aes128_cbc_crypt,lp
+                        2156 <EXPANSION BEGIN>
+                        2156 jarl22 _icum_aes128_cbc_crypt , lp 
+000007da bfff70fa*      2156 <EXPANSION END>
+000007de e051           2157 	cmp	zero,r10
+000007e0 e20d*          2158 	be	.L2132
+                        2159 --line489
+                        2160 ..lin.321acdb9..639c217a.0_164::
+                        2161 .LDWlin164:
+000007e2 23364c00       2162 	movea	76,sp,r6
+000007e6 253e0000*      2163 	movea	sdaoff2(.L2435),r5,r7
+000007ea 20462000       2164 	movea	32,zero,r8
+                        2165 .L2501:
+                        2166 	jarl	_bytes_equal,lp
+                        2166 <EXPANSION BEGIN>
+                        2166 jarl22 _bytes_equal , lp 
+000007ee bfffcefe*      2166 <EXPANSION END>
+000007f2 e051           2167 	cmp	zero,r10
+000007f4 c205*          2168 	be	.L2132
+                        2169 --488:                               cbc_ciphertext, 32ul, 0, timeout)
+                        2170 --489:         && bytes_equal(cbc_ciphertext, cbc_ciphertext_expected, 32u)) {
+                        2171 --490:         result |= ICUM_CRYPTO_TEST_CBC_ENCRYPT_PASS;
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2172 --line490
+                        2173 ..lin.321acdb9..639c217a.0_165::
+                        2174 .LDWlin165:
+000007f6 9dee0800       2175 	ori	8,r29,r29
+000007fa b505*          2176 	br	.L2135
+                        2177 .L2132:
+                        2178 --491:     } else {
+                        2179 --492:         result |= ICUM_CRYPTO_TEST_CBC_ENCRYPT_FAIL;
+                        2180 --line492
+                        2181 ..lin.321acdb9..639c217a.0_166::
+                        2182 .LDWlin166:
+000007fc 9dee0008       2183 	ori	2048,r29,r29
+                        2184 .L2135:
+                        2185 --493:     }
+                        2186 --495:     if (icum_aes128_cbc_crypt(cbc_key, cbc_iv, cbc_ciphertext_expected,
+00000800 200e2000       2187 	movea	32,zero,r1
+00000804 630f0100       2188 	st.w	r1,0[sp]
+00000808 010a           2189 	mov	1,r1
+0000080a 630f0500       2190 	st.w	r1,4[sp]
+0000080e 63e70900       2191 	st.w	r28,8[sp]
+00000812 25360000*      2192 	movea	sdaoff2(.L2432),r5,r6
+00000816 253e0000*      2193 	movea	sdaoff2(.L2433),r5,r7
+0000081a 25460000*      2194 	movea	sdaoff2(.L2435),r5,r8
+0000081e 234e2c00       2195 	movea	44,sp,r9
+                        2196 .L2503:
+                        2197 	jarl	_icum_aes128_cbc_crypt,lp
+                        2197 <EXPANSION BEGIN>
+                        2197 jarl22 _icum_aes128_cbc_crypt , lp 
+00000822 bfff28fa*      2197 <EXPANSION END>
+00000826 e051           2198 	cmp	zero,r10
+00000828 e20d*          2199 	be	.L2136
+                        2200 --line497
+                        2201 ..lin.321acdb9..639c217a.0_167::
+                        2202 .LDWlin167:
+0000082a 23362c00       2203 	movea	44,sp,r6
+0000082e 253e0000*      2204 	movea	sdaoff2(.L2434),r5,r7
+00000832 20462000       2205 	movea	32,zero,r8
+                        2206 .L2505:
+                        2207 	jarl	_bytes_equal,lp
+                        2207 <EXPANSION BEGIN>
+                        2207 jarl22 _bytes_equal , lp 
+00000836 bfff86fe*      2207 <EXPANSION END>
+0000083a e051           2208 	cmp	zero,r10
+0000083c c205*          2209 	be	.L2136
+                        2210 --496:                               cbc_plaintext_result, 32ul, 1, timeout)
+                        2211 --497:         && bytes_equal(cbc_plaintext_result, cbc_plaintext, 32u)) {
+                        2212 --498:         result |= ICUM_CRYPTO_TEST_CBC_DECRYPT_PASS;
+                        2213 --line498
+                        2214 ..lin.321acdb9..639c217a.0_168::
+                        2215 .LDWlin168:
+0000083e 9dee1000       2216 	ori	16,r29,r29
+00000842 b505*          2217 	br	.L2139
+                        2218 .L2136:
+                        2219 --499:     } else {
+                        2220 --500:         result |= ICUM_CRYPTO_TEST_CBC_DECRYPT_FAIL;
+                        2221 --line500
+                        2222 ..lin.321acdb9..639c217a.0_169::
+                        2223 .LDWlin169:
+00000844 9dee0010       2224 	ori	4096,r29,r29
+                        2225 .L2139:
+                        2226 --501:     }
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2227 --503:     if (icum_aes128_cmac(cbc_key, (const unsigned char *)0, 0ul,
+00000848 63e70100       2228 	st.w	r28,0[sp]
+0000084c 25360000*      2229 	movea	sdaoff2(.L2432),r5,r6
+00000850 003a           2230 	mov	0,r7
+00000852 0042           2231 	mov	0,r8
+00000854 234e1c00       2232 	movea	28,sp,r9
+                        2233 .L2507:
+                        2234 	jarl	_icum_aes128_cmac,lp
+                        2234 <EXPANSION BEGIN>
+                        2234 jarl22 _icum_aes128_cmac , lp 
+00000858 bfff96fb*      2234 <EXPANSION END>
+0000085c e051           2235 	cmp	zero,r10
+0000085e e20d*          2236 	be	.L2140
+                        2237 --line505
+                        2238 ..lin.321acdb9..639c217a.0_170::
+                        2239 .LDWlin170:
+00000860 23361c00       2240 	movea	28,sp,r6
+00000864 253e0000*      2241 	movea	sdaoff2(.L2437),r5,r7
+00000868 20461000       2242 	movea	16,zero,r8
+                        2243 .L2509:
+                        2244 	jarl	_bytes_equal,lp
+                        2244 <EXPANSION BEGIN>
+                        2244 jarl22 _bytes_equal , lp 
+0000086c bfff50fe*      2244 <EXPANSION END>
+00000870 e051           2245 	cmp	zero,r10
+00000872 c205*          2246 	be	.L2140
+                        2247 --504:                          cmac_result, timeout)
+                        2248 --505:         && bytes_equal(cmac_result, cmac_empty_expected, 16u)) {
+                        2249 --506:         result |= ICUM_CRYPTO_TEST_CMAC_EMPTY_PASS;
+                        2250 --line506
+                        2251 ..lin.321acdb9..639c217a.0_171::
+                        2252 .LDWlin171:
+00000874 9dee2000       2253 	ori	32,r29,r29
+00000878 b505*          2254 	br	.L2143
+                        2255 .L2140:
+                        2256 --507:     } else {
+                        2257 --508:         result |= ICUM_CRYPTO_TEST_CMAC_EMPTY_FAIL;
+                        2258 --line508
+                        2259 ..lin.321acdb9..639c217a.0_172::
+                        2260 .LDWlin172:
+0000087a 9dee0020       2261 	ori	8192,r29,r29
+                        2262 .L2143:
+                        2263 --509:     }
+                        2264 --511:     if (icum_aes128_cmac(cbc_key, cbc_plaintext, 16ul,
+0000087e 63e70100       2265 	st.w	r28,0[sp]
+00000882 25360000*      2266 	movea	sdaoff2(.L2432),r5,r6
+00000886 253e0000*      2267 	movea	sdaoff2(.L2434),r5,r7
+0000088a 20461000       2268 	movea	16,zero,r8
+0000088e 234e1c00       2269 	movea	28,sp,r9
+                        2270 .L2511:
+                        2271 	jarl	_icum_aes128_cmac,lp
+                        2271 <EXPANSION BEGIN>
+                        2271 jarl22 _icum_aes128_cmac , lp 
+00000892 bfff5cfb*      2271 <EXPANSION END>
+00000896 e051           2272 	cmp	zero,r10
+00000898 e20d*          2273 	be	.L2144
+                        2274 --line513
+                        2275 ..lin.321acdb9..639c217a.0_173::
+                        2276 .LDWlin173:
+0000089a 23361c00       2277 	movea	28,sp,r6
+0000089e 253e0000*      2278 	movea	sdaoff2(.L2438),r5,r7
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000008a2 20461000       2279 	movea	16,zero,r8
+                        2280 .L2513:
+                        2281 	jarl	_bytes_equal,lp
+                        2281 <EXPANSION BEGIN>
+                        2281 jarl22 _bytes_equal , lp 
+000008a6 bfff16fe*      2281 <EXPANSION END>
+000008aa e051           2282 	cmp	zero,r10
+000008ac c205*          2283 	be	.L2144
+                        2284 --512:                          cmac_result, timeout)
+                        2285 --513:         && bytes_equal(cmac_result, cmac_full_expected, 16u)) {
+                        2286 --514:         result |= ICUM_CRYPTO_TEST_CMAC_FULL_PASS;
+                        2287 --line514
+                        2288 ..lin.321acdb9..639c217a.0_174::
+                        2289 .LDWlin174:
+000008ae 9dee8000       2290 	ori	128,r29,r29
+000008b2 b505*          2291 	br	.L2147
+                        2292 .L2144:
+                        2293 --515:     } else {
+                        2294 --516:         result |= ICUM_CRYPTO_TEST_CMAC_FULL_FAIL;
+                        2295 --line516
+                        2296 ..lin.321acdb9..639c217a.0_175::
+                        2297 .LDWlin175:
+000008b4 9dee0080       2298 	ori	32768,r29,r29
+                        2299 .L2147:
+                        2300 --517:     }
+                        2301 --519:     if (icum_aes128_cmac(cbc_key, cmac_multiblock_message, 64ul,
+000008b8 63e70100       2302 	st.w	r28,0[sp]
+000008bc 25360000*      2303 	movea	sdaoff2(.L2432),r5,r6
+000008c0 253e0000*      2304 	movea	sdaoff2(.L2439),r5,r7
+000008c4 20464000       2305 	movea	64,zero,r8
+000008c8 234e1c00       2306 	movea	28,sp,r9
+                        2307 .L2515:
+                        2308 	jarl	_icum_aes128_cmac,lp
+                        2308 <EXPANSION BEGIN>
+                        2308 jarl22 _icum_aes128_cmac , lp 
+000008cc bfff22fb*      2308 <EXPANSION END>
+000008d0 e051           2309 	cmp	zero,r10
+000008d2 f20d*          2310 	be	.L2148
+                        2311 --line521
+                        2312 ..lin.321acdb9..639c217a.0_176::
+                        2313 .LDWlin176:
+000008d4 23361c00       2314 	movea	28,sp,r6
+000008d8 253e0000*      2315 	movea	sdaoff2(.L2440),r5,r7
+000008dc 20461000       2316 	movea	16,zero,r8
+                        2317 .L2517:
+                        2318 	jarl	_bytes_equal,lp
+                        2318 <EXPANSION BEGIN>
+                        2318 jarl22 _bytes_equal , lp 
+000008e0 bfffdcfd*      2318 <EXPANSION END>
+000008e4 e051           2319 	cmp	zero,r10
+000008e6 d205*          2320 	be	.L2148
+                        2321 --520:                          cmac_result, timeout)
+                        2322 --521:         && bytes_equal(cmac_result, cmac_multiblock_expected, 16u)) {
+                        2323 --522:         result |= ICUM_CRYPTO_TEST_CMAC_MULTIBLOCK_PASS;
+                        2324 --line522
+                        2325 ..lin.321acdb9..639c217a.0_177::
+                        2326 .LDWlin177:
+000008e8 400e0100       2327 	movhi	hi(65536),zero,r1
+000008ec 01e9           2328 	or	r1,r29
+000008ee c505*          2329 	br	.L2151
+                        2330 .L2148:
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2331 --523:     } else {
+                        2332 --524:         result |= ICUM_CRYPTO_TEST_CMAC_MULTIBLOCK_FAIL;
+                        2333 --line524
+                        2334 ..lin.321acdb9..639c217a.0_178::
+                        2335 .LDWlin178:
+000008f0 400e0200       2336 	movhi	hi(131072),zero,r1
+000008f4 01e9           2337 	or	r1,r29
+                        2338 .L2151:
+                        2339 --525:     }
+                        2340 --527:     if (icum_aes128_cmac(cbc_key, cmac_partial_message, 40ul,
+                        2341 --line527
+                        2342 ..lin.321acdb9..639c217a.0_179::
+                        2343 .LDWlin179:
+000008f6 63e70100       2344 	st.w	r28,0[sp]
+000008fa 25360000*      2345 	movea	sdaoff2(.L2432),r5,r6
+000008fe 253e0000*      2346 	movea	sdaoff2(.L2441),r5,r7
+00000902 20462800       2347 	movea	40,zero,r8
+00000906 234e1c00       2348 	movea	28,sp,r9
+                        2349 .L2519:
+                        2350 	jarl	_icum_aes128_cmac,lp
+                        2350 <EXPANSION BEGIN>
+                        2350 jarl22 _icum_aes128_cmac , lp 
+0000090a bfffe4fa*      2350 <EXPANSION END>
+0000090e e051           2351 	cmp	zero,r10
+00000910 e20d*          2352 	be	.L2152
+                        2353 --line529
+                        2354 ..lin.321acdb9..639c217a.0_180::
+                        2355 .LDWlin180:
+00000912 23361c00       2356 	movea	28,sp,r6
+00000916 253e0000*      2357 	movea	sdaoff2(.L2442),r5,r7
+0000091a 20461000       2358 	movea	16,zero,r8
+                        2359 .L2521:
+                        2360 	jarl	_bytes_equal,lp
+                        2360 <EXPANSION BEGIN>
+                        2360 jarl22 _bytes_equal , lp 
+0000091e bfff9efd*      2360 <EXPANSION END>
+00000922 e051           2361 	cmp	zero,r10
+00000924 c205*          2362 	be	.L2152
+                        2363 --528:                          cmac_result, timeout)
+                        2364 --529:         && bytes_equal(cmac_result, cmac_partial_expected, 16u)) {
+                        2365 --530:         result |= ICUM_CRYPTO_TEST_CMAC_PARTIAL_PASS;
+                        2366 --line530
+                        2367 ..lin.321acdb9..639c217a.0_181::
+                        2368 .LDWlin181:
+00000926 9dee4000       2369 	ori	64,r29,r29
+0000092a b505*          2370 	br	.L2155
+                        2371 .L2152:
+                        2372 --531:     } else {
+                        2373 --532:         result |= ICUM_CRYPTO_TEST_CMAC_PARTIAL_FAIL;
+                        2374 --line532
+                        2375 ..lin.321acdb9..639c217a.0_182::
+                        2376 .LDWlin182:
+0000092c 9dee0040       2377 	ori	16384,r29,r29
+                        2378 .L2155:
+                        2379 --533:     }
+                        2380 --535:     if (icum_trng_read_words(random_words, 4ul, timeout)
+00000930 1c40           2381 	mov	r28,r8
+00000932 23360c00       2382 	movea	12,sp,r6
+00000936 043a           2383 	mov	4,r7
+                        2384 .L2523:
+                        2385 	jarl	_icum_trng_read_words,lp
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2385 <EXPANSION BEGIN>
+                        2385 jarl22 _icum_trng_read_words , lp 
+00000938 bfff06fd*      2385 <EXPANSION END>
+0000093c e051           2386 	cmp	zero,r10
+0000093e 8215*          2387 	be	.L2156
+                        2388 --line537
+                        2389 ..lin.321acdb9..639c217a.0_183::
+                        2390 .LDWlin183:
+00000940 230f1100       2391 	ld.w	16[sp],r1
+00000944 23170d00       2392 	ld.w	12[sp],r2
+00000948 0209           2393 	or	r2,r1
+0000094a 23171500       2394 	ld.w	20[sp],r2
+0000094e 0111           2395 	or	r1,r2
+00000950 230f1900       2396 	ld.w	24[sp],r1
+00000954 0209           2397 	or	r2,r1
+00000956 c205*          2398 	be	.L2156
+                        2399 --536:         && ((random_words[0] | random_words[1]
+                        2400 --537:              | random_words[2] | random_words[3]) != 0u)) {
+                        2401 --538:         result |= ICUM_CRYPTO_TEST_TRNG_PASS;
+                        2402 --line538
+                        2403 ..lin.321acdb9..639c217a.0_184::
+                        2404 .LDWlin184:
+00000958 9dee0400       2405 	ori	4,r29,r29
+0000095c b505*          2406 	br	.L2159
+                        2407 .L2156:
+                        2408 --539:     } else {
+                        2409 --540:         result |= ICUM_CRYPTO_TEST_TRNG_FAIL;
+                        2410 --line540
+                        2411 ..lin.321acdb9..639c217a.0_185::
+                        2412 .LDWlin185:
+0000095e 9dee0004       2413 	ori	1024,r29,r29
+                        2414 .L2159:
+                        2415 --541:     }
+                        2416 --543:     return result;
+00000962 1d50           2417 	mov	r29,r10
+                        2418 --	    .ef
+                        2419 .LDW92:
+00000964 23ffb500       2420 	ld.w	180[sp],lp
+00000968 23efad00       2421 	ld.w	172[sp],r29
+0000096c 23e7b100       2422 	ld.w	176[sp],r28
+00000970 031eb800       2423 	addi	184,sp,sp
+                        2424 .L2525:
+                        2425 	.jumptype return
+00000974 7f00           2426 	jmp	[lp]
+                        2427 --line540
+                        2428 ..lin.321acdb9..639c217a.0_186::
+                        2429 	.type	_icum_crypto_self_test,@function
+                        2430 	.size	_icum_crypto_self_test,.-_icum_crypto_self_test
+                        2431 	.align	2
+                        2432 --_key	sdaoff2(.L2429)	static
+                        2433 --_plaintext	sdaoff2(.L2430)	static
+                        2434 --_ciphertext_expected	sdaoff2(.L2431)	static
+                        2435 --_cbc_key	sdaoff2(.L2432)	static
+                        2436 --_cbc_iv	sdaoff2(.L2433)	static
+                        2437 --_cbc_plaintext	sdaoff2(.L2434)	static
+                        2438 --_cbc_ciphertext_expected	sdaoff2(.L2435)	static
+                        2439 --_ecb_multiblock_expected	sdaoff2(.L2436)	static
+                        2440 --_cmac_empty_expected	sdaoff2(.L2437)	static
+                        2441 --_cmac_full_expected	sdaoff2(.L2438)	static
+                        2442 --_cmac_multiblock_message	sdaoff2(.L2439)	static
+                        2443 --_cmac_multiblock_expected	sdaoff2(.L2440)	static
+
+                                                                      Page 43
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2444 --_cmac_partial_message	sdaoff2(.L2441)	static
+                        2445 --_cmac_partial_expected	sdaoff2(.L2442)	static
+                        2446 --_ciphertext	156[sp]	local
+                        2447 --_ecb_multiblock_ciphertext	124[sp]	local
+                        2448 --_plaintext_result	108[sp]	local
+                        2449 --_cbc_ciphertext	76[sp]	local
+                        2450 --_cbc_plaintext_result	44[sp]	local
+                        2451 --_cmac_result	28[sp]	local
+                        2452 --_random_words	12[sp]	local
+                        2453 --_result	r29	local
+                        2454 
+                        2455 --_timeout	r28	param
+                        2456 
+                        2457 	.section ".bss","awb"
+                        2458 .L2338:
+                        2459 	.type	.L2338,@object
+                        2460 	.size	.L2338,0
+                        2461 	.section ".rosdata","a"
+                        2462 .L2429:
+                        2463 	.global	_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..0
+                        2464 _key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..0:
+00000000 00010203       2465 	.byte	0,1,2,3
+00000004 04050607       2466 	.byte	4,5,6,7
+00000008 08090a0b       2467 	.byte	8,9,10,11
+0000000c 0c0d0e0f       2468 	.byte	12,13,14,15
+                        2469 	.type	_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..0,@object
+                        2470 	.size	_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..0,16
+                        2471 	.type	.L2429,@object
+                        2472 	.size	.L2429,16
+                        2473 .L2430:
+                        2474 	.global	_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..1
+                        2475 _plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..1:
+00000010 00112233       2476 	.byte	0,17,34,51
+00000014 44556677       2477 	.byte	68,85,102,119
+00000018 8899aabb       2478 	.byte	136,153,170,187
+0000001c ccddeeff       2479 	.byte	204,221,238,255
+                        2480 	.type	_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..1,@object
+                        2481 	.size	_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..1,16
+                        2482 	.type	.L2430,@object
+                        2483 	.size	.L2430,16
+                        2484 .L2431:
+                        2485 	.global	_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..2
+                        2486 _ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..2:
+00000020 69c4e0d8       2487 	.byte	105,196,224,216
+00000024 6a7b0430       2488 	.byte	106,123,4,48
+00000028 d8cdb780       2489 	.byte	216,205,183,128
+0000002c 70b4c55a       2490 	.byte	112,180,197,90
+                        2491 	.type	_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..2,@object
+                        2492 	.size	_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..2,16
+                        2493 	.type	.L2431,@object
+                        2494 	.size	.L2431,16
+                        2495 .L2432:
+                        2496 	.global	_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..3
+                        2497 _cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..3:
+00000030 2b7e1516       2498 	.byte	43,126,21,22
+00000034 28aed2a6       2499 	.byte	40,174,210,166
+00000038 abf71588       2500 	.byte	171,247,21,136
+0000003c 09cf4f3c       2501 	.byte	9,207,79,60
+                        2502 	.type	_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..3,@object
+                        2503 	.size	_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..3,16
+                        2504 	.type	.L2432,@object
+
+                                                                      Page 44
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2505 	.size	.L2432,16
+                        2506 .L2433:
+                        2507 	.global	_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..4
+                        2508 _cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..4:
+00000040 00010203       2509 	.byte	0,1,2,3
+00000044 04050607       2510 	.byte	4,5,6,7
+00000048 08090a0b       2511 	.byte	8,9,10,11
+0000004c 0c0d0e0f       2512 	.byte	12,13,14,15
+                        2513 	.type	_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..4,@object
+                        2514 	.size	_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..4,16
+                        2515 	.type	.L2433,@object
+                        2516 	.size	.L2433,16
+                        2517 .L2434:
+                        2518 	.global	_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..5
+                        2519 _cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..5:
+00000050 6bc1bee2       2520 	.byte	107,193,190,226
+00000054 2e409f96       2521 	.byte	46,64,159,150
+00000058 e93d7e11       2522 	.byte	233,61,126,17
+0000005c 7393172a       2523 	.byte	115,147,23,42
+00000060 ae2d8a57       2524 	.byte	174,45,138,87
+00000064 1e03ac9c       2525 	.byte	30,3,172,156
+00000068 9eb76fac       2526 	.byte	158,183,111,172
+0000006c 45af8e51       2527 	.byte	69,175,142,81
+                        2528 	.type	_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..5,@object
+                        2529 	.size	_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..5,32
+                        2530 	.type	.L2434,@object
+                        2531 	.size	.L2434,32
+                        2532 .L2435:
+                        2533 	.global	_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..6
+                        2534 _cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..6:
+00000070 7649abac       2535 	.byte	118,73,171,172
+00000074 8119b246       2536 	.byte	129,25,178,70
+00000078 cee98e9b       2537 	.byte	206,233,142,155
+0000007c 12e9197d       2538 	.byte	18,233,25,125
+00000080 5086cb9b       2539 	.byte	80,134,203,155
+00000084 507219ee       2540 	.byte	80,114,25,238
+00000088 95db113a       2541 	.byte	149,219,17,58
+0000008c 917678b2       2542 	.byte	145,118,120,178
+                        2543 	.type	_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..6,@object
+                        2544 	.size	_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..6,32
+                        2545 	.type	.L2435,@object
+                        2546 	.size	.L2435,32
+                        2547 .L2436:
+                        2548 	.global	_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..7
+                        2549 _ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..7:
+00000090 3ad77bb4       2550 	.byte	58,215,123,180
+00000094 0d7a3660       2551 	.byte	13,122,54,96
+00000098 a89ecaf3       2552 	.byte	168,158,202,243
+0000009c 2466ef97       2553 	.byte	36,102,239,151
+000000a0 f5d3d585       2554 	.byte	245,211,213,133
+000000a4 03b9699d       2555 	.byte	3,185,105,157
+000000a8 e785895a       2556 	.byte	231,133,137,90
+000000ac 96fdbaaf       2557 	.byte	150,253,186,175
+                        2558 	.type	_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..7,@object
+                        2559 	.size	_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..7,32
+                        2560 	.type	.L2436,@object
+                        2561 	.size	.L2436,32
+                        2562 .L2437:
+                        2563 	.global	_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..8
+                        2564 _cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..8:
+000000b0 bb1d6929       2565 	.byte	187,29,105,41
+
+                                                                      Page 45
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+000000b4 e9593728       2566 	.byte	233,89,55,40
+000000b8 7fa37d12       2567 	.byte	127,163,125,18
+000000bc 9b756746       2568 	.byte	155,117,103,70
+                        2569 	.type	_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..8,@object
+                        2570 	.size	_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..8,16
+                        2571 	.type	.L2437,@object
+                        2572 	.size	.L2437,16
+                        2573 .L2438:
+                        2574 	.global	_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..9
+                        2575 _cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..9:
+000000c0 070a16b4       2576 	.byte	7,10,22,180
+000000c4 6b4d4144       2577 	.byte	107,77,65,68
+000000c8 f79bdd9d       2578 	.byte	247,155,221,157
+000000cc d04a287c       2579 	.byte	208,74,40,124
+                        2580 	.type	_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..9,@object
+                        2581 	.size	_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..9,16
+                        2582 	.type	.L2438,@object
+                        2583 	.size	.L2438,16
+                        2584 .L2439:
+                        2585 	.global	_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..10
+                        2586 _cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..10:
+000000d0 6bc1bee2       2587 	.byte	107,193,190,226
+000000d4 2e409f96       2588 	.byte	46,64,159,150
+000000d8 e93d7e11       2589 	.byte	233,61,126,17
+000000dc 7393172a       2590 	.byte	115,147,23,42
+000000e0 ae2d8a57       2591 	.byte	174,45,138,87
+000000e4 1e03ac9c       2592 	.byte	30,3,172,156
+000000e8 9eb76fac       2593 	.byte	158,183,111,172
+000000ec 45af8e51       2594 	.byte	69,175,142,81
+000000f0 30c81c46       2595 	.byte	48,200,28,70
+000000f4 a35ce411       2596 	.byte	163,92,228,17
+000000f8 e5fbc119       2597 	.byte	229,251,193,25
+000000fc 1a0a52ef       2598 	.byte	26,10,82,239
+00000100 f69f2445       2599 	.byte	246,159,36,69
+00000104 df4f9b17       2600 	.byte	223,79,155,23
+00000108 ad2b417b       2601 	.byte	173,43,65,123
+0000010c e66c3710       2602 	.byte	230,108,55,16
+                        2603 	.type	_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..10,@object
+                        2604 	.size	_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..10,64
+                        2605 	.type	.L2439,@object
+                        2606 	.size	.L2439,64
+                        2607 .L2440:
+                        2608 	.global	_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..11
+                        2609 _cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..11:
+00000110 51f0bebf       2610 	.byte	81,240,190,191
+00000114 7e3b9d92       2611 	.byte	126,59,157,146
+00000118 fc497417       2612 	.byte	252,73,116,23
+0000011c 79363cfe       2613 	.byte	121,54,60,254
+                        2614 	.type	_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..11,@object
+                        2615 	.size	_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..11,16
+                        2616 	.type	.L2440,@object
+                        2617 	.size	.L2440,16
+                        2618 .L2441:
+                        2619 	.global	_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..12
+                        2620 _cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..12:
+00000120 6bc1bee2       2621 	.byte	107,193,190,226
+00000124 2e409f96       2622 	.byte	46,64,159,150
+00000128 e93d7e11       2623 	.byte	233,61,126,17
+0000012c 7393172a       2624 	.byte	115,147,23,42
+00000130 ae2d8a57       2625 	.byte	174,45,138,87
+00000134 1e03ac9c       2626 	.byte	30,3,172,156
+
+                                                                      Page 46
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+00000138 9eb76fac       2627 	.byte	158,183,111,172
+0000013c 45af8e51       2628 	.byte	69,175,142,81
+00000140 30c81c46       2629 	.byte	48,200,28,70
+00000144 a35ce411       2630 	.byte	163,92,228,17
+                        2631 	.type	_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..12,@object
+                        2632 	.size	_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..12,40
+                        2633 	.type	.L2441,@object
+                        2634 	.size	.L2441,40
+                        2635 .L2442:
+                        2636 	.global	_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..13
+                        2637 _cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..13:
+00000148 dfa66747       2638 	.byte	223,166,103,71
+0000014c de9ae630       2639 	.byte	222,154,230,48
+00000150 30ca3261       2640 	.byte	48,202,50,97
+00000154 1497c827       2641 	.byte	20,151,200,39
+                        2642 	.type	_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..13,@object
+                        2643 	.size	_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..13,16
+                        2644 	.type	.L2442,@object
+                        2645 	.size	.L2442,16
+                        2646 	.section ".ghcalltbl",""
+00000044 00000000*      2647 .L2488:	.word	.L2487
+                        2648 	.type	.L2488,@object
+                        2649 	.size	.L2488,4
+00000048 00000000*      2650 .L2490:	.word	.L2489
+                        2651 	.type	.L2490,@object
+                        2652 	.size	.L2490,4
+0000004c 00000000*      2653 .L2492:	.word	.L2491
+                        2654 	.type	.L2492,@object
+                        2655 	.size	.L2492,4
+00000050 00000000*      2656 .L2494:	.word	.L2493
+                        2657 	.type	.L2494,@object
+                        2658 	.size	.L2494,4
+00000054 00000000*      2659 .L2496:	.word	.L2495
+                        2660 	.type	.L2496,@object
+                        2661 	.size	.L2496,4
+00000058 00000000*      2662 .L2498:	.word	.L2497
+                        2663 	.type	.L2498,@object
+                        2664 	.size	.L2498,4
+0000005c 00000000*      2665 .L2500:	.word	.L2499
+                        2666 	.type	.L2500,@object
+                        2667 	.size	.L2500,4
+00000060 00000000*      2668 .L2502:	.word	.L2501
+                        2669 	.type	.L2502,@object
+                        2670 	.size	.L2502,4
+00000064 00000000*      2671 .L2504:	.word	.L2503
+                        2672 	.type	.L2504,@object
+                        2673 	.size	.L2504,4
+00000068 00000000*      2674 .L2506:	.word	.L2505
+                        2675 	.type	.L2506,@object
+                        2676 	.size	.L2506,4
+0000006c 00000000*      2677 .L2508:	.word	.L2507
+                        2678 	.type	.L2508,@object
+                        2679 	.size	.L2508,4
+00000070 00000000*      2680 .L2510:	.word	.L2509
+                        2681 	.type	.L2510,@object
+                        2682 	.size	.L2510,4
+00000074 00000000*      2683 .L2512:	.word	.L2511
+                        2684 	.type	.L2512,@object
+                        2685 	.size	.L2512,4
+00000078 00000000*      2686 .L2514:	.word	.L2513
+                        2687 	.type	.L2514,@object
+
+                                                                      Page 47
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000il01.s
+                        2688 	.size	.L2514,4
+0000007c 00000000*      2689 .L2516:	.word	.L2515
+                        2690 	.type	.L2516,@object
+                        2691 	.size	.L2516,4
+00000080 00000000*      2692 .L2518:	.word	.L2517
+                        2693 	.type	.L2518,@object
+                        2694 	.size	.L2518,4
+00000084 00000000*      2695 .L2520:	.word	.L2519
+                        2696 	.type	.L2520,@object
+                        2697 	.size	.L2520,4
+00000088 00000000*      2698 .L2522:	.word	.L2521
+                        2699 	.type	.L2522,@object
+                        2700 	.size	.L2522,4
+0000008c 00000000*      2701 .L2524:	.word	.L2523
+                        2702 	.type	.L2524,@object
+                        2703 	.size	.L2524,4
+                        2704 	.section ".ghrettbl",""
+00000024 00000000*      2705 .L2526:	.word	.L2525
+                        2706 	.type	.L2526,@object
+                        2707 	.size	.L2526,4
+                        2708 	.data
+                        2709 	.text
+                        2710 
+                        2711 --544: }
+                        2712 	.align	2
+                        2713 --_ICUM_TRNGC0	4294893728	import
+                        2714 --_ICUM_AESB0	4294893824	import
+                        2715 
+                        2716 	.data
+                        2717 	.ghsnote version,30
+                        2718 	.ghsnote tools,3
+                        2719 	.ghsnote options,656
+                        2720 	.text
+                        2721 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD709C0..0::
+                        2722 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

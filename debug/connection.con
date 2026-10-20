@@ -1,0 +1,47 @@
+target_connection {
+     {
+        title = "RH850/F1M  E1 LPD4  16MHz MainOsc  E1 powered (5V)"
+        type = "Renesas V850/V850E ICE (850eserv2)"
+        short_type = "850eserv"
+        args = "  -df=\"dr7f701649.dvf\" -rh850 -e1lpd4=16500 -dclock=16000,0,swoff -fastflashload -id ffffffffffffffffffffffffffffffff -noiop -t5v -quiet -ip=device"
+        command = "850eserv2  -df=\"dr7f701649.dvf\" -rh850 -e1lpd4=16500 -dclock=16000,0,swoff -fastflashload -id ffffffffffffffffffffffffffffffff -noiop -t5v -quiet -ip=device"
+        logfile = ""
+        mode = ""
+        setup_script = ""
+        run_mode_partner = ""
+        run_mode_policy = ""
+        sane = "yes"
+        log = "no"
+        timestamp = "0"
+    }
+     {
+        title = "RH850/F1M  E1 LPD4  16MHz MainOsc  E1 powered (3.3V)"
+        type = "Renesas V850/V850E ICE (850eserv2)"
+        short_type = "850eserv"
+        args = "  -df=\"dr7f701649.dvf\" -rh850 -e1lpd4=16500 -dclock=16000,0,swoff -fastflashload -id ffffffffffffffffffffffffffffffff -t3v -noiop -quiet -ip=device"
+        command = "850eserv2  -df=\"dr7f701649.dvf\" -rh850 -e1lpd4=16500 -dclock=16000,0,swoff -fastflashload -id ffffffffffffffffffffffffffffffff -t3v -noiop -quiet -ip=device"
+        logfile = ""
+        mode = ""
+        setup_script = ""
+        run_mode_partner = ""
+        run_mode_policy = ""
+        sane = "yes"
+        log = "no"
+        timestamp = "0"
+    }
+     {
+        title = "RH850/F1M  E1 LPD4  16MHz MainOsc  target powered"
+        type = "Renesas V850/V850E ICE (850eserv2)"
+        short_type = "850eserv"
+        args = "  -df=\"dr7f701649.dvf\" -rh850 -e1lpd4=16500 -dclock=16000,0,swoff -fastflashload -id ffffffffffffffffffffffffffffffff -noiop -quiet -ip=device"
+        command = "850eserv2  -df=\"dr7f701649.dvf\" -rh850 -e1lpd4=16500 -dclock=16000,0,swoff -fastflashload -id ffffffffffffffffffffffffffffffff -noiop -quiet -ip=device"
+        logfile = ""
+        mode = ""
+        setup_script = ""
+        run_mode_partner = ""
+        run_mode_policy = ""
+        sane = "yes"
+        log = "no"
+        timestamp = "0"
+    }
+}

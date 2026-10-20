@@ -1,0 +1,4 @@
+#!gbuild
+[Subproject]
+sound.c
+main.c

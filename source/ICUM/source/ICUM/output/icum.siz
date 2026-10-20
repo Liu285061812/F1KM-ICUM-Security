@@ -1,0 +1,5 @@
+source\ICUM\output\icum  .intvect            2020
+source\ICUM\output\icum  .text               2740
+source\ICUM\output\icum  .secinfo             120
+source\ICUM\output\icum  .syscall               6
+source\ICUM\output\icum  .romdata               5

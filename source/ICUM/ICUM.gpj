@@ -1,0 +1,39 @@
+#!gbuild
+primaryTarget=v800_standalone.tgt
+[Program]
+	-G
+	-object_dir=output/objects
+	-map
+	-gsize
+	-e _RESET
+	-list
+	-list_dir=output/list
+	-passsource
+	-Mx
+	-bsp generic
+	-sda=all
+	-callgraph
+	-o output/icum
+	:postexec='gmemfile output/icum -o output/icum.mem'
+	:postexec='gsrec -e 0 -hex386 output/icum -o output/icum.hex'
+	:postexec='gsrec -e 0 -noS5 output/icum -o output/icum.rec'
+	--no_additional_output
+	-I.
+	-I..\..\device
+	-fsoft
+	-cpu=rh850
+	-ansi
+[Subproject]
+ICUM.ld
+dr7f701649_startup_icum.850
+dr7f701649i.dvf.h
+..\..\device\dr7f701649.dvf.h
+..\..\device\dr7f701649_irq.h
+..\..\device\device.h
+..\..\device\icu_feret.h
+..\..\device\io_macros_v2.h
+..\..\device\cpu.h
+dr7f701649_irq_icum.h
+icum_crypto.c
+icum_crypto.h
+main.c

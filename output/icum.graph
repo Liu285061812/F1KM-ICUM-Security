@@ -1,0 +1,124 @@
+Function	Function Call	Call Count	Percent of Total	Max Displacement (bits)
+#% BEGIN STATIC GRAPH
+__start	out	4	in	0
+	out	4	100%
+	_exit	1	25%	0	0	0
+	___ghs_ind_crt0	1	25%	0	241	0
+	___ghs_initial_dotsyscall	1	25%	0	23	0
+	___dotsyscall	1	25%	0	0	0
+	in	0	100%
+___ghs_multicore_wait_for_init	out	0	in	0
+	out	0	100%
+	in	0	100%
+___ghs_multicore_init_done	out	0	in	0
+	out	0	100%
+	in	0	100%
+.intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cdr7f701649_startup.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_main_ICUM	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_main	1	100%	0	9	0
+_main	out	1	in	1
+	out	1	100%
+	_main_ICUM	1	100%	0	9	0
+	in	1	100%
+	___ghs_ind_crt1	1	100%	0	237	0
+__multiend	out	1	in	0
+	out	1	100%
+	_multiBreak	1	100%	0	0	4
+	in	0	100%
+_multiBreak	out	0	in	1
+	out	0	100%
+	in	1	100%
+	__multiend	1	100%	0	0	4
+_exit	out	1	in	2
+	out	1	100%
+	__Exit	1	100%	0	77	0
+	in	2	100%
+	__start	1	50%	0	0	0
+	___ghs_ind_crt1	1	50%	0	243	0
+___ghs_ind_crt0	out	3	in	1
+	out	6	100%
+	_memset	2	33%	0	70	0
+	_memcpy	2	33%	0	74	0
+	___ghs_ind_crt1	2	33%	0	66	0
+	in	1	100%
+	__start	1	100%	0	241	0
+_memset	out	0	in	1
+	out	0	100%
+	in	2	100%
+	___ghs_ind_crt0	2	100%	0	70	0
+_memcpy	out	0	in	1
+	out	0	100%
+	in	2	100%
+	___ghs_ind_crt0	2	100%	0	74	0
+_memcpy..trg.2Frh850.2Fobjs.2Flibs.2Flibstartup.2Find_mcpy.	out	0	in	0
+	out	0	100%
+	in	0	100%
+___mcopy	out	0	in	0
+	out	0	100%
+	in	0	100%
+__exit	out	0	in	0
+	out	0	100%
+	in	0	100%
+__Exit	out	3	in	1
+	out	3	100%
+	___ghs_syscall	1	33%	0	97	0
+	___ghsLock	1	33%	0	35	0
+	___ghsUnlock	1	33%	0	89	0
+	in	1	100%
+	_exit	1	100%	0	77	0
+___ghs_at_exit	out	2	in	0
+	out	2	100%
+	___ghsLock	1	50%	0	131	0
+	___ghsUnlock	1	50%	0	147	0
+	in	0	100%
+___ghs_initial_dotsyscall	out	0	in	1
+	out	0	100%
+	in	1	100%
+	__start	1	100%	0	23	0
+___dotsyscall	out	0	in	2
+	out	0	100%
+	in	2	100%
+	__start	1	50%	0	0	0
+	___ghs_syscall	1	50%	0	12	0
+___ghs_syscall	out	2	in	1
+	out	2	100%
+	___dotsyscall	1	50%	0	12	0
+	___gh_set_errno	1	50%	0	21	0
+	in	1	100%
+	__Exit	1	100%	0	97	0
+___ghs_ind_crt1	out	3	in	1
+	out	5	100%
+	_main	1	20%	0	237	0
+	_exit	1	20%	0	243	0
+	___gh_lock_init	3	60%	0	81	0
+	in	2	100%
+	___ghs_ind_crt0	2	100%	0	66	0
+___ghsLock	out	0	in	2
+	out	0	100%
+	in	2	100%
+	___ghs_at_exit	1	50%	0	131	0
+	__Exit	1	50%	0	35	0
+___ghsUnlock	out	0	in	2
+	out	0	100%
+	in	2	100%
+	___ghs_at_exit	1	50%	0	147	0
+	__Exit	1	50%	0	89	0
+___gh_lock_init	out	0	in	1
+	out	0	100%
+	in	3	100%
+	___ghs_ind_crt1	3	100%	0	81	0
+___gh_set_errno	out	0	in	1
+	out	0	100%
+	in	1	100%
+	___ghs_syscall	1	100%	0	21	0
+___gh_errno_ptr	out	0	in	0
+	out	0	100%
+	in	0	100%
+___gh_get_errno	out	0	in	0
+	out	0	100%
+	in	0	100%
+#% END STATIC GRAPH
