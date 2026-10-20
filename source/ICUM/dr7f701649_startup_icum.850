@@ -367,6 +367,14 @@ __ex_icum_entry:
     jr __unused_isr
   #endif
 
+  .offset (IRQ_TABLE_START+0x001c)
+  #if (INTICUOSTM0_ENABLE > 0x00000000)
+    .extern _INTICUOSTM0
+    .word _INTICUOSTM0
+  #else
+    .word __unused_isr
+  #endif
+
   .offset (IRQ_TABLE_START+0x0020)
   #if (INTCSIH2IC_1_ENABLE > 0x00000000)
     .extern _INTCSIH2IC_1
@@ -2803,4 +2811,3 @@ __ex_icum_entry:
 
 
 #endif   /* __OS_HANDLES__ */  
-

@@ -2,12 +2,12 @@
 primaryTarget=v800_standalone.tgt
 [Program]
 	-G
-	-object_dir=output/objects
+	-object_dir=output/objects/icum
 	-map
 	-gsize
 	-e _RESET
 	-list
-	-list_dir=output/list
+	-list_dir=output/list/icum
 	-passsource
 	-Mx
 	-bsp generic
@@ -36,4 +36,7 @@ dr7f701649i.dvf.h
 dr7f701649_irq_icum.h
 icum_crypto.c
 icum_crypto.h
+icum_ostm.c
+icum_ostm.h
 main.c
+..\..\debug\debug.gpj [Subproject]

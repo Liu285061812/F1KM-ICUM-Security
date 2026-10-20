@@ -1,30 +1,4 @@
 #!gbuild
 primaryTarget=v800_standalone.tgt
-[Program]
-	-G
-	-object_dir=output/objects
-	-map
-	-gsize
-	-e _RESET
-	-list
-	-list_dir=output/list
-	-passsource
-	-Mx
-	-bsp generic
-	-sda=all
-	-callgraph
-	-o output/example
-	:postexec='gmemfile output/example -o output/example.mem'
-	:postexec='gsrec  -e 0 -hex386 output/example -o output/example.hex'
-	:postexec='gsrec  -e 0 -noS5 output/example -o output/example.rec'
-	--no_additional_output
-	-Idevice
-	-fsoft
-	-cpu=rh850
-	-ansi
-device\device.gpj
-source\source.gpj
-debug\debug.gpj
-output\example.map
-output\example.graph		[Documentation]
-output\example.siz		[Documentation]
+[Project]
+source\source.gpj [Project]

@@ -2,8 +2,8 @@ Function	Function Call	Call Count	Percent of Total	Max Displacement (bits)
 #% BEGIN STATIC GRAPH
 __start	out	4	in	0
 	out	4	100%
-	___ghs_ind_crt0	1	25%	0	241	0
 	_exit	1	25%	0	0	0
+	___ghs_ind_crt0	1	25%	0	241	0
 	___dotsyscall	1	25%	0	0	0
 	___ghs_initial_dotsyscall	1	25%	0	23	0
 	in	0	100%
@@ -13,16 +13,16 @@ ___ghs_multicore_wait_for_init	out	0	in	0
 ___ghs_multicore_init_done	out	0	in	0
 	out	0	100%
 	in	0	100%
-.intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cdr7f701649_startup_icum.	out	0	in	0
+.intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cdr7f701649_startup_icum.	out	0	in	0
 	out	0	100%
 	in	0	100%
-_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.	out	0	in	0
+_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
-_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.	out	0	in	0
+_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
-_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.	out	0	in	0
+_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
 _icum_aes128_ecb_crypt	out	0	in	2
@@ -30,7 +30,7 @@ _icum_aes128_ecb_crypt	out	0	in	2
 	in	5	100%
 	_icum_aes128_cbc_crypt	2	40%	0	891	168
 	_icum_crypto_self_test	3	60%	0	1937	168
-_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.	out	0	in	0
+_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
 _icum_aes128_cbc_crypt	out	1	in	1
@@ -46,7 +46,7 @@ _icum_trng_read_words	out	0	in	1
 	out	0	100%
 	in	1	100%
 	_icum_crypto_self_test	1	100%	0	2361	1598
-_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.	out	0	in	0
+_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
 _icum_crypto_self_test	out	4	in	1
@@ -56,20 +56,28 @@ _icum_crypto_self_test	out	4	in	1
 	_icum_aes128_cmac	4	40%	0	2315	1006
 	_icum_trng_read_words	1	10%	0	2361	1598
 	in	1	100%
-	_main_icum	1	100%	0	467	0
+	_main_icum	1	100%	0	471	0
+_icum_ostm_init	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_main_icum	1	100%	0	463	0
+_INTICUOSTM0	out	0	in	0
+	out	0	100%
+	in	0	100%
 _init_clocks	out	0	in	1
 	out	0	100%
 	in	1	100%
 	_main_icum	1	100%	0	459	0
-_main_icum	out	2	in	1
-	out	2	100%
-	_icum_crypto_self_test	1	50%	0	467	0
-	_init_clocks	1	50%	0	459	0
+_main_icum	out	3	in	1
+	out	3	100%
+	_icum_crypto_self_test	1	33%	0	471	0
+	_icum_ostm_init	1	33%	0	463	0
+	_init_clocks	1	33%	0	459	0
 	in	1	100%
-	_main	1	100%	0	483	452
+	_main	1	100%	0	487	452
 _main	out	1	in	1
 	out	1	100%
-	_main_icum	1	100%	0	483	452
+	_main_icum	1	100%	0	487	452
 	in	1	100%
 	___ghs_ind_crt1	1	100%	0	237	0
 __multiend	out	1	in	0
@@ -88,8 +96,8 @@ _exit	out	1	in	2
 	___ghs_ind_crt1	1	50%	0	243	0
 ___ghs_ind_crt0	out	3	in	1
 	out	6	100%
-	_memcpy	2	33%	0	74	0
 	_memset	2	33%	0	70	0
+	_memcpy	2	33%	0	74	0
 	___ghs_ind_crt1	2	33%	0	66	0
 	in	1	100%
 	__start	1	100%	0	241	0
@@ -133,8 +141,8 @@ ___dotsyscall	out	0	in	2
 	___ghs_syscall	1	50%	0	12	0
 ___ghs_syscall	out	2	in	1
 	out	2	100%
-	___dotsyscall	1	50%	0	12	0
 	___gh_set_errno	1	50%	0	21	0
+	___dotsyscall	1	50%	0	12	0
 	in	1	100%
 	__Exit	1	100%	0	97	0
 ___ghs_ind_crt1	out	3	in	1
@@ -147,13 +155,13 @@ ___ghs_ind_crt1	out	3	in	1
 ___ghsLock	out	0	in	2
 	out	0	100%
 	in	2	100%
-	__Exit	1	50%	0	35	0
 	___ghs_at_exit	1	50%	0	131	0
+	__Exit	1	50%	0	35	0
 ___ghsUnlock	out	0	in	2
 	out	0	100%
 	in	2	100%
-	__Exit	1	50%	0	89	0
 	___ghs_at_exit	1	50%	0	147	0
+	__Exit	1	50%	0	89	0
 ___gh_lock_init	out	0	in	1
 	out	0	100%
 	in	3	100%

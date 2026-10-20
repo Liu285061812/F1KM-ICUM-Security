@@ -117,14 +117,11 @@
 #ifndef INTICUTRNGC0_ENABLE            
   #define INTICUTRNGC0_ENABLE             0x00000000u
 #endif
-// #define INTICUOSTM0_ENABLE              (IRQ_ICUM_TABLE_START + 0x0000001Cu)
+#define INTICUOSTM0_ENABLE               (IRQ_ICUM_TABLE_START + 0x0000001Cu)
 
 // #define INTICUP_ENABLE                  (IRQ_ICUM_TABLE_START + 0x0000001Cu)
 
  
-#ifndef INTICUOSTM0_ENABLE             
-  #define INTICUOSTM0_ENABLE              0x00000000u
-#endif
 #ifndef INTICUP_ENABLE                 
   #define INTICUP_ENABLE                  0x00000000u
 #endif

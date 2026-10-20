@@ -1,0 +1,4 @@
+#!gbuild
+[Project]
+ICUM\ICUM.gpj [Program]
+PE\pe.gpj [Program]

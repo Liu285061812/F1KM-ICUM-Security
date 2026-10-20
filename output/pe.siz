@@ -1,0 +1,7 @@
+output\pe        .intvect            2020
+output\pe        .rosdata          524292
+output\pe        .text               3588
+output\pe        .secinfo             120
+output\pe        .syscall               6
+output\pe        .romdata               5
+output\pe        .romsdata              8

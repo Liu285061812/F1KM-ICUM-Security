@@ -10,7 +10,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 
 
 
-Load Map Tue Oct 20 14:27:13 2026
+Load Map Tue Oct 20 17:23:49 2026
 Image Summary
 
   Section              Base      Size(hex)    Size(dec)  SecOffs
@@ -20,21 +20,21 @@ Image Summary
   .robase              003a07e4  00000000            0   0000000
   .rosdata             003a07e4  00000158          344   0000984
   .rodata              003a093c  00000000            0   0000000
-  .text                003a0940  00001434         5172   0000ae0
-  .fixaddr             003a1d74  00000000            0   0000000
-  .fixtype             003a1d74  00000000            0   0000000
-  .secinfo             003a1d74  00000078          120   0001f14
-  .syscall             003a1dec  00000006            6   0001f8c
-  .romdata             003a1df4  00000005            5   0001f94
-  .ROM.tls.cond.data   003a1df9  00000000            0   0000000
-  .romzdata            003a1dfc  00000000            0   0000000
-  .romsdata            003a1dfc  00000000            0   0000000
-  .romtdata            003a1dfc  00000000            0   0000000
-  .romsldata           003a1dfc  00000000            0   0000000
+  .text                003a0940  000014a4         5284   0000ae0
+  .fixaddr             003a1de4  00000000            0   0000000
+  .fixtype             003a1de4  00000000            0   0000000
+  .secinfo             003a1de4  00000078          120   0001f84
+  .syscall             003a1e5c  00000006            6   0001ffc
+  .romdata             003a1e64  00000005            5   0002004
+  .ROM.tls.cond.data   003a1e69  00000000            0   0000000
+  .romzdata            003a1e6c  00000000            0   0000000
+  .romsdata            003a1e6c  00000000            0   0000000
+  .romtdata            003a1e6c  00000000            0   0000000
+  .romsldata           003a1e6c  00000000            0   0000000
   .bcode               01000000  00000000            0   0000000
   .bconst              01000000  00000000            0   0000000
   .dfdata              ff218000  00000000            0   0000000
-  .data                fedf0000  00000005            5   0001f94
+  .data                fedf0000  00000005            5   0002004
   .tls.cond.data       fedf0005  00000000            0   0000000
   .sldata              fedf0008  00000000            0   0000000
   .slbss               fedf0008  00000000            0   0000000
@@ -53,7 +53,7 @@ Image Summary
   .rdata               fef00000  00000000            0   0000000
   .rbss                fef00000  00000000            0   0000000
 
-Load Map Tue Oct 20 14:27:13 2026
+Load Map Tue Oct 20 17:23:49 2026
 Module Summary
 
   Origin+Size    Section          Module
@@ -62,50 +62,52 @@ Module Summary
 003a0000+0007e4  .intvect         dr7f701649_startup_icum.o
 003a0ae0+000976  .text            icum_crypto.o
 003a07e4+000158  .rosdata         icum_crypto.o
-003a1456+0001e8  .text            main.o
+003a1456+00006a  .text            icum_ostm.o
+003a14c0+0001ec  .text            main.o
 fedf042c+000004  .sbss            main.o
-003a163e+000006  .text            libmulti.a
+003a16ac+000006  .text            libmulti.a
 fedf0000+000004  .data            libmulti.a
 fedf0008+000418  .bss             libmulti.a
-003a1644+000066  .text            libansi.a(ccexit.o)
-003a16aa+00036a  .text            libstartup.a(ind_crt0.o)
-003a1a20+000074  .text            libstartup.a(ind_mset.o)
-003a1a94+0000fc  .text            libstartup.a(ind_mcpy.o)
-003a1b90+0000aa  .text            libsys.a(ind_exit.o)
+003a16b2+000066  .text            libansi.a(ccexit.o)
+003a1718+00036a  .text            libstartup.a(ind_crt0.o)
+003a1a90+000074  .text            libstartup.a(ind_mset.o)
+003a1b04+0000fc  .text            libstartup.a(ind_mcpy.o)
+003a1c00+0000aa  .text            libsys.a(ind_exit.o)
 fedf0420+000004  .bss             libsys.a(ind_exit.o)
-003a1dec+000006  .syscall         libsys.a(ind_dots.o)
-003a1c3a+000022  .text            libsys.a(ind_call.o)
-003a1c5c+0000f6  .text            libsys.a(ind_crt1.o)
+003a1e5c+000006  .syscall         libsys.a(ind_dots.o)
+003a1caa+000022  .text            libsys.a(ind_call.o)
+003a1ccc+0000f6  .text            libsys.a(ind_crt1.o)
 fedf0424+000004  .bss             libsys.a(ind_crt1.o)
-003a1d52+000006  .text            libsys.a(ind_lock.o)
+003a1dc2+000006  .text            libsys.a(ind_lock.o)
 fedf0004+000001  .data            libsys.a(ind_lock.o)
-003a1d58+00001c  .text            libsys.a(ind_errn.o)
+003a1dc8+00001c  .text            libsys.a(ind_errn.o)
 fedf0428+000004  .bss             libsys.a(ind_errn.o)
-003a1d74+000078  .secinfo         <section info>
+003a1de4+000078  .secinfo         <section info>
 
-Load Map Tue Oct 20 14:27:13 2026
+Load Map Tue Oct 20 17:23:49 2026
 Global Symbols (sorted alphabetically)
 
- .intvect         003a0000+000000 .intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cdr7f701649_startup_icum.
+ .intvect         003a0000+000000 .intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cdr7f701649_startup_icum.
+ .text            003a149c+000024 _INTICUOSTM0
  .text            003a0a74+000000 _RESET
- .text            003a1b90+000068 __Exit
+ .text            003a1c00+000068 __Exit
                   00000000+000000 ___atexit_cleanup_func
                   00000000+000000 ___cpp_exception_cleanup
                   00000000+000000 ___cpp_exception_init
- .syscall         003a1dec+000006 ___dotsyscall
- .text            003a1d62+000008 ___gh_errno_ptr
- .text            003a1d6a+00000a ___gh_get_errno
+ .syscall         003a1e5c+000006 ___dotsyscall
+ .text            003a1dd2+000008 ___gh_errno_ptr
+ .text            003a1dda+00000a ___gh_get_errno
                   00000000+000000 ___gh_iob_init
- .text            003a1d56+000002 ___gh_lock_init
- .text            003a1d58+00000a ___gh_set_errno
- .text            003a1d52+000002 ___ghsLock
- .text            003a1d54+000002 ___ghsUnlock
+ .text            003a1dc6+000002 ___gh_lock_init
+ .text            003a1dc8+00000a ___gh_set_errno
+ .text            003a1dc2+000002 ___ghsLock
+ .text            003a1dc4+000002 ___ghsUnlock
                   00000000+000000 ___ghs_GetCurrentThreadID
                   00000000+000000 ___ghs_GetCurrentThreadName
                   00000000+000000 ___ghs_InterruptLock
                   00000000+000000 ___ghs_InterruptUnlock
                   00000000+000000 ___ghs_RunTimeErrorDetected
- .text            003a1bf8+000042 ___ghs_at_exit
+ .text            003a1c68+000042 ___ghs_at_exit
                   00000000+000000 ___ghs_board_cache_sync
                   00000000+000000 ___ghs_board_devices_init
                   00000000+000000 ___ghs_board_memory_init
@@ -118,9 +120,9 @@ Global Symbols (sorted alphabetically)
                   00000000+000000 ___ghs_decompress
                   64f7dead+000000 ___ghs_elxr_revision
                   00031672+000000 ___ghs_elxr_version
- .text            003a16aa+00036a ___ghs_ind_crt0
- .text            003a1c5c+0000f6 ___ghs_ind_crt1
- .syscall         003a1dec+000006 ___ghs_initial_dotsyscall
+ .text            003a1718+00036a ___ghs_ind_crt0
+ .text            003a1ccc+0000f6 ___ghs_ind_crt1
+ .syscall         003a1e5c+000006 ___ghs_initial_dotsyscall
                   00000000+000000 ___ghs_lock_create
                   00000000+000000 ___ghs_lock_destroy
                   00000000+000000 ___ghs_lock_lock
@@ -142,38 +144,38 @@ Global Symbols (sorted alphabetically)
                   fef00000+000000 ___ghs_rramstart
                   00000000+000000 ___ghs_set_stack_chk_guard
  .data            fedf0004+000001 ___ghs_single_threaded
- .text            003a1c3a+000022 ___ghs_syscall
+ .text            003a1caa+000022 ___ghs_syscall
                   00000000+000000 ___ghs_undefined_func
- .fixaddr         003a1d74+000000 ___ghsbegin_fixaddr
- .fixtype         003a1d74+000000 ___ghsbegin_fixtype
+ .fixaddr         003a1de4+000000 ___ghsbegin_fixaddr
+ .fixtype         003a1de4+000000 ___ghsbegin_fixtype
                   00000000+000000 ___ghsbegin_picbase
                   00000000+000000 ___ghsbegin_pidbase
  .robase          003a07e4+000000 ___ghsbegin_robase
  .sda_end         fedf0430+000000 ___ghsbegin_sda_end
  .sda_start       fedf042c+000000 ___ghsbegin_sda_start
                   00000000+000000 ___ghsbegin_sdabase
- .secinfo         003a1d74+000000 ___ghsbegin_secinfo
- .secinfo         003a1da4+000000 ___ghsbinfo_aclear
- .secinfo         003a1dec+000000 ___ghsbinfo_acopy
- .secinfo         003a1dec+000000 ___ghsbinfo_bcopy
- .secinfo         003a1d74+000030 ___ghsbinfo_clear
- .secinfo         003a1dec+000000 ___ghsbinfo_comacopy
- .secinfo         003a1dec+000000 ___ghsbinfo_comcopy
- .secinfo         003a1dec+000000 ___ghsbinfo_comtcopy
- .secinfo         003a1da4+000048 ___ghsbinfo_copy
- .secinfo         003a1dec+000000 ___ghsbinfo_tcopy
- .secinfo         003a1dec+000000 ___ghseinfo_bcopy
- .secinfo         003a1da4+000000 ___ghseinfo_clear
- .secinfo         003a1dec+000000 ___ghseinfo_comcopy
- .secinfo         003a1dec+000000 ___ghseinfo_copy
- .fixaddr         003a1d74+000000 ___ghsend_fixaddr
- .fixtype         003a1d74+000000 ___ghsend_fixtype
+ .secinfo         003a1de4+000000 ___ghsbegin_secinfo
+ .secinfo         003a1e14+000000 ___ghsbinfo_aclear
+ .secinfo         003a1e5c+000000 ___ghsbinfo_acopy
+ .secinfo         003a1e5c+000000 ___ghsbinfo_bcopy
+ .secinfo         003a1de4+000030 ___ghsbinfo_clear
+ .secinfo         003a1e5c+000000 ___ghsbinfo_comacopy
+ .secinfo         003a1e5c+000000 ___ghsbinfo_comcopy
+ .secinfo         003a1e5c+000000 ___ghsbinfo_comtcopy
+ .secinfo         003a1e14+000048 ___ghsbinfo_copy
+ .secinfo         003a1e5c+000000 ___ghsbinfo_tcopy
+ .secinfo         003a1e5c+000000 ___ghseinfo_bcopy
+ .secinfo         003a1e14+000000 ___ghseinfo_clear
+ .secinfo         003a1e5c+000000 ___ghseinfo_comcopy
+ .secinfo         003a1e5c+000000 ___ghseinfo_copy
+ .fixaddr         003a1de4+000000 ___ghsend_fixaddr
+ .fixtype         003a1de4+000000 ___ghsend_fixtype
  .stack           fedf1430+000000 ___ghsend_stack
                   00000000+000000 ___lowinit
- .text            003a1b6c+000024 ___mcopy
+ .text            003a1bdc+000024 ___mcopy
                   00000000+000000 __cleanup
  .tdata           fedf0430+000000 __ep
- .text            003a1b90+000068 __exit
+ .text            003a1c00+000068 __exit
                   00000000+000000 __ghs_rh850_misalign
                   00000000+000000 __ghs_v800_r20_initializer
                   00000000+000000 __ghs_v800_r21_initializer
@@ -185,7 +187,7 @@ Global Symbols (sorted alphabetically)
  .bss             fedf03f0+000030 __multiArgs
  .data            fedf0000+000004 __multibufSize
  .bss             fedf0008+0003e8 __multibuffer
- .text            003a163e+000004 __multiend
+ .text            003a16ac+000004 __multiend
  .text            003a0940+0000f8 __start
                   ff228000+000000 __top_of_iDFLASH
                   fee00000+000000 __top_of_iRAM_0
@@ -194,90 +196,92 @@ Global Symbols (sorted alphabetically)
                   00400000+000000 __top_of_iROM_0
  .rosdata         003a87e4+000000 __tp
  .text            003a0ade+000000 __unused_isr
- .text            003a0ae0+000036 _aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
- .text            003a0b16+000036 _aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
- .text            003a0b4c+00003c _aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
- .text            003a119c+00002a _bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
- .rosdata         003a0854+000020 _cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..6
- .rosdata         003a0824+000010 _cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..4
- .rosdata         003a0814+000010 _cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..3
- .rosdata         003a0834+000020 _cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..5
- .rosdata         003a0804+000010 _ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..2
- .rosdata         003a0894+000010 _cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..8
- .rosdata         003a08a4+000010 _cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..9
- .rosdata         003a08f4+000010 _cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..11
- .rosdata         003a08b4+000040 _cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..10
- .rosdata         003a092c+000010 _cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..13
- .rosdata         003a0904+000028 _cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..12
- .rosdata         003a0874+000020 _ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..7
+ .text            003a0ae0+000036 _aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+ .text            003a0b16+000036 _aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+ .text            003a0b4c+00003c _aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+ .text            003a119c+00002a _bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+ .rosdata         003a0854+000020 _cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..6
+ .rosdata         003a0824+000010 _cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..4
+ .rosdata         003a0814+000010 _cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..3
+ .rosdata         003a0834+000020 _cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..5
+ .rosdata         003a0804+000010 _ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..2
+ .rosdata         003a0894+000010 _cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..8
+ .rosdata         003a08a4+000010 _cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..9
+ .rosdata         003a08f4+000010 _cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..11
+ .rosdata         003a08b4+000040 _cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..10
+ .rosdata         003a092c+000010 _cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..13
+ .rosdata         003a0904+000028 _cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..12
+ .rosdata         003a0874+000020 _ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..7
  .bss             fedf0424+000004 _environ
  .bss             fedf0428+000004 _errno
- .text            003a1644+000066 _exit
+ .text            003a16b2+000066 _exit
  .sbss            fedf042c+000004 _g_icum_crypto_test_result
  .text            003a0d2a+0001a4 _icum_aes128_cbc_crypt
  .text            003a0ece+000250 _icum_aes128_cmac
  .text            003a0b88+000176 _icum_aes128_ecb_crypt
  .text            003a11c6+000290 _icum_crypto_self_test
+ .text            003a1456+000046 _icum_ostm_init
  .text            003a111e+00007e _icum_trng_read_words
- .text            003a1456+0001c4 _init_clocks
- .rosdata         003a07e4+000010 _key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..0
- .text            003a1632+00000c _main
- .text            003a161a+000018 _main_icum
- .text            003a1a94+0000d8 _memcpy
- .text            003a1a94+0000d8 _memcpy..trg.2Frh850.2Fobjs.2Flibs.2Flibstartup.2Find_mcpy.
- .text            003a1a94+000000 _memcpy_mcopy
- .text            003a1a20+000074 _memset
- .text            003a1642+000002 _multiBreak
- .text            003a163e+000000 _multiCall
- .rosdata         003a07f4+000010 _plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..1
- .text            003a0cfe+00002c _xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+ .text            003a14c0+0001c4 _init_clocks
+ .rosdata         003a07e4+000010 _key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..0
+ .text            003a16a0+00000c _main
+ .text            003a1684+00001c _main_icum
+ .text            003a1b04+0000d8 _memcpy
+ .text            003a1b04+0000d8 _memcpy..trg.2Frh850.2Fobjs.2Flibs.2Flibstartup.2Find_mcpy.
+ .text            003a1b04+000000 _memcpy_mcopy
+ .text            003a1a90+000074 _memset
+ .text            003a16b0+000002 _multiBreak
+ .text            003a16ac+000000 _multiCall
+ .rosdata         003a07f4+000010 _plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..1
+ .text            003a0cfe+00002c _xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
 
-Load Map Tue Oct 20 14:27:13 2026
+Load Map Tue Oct 20 17:23:49 2026
 Global Cross Reference
 
-.intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cdr7f701649_startup_icum.
+.intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cdr7f701649_startup_icum.
+_INTICUOSTM0        dr7f701649_startup_icum.o 3a021c
 _RESET              dr7f701649_startup_icum.o 3a0001
-__Exit              libansi.a(ccexit.o)     3a1691
-___atexit_cleanup_func libansi.a(ccexit.o)     3a166a 3a1672 3a167b
-___cpp_exception_cleanup libsys.a(ind_exit.o)    3a1bd4 3a1bdc
+__Exit              libansi.a(ccexit.o)     3a16ff
+___atexit_cleanup_func libansi.a(ccexit.o)     3a16d8 3a16e0 3a16e9
+___cpp_exception_cleanup libsys.a(ind_exit.o)    3a1c44 3a1c4c
 ___cpp_exception_init
 ___dotsyscall       crt0.o                  3a0940
-                    libsys.a(ind_call.o)    3a1c46
+                    libsys.a(ind_call.o)    3a1cb6
 ___gh_errno_ptr    
 ___gh_get_errno    
-___gh_iob_init      libsys.a(ind_crt1.o)    3a1cc0 3a1cc4 3a1ccd
-___gh_lock_init     libsys.a(ind_crt1.o)    3a1ca0 3a1ca4 3a1cad
-___gh_set_errno     libsys.a(ind_call.o)    3a1c4f
-___ghsLock          libsys.a(ind_exit.o)    3a1bb3 3a1c13
-___ghsUnlock        libsys.a(ind_exit.o)    3a1be9 3a1c23
+___gh_iob_init      libsys.a(ind_crt1.o)    3a1d30 3a1d34 3a1d3d
+___gh_lock_init     libsys.a(ind_crt1.o)    3a1d10 3a1d14 3a1d1d
+___gh_set_errno     libsys.a(ind_call.o)    3a1cbf
+___ghsLock          libsys.a(ind_exit.o)    3a1c23 3a1c83
+___ghsUnlock        libsys.a(ind_exit.o)    3a1c59 3a1c93
 ___ghs_GetCurrentThreadID
 ___ghs_GetCurrentThreadName
 ___ghs_InterruptLock
 ___ghs_InterruptUnlock
 ___ghs_RunTimeErrorDetected
 ___ghs_at_exit     
-___ghs_board_cache_sync libstartup.a(ind_crt0.o) 3a16fc 3a170c
-___ghs_board_devices_init libsys.a(ind_crt1.o)    3a1c8c 3a1c94 3a1c9d
+___ghs_board_cache_sync libstartup.a(ind_crt0.o) 3a176a 3a177a
+___ghs_board_devices_init libsys.a(ind_crt1.o)    3a1cfc 3a1d04 3a1d0d
 ___ghs_board_memory_init crt0.o                  3a09aa 3a09ae 3a09b3
 ___ghs_call_table   crt0.o                  3a09ca
-___ghs_checksum     libstartup.a(ind_crt0.o) 3a196a
-___ghs_coverage_init libsys.a(ind_crt1.o)    3a1cf0 3a1cf4 3a1cfd
-___ghs_cpp_exception_cleanup libsys.a(ind_exit.o)    3a1be5
-___ghs_cpp_exception_init libsys.a(ind_crt1.o)    3a1cd0 3a1cd4 3a1cdd
+___ghs_checksum     libstartup.a(ind_crt0.o) 3a19d8
+___ghs_coverage_init libsys.a(ind_crt1.o)    3a1d60 3a1d64 3a1d6d
+___ghs_cpp_exception_cleanup libsys.a(ind_exit.o)    3a1c55
+___ghs_cpp_exception_init libsys.a(ind_crt1.o)    3a1d40 3a1d44 3a1d4d
 ___ghs_cxx_do_thread_safe_local_static_inits
-___ghs_decompress   libstartup.a(ind_crt0.o) 3a16e4 3a16f8 3a175e 3a1762 3a18b4
-                                            3a18b8
+___ghs_decompress   libstartup.a(ind_crt0.o) 3a1752 3a1766 3a17cc 3a17d0 3a1922
+                                            3a1926
 ___ghs_elxr_revision
 ___ghs_elxr_version
 ___ghs_ind_crt0     crt0.o                  3a0a31
-___ghs_ind_crt1     libstartup.a(ind_crt0.o) 3a16d8 3a16ec
+___ghs_ind_crt1     libstartup.a(ind_crt0.o) 3a1746 3a175a
 ___ghs_initial_dotsyscall crt0.o                  3a0957
 ___ghs_lock_create 
 ___ghs_lock_destroy
 ___ghs_lock_lock   
 ___ghs_lock_unlock 
-___ghs_malloc_init  libsys.a(ind_crt1.o)    3a1cb0 3a1cb4 3a1cbd
-___ghs_manprf_init  libsys.a(ind_crt1.o)    3a1ce0 3a1ce4 3a1ced
+___ghs_malloc_init  libsys.a(ind_crt1.o)    3a1d20 3a1d24 3a1d2d
+___ghs_manprf_init  libsys.a(ind_crt1.o)    3a1d50 3a1d54 3a1d5d
 ___ghs_multicore_init_done
 ___ghs_multicore_wait_for_init
 ___ghs_multicore_wait_for_init_weak crt0.o                  3a099c 3a09a0 3a09a5
@@ -291,45 +295,45 @@ ___ghs_romend
 ___ghs_romstart    
 ___ghs_rramend     
 ___ghs_rramstart    dr7f701649_startup_icum.o 3a0abc
-___ghs_set_stack_chk_guard libsys.a(ind_crt1.o)    3a1d00 3a1d04 3a1d0d
+___ghs_set_stack_chk_guard libsys.a(ind_crt1.o)    3a1d70 3a1d74 3a1d7d
 ___ghs_single_threaded
-___ghs_syscall      libsys.a(ind_exit.o)    3a1bf1
-___ghs_undefined_func libansi.a(ccexit.o)     3a1666 3a166e
-                    libstartup.a(ind_crt0.o) 3a16e8 3a1700
-                    libsys.a(ind_exit.o)    3a1bd0 3a1bd8
-                    libsys.a(ind_crt1.o)    3a1c88 3a1c90
-___ghsbegin_fixaddr libstartup.a(ind_crt0.o) 3a1946 3a1952
-___ghsbegin_fixtype libstartup.a(ind_crt0.o) 3a194e 3a195a
+___ghs_syscall      libsys.a(ind_exit.o)    3a1c61
+___ghs_undefined_func libansi.a(ccexit.o)     3a16d4 3a16dc
+                    libstartup.a(ind_crt0.o) 3a1756 3a176e
+                    libsys.a(ind_exit.o)    3a1c40 3a1c48
+                    libsys.a(ind_crt1.o)    3a1cf8 3a1d00
+___ghsbegin_fixaddr libstartup.a(ind_crt0.o) 3a19b4 3a19c0
+___ghsbegin_fixtype libstartup.a(ind_crt0.o) 3a19bc 3a19c8
 ___ghsbegin_picbase crt0.o                  3a0a3c
-                    libstartup.a(ind_crt0.o) 3a1796 3a179a
+                    libstartup.a(ind_crt0.o) 3a1804 3a1808
 ___ghsbegin_pidbase crt0.o                  3a0a44
-                    libstartup.a(ind_crt0.o) 3a17a6
+                    libstartup.a(ind_crt0.o) 3a1814
 ___ghsbegin_robase  crt0.o                  3a0a40
-                    libstartup.a(ind_crt0.o) 3a17a0
+                    libstartup.a(ind_crt0.o) 3a180e
 ___ghsbegin_sda_end
 ___ghsbegin_sda_start crt0.o                  3a0986
 ___ghsbegin_sdabase
-___ghsbegin_secinfo libstartup.a(ind_crt0.o) 3a173c 3a1744
-___ghsbinfo_aclear  libstartup.a(ind_crt0.o) 3a17cc 3a17d4
+___ghsbegin_secinfo libstartup.a(ind_crt0.o) 3a17aa 3a17b2
+___ghsbinfo_aclear  libstartup.a(ind_crt0.o) 3a183a 3a1842
 ___ghsbinfo_acopy  
 ___ghsbinfo_bcopy  
-___ghsbinfo_clear   libstartup.a(ind_crt0.o) 3a17bc 3a17c4
+___ghsbinfo_clear   libstartup.a(ind_crt0.o) 3a182a 3a1832
 ___ghsbinfo_comacopy
-___ghsbinfo_comcopy libstartup.a(ind_crt0.o) 3a18c0 3a18c8
-___ghsbinfo_comtcopy libstartup.a(ind_crt0.o) 3a18c4 3a18cc
-___ghsbinfo_copy    libstartup.a(ind_crt0.o) 3a1826 3a182e
-___ghsbinfo_tcopy   libstartup.a(ind_crt0.o) 3a182a 3a1832
+___ghsbinfo_comcopy libstartup.a(ind_crt0.o) 3a192e 3a1936
+___ghsbinfo_comtcopy libstartup.a(ind_crt0.o) 3a1932 3a193a
+___ghsbinfo_copy    libstartup.a(ind_crt0.o) 3a1894 3a189c
+___ghsbinfo_tcopy   libstartup.a(ind_crt0.o) 3a1898 3a18a0
 ___ghseinfo_bcopy  
-___ghseinfo_clear   libstartup.a(ind_crt0.o) 3a17c0 3a17c8
-___ghseinfo_comcopy libstartup.a(ind_crt0.o) 3a18d0 3a18d8
-___ghseinfo_copy    libstartup.a(ind_crt0.o) 3a1836 3a183e
-___ghsend_fixaddr   libstartup.a(ind_crt0.o) 3a194a 3a1956
+___ghseinfo_clear   libstartup.a(ind_crt0.o) 3a182e 3a1836
+___ghseinfo_comcopy libstartup.a(ind_crt0.o) 3a193e 3a1946
+___ghseinfo_copy    libstartup.a(ind_crt0.o) 3a18a4 3a18ac
+___ghsend_fixaddr   libstartup.a(ind_crt0.o) 3a19b8 3a19c4
 ___ghsend_fixtype  
 ___ghsend_stack     crt0.o                  3a0962
                     dr7f701649_startup_icum.o 3a0a82 3a0a86
 ___lowinit          dr7f701649_startup_icum.o 3a0ab1
 ___mcopy           
-__cleanup           libansi.a(ccexit.o)     3a167e 3a1682 3a168b
+__cleanup           libansi.a(ccexit.o)     3a16ec 3a16f0 3a16f9
 __ep                crt0.o                  3a09be 3a09c2
 __exit             
 __ghs_rh850_misalign crt0.o                  3a0a14
@@ -417,41 +421,42 @@ __unused_isr        dr7f701649_startup_icum.o 3a0ade 3a0011 3a0031 3a0041 3a0051
                                             3a07b8 3a07bc 3a07c0 3a07c4 3a07c8
                                             3a07cc 3a07d0 3a07d4 3a07d8 3a07dc
                                             3a07e0
-_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
-_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
-_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
-_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
-_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..6
-_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..4
-_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..3
-_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..5
-_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..2
-_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..8
-_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..9
-_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..11
-_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..10
-_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..13
-_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..12
-_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..7
-_environ            libsys.a(ind_crt1.o)    3a1d3e 3a1d42
-_errno              libsys.a(ind_errn.o)    3a1d5a 3a1d5e 3a1d64 3a1d6c 3a1d70
+_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.
+_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..6
+_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..4
+_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..3
+_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..5
+_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..2
+_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..8
+_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..9
+_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..11
+_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..10
+_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..13
+_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..12
+_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..7
+_environ            libsys.a(ind_crt1.o)    3a1dae 3a1db2
+_errno              libsys.a(ind_errn.o)    3a1dca 3a1dce 3a1dd4 3a1ddc 3a1de0
 _exit               crt0.o                  3a0940
-                    libsys.a(ind_crt1.o)    3a1d4f
-_g_icum_crypto_test_result main.o                  3a162e
+                    libsys.a(ind_crt1.o)    3a1dbf
+_g_icum_crypto_test_result main.o                  3a169c
 _icum_aes128_cbc_crypt icum_crypto.o           3a12bb 3a1303
 _icum_aes128_cmac   icum_crypto.o           3a1339 3a1373 3a13ad 3a13eb
 _icum_aes128_ecb_crypt icum_crypto.o           3a0de9 3a0e5b 3a11f3 3a1233 3a1271
-_icum_crypto_self_test main.o                  3a1629
+_icum_crypto_self_test main.o                  3a1697
+_icum_ostm_init     main.o                  3a168f
 _icum_trng_read_words icum_crypto.o           3a1419
-_init_clocks        main.o                  3a1621
-_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..0
-_main               libsys.a(ind_crt1.o)    3a1d49
-_main_icum          main.o                  3a1639
-_memcpy             libstartup.a(ind_crt0.o) 3a16e0 3a16f4
+_init_clocks        main.o                  3a168b
+_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..0
+_main               libsys.a(ind_crt1.o)    3a1db9
+_main_icum          main.o                  3a16a7
+_memcpy             libstartup.a(ind_crt0.o) 3a174e 3a1762
 _memcpy..trg.2Frh850.2Fobjs.2Flibs.2Flibstartup.2Find_mcpy.
-_memcpy_mcopy       libstartup.a(ind_mcpy.o) 3a1b7f
-_memset             libstartup.a(ind_crt0.o) 3a16dc 3a16f0
-_multiBreak         libmulti.a              3a163e
+_memcpy_mcopy       libstartup.a(ind_mcpy.o) 3a1bef
+_memset             libstartup.a(ind_crt0.o) 3a174a 3a175e
+_multiBreak         libmulti.a              3a16ac
 _multiCall         
-_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto..1
-_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum_crypto.
+_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..1
+_xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.

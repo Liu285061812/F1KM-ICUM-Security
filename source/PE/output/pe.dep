@@ -1,0 +1,20 @@
+output\pe: ..\..\device\dr7f701649.ld C:\ghs\comp_202354\lib\rh850\crt0.o \
+ output\objects\pe\dr7f701649_startup.o output\objects\pe\sound.o \
+ output\objects\pe\main.o C:\ghs\comp_202354\lib\rh850\libmulti.a \
+ C:\ghs\comp_202354\lib\rh850\libfmalloc.a \
+ C:\ghs\comp_202354\lib\rh850\libwchar_s32.a \
+ C:\ghs\comp_202354\lib\rh850\libansi.a \
+ C:\ghs\comp_202354\lib\rh850\libwc_s32.a \
+ C:\ghs\comp_202354\lib\rh850\libmath_sf.a \
+ C:\ghs\comp_202354\lib\rh850\libind_sf.a \
+ C:\ghs\comp_202354\lib\rh850\libstartup.a \
+ C:\ghs\comp_202354\lib\rh850\libsys.a C:\ghs\comp_202354\lib\rh850\libarch.a
+
+:cmdList=gmemfile output/pe -o output/pe.mem ; gsrec -e 0 -hex386 output/pe -o output/pe.hex ; gsrec -e 0 -noS5 output/pe -o output/pe.rec ; ccrh850 $(FILETYPEOPTIONS) $(OBJECTS) -MD -I. -I..\..\device -G -object_dir=output\objects\pe -map -gsize -e _RESET -Mx -bsp generic -sda=all -callgraph -fsoft -cpu=rh850 -ansi -top_project C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\PE\pe.gpj -o output\pe ; 
+:cmdHash=0x0ddd14b9
+
+:objList=..\..\device\dr7f701649.ld output\objects\pe\dr7f701649_startup.o output\objects\pe\sound.o output\objects\pe\main.o ; 
+:objHash=0xdf1e7b8b
+
+:installDir=c:\ghs\comp_202354
+:installDirHash=0x9d2c864f

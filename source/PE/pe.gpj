@@ -1,0 +1,38 @@
+#!gbuild
+primaryTarget=v800_standalone.tgt
+[Program]
+	-G
+	-object_dir=output/objects/pe
+	-map
+	-gsize
+	-e _RESET
+	-list
+	-list_dir=output/list/pe
+	-passsource
+	-Mx
+	-bsp generic
+	-sda=all
+	-callgraph
+	-o output/pe
+	:postexec='gmemfile output/pe -o output/pe.mem'
+	:postexec='gsrec -e 0 -hex386 output/pe -o output/pe.hex'
+	:postexec='gsrec -e 0 -noS5 output/pe -o output/pe.rec'
+	--no_additional_output
+	-I.
+	-I..\..\device
+	-fsoft
+	-cpu=rh850
+	-ansi
+[Subproject]
+..\..\device\dr7f701649.ld
+dr7f701649_startup.850
+..\..\device\dr7f701649.dvf.h
+..\..\device\dr7f701649_irq.h
+..\..\device\device.h
+..\..\device\icu_feret.h
+..\..\device\io_macros_v2.h
+..\..\device\cpu.h
+sound.h
+sound.c
+main.c
+..\..\debug\debug.gpj [Subproject]
