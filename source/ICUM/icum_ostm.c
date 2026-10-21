@@ -1,4 +1,5 @@
 #include "device.h"
+#include "icum_comm.h"
 #include "icum_ostm.h"
 
 __IOREG(ICUM_OSTM0CMP, 0xFFFEE000, __READ_WRITE, uint32);
@@ -36,5 +37,8 @@ void icum_ostm_init(void)
 #pragma ghs interrupt
 void INTICUOSTM0(void)
 {
-    ICUM_CTLREGICUM_GPIO ^= 0x00000001u;
+    if (g_icum_comm_status != 0u)
+    {
+        ICUM_CTLREGICUM_GPIO ^= 0x00000001u;
+    }
 }

@@ -53,6 +53,13 @@
 //============================================================================
 #include "device.h"
 
+__IOREG(PE_ICUM_PE2ICUSFS, 0xFF1F0074, __WRITE, uint32);
+
+#define PE_OSTM0_CLOCK_HZ       60000000UL
+#define PE_OSTM0_INTERVAL_MS    500UL
+#define PE_OSTM0_COMPARE_VALUE \
+    ((PE_OSTM0_CLOCK_HZ / 1000UL) * PE_OSTM0_INTERVAL_MS - 1UL)
+
 
 //============================================================================
 // Defines
@@ -298,9 +305,25 @@ void Debug_initPorts()
 	}
 
 
+void pe_icum_comm_timer_init(void)
+{
+    OSTM0TT = 1u;
+    OSTM0CTL = 0u;
+    OSTM0CMP = PE_OSTM0_COMPARE_VALUE;
+    INTC2ICOSTM0 = 0x0040u;
+    OSTM0TS = 1u;
+}
+
+
 //============================================================================
 // Interrupt Service Routines - ISR
 //============================================================================
+#pragma ghs interrupt
+void INTOSTM0(void)
+{
+    PE_ICUM_PE2ICUSFS = 1u;
+}
+
 #pragma ghs interrupt
 
 void INTCSIH0IC(void)
@@ -352,6 +375,7 @@ void main(void) {
 	csih0_init();
 	csih0_initPorts();
 	for(i=0;i<10000000;i++);
+	pe_icum_comm_timer_init();
 	__EI();
 	
 	csih0_start();

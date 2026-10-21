@@ -36,6 +36,8 @@ dr7f701649i.dvf.h
 dr7f701649_irq_icum.h
 icum_crypto.c
 icum_crypto.h
+icum_comm.c
+icum_comm.h
 icum_ostm.c
 icum_ostm.h
 main.c

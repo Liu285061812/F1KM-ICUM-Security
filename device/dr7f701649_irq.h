@@ -622,10 +622,7 @@
   #define INTTAUJ0I3_ENABLE               0x00000000u
 #endif
 
-// #define INTOSTM0_ENABLE                 (IRQ_TABLE_START + 0x00000150u)
-#ifndef INTOSTM0_ENABLE                
-  #define INTOSTM0_ENABLE                 0x00000000u
-#endif
+#define INTOSTM0_ENABLE                  (IRQ_TABLE_START + 0x00000150u)
 
 // #define INTENCA0IOV_ENABLE              (IRQ_TABLE_START + 0x00000154u)
 #ifndef INTENCA0IOV_ENABLE             

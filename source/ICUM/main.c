@@ -53,6 +53,7 @@
 //============================================================================
 #include "device.h"
 #include "icum_crypto.h"
+#include "icum_comm.h"
 #include "icum_ostm.h"
 
 volatile icum_u32 g_icum_crypto_test_result;
@@ -104,6 +105,7 @@ void init_clocks(void)
 void main_icum(void)
 {
     init_clocks();
+    icum_comm_init();
     icum_ostm_init();
     g_icum_crypto_test_result = icum_crypto_self_test(0x01000000ul);
     while(1)

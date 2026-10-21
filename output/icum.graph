@@ -4,8 +4,8 @@ __start	out	4	in	0
 	out	4	100%
 	_exit	1	25%	0	0	0
 	___ghs_ind_crt0	1	25%	0	241	0
-	___ghs_initial_dotsyscall	1	25%	0	23	0
 	___dotsyscall	1	25%	0	0	0
+	___ghs_initial_dotsyscall	1	25%	0	23	0
 	in	0	100%
 ___ghs_multicore_wait_for_init	out	0	in	0
 	out	0	100%
@@ -56,11 +56,18 @@ _icum_crypto_self_test	out	4	in	1
 	_icum_aes128_cbc_crypt	2	20%	0	2083	586
 	_icum_trng_read_words	1	10%	0	2361	1598
 	in	1	100%
-	_main_icum	1	100%	0	471	0
-_icum_ostm_init	out	0	in	1
+	_main_icum	1	100%	0	475	0
+_icum_comm_init	out	0	in	1
 	out	0	100%
 	in	1	100%
 	_main_icum	1	100%	0	463	0
+_INTPES	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_ostm_init	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_main_icum	1	100%	0	467	0
 _INTICUOSTM0	out	0	in	0
 	out	0	100%
 	in	0	100%
@@ -68,16 +75,17 @@ _init_clocks	out	0	in	1
 	out	0	100%
 	in	1	100%
 	_main_icum	1	100%	0	459	0
-_main_icum	out	3	in	1
-	out	3	100%
-	_icum_crypto_self_test	1	33%	0	471	0
-	_init_clocks	1	33%	0	459	0
-	_icum_ostm_init	1	33%	0	463	0
+_main_icum	out	4	in	1
+	out	4	100%
+	_icum_crypto_self_test	1	25%	0	475	0
+	_icum_ostm_init	1	25%	0	467	0
+	_icum_comm_init	1	25%	0	463	0
+	_init_clocks	1	25%	0	459	0
 	in	1	100%
-	_main	1	100%	0	487	452
+	_main	1	100%	0	491	452
 _main	out	1	in	1
 	out	1	100%
-	_main_icum	1	100%	0	487	452
+	_main_icum	1	100%	0	491	452
 	in	1	100%
 	___ghs_ind_crt1	1	100%	0	237	0
 __multiend	out	1	in	0
@@ -120,15 +128,15 @@ __exit	out	0	in	0
 	in	0	100%
 __Exit	out	3	in	1
 	out	3	100%
-	___ghs_syscall	1	33%	0	97	0
-	___ghsUnlock	1	33%	0	89	0
 	___ghsLock	1	33%	0	35	0
+	___ghsUnlock	1	33%	0	89	0
+	___ghs_syscall	1	33%	0	97	0
 	in	1	100%
 	_exit	1	100%	0	77	0
 ___ghs_at_exit	out	2	in	0
 	out	2	100%
-	___ghsUnlock	1	50%	0	147	0
 	___ghsLock	1	50%	0	131	0
+	___ghsUnlock	1	50%	0	147	0
 	in	0	100%
 ___ghs_initial_dotsyscall	out	0	in	1
 	out	0	100%
