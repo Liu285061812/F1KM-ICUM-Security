@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\PE -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\pe\main.dbo -source=main.c -comp -o output\objects\pe\gh_0000vr01.o -list=output\list\pe\main.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\PE -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\pe\main.dbo -source=main.c -comp -o output\objects\pe\gh_000026c1.o -list=output\list\pe\main.lst C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
 Source File: main.c
 Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
 Host OS: Windows
@@ -13,14 +13,14 @@ Revision Date: Wed Sep 06 02:44:09 2023
 
 Release Date: Wed Sep 06 02:00:00 2023
 
-                           1 --Driver Command: ccrh850 -c -MD -Isource\PE -Idevice -G
+                           1 --Driver Command: ccrh850 -c -MD -Isource\PE -Isource -Idevice -G
                            2 --		-object_dir=output\objects\pe -list -list_dir=output/list/pe
                            3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
                            4 --		-filetype.c source\PE\main.c -o output\objects\pe\main.o
                            5 --Source File:   source\PE\main.c
                            6 --Directory:     
                            7 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
-                           8 --Compile Date:  Wed Oct 21 10:04:53 2026
+                           8 --Compile Date:  Wed Oct 21 11:42:31 2026
                            9 --Host OS:       Win64
                           10 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           11 --Release:       Compiler v2023.5.4
@@ -65,7 +65,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           50 --35: // by third party vendors, developers or consultants identified or referred
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
                           51 --36: // to the User by Renesas in connection with the Product(s) and/or the
                           52 --37: // Application.
                           53 --38: //
@@ -83,1704 +83,1745 @@ Release Date: Wed Sep 06 02:00:00 2023
                           65 --52: // Includes
                           66 --53: //============================================================================
                           67 --54: #include "device.h"
-                          68 --56: __IOREG(PE_ICUM_PE2ICUSFS, 0xFF1F0074, __WRITE, uint32);
-                          69 --58: #define PE_OSTM0_CLOCK_HZ       60000000UL
-                          70 --59: #define PE_OSTM0_INTERVAL_MS    500UL
-                          71 --60: #define PE_OSTM0_COMPARE_VALUE \
-                          72 --61:     ((PE_OSTM0_CLOCK_HZ / 1000UL) * PE_OSTM0_INTERVAL_MS - 1UL)
-                          73 --64: //============================================================================
-                          74 --65: // Defines
+                          68 --55: #include "shared_memory.h"
+                          69 --57: __IOREG(PE_OSTM0_ICUM_PE2ICUFS, 0xFF1F0044, __WRITE, uint32);
+                          70 --58: __IOREG(PE_OSTM0_ICUM_PE2ICUSFS, 0xFF1F0074, __WRITE, uint32);
+                          71 --60: #define PE_OSTM0_CLOCK_HZ       60000000UL
+                          72 --61: #define PE_OSTM0_INTERVAL_MS    1000UL
+                          73 --62: #define PE_OSTM0_COMPARE_VALUE \
+                          74 --63:     ((PE_OSTM0_CLOCK_HZ / 1000UL) * PE_OSTM0_INTERVAL_MS - 1UL)
                           75 --66: //============================================================================
-                          76 --70: //============================================================================
-                          77 --71: // Prototypes
-                          78 --72: //============================================================================
-                          79 --73: void            main                ( void );
-                          80 --74: void            init_clocks         ( void );
-                          81 --77: //============================================================================
-                          82 --78: // Variables
-                          83 --79: //============================================================================
-                          84 --80: extern const long int ddf_size;
-                          85 --81: extern const unsigned char ddf[524288];
-                          86 --82: unsigned int dma0_sample=0;
-                          87 --83: unsigned int dma0_samples_count=0;
-                          88 --84: //============================================================================
-                          89 --85: // Sub Functions
-                          90 --86: //============================================================================
-                          91 --89: void init_clocks(void)
-                          92 	.text
-                          93 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD81DC5..0::
-                          94 	.align	2
-                          95 	.align	2
-                          96 ..gh.f.a.2.e.0:
-                          97 	.type	..gh.f.a.2.e.0,@object
-                          98 	.size	..gh.f.a.2.e.0,0
-                          99 	.global	_init_clocks
-                         100 _init_clocks:
-                         101 --	    .bf
-                         102 .LDW01:
-                         103 --90: { 
-                         104 --91:     /* Prepare 16MHz MainOsc */
-                         105 --92:   if((CLKCTLMOSCS&0x04u) != 0x4u)                                       /* Check if MainOsc needs to be started */
-00000000 8007490822f0    106 	ld.w	4294447364[zero],r1
-00000006 830a            107 	shr	3,r1
-00000008 d125*           108 	bl	.L4
-                         109 --93:   {
-                         110 --94:    CLKCTLMOSCC=0x06;                                                    /* Set MainOSC gain for 16MHz */
-                         111 --line94
+                          76 --67: // Defines
+                          77 --68: //============================================================================
+                          78 --69: //#define _SharedMemoryTest_
+                          79 --72: //============================================================================
+                          80 --73: // Prototypes
+                          81 --74: //============================================================================
+                          82 --75: void            main                ( void );
+                          83 --76: void            init_clocks         ( void );
+                          84 --79: //============================================================================
+                          85 --80: // Variables
+                          86 --81: //============================================================================
+                          87 --82: extern const long int ddf_size;
+                          88 --83: extern const unsigned char ddf[524288];
+                          89 --84: unsigned int dma0_sample=0;
+                          90 --85: unsigned int dma0_samples_count=0;
+                          91 --86: //============================================================================
+                          92 --87: // Sub Functions
+                          93 --88: //============================================================================
+                          94 --91: void init_clocks(void)
+                          95 	.text
+                          96 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD834A7..0::
+                          97 	.align	2
+                          98 	.align	2
+                          99 ..gh.f.a.2.e.0:
+                         100 	.type	..gh.f.a.2.e.0,@object
+                         101 	.size	..gh.f.a.2.e.0,0
+                         102 	.global	_init_clocks
+                         103 _init_clocks:
+                         104 --	    .bf
+                         105 .LDW01:
+                         106 --92: { 
+                         107 --93:     /* Prepare 16MHz MainOsc */
+                         108 --94:   if((CLKCTLMOSCS&0x04u) != 0x4u)                                       /* Check if MainOsc needs to be started */
+00000000 8007490822f0    109 	ld.w	4294447364[zero],r1
+00000006 830a            110 	shr	3,r1
+00000008 d125*           111 	bl	.L4
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         112 ..lin.52575fc0..470e1876.0_1::
-                         113 .LDWlin1:
-0000000a 060a            114 	mov	6,r1
-0000000c 80078f0822f0    115 	st.w	r1,4294447368[zero]
-                         116 --95:    CLKCTLMOSCST=0x00003E80;                                             /* Set MainOSC stabilization time to 2ms */
-                         117 --line95
-                         118 ..lin.52575fc0..470e1876.0_2::
-                         119 .LDWlin2:
-00000012 200e803e        120 	movea	16000,zero,r1
-00000016 8007cf0822f0    121 	st.w	r1,4294447372[zero]
-                         122 --96:    protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLMOSCE,0x01u);      /* Trigger Enable (protected write) */
-                         123 .L8:
-                         124 --line96
-                         125 ..lin.52575fc0..470e1876.0_3::
-                         126 .LDWlin3:
-0000001c 200ea500        127 	movea	165,zero,r1
-00000020 80070f0800f0    128 	st.w	r1,4294443008[zero]
-                         129 --line96
-                         130 ..lin.52575fc0..470e1876.0_4::
-                         131 .LDWlin4:
-00000026 010a            132 	mov	1,r1
-00000028 80070f0822f0    133 	st.w	r1,4294447360[zero]
-                         134 --line96
-                         135 ..lin.52575fc0..470e1876.0_5::
-                         136 .LDWlin5:
-0000002e 1e0a            137 	mov	-2,r1
-00000030 80070f0822f0    138 	st.w	r1,4294447360[zero]
-                         139 --line96
-                         140 ..lin.52575fc0..470e1876.0_6::
-                         141 .LDWlin6:
-00000036 010a            142 	mov	1,r1
-00000038 80070f0822f0    143 	st.w	r1,4294447360[zero]
-                         144 --line96
-                         145 ..lin.52575fc0..470e1876.0_7::
-                         146 .LDWlin7:
-0000003e 8007490800f0    147 	ld.w	4294443012[zero],r1
-00000044 610a            148 	cmp	1,r1
-00000046 b2ed*           149 	be	.L8
-                         150 .L9:
-                         151 --97:    while ((CLKCTLMOSCS&0x04u) != 0x04u);                                /* Wait for active MainOSC */
-                         152 --line97
-                         153 ..lin.52575fc0..470e1876.0_8::
-                         154 .LDWlin8:
-00000048 8007490822f0    155 	ld.w	4294447364[zero],r1
-0000004e 830a            156 	shr	3,r1
-00000050 c9fd*           157 	bnl	.L9
-                         158 .L4:
-                         159 --98:   }
-                         160 --100:   if((CLKCTLPLL0S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
-                         161 --line100
-                         162 ..lin.52575fc0..470e1876.0_9::
-                         163 .LDWlin9:
-00000052 8007490820f1    164 	ld.w	4294479876[zero],r1
-00000058 830a            165 	shr	3,r1
-0000005a b13d*           166 	bl	.L12
-                         167 --101:   {
-                         168 --102:     /* Prepare PLL0 */
-                         169 --103:     CLKCTLPLL0C=0x6340483B;                                             /* 16 MHz MainOSC -> 480MHz VCOUT */
-                         170 --line103
-                         171 ..lin.52575fc0..470e1876.0_10::
-                         172 .LDWlin10:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         112 --95:   {
+                         113 --96:    CLKCTLMOSCC=0x06;                                                    /* Set MainOSC gain for 16MHz */
+                         114 --line96
+                         115 ..lin.52575fc0..470e1876.0_1::
+                         116 .LDWlin1:
+0000000a 060a            117 	mov	6,r1
+0000000c 80078f0822f0    118 	st.w	r1,4294447368[zero]
+                         119 --97:    CLKCTLMOSCST=0x00003E80;                                             /* Set MainOSC stabilization time to 2ms */
+                         120 --line97
+                         121 ..lin.52575fc0..470e1876.0_2::
+                         122 .LDWlin2:
+00000012 200e803e        123 	movea	16000,zero,r1
+00000016 8007cf0822f0    124 	st.w	r1,4294447372[zero]
+                         125 --98:    protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLMOSCE,0x01u);      /* Trigger Enable (protected write) */
+                         126 .L8:
+                         127 --line98
+                         128 ..lin.52575fc0..470e1876.0_3::
+                         129 .LDWlin3:
+0000001c 200ea500        130 	movea	165,zero,r1
+00000020 80070f0800f0    131 	st.w	r1,4294443008[zero]
+                         132 --line98
+                         133 ..lin.52575fc0..470e1876.0_4::
+                         134 .LDWlin4:
+00000026 010a            135 	mov	1,r1
+00000028 80070f0822f0    136 	st.w	r1,4294447360[zero]
+                         137 --line98
+                         138 ..lin.52575fc0..470e1876.0_5::
+                         139 .LDWlin5:
+0000002e 1e0a            140 	mov	-2,r1
+00000030 80070f0822f0    141 	st.w	r1,4294447360[zero]
+                         142 --line98
+                         143 ..lin.52575fc0..470e1876.0_6::
+                         144 .LDWlin6:
+00000036 010a            145 	mov	1,r1
+00000038 80070f0822f0    146 	st.w	r1,4294447360[zero]
+                         147 --line98
+                         148 ..lin.52575fc0..470e1876.0_7::
+                         149 .LDWlin7:
+0000003e 8007490800f0    150 	ld.w	4294443012[zero],r1
+00000044 610a            151 	cmp	1,r1
+00000046 b2ed*           152 	be	.L8
+                         153 .L9:
+                         154 --99:    while ((CLKCTLMOSCS&0x04u) != 0x04u);                                /* Wait for active MainOSC */
+                         155 --line99
+                         156 ..lin.52575fc0..470e1876.0_8::
+                         157 .LDWlin8:
+00000048 8007490822f0    158 	ld.w	4294447364[zero],r1
+0000004e 830a            159 	shr	3,r1
+00000050 c9fd*           160 	bnl	.L9
+                         161 .L4:
+                         162 --100:   }
+                         163 --102:   if((CLKCTLPLL0S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
+                         164 --line102
+                         165 ..lin.52575fc0..470e1876.0_9::
+                         166 .LDWlin9:
+00000052 8007490820f1    167 	ld.w	4294479876[zero],r1
+00000058 830a            168 	shr	3,r1
+0000005a b13d*           169 	bl	.L12
+                         170 --103:   {
+                         171 --104:     /* Prepare PLL0 */
+                         172 --105:     CLKCTLPLL0C=0x6340483B;                                             /* 16 MHz MainOSC -> 480MHz VCOUT */
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-0000005c 21063b484063    173 	mov	1665157179,r1
-00000062 80078f0820f1    174 	st.w	r1,4294479880[zero]
-                         175 --104:                                                                         /* 5% @ 100kHz SSCG */
-                         176 --105:                                                                         
-                         177 --106:     protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLPLL0ST,0x1B80);   /* Set stabilization time to recommended value */
-                         178 .L16:
-                         179 --line106
-                         180 ..lin.52575fc0..470e1876.0_11::
-                         181 .LDWlin11:
-00000068 200ea500        182 	movea	165,zero,r1
-0000006c 80070f0800f0    183 	st.w	r1,4294443008[zero]
-                         184 --line106
-                         185 ..lin.52575fc0..470e1876.0_12::
-                         186 .LDWlin12:
-00000072 200e801b        187 	movea	7040,zero,r1
-00000076 8007cf0820f1    188 	st.w	r1,4294479884[zero]
-                         189 --line106
-                         190 ..lin.52575fc0..470e1876.0_13::
-                         191 .LDWlin13:
-0000007c 200e7fe4        192 	movea	-7041,zero,r1
-00000080 8007cf0820f1    193 	st.w	r1,4294479884[zero]
-                         194 --line106
-                         195 ..lin.52575fc0..470e1876.0_14::
-                         196 .LDWlin14:
-00000086 200e801b        197 	movea	7040,zero,r1
-0000008a 8007cf0820f1    198 	st.w	r1,4294479884[zero]
-                         199 --line106
-                         200 ..lin.52575fc0..470e1876.0_15::
-                         201 .LDWlin15:
-00000090 8007490800f0    202 	ld.w	4294443012[zero],r1
-00000096 610a            203 	cmp	1,r1
-00000098 82ed*           204 	be	.L16
-                         205 .L19:
-                         206 --107:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL0E,0x01u);     /* Enable PLL */
-                         207 --line107
-                         208 ..lin.52575fc0..470e1876.0_16::
-                         209 .LDWlin16:
-0000009a 200ea500        210 	movea	165,zero,r1
-0000009e 80070f0800f1    211 	st.w	r1,4294475776[zero]
-                         212 --line107
-                         213 ..lin.52575fc0..470e1876.0_17::
-                         214 .LDWlin17:
-000000a4 010a            215 	mov	1,r1
-000000a6 80070f0820f1    216 	st.w	r1,4294479872[zero]
-                         217 --line107
-                         218 ..lin.52575fc0..470e1876.0_18::
-                         219 .LDWlin18:
-000000ac 1e0a            220 	mov	-2,r1
-000000ae 80070f0820f1    221 	st.w	r1,4294479872[zero]
-                         222 --line107
-                         223 ..lin.52575fc0..470e1876.0_19::
-                         224 .LDWlin19:
-000000b4 010a            225 	mov	1,r1
-000000b6 80070f0820f1    226 	st.w	r1,4294479872[zero]
-                         227 --line107
-                         228 ..lin.52575fc0..470e1876.0_20::
-                         229 .LDWlin20:
-000000bc 8007490800f1    230 	ld.w	4294475780[zero],r1
-000000c2 610a            231 	cmp	1,r1
-000000c4 b2ed*           232 	be	.L19
-                         233 .L20:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         173 --line105
+                         174 ..lin.52575fc0..470e1876.0_10::
+                         175 .LDWlin10:
+0000005c 21063b484063    176 	mov	1665157179,r1
+00000062 80078f0820f1    177 	st.w	r1,4294479880[zero]
+                         178 --106:                                                                         /* 5% @ 100kHz SSCG */
+                         179 --107:                                                                         
+                         180 --108:     protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLPLL0ST,0x1B80);   /* Set stabilization time to recommended value */
+                         181 .L16:
+                         182 --line108
+                         183 ..lin.52575fc0..470e1876.0_11::
+                         184 .LDWlin11:
+00000068 200ea500        185 	movea	165,zero,r1
+0000006c 80070f0800f0    186 	st.w	r1,4294443008[zero]
+                         187 --line108
+                         188 ..lin.52575fc0..470e1876.0_12::
+                         189 .LDWlin12:
+00000072 200e801b        190 	movea	7040,zero,r1
+00000076 8007cf0820f1    191 	st.w	r1,4294479884[zero]
+                         192 --line108
+                         193 ..lin.52575fc0..470e1876.0_13::
+                         194 .LDWlin13:
+0000007c 200e7fe4        195 	movea	-7041,zero,r1
+00000080 8007cf0820f1    196 	st.w	r1,4294479884[zero]
+                         197 --line108
+                         198 ..lin.52575fc0..470e1876.0_14::
+                         199 .LDWlin14:
+00000086 200e801b        200 	movea	7040,zero,r1
+0000008a 8007cf0820f1    201 	st.w	r1,4294479884[zero]
+                         202 --line108
+                         203 ..lin.52575fc0..470e1876.0_15::
+                         204 .LDWlin15:
+00000090 8007490800f0    205 	ld.w	4294443012[zero],r1
+00000096 610a            206 	cmp	1,r1
+00000098 82ed*           207 	be	.L16
+                         208 .L19:
+                         209 --109:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL0E,0x01u);     /* Enable PLL */
+                         210 --line109
+                         211 ..lin.52575fc0..470e1876.0_16::
+                         212 .LDWlin16:
+0000009a 200ea500        213 	movea	165,zero,r1
+0000009e 80070f0800f1    214 	st.w	r1,4294475776[zero]
+                         215 --line109
+                         216 ..lin.52575fc0..470e1876.0_17::
+                         217 .LDWlin17:
+000000a4 010a            218 	mov	1,r1
+000000a6 80070f0820f1    219 	st.w	r1,4294479872[zero]
+                         220 --line109
+                         221 ..lin.52575fc0..470e1876.0_18::
+                         222 .LDWlin18:
+000000ac 1e0a            223 	mov	-2,r1
+000000ae 80070f0820f1    224 	st.w	r1,4294479872[zero]
+                         225 --line109
+                         226 ..lin.52575fc0..470e1876.0_19::
+                         227 .LDWlin19:
+000000b4 010a            228 	mov	1,r1
+000000b6 80070f0820f1    229 	st.w	r1,4294479872[zero]
+                         230 --line109
+                         231 ..lin.52575fc0..470e1876.0_20::
+                         232 .LDWlin20:
+000000bc 8007490800f1    233 	ld.w	4294475780[zero],r1
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         234 --108:     while((CLKCTLPLL0S&0x04u) != 0x04u){}                               /* Wait for active PLL */
-                         235 --line108
-                         236 ..lin.52575fc0..470e1876.0_21::
-                         237 .LDWlin21:
-000000c6 8007490820f1    238 	ld.w	4294479876[zero],r1
-000000cc 830a            239 	shr	3,r1
-000000ce c9fd*           240 	bnl	.L20
-                         241 .L12:
-                         242 --109:   }
-                         243 --110:   
-                         244 --111:   if((CLKCTLPLL1S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
-                         245 --line111
-                         246 ..lin.52575fc0..470e1876.0_22::
-                         247 .LDWlin22:
-000000d0 8007490822f1    248 	ld.w	4294480132[zero],r1
-000000d6 830a            249 	shr	3,r1
-000000d8 a125*           250 	bl	.L33
-                         251 --112:   {
-                         252 --113:     /* Prepare PLL1 */
-                         253 --114:     CLKCTLPLL1C=0x10B3B;                                                /* 16 MHz MainOSC -> 480MHz VCOUT, 80MHz PPLLOUT */
-                         254 --line114
-                         255 ..lin.52575fc0..470e1876.0_23::
-                         256 .LDWlin23:
-000000da 21063b0b0100    257 	mov	68411,r1
-000000e0 80078f0822f1    258 	st.w	r1,4294480136[zero]
-                         259 --115:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL1E,0x01u);     /* Enable PLL */
-                         260 .L27:
-                         261 --line115
-                         262 ..lin.52575fc0..470e1876.0_24::
-                         263 .LDWlin24:
-000000e6 200ea500        264 	movea	165,zero,r1
-000000ea 80070f0800f1    265 	st.w	r1,4294475776[zero]
-                         266 --line115
-                         267 ..lin.52575fc0..470e1876.0_25::
-                         268 .LDWlin25:
-000000f0 010a            269 	mov	1,r1
-000000f2 80070f0822f1    270 	st.w	r1,4294480128[zero]
-                         271 --line115
-                         272 ..lin.52575fc0..470e1876.0_26::
-                         273 .LDWlin26:
-000000f8 1e0a            274 	mov	-2,r1
-000000fa 80070f0822f1    275 	st.w	r1,4294480128[zero]
-                         276 --line115
-                         277 ..lin.52575fc0..470e1876.0_27::
-                         278 .LDWlin27:
-00000100 010a            279 	mov	1,r1
-00000102 80070f0822f1    280 	st.w	r1,4294480128[zero]
-                         281 --line115
-                         282 ..lin.52575fc0..470e1876.0_28::
-                         283 .LDWlin28:
-00000108 8007490800f1    284 	ld.w	4294475780[zero],r1
-0000010e 610a            285 	cmp	1,r1
-00000110 b2ed*           286 	be	.L27
-                         287 .L28:
-                         288 --116:     while((CLKCTLPLL1S&0x04u) != 0x04u){}                               /* Wait for active PLL */
-                         289 --line116
-                         290 ..lin.52575fc0..470e1876.0_29::
-                         291 .LDWlin29:
-00000112 8007490822f1    292 	ld.w	4294480132[zero],r1
-00000118 830a            293 	shr	3,r1
-0000011a c9fd*           294 	bnl	.L28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+000000c2 610a            234 	cmp	1,r1
+000000c4 b2ed*           235 	be	.L19
+                         236 .L20:
+                         237 --110:     while((CLKCTLPLL0S&0x04u) != 0x04u){}                               /* Wait for active PLL */
+                         238 --line110
+                         239 ..lin.52575fc0..470e1876.0_21::
+                         240 .LDWlin21:
+000000c6 8007490820f1    241 	ld.w	4294479876[zero],r1
+000000cc 830a            242 	shr	3,r1
+000000ce c9fd*           243 	bnl	.L20
+                         244 .L12:
+                         245 --111:   }
+                         246 --112:   
+                         247 --113:   if((CLKCTLPLL1S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
+                         248 --line113
+                         249 ..lin.52575fc0..470e1876.0_22::
+                         250 .LDWlin22:
+000000d0 8007490822f1    251 	ld.w	4294480132[zero],r1
+000000d6 830a            252 	shr	3,r1
+000000d8 a125*           253 	bl	.L33
+                         254 --114:   {
+                         255 --115:     /* Prepare PLL1 */
+                         256 --116:     CLKCTLPLL1C=0x10B3B;                                                /* 16 MHz MainOSC -> 480MHz VCOUT, 80MHz PPLLOUT */
+                         257 --line116
+                         258 ..lin.52575fc0..470e1876.0_23::
+                         259 .LDWlin23:
+000000da 21063b0b0100    260 	mov	68411,r1
+000000e0 80078f0822f1    261 	st.w	r1,4294480136[zero]
+                         262 --117:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL1E,0x01u);     /* Enable PLL */
+                         263 .L27:
+                         264 --line117
+                         265 ..lin.52575fc0..470e1876.0_24::
+                         266 .LDWlin24:
+000000e6 200ea500        267 	movea	165,zero,r1
+000000ea 80070f0800f1    268 	st.w	r1,4294475776[zero]
+                         269 --line117
+                         270 ..lin.52575fc0..470e1876.0_25::
+                         271 .LDWlin25:
+000000f0 010a            272 	mov	1,r1
+000000f2 80070f0822f1    273 	st.w	r1,4294480128[zero]
+                         274 --line117
+                         275 ..lin.52575fc0..470e1876.0_26::
+                         276 .LDWlin26:
+000000f8 1e0a            277 	mov	-2,r1
+000000fa 80070f0822f1    278 	st.w	r1,4294480128[zero]
+                         279 --line117
+                         280 ..lin.52575fc0..470e1876.0_27::
+                         281 .LDWlin27:
+00000100 010a            282 	mov	1,r1
+00000102 80070f0822f1    283 	st.w	r1,4294480128[zero]
+                         284 --line117
+                         285 ..lin.52575fc0..470e1876.0_28::
+                         286 .LDWlin28:
+00000108 8007490800f1    287 	ld.w	4294475780[zero],r1
+0000010e 610a            288 	cmp	1,r1
+00000110 b2ed*           289 	be	.L27
+                         290 .L28:
+                         291 --118:     while((CLKCTLPLL1S&0x04u) != 0x04u){}                               /* Wait for active PLL */
+                         292 --line118
+                         293 ..lin.52575fc0..470e1876.0_29::
+                         294 .LDWlin29:
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         295 .L33:
-                         296 --117:   }
-                         297 --118:   
-                         298 --119:   /* CPLLOUT = VCOOUT × 1/2 = 240 MHz */
-                         299 --120:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKD_CTL,0x29);
-                         300 --line120
-                         301 ..lin.52575fc0..470e1876.0_30::
-                         302 .LDWlin30:
-0000011c 200ea500        303 	movea	165,zero,r1
-00000120 80070f0800f1    304 	st.w	r1,4294475776[zero]
-                         305 --line120
-                         306 ..lin.52575fc0..470e1876.0_31::
-                         307 .LDWlin31:
-00000126 200e2900        308 	movea	41,zero,r1
-0000012a 80070f0842f1    309 	st.w	r1,4294484224[zero]
-                         310 --line120
-                         311 ..lin.52575fc0..470e1876.0_32::
-                         312 .LDWlin32:
-00000130 200ed6ff        313 	movea	-42,zero,r1
-00000134 80070f0842f1    314 	st.w	r1,4294484224[zero]
-                         315 --line120
-                         316 ..lin.52575fc0..470e1876.0_33::
-                         317 .LDWlin33:
-0000013a 200e2900        318 	movea	41,zero,r1
-0000013e 80070f0842f1    319 	st.w	r1,4294484224[zero]
-                         320 --line120
-                         321 ..lin.52575fc0..470e1876.0_34::
-                         322 .LDWlin34:
-00000144 8007490800f1    323 	ld.w	4294475780[zero],r1
-0000014a 610a            324 	cmp	1,r1
-0000014c 82ed*           325 	be	.L33
-                         326 .L34:
-                         327 --121:   while(CLKCTLCKSC_CPUCLKD_ACT!=0x29);  
-                         328 --line121
-                         329 ..lin.52575fc0..470e1876.0_35::
-                         330 .LDWlin35:
-0000014e 8007890842f1    331 	ld.w	4294484232[zero],r1
-00000154 0106d7ff        332 	addi	-41,r1,zero
-00000158 bafd*           333 	bne	.L34
-                         334 .L39:
-                         335 --122:   
-                         336 --123:   /* CPLLOUT -> CPU Clock */ 
-                         337 --124:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKS_CTL,0x00u);
-                         338 --line124
-                         339 ..lin.52575fc0..470e1876.0_36::
-                         340 .LDWlin36:
-0000015a 200ea500        341 	movea	165,zero,r1
-0000015e 80070f0800f1    342 	st.w	r1,4294475776[zero]
-                         343 --line124
-                         344 ..lin.52575fc0..470e1876.0_37::
-                         345 .LDWlin37:
-00000164 80070f0040f1    346 	st.w	zero,4294483968[zero]
-                         347 --line124
-                         348 ..lin.52575fc0..470e1876.0_38::
-                         349 .LDWlin38:
-0000016a 1f0a            350 	mov	-1,r1
-0000016c 80070f0840f1    351 	st.w	r1,4294483968[zero]
-                         352 --line124
-                         353 ..lin.52575fc0..470e1876.0_39::
-                         354 .LDWlin39:
-00000172 80070f0040f1    355 	st.w	zero,4294483968[zero]
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+00000112 8007490822f1    295 	ld.w	4294480132[zero],r1
+00000118 830a            296 	shr	3,r1
+0000011a c9fd*           297 	bnl	.L28
+                         298 .L33:
+                         299 --119:   }
+                         300 --120:   
+                         301 --121:   /* CPLLOUT = VCOOUT ï¿½ 1/2 = 240 MHz */
+                         302 --122:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKD_CTL,0x29);
+                         303 --line122
+                         304 ..lin.52575fc0..470e1876.0_30::
+                         305 .LDWlin30:
+0000011c 200ea500        306 	movea	165,zero,r1
+00000120 80070f0800f1    307 	st.w	r1,4294475776[zero]
+                         308 --line122
+                         309 ..lin.52575fc0..470e1876.0_31::
+                         310 .LDWlin31:
+00000126 200e2900        311 	movea	41,zero,r1
+0000012a 80070f0842f1    312 	st.w	r1,4294484224[zero]
+                         313 --line122
+                         314 ..lin.52575fc0..470e1876.0_32::
+                         315 .LDWlin32:
+00000130 200ed6ff        316 	movea	-42,zero,r1
+00000134 80070f0842f1    317 	st.w	r1,4294484224[zero]
+                         318 --line122
+                         319 ..lin.52575fc0..470e1876.0_33::
+                         320 .LDWlin33:
+0000013a 200e2900        321 	movea	41,zero,r1
+0000013e 80070f0842f1    322 	st.w	r1,4294484224[zero]
+                         323 --line122
+                         324 ..lin.52575fc0..470e1876.0_34::
+                         325 .LDWlin34:
+00000144 8007490800f1    326 	ld.w	4294475780[zero],r1
+0000014a 610a            327 	cmp	1,r1
+0000014c 82ed*           328 	be	.L33
+                         329 .L34:
+                         330 --123:   while(CLKCTLCKSC_CPUCLKD_ACT!=0x29);  
+                         331 --line123
+                         332 ..lin.52575fc0..470e1876.0_35::
+                         333 .LDWlin35:
+0000014e 8007890842f1    334 	ld.w	4294484232[zero],r1
+00000154 0106d7ff        335 	addi	-41,r1,zero
+00000158 bafd*           336 	bne	.L34
+                         337 .L39:
+                         338 --124:   
+                         339 --125:   /* CPLLOUT -> CPU Clock */ 
+                         340 --126:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKS_CTL,0x00u);
+                         341 --line126
+                         342 ..lin.52575fc0..470e1876.0_36::
+                         343 .LDWlin36:
+0000015a 200ea500        344 	movea	165,zero,r1
+0000015e 80070f0800f1    345 	st.w	r1,4294475776[zero]
+                         346 --line126
+                         347 ..lin.52575fc0..470e1876.0_37::
+                         348 .LDWlin37:
+00000164 80070f0040f1    349 	st.w	zero,4294483968[zero]
+                         350 --line126
+                         351 ..lin.52575fc0..470e1876.0_38::
+                         352 .LDWlin38:
+0000016a 1f0a            353 	mov	-1,r1
+0000016c 80070f0840f1    354 	st.w	r1,4294483968[zero]
+                         355 --line126
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         356 --line124
-                         357 ..lin.52575fc0..470e1876.0_40::
-                         358 .LDWlin40:
-00000178 8007490800f1    359 	ld.w	4294475780[zero],r1
-0000017e 610a            360 	cmp	1,r1
-00000180 d2ed*           361 	be	.L39
-                         362 .L40:
-                         363 --125:   while(CLKCTLCKSC_CPUCLKS_ACT!=0x00u);
-                         364 --line125
-                         365 ..lin.52575fc0..470e1876.0_41::
-                         366 .LDWlin41:
-00000182 8007890840f1    367 	ld.w	4294483976[zero],r1
-00000188 e009            368 	cmp	zero,r1
-0000018a cafd*           369 	bne	.L40
-                         370 .L45:
-                         371 --126:   
-                         372 --127:   /* PPLLOUT -> PPLLCLK = 80MHz */
-                         373 --128:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_PPLLCLKS_CTL,0x3);
-                         374 --line128
-                         375 ..lin.52575fc0..470e1876.0_42::
-                         376 .LDWlin42:
-0000018c 200ea500        377 	movea	165,zero,r1
-00000190 80070f0800f1    378 	st.w	r1,4294475776[zero]
-                         379 --line128
-                         380 ..lin.52575fc0..470e1876.0_43::
-                         381 .LDWlin43:
-00000196 030a            382 	mov	3,r1
-00000198 80070f0940f1    383 	st.w	r1,4294483984[zero]
-                         384 --line128
-                         385 ..lin.52575fc0..470e1876.0_44::
-                         386 .LDWlin44:
-0000019e 1c0a            387 	mov	-4,r1
-000001a0 80070f0940f1    388 	st.w	r1,4294483984[zero]
-                         389 --line128
-                         390 ..lin.52575fc0..470e1876.0_45::
-                         391 .LDWlin45:
-000001a6 030a            392 	mov	3,r1
-000001a8 80070f0940f1    393 	st.w	r1,4294483984[zero]
-                         394 --line128
-                         395 ..lin.52575fc0..470e1876.0_46::
-                         396 .LDWlin46:
-000001ae 8007490800f1    397 	ld.w	4294475780[zero],r1
-000001b4 610a            398 	cmp	1,r1
-000001b6 b2ed*           399 	be	.L45
-                         400 .L46:
-                         401 --129:   while(CLKCTLCKSC_PPLLCLKS_ACT!=0x3);  
-                         402 --line129
-                         403 ..lin.52575fc0..470e1876.0_47::
-                         404 .LDWlin47:
-000001b8 8007890940f1    405 	ld.w	4294483992[zero],r1
-000001be 630a            406 	cmp	3,r1
-000001c0 cafd*           407 	bne	.L46
-                         408 --130: }
-                         409 --	    .ef
-                         410 .LDW11:
-                         411 .L659:
-                         412 --line130
-                         413 ..lin.52575fc0..470e1876.0_48::
-                         414 .LDWlin48:
-                         415 	.jumptype return
-000001c2 7f00            416 	jmp	[lp]
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         356 ..lin.52575fc0..470e1876.0_39::
+                         357 .LDWlin39:
+00000172 80070f0040f1    358 	st.w	zero,4294483968[zero]
+                         359 --line126
+                         360 ..lin.52575fc0..470e1876.0_40::
+                         361 .LDWlin40:
+00000178 8007490800f1    362 	ld.w	4294475780[zero],r1
+0000017e 610a            363 	cmp	1,r1
+00000180 d2ed*           364 	be	.L39
+                         365 .L40:
+                         366 --127:   while(CLKCTLCKSC_CPUCLKS_ACT!=0x00u);
+                         367 --line127
+                         368 ..lin.52575fc0..470e1876.0_41::
+                         369 .LDWlin41:
+00000182 8007890840f1    370 	ld.w	4294483976[zero],r1
+00000188 e009            371 	cmp	zero,r1
+0000018a cafd*           372 	bne	.L40
+                         373 .L45:
+                         374 --128:   
+                         375 --129:   /* PPLLOUT -> PPLLCLK = 80MHz */
+                         376 --130:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_PPLLCLKS_CTL,0x3);
+                         377 --line130
+                         378 ..lin.52575fc0..470e1876.0_42::
+                         379 .LDWlin42:
+0000018c 200ea500        380 	movea	165,zero,r1
+00000190 80070f0800f1    381 	st.w	r1,4294475776[zero]
+                         382 --line130
+                         383 ..lin.52575fc0..470e1876.0_43::
+                         384 .LDWlin43:
+00000196 030a            385 	mov	3,r1
+00000198 80070f0940f1    386 	st.w	r1,4294483984[zero]
+                         387 --line130
+                         388 ..lin.52575fc0..470e1876.0_44::
+                         389 .LDWlin44:
+0000019e 1c0a            390 	mov	-4,r1
+000001a0 80070f0940f1    391 	st.w	r1,4294483984[zero]
+                         392 --line130
+                         393 ..lin.52575fc0..470e1876.0_45::
+                         394 .LDWlin45:
+000001a6 030a            395 	mov	3,r1
+000001a8 80070f0940f1    396 	st.w	r1,4294483984[zero]
+                         397 --line130
+                         398 ..lin.52575fc0..470e1876.0_46::
+                         399 .LDWlin46:
+000001ae 8007490800f1    400 	ld.w	4294475780[zero],r1
+000001b4 610a            401 	cmp	1,r1
+000001b6 b2ed*           402 	be	.L45
+                         403 .L46:
+                         404 --131:   while(CLKCTLCKSC_PPLLCLKS_ACT!=0x3);  
+                         405 --line131
+                         406 ..lin.52575fc0..470e1876.0_47::
+                         407 .LDWlin47:
+000001b8 8007890940f1    408 	ld.w	4294483992[zero],r1
+000001be 630a            409 	cmp	3,r1
+000001c0 cafd*           410 	bne	.L46
+                         411 --132: }
+                         412 --	    .ef
+                         413 .LDW11:
+                         414 .L659:
+                         415 --line132
+                         416 ..lin.52575fc0..470e1876.0_48::
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         417 --line130
-                         418 ..lin.52575fc0..470e1876.0_49::
-                         419 	.type	_init_clocks,@function
-                         420 	.size	_init_clocks,.-_init_clocks
-                         421 	.align	2
-                         422 
-                         423 	.section ".bss","awb"
-                         424 .L473:
-                         425 	.type	.L473,@object
-                         426 	.size	.L473,0
-                         427 	.section ".ghrettbl",""
-                         428 	.align	4
-00000000 00000000*       429 .L660:	.word	.L659
-                         430 	.type	.L660,@object
-                         431 	.size	.L660,4
-                         432 	.data
-                         433 	.text
-                         434 
-                         435 
-                         436 --131: void csih0_initPorts(void)
-                         437 	.align	2
-                         438 	.align	2
-                         439 	.align	2
-                         440 ..gh.f.a.2.e.1:
-                         441 	.type	..gh.f.a.2.e.1,@object
-                         442 	.size	..gh.f.a.2.e.1,0
-                         443 	.global	_csih0_initPorts
-                         444 _csih0_initPorts:
-                         445 --	    .bf
-                         446 .LDW21:
-                         447 --132: {
-                         448 --133:   /* CSIH0SC @ P0_2  */ 
-                         449 --134:   PORTPMC0 |= (1<<2);
-000001c4 a00707080882    450 	ld.hu	4290839552[zero],r1
-000001ca 810e0400        451 	ori	4,r1,r1
-000001ce a0070d080882    452 	st.h	r1,4290839552[zero]
-                         453 --135:   PORTPFC0 |= (1<<2);
-                         454 --line135
-                         455 ..lin.52575fc0..ec983026.0_50::
-                         456 .LDWlin50:
-000001d4 a00707080a82    457 	ld.hu	4290839808[zero],r1
-000001da 810e0400        458 	ori	4,r1,r1
-000001de a0070d080a82    459 	st.h	r1,4290839808[zero]
-                         460 --136:   PORTPFCE0 |= (1<<2);
-                         461 --line136
-                         462 ..lin.52575fc0..ec983026.0_51::
-                         463 .LDWlin51:
-000001e4 a00707080c82    464 	ld.hu	4290840064[zero],r1
-000001ea 810e0400        465 	ori	4,r1,r1
-000001ee a0070d080c82    466 	st.h	r1,4290840064[zero]
-                         467 --137:   PORTPFCAE0 &= ~(1<<2);
-                         468 --line137
-                         469 ..lin.52575fc0..ec983026.0_52::
-                         470 .LDWlin52:
-000001f4 a00707081482    471 	ld.hu	4290841088[zero],r1
-000001fa c10efbff        472 	andi	65531,r1,r1
-000001fe a0070d081482    473 	st.h	r1,4290841088[zero]
-                         474 --138:   PORTPM0 |= (1<<2);
-                         475 --line138
-                         476 ..lin.52575fc0..ec983026.0_53::
-                         477 .LDWlin53:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         417 .LDWlin48:
+                         418 	.jumptype return
+000001c2 7f00            419 	jmp	[lp]
+                         420 --line132
+                         421 ..lin.52575fc0..470e1876.0_49::
+                         422 	.type	_init_clocks,@function
+                         423 	.size	_init_clocks,.-_init_clocks
+                         424 	.align	2
+                         425 
+                         426 	.section ".bss","awb"
+                         427 .L473:
+                         428 	.type	.L473,@object
+                         429 	.size	.L473,0
+                         430 	.section ".ghrettbl",""
+                         431 	.align	4
+00000000 00000000*       432 .L660:	.word	.L659
+                         433 	.type	.L660,@object
+                         434 	.size	.L660,4
+                         435 	.data
+                         436 	.text
+                         437 
+                         438 
+                         439 --133: void csih0_initPorts(void)
+                         440 	.align	2
+                         441 	.align	2
+                         442 	.align	2
+                         443 ..gh.f.a.2.e.1:
+                         444 	.type	..gh.f.a.2.e.1,@object
+                         445 	.size	..gh.f.a.2.e.1,0
+                         446 	.global	_csih0_initPorts
+                         447 _csih0_initPorts:
+                         448 --	    .bf
+                         449 .LDW21:
+                         450 --134: {
+                         451 --135:   /* CSIH0SC @ P0_2  */ 
+                         452 --136:   PORTPMC0 |= (1<<2);
+000001c4 a00707080882    453 	ld.hu	4290839552[zero],r1
+000001ca 810e0400        454 	ori	4,r1,r1
+000001ce a0070d080882    455 	st.h	r1,4290839552[zero]
+                         456 --137:   PORTPFC0 |= (1<<2);
+                         457 --line137
+                         458 ..lin.52575fc0..ec983026.0_50::
+                         459 .LDWlin50:
+000001d4 a00707080a82    460 	ld.hu	4290839808[zero],r1
+000001da 810e0400        461 	ori	4,r1,r1
+000001de a0070d080a82    462 	st.h	r1,4290839808[zero]
+                         463 --138:   PORTPFCE0 |= (1<<2);
+                         464 --line138
+                         465 ..lin.52575fc0..ec983026.0_51::
+                         466 .LDWlin51:
+000001e4 a00707080c82    467 	ld.hu	4290840064[zero],r1
+000001ea 810e0400        468 	ori	4,r1,r1
+000001ee a0070d080c82    469 	st.h	r1,4290840064[zero]
+                         470 --139:   PORTPFCAE0 &= ~(1<<2);
+                         471 --line139
+                         472 ..lin.52575fc0..ec983026.0_52::
+                         473 .LDWlin52:
+000001f4 a00707081482    474 	ld.hu	4290841088[zero],r1
+000001fa c10efbff        475 	andi	65531,r1,r1
+000001fe a0070d081482    476 	st.h	r1,4290841088[zero]
+                         477 --140:   PORTPM0 |= (1<<2);
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-00000204 a00707080682    478 	ld.hu	4290839296[zero],r1
-0000020a 810e0400        479 	ori	4,r1,r1
-0000020e a0070d080682    480 	st.h	r1,4290839296[zero]
-                         481 --139:   
-                         482 --140:   /* CSIH0S0 @ P0_3  */ 
-                         483 --141:   PORTPMC0 |= (1<<3);
-                         484 --line141
-                         485 ..lin.52575fc0..ec983026.0_54::
-                         486 .LDWlin54:
-00000214 a00707080882    487 	ld.hu	4290839552[zero],r1
-0000021a 810e0800        488 	ori	8,r1,r1
-0000021e a0070d080882    489 	st.h	r1,4290839552[zero]
-                         490 --142:   PORTPFC0 |= (1<<3);
-                         491 --line142
-                         492 ..lin.52575fc0..ec983026.0_55::
-                         493 .LDWlin55:
-00000224 a00707080a82    494 	ld.hu	4290839808[zero],r1
-0000022a 810e0800        495 	ori	8,r1,r1
-0000022e a0070d080a82    496 	st.h	r1,4290839808[zero]
-                         497 --143:   PORTPFCE0 |= (1<<3);
-                         498 --line143
-                         499 ..lin.52575fc0..ec983026.0_56::
-                         500 .LDWlin56:
-00000234 a00707080c82    501 	ld.hu	4290840064[zero],r1
-0000023a 810e0800        502 	ori	8,r1,r1
-0000023e a0070d080c82    503 	st.h	r1,4290840064[zero]
-                         504 --144:   PORTPFCAE0 &= ~(1<<3);
-                         505 --line144
-                         506 ..lin.52575fc0..ec983026.0_57::
-                         507 .LDWlin57:
-00000244 a00707081482    508 	ld.hu	4290841088[zero],r1
-0000024a c10ef7ff        509 	andi	65527,r1,r1
-0000024e a0070d081482    510 	st.h	r1,4290841088[zero]
-                         511 --145:   PORTPM0 &= ~(1<<3);
-                         512 --line145
-                         513 ..lin.52575fc0..ec983026.0_58::
-                         514 .LDWlin58:
-00000254 a00707080682    515 	ld.hu	4290839296[zero],r1
-0000025a c10ef7ff        516 	andi	65527,r1,r1
-0000025e a0070d080682    517 	st.h	r1,4290839296[zero]
-                         518 --146: }
-                         519 --	    .ef
-                         520 .LDW31:
-                         521 .L768:
-                         522 --line146
-                         523 ..lin.52575fc0..ec983026.0_59::
-                         524 .LDWlin59:
-                         525 	.jumptype return
-00000264 7f00            526 	jmp	[lp]
-                         527 --line146
-                         528 ..lin.52575fc0..ec983026.0_60::
-                         529 	.type	_csih0_initPorts,@function
-                         530 	.size	_csih0_initPorts,.-_csih0_initPorts
-                         531 	.align	2
-                         532 
-                         533 	.section ".bss","awb"
-                         534 .L726:
-                         535 	.type	.L726,@object
-                         536 	.size	.L726,0
-                         537 	.section ".ghrettbl",""
-00000004 00000000*       538 .L769:	.word	.L768
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         478 --line140
+                         479 ..lin.52575fc0..ec983026.0_53::
+                         480 .LDWlin53:
+00000204 a00707080682    481 	ld.hu	4290839296[zero],r1
+0000020a 810e0400        482 	ori	4,r1,r1
+0000020e a0070d080682    483 	st.h	r1,4290839296[zero]
+                         484 --141:   
+                         485 --142:   /* CSIH0S0 @ P0_3  */ 
+                         486 --143:   PORTPMC0 |= (1<<3);
+                         487 --line143
+                         488 ..lin.52575fc0..ec983026.0_54::
+                         489 .LDWlin54:
+00000214 a00707080882    490 	ld.hu	4290839552[zero],r1
+0000021a 810e0800        491 	ori	8,r1,r1
+0000021e a0070d080882    492 	st.h	r1,4290839552[zero]
+                         493 --144:   PORTPFC0 |= (1<<3);
+                         494 --line144
+                         495 ..lin.52575fc0..ec983026.0_55::
+                         496 .LDWlin55:
+00000224 a00707080a82    497 	ld.hu	4290839808[zero],r1
+0000022a 810e0800        498 	ori	8,r1,r1
+0000022e a0070d080a82    499 	st.h	r1,4290839808[zero]
+                         500 --145:   PORTPFCE0 |= (1<<3);
+                         501 --line145
+                         502 ..lin.52575fc0..ec983026.0_56::
+                         503 .LDWlin56:
+00000234 a00707080c82    504 	ld.hu	4290840064[zero],r1
+0000023a 810e0800        505 	ori	8,r1,r1
+0000023e a0070d080c82    506 	st.h	r1,4290840064[zero]
+                         507 --146:   PORTPFCAE0 &= ~(1<<3);
+                         508 --line146
+                         509 ..lin.52575fc0..ec983026.0_57::
+                         510 .LDWlin57:
+00000244 a00707081482    511 	ld.hu	4290841088[zero],r1
+0000024a c10ef7ff        512 	andi	65527,r1,r1
+0000024e a0070d081482    513 	st.h	r1,4290841088[zero]
+                         514 --147:   PORTPM0 &= ~(1<<3);
+                         515 --line147
+                         516 ..lin.52575fc0..ec983026.0_58::
+                         517 .LDWlin58:
+00000254 a00707080682    518 	ld.hu	4290839296[zero],r1
+0000025a c10ef7ff        519 	andi	65527,r1,r1
+0000025e a0070d080682    520 	st.h	r1,4290839296[zero]
+                         521 --148: }
+                         522 --	    .ef
+                         523 .LDW31:
+                         524 .L768:
+                         525 --line148
+                         526 ..lin.52575fc0..ec983026.0_59::
+                         527 .LDWlin59:
+                         528 	.jumptype return
+00000264 7f00            529 	jmp	[lp]
+                         530 --line148
+                         531 ..lin.52575fc0..ec983026.0_60::
+                         532 	.type	_csih0_initPorts,@function
+                         533 	.size	_csih0_initPorts,.-_csih0_initPorts
+                         534 	.align	2
+                         535 
+                         536 	.section ".bss","awb"
+                         537 .L726:
+                         538 	.type	.L726,@object
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         539 	.type	.L769,@object
-                         540 	.size	.L769,4
-                         541 	.data
-                         542 	.text
-                         543 
-                         544 
-                         545 --148: void TAUD0_initPorts(void)
-                         546 	.align	2
-                         547 	.align	2
-                         548 	.align	2
-                         549 ..gh.f.a.2.e.2:
-                         550 	.type	..gh.f.a.2.e.2,@object
-                         551 	.size	..gh.f.a.2.e.2,0
-                         552 	.global	_TAUD0_initPorts
-                         553 _TAUD0_initPorts:
-                         554 --	    .bf
-                         555 .LDW41:
-                         556 --149: {
-                         557 --150:   // Enable TAUD0 channels 2 and 4 output on  P0_0 and P0_1
-                         558 --151:   protected_write(PORTPPCMD0,PORTPPROTS0,PORTPODC0,0x00);	// switch P0_0 from Open Drain to Push Pull
-                         559 .L774:
-00000266 200ea500        560 	movea	165,zero,r1
-0000026a 80070f089882    561 	st.w	r1,4290857984[zero]
-                         562 --line151
-                         563 ..lin.52575fc0..b337a0ad.0_61::
-                         564 .LDWlin61:
-00000270 80070f008a82    565 	st.w	zero,4290856192[zero]
-                         566 --line151
-                         567 ..lin.52575fc0..b337a0ad.0_62::
-                         568 .LDWlin62:
-00000276 1f0a            569 	mov	-1,r1
-00000278 80070f088a82    570 	st.w	r1,4290856192[zero]
-                         571 --line151
-                         572 ..lin.52575fc0..b337a0ad.0_63::
-                         573 .LDWlin63:
-0000027e 80070f008a82    574 	st.w	zero,4290856192[zero]
-                         575 --line151
-                         576 ..lin.52575fc0..b337a0ad.0_64::
-                         577 .LDWlin64:
-00000284 800709089682    578 	ld.w	4290857728[zero],r1
-0000028a 610a            579 	cmp	1,r1
-0000028c d2ed*           580 	be	.L774
-                         581 --152:   PORTPMSR0  = 0x30000;		// P0_0 and P0_1 as output
-                         582 --line152
-                         583 ..lin.52575fc0..b337a0ad.0_65::
-                         584 .LDWlin65:
-0000028e 400e0300        585 	movhi	hi(196608),zero,r1
-00000292 80070f081082    586 	st.w	r1,4290840576[zero]
-                         587 --153:   PORTPMCSR0 = 0x30003;		// P0_0 and P0_1 as alternative function
-                         588 --line153
-                         589 ..lin.52575fc0..b337a0ad.0_66::
-                         590 .LDWlin66:
-00000298 210603000300    591 	mov	196611,r1
-0000029e 80070f081282    592 	st.w	r1,4290840832[zero]
-                         593 --154:   // no further init required, as AF1 is selected by default register settings
-                         594 --155: }
-                         595 --	    .ef
-                         596 .LDW51:
-                         597 .L866:
-                         598 --line155
-                         599 ..lin.52575fc0..b337a0ad.0_67::
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         539 	.size	.L726,0
+                         540 	.section ".ghrettbl",""
+00000004 00000000*       541 .L769:	.word	.L768
+                         542 	.type	.L769,@object
+                         543 	.size	.L769,4
+                         544 	.data
+                         545 	.text
+                         546 
+                         547 
+                         548 --150: void TAUD0_initPorts(void)
+                         549 	.align	2
+                         550 	.align	2
+                         551 	.align	2
+                         552 ..gh.f.a.2.e.2:
+                         553 	.type	..gh.f.a.2.e.2,@object
+                         554 	.size	..gh.f.a.2.e.2,0
+                         555 	.global	_TAUD0_initPorts
+                         556 _TAUD0_initPorts:
+                         557 --	    .bf
+                         558 .LDW41:
+                         559 --151: {
+                         560 --152:   // Enable TAUD0 channels 2 and 4 output on  P0_0 and P0_1
+                         561 --153:   protected_write(PORTPPCMD0,PORTPPROTS0,PORTPODC0,0x00);	// switch P0_0 from Open Drain to Push Pull
+                         562 .L774:
+00000266 200ea500        563 	movea	165,zero,r1
+0000026a 80070f089882    564 	st.w	r1,4290857984[zero]
+                         565 --line153
+                         566 ..lin.52575fc0..b337a0ad.0_61::
+                         567 .LDWlin61:
+00000270 80070f008a82    568 	st.w	zero,4290856192[zero]
+                         569 --line153
+                         570 ..lin.52575fc0..b337a0ad.0_62::
+                         571 .LDWlin62:
+00000276 1f0a            572 	mov	-1,r1
+00000278 80070f088a82    573 	st.w	r1,4290856192[zero]
+                         574 --line153
+                         575 ..lin.52575fc0..b337a0ad.0_63::
+                         576 .LDWlin63:
+0000027e 80070f008a82    577 	st.w	zero,4290856192[zero]
+                         578 --line153
+                         579 ..lin.52575fc0..b337a0ad.0_64::
+                         580 .LDWlin64:
+00000284 800709089682    581 	ld.w	4290857728[zero],r1
+0000028a 610a            582 	cmp	1,r1
+0000028c d2ed*           583 	be	.L774
+                         584 --154:   PORTPMSR0  = 0x30000;		// P0_0 and P0_1 as output
+                         585 --line154
+                         586 ..lin.52575fc0..b337a0ad.0_65::
+                         587 .LDWlin65:
+0000028e 400e0300        588 	movhi	hi(196608),zero,r1
+00000292 80070f081082    589 	st.w	r1,4290840576[zero]
+                         590 --155:   PORTPMCSR0 = 0x30003;		// P0_0 and P0_1 as alternative function
+                         591 --line155
+                         592 ..lin.52575fc0..b337a0ad.0_66::
+                         593 .LDWlin66:
+00000298 210603000300    594 	mov	196611,r1
+0000029e 80070f081282    595 	st.w	r1,4290840832[zero]
+                         596 --156:   // no further init required, as AF1 is selected by default register settings
+                         597 --157: }
+                         598 --	    .ef
+                         599 .LDW51:
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         600 .LDWlin67:
-                         601 	.jumptype return
-000002a4 7f00            602 	jmp	[lp]
-                         603 --line155
-                         604 ..lin.52575fc0..b337a0ad.0_68::
-                         605 	.type	_TAUD0_initPorts,@function
-                         606 	.size	_TAUD0_initPorts,.-_TAUD0_initPorts
-                         607 	.align	2
-                         608 
-                         609 	.section ".bss","awb"
-                         610 .L830:
-                         611 	.type	.L830,@object
-                         612 	.size	.L830,0
-                         613 	.section ".ghrettbl",""
-00000008 00000000*       614 .L867:	.word	.L866
-                         615 	.type	.L867,@object
-                         616 	.size	.L867,4
-                         617 	.data
-                         618 	.text
-                         619 
-                         620 
-                         621 --157: void TAUD0_init(void) 
-                         622 	.align	2
-                         623 	.align	2
-                         624 	.align	2
-                         625 ..gh.f.a.2.e.3:
-                         626 	.type	..gh.f.a.2.e.3,@object
-                         627 	.size	..gh.f.a.2.e.3,0
-                         628 	.global	_TAUD0_init
-                         629 _TAUD0_init:
-                         630 --	    .bf
-                         631 .LDW61:
-                         632 --158: {
-                         633 --159:     /* TAUA0 settings for Interval Timer Function, running on 80MHz*/
-                         634 --160:    TAUD0TPS = 0x0000;	// Prescaler = PCLK / 2^0 for CKn  (80MHz/(2^0) = 80MHz)
-000002a6 a0070d0404c4    635 	st.h	zero,4293001792[zero]
-                         636 --161:    
-                         637 --162:    TAUD0TOM = 0x0000;	// Independent channel operation mode for output
-                         638 --line162
-                         639 ..lin.52575fc0..ab1f58d5.0_69::
-                         640 .LDWlin69:
-000002ac a0078d0404c4    641 	st.h	zero,4293001800[zero]
-                         642 --163:    TAUD0TOC = 0x0000;	// Channel output operation mode 1
-                         643 --line163
-                         644 ..lin.52575fc0..ab1f58d5.0_70::
-                         645 .LDWlin70:
-000002b2 a007cd0404c4    646 	st.h	zero,4293001804[zero]
-                         647 --164:    TAUD0TOL = 0x0000;	// Positive logic output
-                         648 --line164
-                         649 ..lin.52575fc0..ab1f58d5.0_71::
-                         650 .LDWlin71:
-000002b8 a0070d0400c4    651 	st.h	zero,4293001280[zero]
-                         652 --165:       TAUD0TO  = 0x0014;	// Outputs low level on TOUTn pins (init)
-                         653 --line165
-                         654 ..lin.52575fc0..ab1f58d5.0_72::
-                         655 .LDWlin72:
-000002be 200e1400        656 	movea	20,zero,r1
-000002c2 a0078d0d00c4    657 	st.h	r1,4293001304[zero]
-                         658 --166:    TAUD0TOE = 0x0014;	// Channel output operation on ch. 2 and ch. 4 
-                         659 --line166
-                         660 ..lin.52575fc0..ab1f58d5.0_73::
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         600 .L866:
+                         601 --line157
+                         602 ..lin.52575fc0..b337a0ad.0_67::
+                         603 .LDWlin67:
+                         604 	.jumptype return
+000002a4 7f00            605 	jmp	[lp]
+                         606 --line157
+                         607 ..lin.52575fc0..b337a0ad.0_68::
+                         608 	.type	_TAUD0_initPorts,@function
+                         609 	.size	_TAUD0_initPorts,.-_TAUD0_initPorts
+                         610 	.align	2
+                         611 
+                         612 	.section ".bss","awb"
+                         613 .L830:
+                         614 	.type	.L830,@object
+                         615 	.size	.L830,0
+                         616 	.section ".ghrettbl",""
+00000008 00000000*       617 .L867:	.word	.L866
+                         618 	.type	.L867,@object
+                         619 	.size	.L867,4
+                         620 	.data
+                         621 	.text
+                         622 
+                         623 
+                         624 --159: void TAUD0_init(void) 
+                         625 	.align	2
+                         626 	.align	2
+                         627 	.align	2
+                         628 ..gh.f.a.2.e.3:
+                         629 	.type	..gh.f.a.2.e.3,@object
+                         630 	.size	..gh.f.a.2.e.3,0
+                         631 	.global	_TAUD0_init
+                         632 _TAUD0_init:
+                         633 --	    .bf
+                         634 .LDW61:
+                         635 --160: {
+                         636 --161:     /* TAUA0 settings for Interval Timer Function, running on 80MHz*/
+                         637 --162:    TAUD0TPS = 0x0000;	// Prescaler = PCLK / 2^0 for CKn  (80MHz/(2^0) = 80MHz)
+000002a6 a0070d0404c4    638 	st.h	zero,4293001792[zero]
+                         639 --163:    
+                         640 --164:    TAUD0TOM = 0x0000;	// Independent channel operation mode for output
+                         641 --line164
+                         642 ..lin.52575fc0..ab1f58d5.0_69::
+                         643 .LDWlin69:
+000002ac a0078d0404c4    644 	st.h	zero,4293001800[zero]
+                         645 --165:    TAUD0TOC = 0x0000;	// Channel output operation mode 1
+                         646 --line165
+                         647 ..lin.52575fc0..ab1f58d5.0_70::
+                         648 .LDWlin70:
+000002b2 a007cd0404c4    649 	st.h	zero,4293001804[zero]
+                         650 --166:    TAUD0TOL = 0x0000;	// Positive logic output
+                         651 --line166
+                         652 ..lin.52575fc0..ab1f58d5.0_71::
+                         653 .LDWlin71:
+000002b8 a0070d0400c4    654 	st.h	zero,4293001280[zero]
+                         655 --167:       TAUD0TO  = 0x0014;	// Outputs low level on TOUTn pins (init)
+                         656 --line167
+                         657 ..lin.52575fc0..ab1f58d5.0_72::
+                         658 .LDWlin72:
+000002be 200e1400        659 	movea	20,zero,r1
+000002c2 a0078d0d00c4    660 	st.h	r1,4293001304[zero]
 
                                                                       Page 12
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         661 .LDWlin73:
-000002c8 200e1400        662 	movea	20,zero,r1
-000002cc a007cd0d00c4    663 	st.h	r1,4293001308[zero]
-                         664 --168:  
-                         665 --169:    TAUD0RDE = 0x0000;	// Disables simultaneous rewrite of the data register
-                         666 --line169
-                         667 ..lin.52575fc0..ab1f58d5.0_74::
-                         668 .LDWlin74:
-000002d2 a0070d0604c4    669 	st.h	zero,4293001824[zero]
-                         670 --170:    TAUD0RDM = 0x0000;	// TAUA0RDM selects the signal that controls simultaneous rewrite
-                         671 --line170
-                         672 ..lin.52575fc0..ab1f58d5.0_75::
-                         673 .LDWlin75:
-000002d8 a0074d0604c4    674 	st.h	zero,4293001828[zero]
-                         675 --171:    
-                         676 --172:    /* Channel 2 Config interval timer as I²S Word Select clock*/
-                         677 --173:    /* Mode selection for Interval timer */
-                         678 --174:    TAUD0CMOR2 = 0x0000;	
-                         679 --line174
-                         680 ..lin.52575fc0..ab1f58d5.0_76::
-                         681 .LDWlin76:
-000002de a0078d0004c4    682 	st.h	zero,4293001736[zero]
-                         683 --175:    TAUD0CMUR2 = 0x0000; // (not used)
-                         684 --line175
-                         685 ..lin.52575fc0..ab1f58d5.0_77::
-                         686 .LDWlin77:
-000002e4 80078d0401c4    687 	st.b	zero,4293001416[zero]
-                         688 --176:    TAUD0CDR2  = 832-1-52; // 80MHz/832= 96,154kHz (Fixed I²S sampling rate = 48kHz)
-                         689 --line176
-                         690 ..lin.52575fc0..ab1f58d5.0_78::
-                         691 .LDWlin78:
-000002ea 200e0b03        692 	movea	779,zero,r1
-000002ee a0078d0800c4    693 	st.h	r1,4293001224[zero]
-                         694 --178:    /* enable interrupt for TAUD0 channel 1*/
-                         695 --179:    //ICTAUD0I2 = 0x0047; 		// enable reference table jump
-                         696 --181:    /* Channel 4 Config: interval timer as clock source for I²S data stream */
-                         697 --182:    /* Mode selection for Interval timer */
-                         698 --183:    TAUD0CMOR4 = 0x0001;	
-                         699 --line183
-                         700 ..lin.52575fc0..ab1f58d5.0_79::
-                         701 .LDWlin79:
-000002f4 010a            702 	mov	1,r1
-000002f6 a0070d0904c4    703 	st.h	r1,4293001744[zero]
-                         704 --184:    TAUD0CMUR4 = 0x0000; // (not used)
-                         705 --line184
-                         706 ..lin.52575fc0..ab1f58d5.0_80::
-                         707 .LDWlin80:
-000002fc 80070d0501c4    708 	st.b	zero,4293001424[zero]
-                         709 --185:    //TAUD0CDR4  = 0x0019; // Needs to be 16x TAUD0 ch.2 (>= 48kHz*32bit = 1,536Mbps)
-                         710 --186:    TAUD0CDR4  = (26 - 1); // Needs to be 32x TAUD0 ch.2 (>= 48kHz*32bit = 1,536Mbps)
-                         711 --line186
-                         712 ..lin.52575fc0..ab1f58d5.0_81::
-                         713 .LDWlin81:
-00000302 200e1900        714 	movea	25,zero,r1
-00000306 a0070d0900c4    715 	st.h	r1,4293001232[zero]
-                         716 --187:    /* enable interrupt for TAUD0 channel 4*/
-                         717 --188:    //ICTAUD0I4 = 0x0047; 		// enable reference table jump
-                         718 --189: }
-                         719 --	    .ef
-                         720 .LDW71:
-                         721 .L1004:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         661 --168:    TAUD0TOE = 0x0014;	// Channel output operation on ch. 2 and ch. 4 
+                         662 --line168
+                         663 ..lin.52575fc0..ab1f58d5.0_73::
+                         664 .LDWlin73:
+000002c8 200e1400        665 	movea	20,zero,r1
+000002cc a007cd0d00c4    666 	st.h	r1,4293001308[zero]
+                         667 --170:  
+                         668 --171:    TAUD0RDE = 0x0000;	// Disables simultaneous rewrite of the data register
+                         669 --line171
+                         670 ..lin.52575fc0..ab1f58d5.0_74::
+                         671 .LDWlin74:
+000002d2 a0070d0604c4    672 	st.h	zero,4293001824[zero]
+                         673 --172:    TAUD0RDM = 0x0000;	// TAUA0RDM selects the signal that controls simultaneous rewrite
+                         674 --line172
+                         675 ..lin.52575fc0..ab1f58d5.0_75::
+                         676 .LDWlin75:
+000002d8 a0074d0604c4    677 	st.h	zero,4293001828[zero]
+                         678 --173:    
+                         679 --174:    /* Channel 2 Config interval timer as Iï¿½S Word Select clock*/
+                         680 --175:    /* Mode selection for Interval timer */
+                         681 --176:    TAUD0CMOR2 = 0x0000;	
+                         682 --line176
+                         683 ..lin.52575fc0..ab1f58d5.0_76::
+                         684 .LDWlin76:
+000002de a0078d0004c4    685 	st.h	zero,4293001736[zero]
+                         686 --177:    TAUD0CMUR2 = 0x0000; // (not used)
+                         687 --line177
+                         688 ..lin.52575fc0..ab1f58d5.0_77::
+                         689 .LDWlin77:
+000002e4 80078d0401c4    690 	st.b	zero,4293001416[zero]
+                         691 --178:    TAUD0CDR2  = 832-1-52; // 80MHz/832= 96,154kHz (Fixed Iï¿½S sampling rate = 48kHz)
+                         692 --line178
+                         693 ..lin.52575fc0..ab1f58d5.0_78::
+                         694 .LDWlin78:
+000002ea 200e0b03        695 	movea	779,zero,r1
+000002ee a0078d0800c4    696 	st.h	r1,4293001224[zero]
+                         697 --180:    /* enable interrupt for TAUD0 channel 1*/
+                         698 --181:    //ICTAUD0I2 = 0x0047; 		// enable reference table jump
+                         699 --183:    /* Channel 4 Config: interval timer as clock source for Iï¿½S data stream */
+                         700 --184:    /* Mode selection for Interval timer */
+                         701 --185:    TAUD0CMOR4 = 0x0001;	
+                         702 --line185
+                         703 ..lin.52575fc0..ab1f58d5.0_79::
+                         704 .LDWlin79:
+000002f4 010a            705 	mov	1,r1
+000002f6 a0070d0904c4    706 	st.h	r1,4293001744[zero]
+                         707 --186:    TAUD0CMUR4 = 0x0000; // (not used)
+                         708 --line186
+                         709 ..lin.52575fc0..ab1f58d5.0_80::
+                         710 .LDWlin80:
+000002fc 80070d0501c4    711 	st.b	zero,4293001424[zero]
+                         712 --187:    //TAUD0CDR4  = 0x0019; // Needs to be 16x TAUD0 ch.2 (>= 48kHz*32bit = 1,536Mbps)
+                         713 --188:    TAUD0CDR4  = (26 - 1); // Needs to be 32x TAUD0 ch.2 (>= 48kHz*32bit = 1,536Mbps)
+                         714 --line188
+                         715 ..lin.52575fc0..ab1f58d5.0_81::
+                         716 .LDWlin81:
+00000302 200e1900        717 	movea	25,zero,r1
+00000306 a0070d0900c4    718 	st.h	r1,4293001232[zero]
+                         719 --189:    /* enable interrupt for TAUD0 channel 4*/
+                         720 --190:    //ICTAUD0I4 = 0x0047; 		// enable reference table jump
+                         721 --191: }
 
                                                                       Page 13
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         722 --line189
-                         723 ..lin.52575fc0..ab1f58d5.0_82::
-                         724 .LDWlin82:
-                         725 	.jumptype return
-0000030c 7f00            726 	jmp	[lp]
-                         727 --line189
-                         728 ..lin.52575fc0..ab1f58d5.0_83::
-                         729 	.type	_TAUD0_init,@function
-                         730 	.size	_TAUD0_init,.-_TAUD0_init
-                         731 	.align	2
-                         732 
-                         733 	.section ".bss","awb"
-                         734 .L950:
-                         735 	.type	.L950,@object
-                         736 	.size	.L950,0
-                         737 	.section ".ghrettbl",""
-0000000c 00000000*       738 .L1005:	.word	.L1004
-                         739 	.type	.L1005,@object
-                         740 	.size	.L1005,4
-                         741 	.data
-                         742 	.text
-                         743 
-                         744 
-                         745 --192:   
-                         746 --193: void csih0_init(void)
-                         747 	.align	2
-                         748 	.align	2
-                         749 	.align	2
-                         750 ..gh.f.a.2.e.4:
-                         751 	.type	..gh.f.a.2.e.4,@object
-                         752 	.size	..gh.f.a.2.e.4,0
-                         753 	.global	_csih0_init
-                         754 _csih0_init:
-                         755 --	    .bf
-                         756 .LDW81:
-                         757 --194: {
-                         758 --195:   
-                         759 --196:   // CSIH2 config (transmit only and receive mode, fifo)
-                         760 --197:   CSIH0CTL0 =   0x01;            // disable CSI
-0000030e 010a            761 	mov	1,r1
-00000310 80070d0800b0    762 	st.b	r1,4292345856[zero]
-                         763 --198:   
-                         764 --199:   CSIH0CTL1  =  0x00010080;      //Bit24:0   internal synchronization timing for receive data input is rising edge of PCLK
-                         765 --line199
-                         766 ..lin.52575fc0..f06118ae.0_84::
-                         767 .LDWlin84:
-00000316 210680000100    768 	mov	65664,r1
-0000031c 80070f0900b0    769 	st.w	r1,4292345872[zero]
-                         770 --200:                                  //Bit17:0   The default level of CSIHTSCK is high
-                         771 --201:                                  //Bit16:1   As soon as the contents of the CSIHnTX0W/H register are transferred to the shift register, an interrupt is generated
-                         772 --202:                                  //Bit8-15:0 Chip select is active low.
-                         773 --203:                                  //Bit7:1    Enables extended data length mode
-                         774 --204:                                  //Bit6:0    disables job mode.
-                         775 --205:                                  //Bit5:0    Disables data consistency check.
-                         776 --206:                                  //Bit4:0    Chip select signal returns to the inactive level after last data transfer//////
-                         777 --207:                                  //Bit3:0    Deactivates loop-back mode (LBM)
-                         778 --208:                                  //Bit2:0    No interrupt delay mode
-                         779 --209:                                  //Bit1:0    Disables the handshake function.
-                         780 --210:                                  //Bit0:0    disables the slave select function.
-                         781 --212:   CSIH0CTL2 = 0xe000;            // Clock selection: Slave mode
-                         782 --line212
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         722 --	    .ef
+                         723 .LDW71:
+                         724 .L1004:
+                         725 --line191
+                         726 ..lin.52575fc0..ab1f58d5.0_82::
+                         727 .LDWlin82:
+                         728 	.jumptype return
+0000030c 7f00            729 	jmp	[lp]
+                         730 --line191
+                         731 ..lin.52575fc0..ab1f58d5.0_83::
+                         732 	.type	_TAUD0_init,@function
+                         733 	.size	_TAUD0_init,.-_TAUD0_init
+                         734 	.align	2
+                         735 
+                         736 	.section ".bss","awb"
+                         737 .L950:
+                         738 	.type	.L950,@object
+                         739 	.size	.L950,0
+                         740 	.section ".ghrettbl",""
+0000000c 00000000*       741 .L1005:	.word	.L1004
+                         742 	.type	.L1005,@object
+                         743 	.size	.L1005,4
+                         744 	.data
+                         745 	.text
+                         746 
+                         747 
+                         748 --194:   
+                         749 --195: void csih0_init(void)
+                         750 	.align	2
+                         751 	.align	2
+                         752 	.align	2
+                         753 ..gh.f.a.2.e.4:
+                         754 	.type	..gh.f.a.2.e.4,@object
+                         755 	.size	..gh.f.a.2.e.4,0
+                         756 	.global	_csih0_init
+                         757 _csih0_init:
+                         758 --	    .bf
+                         759 .LDW81:
+                         760 --196: {
+                         761 --197:   
+                         762 --198:   // CSIH2 config (transmit only and receive mode, fifo)
+                         763 --199:   CSIH0CTL0 =   0x01;            // disable CSI
+0000030e 010a            764 	mov	1,r1
+00000310 80070d0800b0    765 	st.b	r1,4292345856[zero]
+                         766 --200:   
+                         767 --201:   CSIH0CTL1  =  0x00010080;      //Bit24:0   internal synchronization timing for receive data input is rising edge of PCLK
+                         768 --line201
+                         769 ..lin.52575fc0..f06118ae.0_84::
+                         770 .LDWlin84:
+00000316 210680000100    771 	mov	65664,r1
+0000031c 80070f0900b0    772 	st.w	r1,4292345872[zero]
+                         773 --202:                                  //Bit17:0   The default level of CSIHTSCK is high
+                         774 --203:                                  //Bit16:1   As soon as the contents of the CSIHnTX0W/H register are transferred to the shift register, an interrupt is generated
+                         775 --204:                                  //Bit8-15:0 Chip select is active low.
+                         776 --205:                                  //Bit7:1    Enables extended data length mode
+                         777 --206:                                  //Bit6:0    disables job mode.
+                         778 --207:                                  //Bit5:0    Disables data consistency check.
+                         779 --208:                                  //Bit4:0    Chip select signal returns to the inactive level after last data transfer//////
+                         780 --209:                                  //Bit3:0    Deactivates loop-back mode (LBM)
+                         781 --210:                                  //Bit2:0    No interrupt delay mode
+                         782 --211:                                  //Bit1:0    Disables the handshake function.
 
                                                                       Page 14
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         783 ..lin.52575fc0..f06118ae.0_85::
-                         784 .LDWlin85:
-00000322 800e00e0        785 	ori	57344,zero,r1
-00000326 a0074d0900b0    786 	st.h	r1,4292345876[zero]
-                         787 --213:   
-                         788 --214:   CSIH0STCR0 = 0xFFFF;           // clear all status flags
-                         789 --line214
-                         790 ..lin.52575fc0..f06118ae.0_86::
-                         791 .LDWlin86:
-0000032c 800effff        792 	ori	65535,zero,r1
-00000330 a0078d0800b0    793 	st.h	r1,4292345864[zero]
-                         794 --216:   CSIH0MCTL0 = 0x0000;           // Bit8-9:0 Fifo mode
-                         795 --line216
-                         796 ..lin.52575fc0..f06118ae.0_87::
-                         797 .LDWlin87:
-00000336 a0070d0420b0    798 	st.h	zero,4292350016[zero]
-                         799 --217:                                  // Bit0-4:0 no time-out detection
-                         800 --218:                                   
-                         801 --219:                                   
-                         802 --220:   CSIH0MCTL1 = 0x00000000;      //generate receive interrupt when 128 frames are received
-                         803 --line220
-                         804 ..lin.52575fc0..f06118ae.0_88::
-                         805 .LDWlin88:
-0000033c 80070f0020b0    806 	st.w	zero,4292349952[zero]
-                         807 --221:   
-                         808 --222:   
-                         809 --223:   CSIH0MRWP0 = 0x00000000;      // reset read and write pointers
-                         810 --line223
-                         811 ..lin.52575fc0..f06118ae.0_89::
-                         812 .LDWlin89:
-00000342 80078f0120b0    813 	st.w	zero,4292349976[zero]
-                         814 --224:  
-                         815 --225:   CSIH0BRS0 = 0x0000;           // 5 MHz
-                         816 --line225
-                         817 ..lin.52575fc0..f06118ae.0_90::
-                         818 .LDWlin90:
-00000348 a0078d0620b0    819 	st.h	zero,4292350056[zero]
-                         820 --226:   
-                         821 --228:  
-                         822 --229:   CSIH0CFG0 = 0x00000000|(1<<19);   // configure CS0: Baudrate BRS0, 16 Bit, MSB first,Recessive
-                         823 --line229
-                         824 ..lin.52575fc0..f06118ae.0_91::
-                         825 .LDWlin91:
-0000034e 400e0800        826 	movhi	hi(524288),zero,r1
-00000352 80074f0c20b0    827 	st.w	r1,4292350020[zero]
-                         828 --231:   INTC1ICCSIH0IC=0x0040;
-                         829 --line231
-                         830 ..lin.52575fc0..f06118ae.0_92::
-                         831 .LDWlin92:
-00000358 200e4000        832 	movea	64,zero,r1
-0000035c a007ad0bd4fd    833 	st.h	r1,4294896186[zero]
-                         834 --233:  
-                         835 --234: }
-                         836 --	    .ef
-                         837 .LDW91:
-                         838 .L1104:
-                         839 --line234
-                         840 ..lin.52575fc0..f06118ae.0_93::
-                         841 .LDWlin93:
-                         842 	.jumptype return
-00000362 7f00            843 	jmp	[lp]
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         783 --212:                                  //Bit0:0    disables the slave select function.
+                         784 --214:   CSIH0CTL2 = 0xe000;            // Clock selection: Slave mode
+                         785 --line214
+                         786 ..lin.52575fc0..f06118ae.0_85::
+                         787 .LDWlin85:
+00000322 800e00e0        788 	ori	57344,zero,r1
+00000326 a0074d0900b0    789 	st.h	r1,4292345876[zero]
+                         790 --215:   
+                         791 --216:   CSIH0STCR0 = 0xFFFF;           // clear all status flags
+                         792 --line216
+                         793 ..lin.52575fc0..f06118ae.0_86::
+                         794 .LDWlin86:
+0000032c 800effff        795 	ori	65535,zero,r1
+00000330 a0078d0800b0    796 	st.h	r1,4292345864[zero]
+                         797 --218:   CSIH0MCTL0 = 0x0000;           // Bit8-9:0 Fifo mode
+                         798 --line218
+                         799 ..lin.52575fc0..f06118ae.0_87::
+                         800 .LDWlin87:
+00000336 a0070d0420b0    801 	st.h	zero,4292350016[zero]
+                         802 --219:                                  // Bit0-4:0 no time-out detection
+                         803 --220:                                   
+                         804 --221:                                   
+                         805 --222:   CSIH0MCTL1 = 0x00000000;      //generate receive interrupt when 128 frames are received
+                         806 --line222
+                         807 ..lin.52575fc0..f06118ae.0_88::
+                         808 .LDWlin88:
+0000033c 80070f0020b0    809 	st.w	zero,4292349952[zero]
+                         810 --223:   
+                         811 --224:   
+                         812 --225:   CSIH0MRWP0 = 0x00000000;      // reset read and write pointers
+                         813 --line225
+                         814 ..lin.52575fc0..f06118ae.0_89::
+                         815 .LDWlin89:
+00000342 80078f0120b0    816 	st.w	zero,4292349976[zero]
+                         817 --226:  
+                         818 --227:   CSIH0BRS0 = 0x0000;           // 5 MHz
+                         819 --line227
+                         820 ..lin.52575fc0..f06118ae.0_90::
+                         821 .LDWlin90:
+00000348 a0078d0620b0    822 	st.h	zero,4292350056[zero]
+                         823 --228:   
+                         824 --230:  
+                         825 --231:   CSIH0CFG0 = 0x00000000|(1<<19);   // configure CS0: Baudrate BRS0, 16 Bit, MSB first,Recessive
+                         826 --line231
+                         827 ..lin.52575fc0..f06118ae.0_91::
+                         828 .LDWlin91:
+0000034e 400e0800        829 	movhi	hi(524288),zero,r1
+00000352 80074f0c20b0    830 	st.w	r1,4292350020[zero]
+                         831 --233:   INTC1ICCSIH0IC=0x0040;
+                         832 --line233
+                         833 ..lin.52575fc0..f06118ae.0_92::
+                         834 .LDWlin92:
+00000358 200e4000        835 	movea	64,zero,r1
+0000035c a007ad0bd4fd    836 	st.h	r1,4294896186[zero]
+                         837 --235:  
+                         838 --236: }
+                         839 --	    .ef
+                         840 .LDW91:
+                         841 .L1104:
+                         842 --line236
+                         843 ..lin.52575fc0..f06118ae.0_93::
 
                                                                       Page 15
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         844 --line234
-                         845 ..lin.52575fc0..f06118ae.0_94::
-                         846 	.type	_csih0_init,@function
-                         847 	.size	_csih0_init,.-_csih0_init
-                         848 	.align	2
-                         849 
-                         850 	.section ".bss","awb"
-                         851 .L1062:
-                         852 	.type	.L1062,@object
-                         853 	.size	.L1062,0
-                         854 	.section ".ghrettbl",""
-00000010 00000000*       855 .L1105:	.word	.L1104
-                         856 	.type	.L1105,@object
-                         857 	.size	.L1105,4
-                         858 	.data
-                         859 	.text
-                         860 
-                         861 
-                         862 --237: void csih0_start(void)
-                         863 	.align	2
-                         864 	.align	2
-                         865 	.align	2
-                         866 ..gh.f.a.2.e.5:
-                         867 	.type	..gh.f.a.2.e.5,@object
-                         868 	.size	..gh.f.a.2.e.5,0
-                         869 	.global	_csih0_start
-                         870 _csih0_start:
-                         871 --	    .bf
-                         872 .LDW02:
-                         873 --238: {
-                         874 --239:  CSIH0CTL0 |=  0xC0;            // enable CSIH, transmit mode   
-00000364 a007050800b0    875 	ld.bu	4292345856[zero],r1
-0000036a 810ec000        876 	ori	192,r1,r1
-0000036e 80070d0800b0    877 	st.b	r1,4292345856[zero]
-                         878 --240:  CSIH0TX0H = 0x0000;
-                         879 --line240
-                         880 ..lin.52575fc0..fd3c4be8.0_95::
-                         881 .LDWlin95:
-00000374 a007cd0020b0    882 	st.h	zero,4292349964[zero]
-                         883 --241:  
-                         884 --242: }
-                         885 --	    .ef
-                         886 .LDW12:
-                         887 .L1160:
-                         888 --line242
-                         889 ..lin.52575fc0..fd3c4be8.0_96::
-                         890 .LDWlin96:
-                         891 	.jumptype return
-0000037a 7f00            892 	jmp	[lp]
-                         893 --line242
-                         894 ..lin.52575fc0..fd3c4be8.0_97::
-                         895 	.type	_csih0_start,@function
-                         896 	.size	_csih0_start,.-_csih0_start
-                         897 	.align	2
-                         898 
-                         899 	.section ".bss","awb"
-                         900 .L1142:
-                         901 	.type	.L1142,@object
-                         902 	.size	.L1142,0
-                         903 	.section ".ghrettbl",""
-00000014 00000000*       904 .L1161:	.word	.L1160
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         844 .LDWlin93:
+                         845 	.jumptype return
+00000362 7f00            846 	jmp	[lp]
+                         847 --line236
+                         848 ..lin.52575fc0..f06118ae.0_94::
+                         849 	.type	_csih0_init,@function
+                         850 	.size	_csih0_init,.-_csih0_init
+                         851 	.align	2
+                         852 
+                         853 	.section ".bss","awb"
+                         854 .L1062:
+                         855 	.type	.L1062,@object
+                         856 	.size	.L1062,0
+                         857 	.section ".ghrettbl",""
+00000010 00000000*       858 .L1105:	.word	.L1104
+                         859 	.type	.L1105,@object
+                         860 	.size	.L1105,4
+                         861 	.data
+                         862 	.text
+                         863 
+                         864 
+                         865 --239: void csih0_start(void)
+                         866 	.align	2
+                         867 	.align	2
+                         868 	.align	2
+                         869 ..gh.f.a.2.e.5:
+                         870 	.type	..gh.f.a.2.e.5,@object
+                         871 	.size	..gh.f.a.2.e.5,0
+                         872 	.global	_csih0_start
+                         873 _csih0_start:
+                         874 --	    .bf
+                         875 .LDW02:
+                         876 --240: {
+                         877 --241:  CSIH0CTL0 |=  0xC0;            // enable CSIH, transmit mode   
+00000364 a007050800b0    878 	ld.bu	4292345856[zero],r1
+0000036a 810ec000        879 	ori	192,r1,r1
+0000036e 80070d0800b0    880 	st.b	r1,4292345856[zero]
+                         881 --242:  CSIH0TX0H = 0x0000;
+                         882 --line242
+                         883 ..lin.52575fc0..fd3c4be8.0_95::
+                         884 .LDWlin95:
+00000374 a007cd0020b0    885 	st.h	zero,4292349964[zero]
+                         886 --243:  
+                         887 --244: }
+                         888 --	    .ef
+                         889 .LDW12:
+                         890 .L1160:
+                         891 --line244
+                         892 ..lin.52575fc0..fd3c4be8.0_96::
+                         893 .LDWlin96:
+                         894 	.jumptype return
+0000037a 7f00            895 	jmp	[lp]
+                         896 --line244
+                         897 ..lin.52575fc0..fd3c4be8.0_97::
+                         898 	.type	_csih0_start,@function
+                         899 	.size	_csih0_start,.-_csih0_start
+                         900 	.align	2
+                         901 
+                         902 	.section ".bss","awb"
+                         903 .L1142:
+                         904 	.type	.L1142,@object
 
                                                                       Page 16
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                         905 	.type	.L1161,@object
-                         906 	.size	.L1161,4
-                         907 	.data
-                         908 	.text
-                         909 
-                         910 
-                         911 --244: void csih0_stop(void)
-                         912 	.align	2
-                         913 	.align	2
-                         914 	.align	2
-                         915 ..gh.f.a.2.e.6:
-                         916 	.type	..gh.f.a.2.e.6,@object
-                         917 	.size	..gh.f.a.2.e.6,0
-                         918 	.global	_csih0_stop
-                         919 _csih0_stop:
-                         920 --	    .bf
-                         921 .LDW22:
-                         922 --245: {
-                         923 --246:  CSIH0CTL0 = 0x00;          	//disable CSIH0
-0000037c 80070d0000b0    924 	st.b	zero,4292345856[zero]
-                         925 --247: }
-                         926 --	    .ef
-                         927 .LDW32:
-                         928 .L1201:
-                         929 --line247
-                         930 ..lin.52575fc0..f066aec0.0_98::
-                         931 .LDWlin98:
-                         932 	.jumptype return
-00000382 7f00            933 	jmp	[lp]
-                         934 --line247
-                         935 ..lin.52575fc0..f066aec0.0_99::
-                         936 	.type	_csih0_stop,@function
-                         937 	.size	_csih0_stop,.-_csih0_stop
-                         938 	.align	2
-                         939 
-                         940 	.section ".bss","awb"
-                         941 .L1186:
-                         942 	.type	.L1186,@object
-                         943 	.size	.L1186,0
-                         944 	.section ".ghrettbl",""
-00000018 00000000*       945 .L1202:	.word	.L1201
-                         946 	.type	.L1202,@object
-                         947 	.size	.L1202,4
-                         948 	.data
-                         949 	.text
-                         950 
-                         951 
-                         952 --249: void TAUD0_start(void) 
-                         953 	.align	2
-                         954 	.align	2
-                         955 	.align	2
-                         956 ..gh.f.a.2.e.7:
-                         957 	.type	..gh.f.a.2.e.7,@object
-                         958 	.size	..gh.f.a.2.e.7,0
-                         959 	.global	_TAUD0_start
-                         960 _TAUD0_start:
-                         961 --	    .bf
-                         962 .LDW42:
-                         963 --250: {
-                         964 --251:    /* Start Channels 4 and 2 */
-                         965 --252:    INTC1RFTAUD0I4=0;
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         905 	.size	.L1142,0
+                         906 	.section ".ghrettbl",""
+00000014 00000000*       907 .L1161:	.word	.L1160
+                         908 	.type	.L1161,@object
+                         909 	.size	.L1161,4
+                         910 	.data
+                         911 	.text
+                         912 
+                         913 
+                         914 --246: void csih0_stop(void)
+                         915 	.align	2
+                         916 	.align	2
+                         917 	.align	2
+                         918 ..gh.f.a.2.e.6:
+                         919 	.type	..gh.f.a.2.e.6,@object
+                         920 	.size	..gh.f.a.2.e.6,0
+                         921 	.global	_csih0_stop
+                         922 _csih0_stop:
+                         923 --	    .bf
+                         924 .LDW22:
+                         925 --247: {
+                         926 --248:  CSIH0CTL0 = 0x00;          	//disable CSIH0
+0000037c 80070d0000b0    927 	st.b	zero,4292345856[zero]
+                         928 --249: }
+                         929 --	    .ef
+                         930 .LDW32:
+                         931 .L1201:
+                         932 --line249
+                         933 ..lin.52575fc0..f066aec0.0_98::
+                         934 .LDWlin98:
+                         935 	.jumptype return
+00000382 7f00            936 	jmp	[lp]
+                         937 --line249
+                         938 ..lin.52575fc0..f066aec0.0_99::
+                         939 	.type	_csih0_stop,@function
+                         940 	.size	_csih0_stop,.-_csih0_stop
+                         941 	.align	2
+                         942 
+                         943 	.section ".bss","awb"
+                         944 .L1186:
+                         945 	.type	.L1186,@object
+                         946 	.size	.L1186,0
+                         947 	.section ".ghrettbl",""
+00000018 00000000*       948 .L1202:	.word	.L1201
+                         949 	.type	.L1202,@object
+                         950 	.size	.L1202,4
+                         951 	.data
+                         952 	.text
+                         953 
+                         954 
+                         955 --251: void TAUD0_start(void) 
+                         956 	.align	2
+                         957 	.align	2
+                         958 	.align	2
+                         959 ..gh.f.a.2.e.7:
+                         960 	.type	..gh.f.a.2.e.7,@object
+                         961 	.size	..gh.f.a.2.e.7,0
+                         962 	.global	_TAUD0_start
+                         963 _TAUD0_start:
+                         964 --	    .bf
+                         965 .LDW42:
 
                                                                       Page 17
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-00000384 2b0615eafeff    966 	mov	-71147,r11
-0000038a cba70000        967 	clr1	4,0[r11]
-                         968 --253:    TAUD0TS = (1<<4)|(1<<2); // start channel 4 channel 2
-                         969 --line253
-                         970 ..lin.52575fc0..fc290ef.0_100::
-                         971 .LDWlin100:
-0000038e 200e1400        972 	movea	20,zero,r1
-00000392 a0074d0c03c4    973 	st.h	r1,4293001668[zero]
-                         974 --254:    
-                         975 --255:    while(0==INTC1RFTAUD0I4);
-                         976 .L1205:
-                         977 --line255
-                         978 ..lin.52575fc0..fc290ef.0_101::
-                         979 .LDWlin101:
-00000398 405effff        980 	movhi	65535,zero,r11
-0000039c cbe715ea        981 	tst1	4,-5611[r11]
-000003a0 c2fd*           982 	be	.L1205
-                         983 --256:     TAUD0CDR2  = 832-1; // Needs to be 32x TAUD0 ch.2 (>= 48kHz*32bit = 1,536Mbps)
-                         984 --line256
-                         985 ..lin.52575fc0..fc290ef.0_102::
-                         986 .LDWlin102:
-000003a2 200e3f03        987 	movea	831,zero,r1
-000003a6 a0078d0800c4    988 	st.h	r1,4293001224[zero]
-                         989 --259: }
-                         990 --	    .ef
-                         991 .LDW52:
-                         992 .L1277:
-                         993 --line259
-                         994 ..lin.52575fc0..fc290ef.0_103::
-                         995 .LDWlin103:
-                         996 	.jumptype return
-000003ac 7f00            997 	jmp	[lp]
-                         998 --line259
-                         999 ..lin.52575fc0..fc290ef.0_104::
-                        1000 	.type	_TAUD0_start,@function
-                        1001 	.size	_TAUD0_start,.-_TAUD0_start
-                        1002 	.align	2
-                        1003 
-                        1004 	.section ".bss","awb"
-                        1005 .L1250:
-                        1006 	.type	.L1250,@object
-                        1007 	.size	.L1250,0
-                        1008 	.section ".ghrettbl",""
-0000001c 00000000*      1009 .L1278:	.word	.L1277
-                        1010 	.type	.L1278,@object
-                        1011 	.size	.L1278,4
-                        1012 	.data
-                        1013 	.text
-                        1014 
-                        1015 
-                        1016 --260: void TAUD0_stop(void) 
-                        1017 	.align	2
-                        1018 	.align	2
-                        1019 	.align	2
-                        1020 ..gh.f.a.2.e.8:
-                        1021 	.type	..gh.f.a.2.e.8,@object
-                        1022 	.size	..gh.f.a.2.e.8,0
-                        1023 	.global	_TAUD0_stop
-                        1024 _TAUD0_stop:
-                        1025 --	    .bf
-                        1026 .LDW62:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                         966 --252: {
+                         967 --253:    /* Start Channels 4 and 2 */
+                         968 --254:    INTC1RFTAUD0I4=0;
+00000384 2b0615eafeff    969 	mov	-71147,r11
+0000038a cba70000        970 	clr1	4,0[r11]
+                         971 --255:    TAUD0TS = (1<<4)|(1<<2); // start channel 4 channel 2
+                         972 --line255
+                         973 ..lin.52575fc0..fc290ef.0_100::
+                         974 .LDWlin100:
+0000038e 200e1400        975 	movea	20,zero,r1
+00000392 a0074d0c03c4    976 	st.h	r1,4293001668[zero]
+                         977 --256:    
+                         978 --257:    while(0==INTC1RFTAUD0I4);
+                         979 .L1205:
+                         980 --line257
+                         981 ..lin.52575fc0..fc290ef.0_101::
+                         982 .LDWlin101:
+00000398 405effff        983 	movhi	65535,zero,r11
+0000039c cbe715ea        984 	tst1	4,-5611[r11]
+000003a0 c2fd*           985 	be	.L1205
+                         986 --258:     TAUD0CDR2  = 832-1; // Needs to be 32x TAUD0 ch.2 (>= 48kHz*32bit = 1,536Mbps)
+                         987 --line258
+                         988 ..lin.52575fc0..fc290ef.0_102::
+                         989 .LDWlin102:
+000003a2 200e3f03        990 	movea	831,zero,r1
+000003a6 a0078d0800c4    991 	st.h	r1,4293001224[zero]
+                         992 --261: }
+                         993 --	    .ef
+                         994 .LDW52:
+                         995 .L1277:
+                         996 --line261
+                         997 ..lin.52575fc0..fc290ef.0_103::
+                         998 .LDWlin103:
+                         999 	.jumptype return
+000003ac 7f00           1000 	jmp	[lp]
+                        1001 --line261
+                        1002 ..lin.52575fc0..fc290ef.0_104::
+                        1003 	.type	_TAUD0_start,@function
+                        1004 	.size	_TAUD0_start,.-_TAUD0_start
+                        1005 	.align	2
+                        1006 
+                        1007 	.section ".bss","awb"
+                        1008 .L1250:
+                        1009 	.type	.L1250,@object
+                        1010 	.size	.L1250,0
+                        1011 	.section ".ghrettbl",""
+0000001c 00000000*      1012 .L1278:	.word	.L1277
+                        1013 	.type	.L1278,@object
+                        1014 	.size	.L1278,4
+                        1015 	.data
+                        1016 	.text
+                        1017 
+                        1018 
+                        1019 --262: void TAUD0_stop(void) 
+                        1020 	.align	2
+                        1021 	.align	2
+                        1022 	.align	2
+                        1023 ..gh.f.a.2.e.8:
+                        1024 	.type	..gh.f.a.2.e.8,@object
+                        1025 	.size	..gh.f.a.2.e.8,0
+                        1026 	.global	_TAUD0_stop
 
                                                                       Page 18
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                        1027 --261: {
-                        1028 --262:    TAUD0TT = (1<<4)|(1<<2); // stop channel 4 channel 2
-000003ae 200e1400       1029 	movea	20,zero,r1
-000003b2 a0078d0c03c4   1030 	st.h	r1,4293001672[zero]
-                        1031 --263:  }
-                        1032 --	    .ef
-                        1033 .LDW72:
-                        1034 .L1313:
-                        1035 --line263
-                        1036 ..lin.52575fc0..ab24eee7.0_105::
-                        1037 .LDWlin105:
-                        1038 	.jumptype return
-000003b8 7f00           1039 	jmp	[lp]
-                        1040 --line263
-                        1041 ..lin.52575fc0..ab24eee7.0_106::
-                        1042 	.type	_TAUD0_stop,@function
-                        1043 	.size	_TAUD0_stop,.-_TAUD0_stop
-                        1044 	.align	2
-                        1045 
-                        1046 	.section ".bss","awb"
-                        1047 .L1298:
-                        1048 	.type	.L1298,@object
-                        1049 	.size	.L1298,0
-                        1050 	.section ".ghrettbl",""
-00000020 00000000*      1051 .L1314:	.word	.L1313
-                        1052 	.type	.L1314,@object
-                        1053 	.size	.L1314,4
-                        1054 	.data
-                        1055 	.text
-                        1056 
-                        1057 
-                        1058 --264: void DMA_init(void)
-                        1059 	.align	2
-                        1060 	.align	2
-                        1061 	.align	2
-                        1062 ..gh.f.a.2.e.9:
-                        1063 	.type	..gh.f.a.2.e.9,@object
-                        1064 	.size	..gh.f.a.2.e.9,0
-                        1065 	.global	_DMA_init
-                        1066 _DMA_init:
-                        1067 --	    .bf
-                        1068 .LDW82:
-                        1069 --265: {
-                        1070 --266:   /* Initialize DMA for sending bytes */                     
-                        1071 --267:    DMAC0DCEN0 = 0x00u;                             /*Disable DMA */
-000003ba 60072184       1072 	st.w	zero,lo(4294935584)[zero]
-                        1073 --268:    DMAC0DM00CM = 0x10;
-000003be 200e1000       1074 	movea	16,zero,r1
-000003c2 600f0181       1075 	st.w	r1,lo(4294934784)[zero]
-                        1076 --269:    DMAC0CMVC = 0x33;                                /* clear status */
-000003c6 200e3300       1077 	movea	51,zero,r1
-000003ca 600f3d80       1078 	st.w	r1,lo(4294934588)[zero]
-                        1079 --270:    
-                        1080 --271:    dma0_sample=0;
-000003ce 64070100*      1081 	st.w	zero,sdaoff(_dma0_sample)[gp]
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                        1027 _TAUD0_stop:
+                        1028 --	    .bf
+                        1029 .LDW62:
+                        1030 --263: {
+                        1031 --264:    TAUD0TT = (1<<4)|(1<<2); // stop channel 4 channel 2
+000003ae 200e1400       1032 	movea	20,zero,r1
+000003b2 a0078d0c03c4   1033 	st.h	r1,4293001672[zero]
+                        1034 --265:  }
+                        1035 --	    .ef
+                        1036 .LDW72:
+                        1037 .L1313:
+                        1038 --line265
+                        1039 ..lin.52575fc0..ab24eee7.0_105::
+                        1040 .LDWlin105:
+                        1041 	.jumptype return
+000003b8 7f00           1042 	jmp	[lp]
+                        1043 --line265
+                        1044 ..lin.52575fc0..ab24eee7.0_106::
+                        1045 	.type	_TAUD0_stop,@function
+                        1046 	.size	_TAUD0_stop,.-_TAUD0_stop
+                        1047 	.align	2
+                        1048 
+                        1049 	.section ".bss","awb"
+                        1050 .L1298:
+                        1051 	.type	.L1298,@object
+                        1052 	.size	.L1298,0
+                        1053 	.section ".ghrettbl",""
+00000020 00000000*      1054 .L1314:	.word	.L1313
+                        1055 	.type	.L1314,@object
+                        1056 	.size	.L1314,4
+                        1057 	.data
+                        1058 	.text
+                        1059 
+                        1060 
+                        1061 --266: void DMA_init(void)
+                        1062 	.align	2
+                        1063 	.align	2
+                        1064 	.align	2
+                        1065 ..gh.f.a.2.e.9:
+                        1066 	.type	..gh.f.a.2.e.9,@object
+                        1067 	.size	..gh.f.a.2.e.9,0
+                        1068 	.global	_DMA_init
+                        1069 _DMA_init:
+                        1070 --	    .bf
+                        1071 .LDW82:
+                        1072 --267: {
+                        1073 --268:   /* Initialize DMA for sending bytes */                     
+                        1074 --269:    DMAC0DCEN0 = 0x00u;                             /*Disable DMA */
+000003ba 60072184       1075 	st.w	zero,lo(4294935584)[zero]
+                        1076 --270:    DMAC0DM00CM = 0x10;
+000003be 200e1000       1077 	movea	16,zero,r1
+000003c2 600f0181       1078 	st.w	r1,lo(4294934784)[zero]
+                        1079 --271:    DMAC0CMVC = 0x33;                                /* clear status */
+000003c6 200e3300       1080 	movea	51,zero,r1
+000003ca 600f3d80       1081 	st.w	r1,lo(4294934588)[zero]
                         1082 --272:    
-                        1083 --273:                 /*Number of times the DMA transfers*/
-                        1084 --274:    DMAC0DSA0 = (uint32)ddf;    /*Source Address = ADC reg*/
-000003d2 250e0000*      1085 	movea	sdaoff2(_ddf),r5,r1
-000003d6 600f0184       1086 	st.w	r1,lo(4294935552)[zero]
-                        1087 --275:    DMAC0DDA0 = (uint32)&CSIH0TX0H;;                         /*Write Data to  RAM*/
+                        1083 --273:    dma0_sample=0;
+000003ce 64070100*      1084 	st.w	zero,sdaoff(_dma0_sample)[gp]
+                        1085 --274:    
+                        1086 --275:                 /*Number of times the DMA transfers*/
+                        1087 --276:    DMAC0DSA0 = (uint32)ddf;    /*Source Address = ADC reg*/
 
                                                                       Page 19
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-000003da 21060c10d8ff   1088 	mov	-2617332,r1
-000003e0 600f0584       1089 	st.w	r1,lo(4294935556)[zero]
-                        1090 --line275
-                        1091 ..lin.52575fc0..b39d2a49.0_107::
-                        1092 .LDWlin107:
-000003e4 0000           1093 	nop
-                        1094 --276:    DMAC0DTC0 = 0; 
-000003e6 60070984       1095 	st.w	zero,lo(4294935560)[zero]
-                        1096 --277:    
-                        1097 --278:    dma0_sample+=0x10000;
-000003ea 240f0100*      1098 	ld.w	sdaoff(_dma0_sample)[gp],r1
-000003ee 410e0100       1099 	movhi	1,r1,r1
-000003f2 640f0100*      1100 	st.w	r1,sdaoff(_dma0_sample)[gp]
-                        1101 --279:    dma0_samples_count=ddf_size/2;
-                        1102 --line279
-                        1103 ..lin.52575fc0..b39d2a49.0_108::
-                        1104 .LDWlin108:
-000003f6 250f0100*      1105 	ld.w	sdaoff2(_ddf_size)[r5],r1
-000003fa 0110           1106 	mov	r1,r2
-000003fc 9f12           1107 	shr	31,r2
-000003fe c209           1108 	add	r2,r1
-00000400 a10a           1109 	sar	1,r1
-00000402 640f0100*      1110 	st.w	r1,sdaoff(_dma0_samples_count)[gp]
-                        1111 --281: 	
-                        1112 --282: 	DMAC0DRSA0= (uint32)&ddf + 0x10000*2;
-00000406 250e0000*      1113 	movea	sdaoff2(_ddf),r5,r1
-0000040a 410e0200       1114 	movhi	2,r1,r1
-0000040e 600f1184       1115 	st.w	r1,lo(4294935568)[zero]
-                        1116 --283: 	DMAC0DRTC0 = 0;  
-                        1117 --line283
-                        1118 ..lin.52575fc0..b39d2a49.0_109::
-                        1119 .LDWlin109:
-00000412 60071984       1120 	st.w	zero,lo(4294935576)[zero]
-                        1121 --284: 	
-                        1122 --285: 	dma0_sample+=0x10000;
-00000416 240f0100*      1123 	ld.w	sdaoff(_dma0_sample)[gp],r1
-0000041a 410e0100       1124 	movhi	1,r1,r1
-0000041e 640f0100*      1125 	st.w	r1,sdaoff(_dma0_sample)[gp]
-                        1126 --286:    DMAC0DTCT0 = (1<<26)|(1<<14)|(1<<13)|(1<<9)|(1<<8)|(1<<2);            /* Hardware DMA transfer request
-                        1127 --line286
-                        1128 ..lin.52575fc0..b39d2a49.0_110::
-                        1129 .LDWlin110:
-00000422 210604630004   1130 	mov	67134212,r1
-00000428 600f0d84       1131 	st.w	r1,lo(4294935564)[zero]
-                        1132 --287:                                               Transfer completion interrupt enable,
-                        1133 --288:                                               Destination address fixed,#
-                        1134 --289:                                               Source address Increment
-                        1135 --290:                                               Continuous transfer enable 
-                        1136 --291:                                               16 bits                            
-                        1137 --292:                                               reload function 1*/
-                        1138 --293:                                               
-                        1139 --294:    DMAC0DTFR0 = (0x46<<1)|1;                          /*Trigger Enabled / Source = INTCSIH0IC transmit interrupt */
-                        1140 --line294
-                        1141 ..lin.52575fc0..b39d2a49.0_111::
-                        1142 .LDWlin111:
-0000042c 200e8d00       1143 	movea	141,zero,r1
-00000430 600f3184       1144 	st.w	r1,lo(4294935600)[zero]
-                        1145 --295:    DMAC0DCSTC0 = 0xb1;                         /* clear status */
-00000434 200eb100       1146 	movea	177,zero,r1
-00000438 600f2d84       1147 	st.w	r1,lo(4294935596)[zero]
-                        1148 --296:    DMAC0DTFRRQC0  = 1u;                              /*Clear DMA channel 0 request  */
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+000003d2 250e0000*      1088 	movea	sdaoff2(_ddf),r5,r1
+000003d6 600f0184       1089 	st.w	r1,lo(4294935552)[zero]
+                        1090 --277:    DMAC0DDA0 = (uint32)&CSIH0TX0H;;                         /*Write Data to  RAM*/
+000003da 21060c10d8ff   1091 	mov	-2617332,r1
+000003e0 600f0584       1092 	st.w	r1,lo(4294935556)[zero]
+                        1093 --line277
+                        1094 ..lin.52575fc0..b39d2a49.0_107::
+                        1095 .LDWlin107:
+000003e4 0000           1096 	nop
+                        1097 --278:    DMAC0DTC0 = 0; 
+000003e6 60070984       1098 	st.w	zero,lo(4294935560)[zero]
+                        1099 --279:    
+                        1100 --280:    dma0_sample+=0x10000;
+000003ea 240f0100*      1101 	ld.w	sdaoff(_dma0_sample)[gp],r1
+000003ee 410e0100       1102 	movhi	1,r1,r1
+000003f2 640f0100*      1103 	st.w	r1,sdaoff(_dma0_sample)[gp]
+                        1104 --281:    dma0_samples_count=ddf_size/2;
+                        1105 --line281
+                        1106 ..lin.52575fc0..b39d2a49.0_108::
+                        1107 .LDWlin108:
+000003f6 250f0100*      1108 	ld.w	sdaoff2(_ddf_size)[r5],r1
+000003fa 0110           1109 	mov	r1,r2
+000003fc 9f12           1110 	shr	31,r2
+000003fe c209           1111 	add	r2,r1
+00000400 a10a           1112 	sar	1,r1
+00000402 640f0100*      1113 	st.w	r1,sdaoff(_dma0_samples_count)[gp]
+                        1114 --283: 	
+                        1115 --284: 	DMAC0DRSA0= (uint32)&ddf + 0x10000*2;
+00000406 250e0000*      1116 	movea	sdaoff2(_ddf),r5,r1
+0000040a 410e0200       1117 	movhi	2,r1,r1
+0000040e 600f1184       1118 	st.w	r1,lo(4294935568)[zero]
+                        1119 --285: 	DMAC0DRTC0 = 0;  
+                        1120 --line285
+                        1121 ..lin.52575fc0..b39d2a49.0_109::
+                        1122 .LDWlin109:
+00000412 60071984       1123 	st.w	zero,lo(4294935576)[zero]
+                        1124 --286: 	
+                        1125 --287: 	dma0_sample+=0x10000;
+00000416 240f0100*      1126 	ld.w	sdaoff(_dma0_sample)[gp],r1
+0000041a 410e0100       1127 	movhi	1,r1,r1
+0000041e 640f0100*      1128 	st.w	r1,sdaoff(_dma0_sample)[gp]
+                        1129 --288:    DMAC0DTCT0 = (1<<26)|(1<<14)|(1<<13)|(1<<9)|(1<<8)|(1<<2);            /* Hardware DMA transfer request
+                        1130 --line288
+                        1131 ..lin.52575fc0..b39d2a49.0_110::
+                        1132 .LDWlin110:
+00000422 210604630004   1133 	mov	67134212,r1
+00000428 600f0d84       1134 	st.w	r1,lo(4294935564)[zero]
+                        1135 --289:                                               Transfer completion interrupt enable,
+                        1136 --290:                                               Destination address fixed,#
+                        1137 --291:                                               Source address Increment
+                        1138 --292:                                               Continuous transfer enable 
+                        1139 --293:                                               16 bits                            
+                        1140 --294:                                               reload function 1*/
+                        1141 --295:                                               
+                        1142 --296:    DMAC0DTFR0 = (0x46<<1)|1;                          /*Trigger Enabled / Source = INTCSIH0IC transmit interrupt */
+                        1143 --line296
+                        1144 ..lin.52575fc0..b39d2a49.0_111::
+                        1145 .LDWlin111:
+0000042c 200e8d00       1146 	movea	141,zero,r1
+00000430 600f3184       1147 	st.w	r1,lo(4294935600)[zero]
+                        1148 --297:    DMAC0DCSTC0 = 0xb1;                         /* clear status */
 
                                                                       Page 20
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-0000043c 010a           1149 	mov	1,r1
-0000043e 600f3984       1150 	st.w	r1,lo(4294935608)[zero]
-                        1151 --297:    DMAC0DCEN0 = 0x01u;                     
-00000442 010a           1152 	mov	1,r1
-00000444 600f2184       1153 	st.w	r1,lo(4294935584)[zero]
-                        1154 --299:   INTC2ICDMA0=0x0040;
-00000448 200e4000       1155 	movea	64,zero,r1
-0000044c 600f78b0       1156 	st.h	r1,lo(4294946936)[zero]
-                        1157 --300:   }
-                        1158 --	    .ef
-                        1159 .LDW92:
-                        1160 .L1487:
-                        1161 	.jumptype return
-00000450 7f00           1162 	jmp	[lp]
-                        1163 --line294
-                        1164 ..lin.52575fc0..b39d2a49.0_112::
-                        1165 	.type	_DMA_init,@function
-                        1166 	.size	_DMA_init,.-_DMA_init
-                        1167 	.align	2
-                        1168 
-                        1169 	.section ".bss","awb"
-                        1170 .L1418:
-                        1171 	.type	.L1418,@object
-                        1172 	.size	.L1418,0
-                        1173 	.section ".ghrettbl",""
-00000024 00000000*      1174 .L1488:	.word	.L1487
-                        1175 	.type	.L1488,@object
-                        1176 	.size	.L1488,4
-                        1177 	.data
-                        1178 	.text
-                        1179 
-                        1180 
-                        1181 --302: void Debug_initPorts()
-                        1182 	.align	2
-                        1183 	.align	2
-                        1184 	.align	2
-                        1185 ..gh.f.a.2.e.10:
-                        1186 	.type	..gh.f.a.2.e.10,@object
-                        1187 	.size	..gh.f.a.2.e.10,0
-                        1188 	.global	_Debug_initPorts
-                        1189 _Debug_initPorts:
-                        1190 --	    .bf
-                        1191 .LDW03:
-                        1192 --303: {
-                        1193 --304: 		PORTPM0 &= ~(1<<4);
-00000452 a00707080682   1194 	ld.hu	4290839296[zero],r1
-00000458 c10eefff       1195 	andi	65519,r1,r1
-0000045c a0070d080682   1196 	st.h	r1,4290839296[zero]
-                        1197 --305: 	}
-                        1198 --	    .ef
-                        1199 .LDW13:
-                        1200 .L1537:
-                        1201 --line305
-                        1202 ..lin.52575fc0..e11c2b56.0_113::
-                        1203 .LDWlin113:
-                        1204 	.jumptype return
-00000462 7f00           1205 	jmp	[lp]
-                        1206 --line305
-                        1207 ..lin.52575fc0..e11c2b56.0_114::
-                        1208 	.type	_Debug_initPorts,@function
-                        1209 	.size	_Debug_initPorts,.-_Debug_initPorts
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+00000434 200eb100       1149 	movea	177,zero,r1
+00000438 600f2d84       1150 	st.w	r1,lo(4294935596)[zero]
+                        1151 --298:    DMAC0DTFRRQC0  = 1u;                              /*Clear DMA channel 0 request  */
+0000043c 010a           1152 	mov	1,r1
+0000043e 600f3984       1153 	st.w	r1,lo(4294935608)[zero]
+                        1154 --299:    DMAC0DCEN0 = 0x01u;                     
+00000442 010a           1155 	mov	1,r1
+00000444 600f2184       1156 	st.w	r1,lo(4294935584)[zero]
+                        1157 --301:   INTC2ICDMA0=0x0040;
+00000448 200e4000       1158 	movea	64,zero,r1
+0000044c 600f78b0       1159 	st.h	r1,lo(4294946936)[zero]
+                        1160 --302:   }
+                        1161 --	    .ef
+                        1162 .LDW92:
+                        1163 .L1487:
+                        1164 	.jumptype return
+00000450 7f00           1165 	jmp	[lp]
+                        1166 --line296
+                        1167 ..lin.52575fc0..b39d2a49.0_112::
+                        1168 	.type	_DMA_init,@function
+                        1169 	.size	_DMA_init,.-_DMA_init
+                        1170 	.align	2
+                        1171 
+                        1172 	.section ".bss","awb"
+                        1173 .L1418:
+                        1174 	.type	.L1418,@object
+                        1175 	.size	.L1418,0
+                        1176 	.section ".ghrettbl",""
+00000024 00000000*      1177 .L1488:	.word	.L1487
+                        1178 	.type	.L1488,@object
+                        1179 	.size	.L1488,4
+                        1180 	.data
+                        1181 	.text
+                        1182 
+                        1183 
+                        1184 --304: void Debug_initPorts()
+                        1185 	.align	2
+                        1186 	.align	2
+                        1187 	.align	2
+                        1188 ..gh.f.a.2.e.10:
+                        1189 	.type	..gh.f.a.2.e.10,@object
+                        1190 	.size	..gh.f.a.2.e.10,0
+                        1191 	.global	_Debug_initPorts
+                        1192 _Debug_initPorts:
+                        1193 --	    .bf
+                        1194 .LDW03:
+                        1195 --305: {
+                        1196 --306: 		PORTPM0 &= ~(1<<4);
+00000452 a00707080682   1197 	ld.hu	4290839296[zero],r1
+00000458 c10eefff       1198 	andi	65519,r1,r1
+0000045c a0070d080682   1199 	st.h	r1,4290839296[zero]
+                        1200 --307: 	}
+                        1201 --	    .ef
+                        1202 .LDW13:
+                        1203 .L1537:
+                        1204 --line307
+                        1205 ..lin.52575fc0..e11c2b56.0_113::
+                        1206 .LDWlin113:
+                        1207 	.jumptype return
+00000462 7f00           1208 	jmp	[lp]
+                        1209 --line307
 
                                                                       Page 21
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                        1210 	.align	2
-                        1211 
-                        1212 	.section ".bss","awb"
-                        1213 .L1522:
-                        1214 	.type	.L1522,@object
-                        1215 	.size	.L1522,0
-                        1216 	.section ".ghrettbl",""
-00000028 00000000*      1217 .L1538:	.word	.L1537
-                        1218 	.type	.L1538,@object
-                        1219 	.size	.L1538,4
-                        1220 	.data
-                        1221 	.text
-                        1222 
-                        1223 
-                        1224 --308: void pe_icum_comm_timer_init(void)
-                        1225 	.align	2
-                        1226 	.align	2
-                        1227 	.align	2
-                        1228 ..gh.f.a.2.e.11:
-                        1229 	.type	..gh.f.a.2.e.11,@object
-                        1230 	.size	..gh.f.a.2.e.11,0
-                        1231 	.global	_pe_icum_comm_timer_init
-                        1232 _pe_icum_comm_timer_init:
-                        1233 --	    .bf
-                        1234 .LDW23:
-                        1235 --309: {
-                        1236 --310:     OSTM0TT = 1u;
-00000464 010a           1237 	mov	1,r1
-00000466 80078d0900ae   1238 	st.b	r1,4292280344[zero]
-                        1239 --311:     OSTM0CTL = 0u;
-                        1240 --line311
-                        1241 ..lin.52575fc0..a5b8fda4.0_115::
-                        1242 .LDWlin115:
-0000046c 80070d0200ae   1243 	st.b	zero,4292280352[zero]
-                        1244 --312:     OSTM0CMP = PE_OSTM0_COMPARE_VALUE;
-                        1245 --line312
-                        1246 ..lin.52575fc0..a5b8fda4.0_116::
-                        1247 .LDWlin116:
-00000472 21067fc3c901   1248 	mov	29999999,r1
-00000478 80070f0800ae   1249 	st.w	r1,4292280320[zero]
-                        1250 --313:     INTC2ICOSTM0 = 0x0040u;
-                        1251 --line313
-                        1252 ..lin.52575fc0..a5b8fda4.0_117::
-                        1253 .LDWlin117:
-0000047e 200e4000       1254 	movea	64,zero,r1
-00000482 600fa8b0       1255 	st.h	r1,lo(4294946984)[zero]
-                        1256 --314:     OSTM0TS = 1u;
-00000486 010a           1257 	mov	1,r1
-00000488 80074d0900ae   1258 	st.b	r1,4292280340[zero]
-                        1259 --315: }
-                        1260 --	    .ef
-                        1261 .LDW33:
-                        1262 .L1613:
-                        1263 --line315
-                        1264 ..lin.52575fc0..a5b8fda4.0_118::
-                        1265 .LDWlin118:
-                        1266 	.jumptype return
-0000048e 7f00           1267 	jmp	[lp]
-                        1268 --line315
-                        1269 ..lin.52575fc0..a5b8fda4.0_119::
-                        1270 	.type	_pe_icum_comm_timer_init,@function
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                        1210 ..lin.52575fc0..e11c2b56.0_114::
+                        1211 	.type	_Debug_initPorts,@function
+                        1212 	.size	_Debug_initPorts,.-_Debug_initPorts
+                        1213 	.align	2
+                        1214 
+                        1215 	.section ".bss","awb"
+                        1216 .L1522:
+                        1217 	.type	.L1522,@object
+                        1218 	.size	.L1522,0
+                        1219 	.section ".ghrettbl",""
+00000028 00000000*      1220 .L1538:	.word	.L1537
+                        1221 	.type	.L1538,@object
+                        1222 	.size	.L1538,4
+                        1223 	.data
+                        1224 	.text
+                        1225 
+                        1226 
+                        1227 --310: void pe_icum_comm_timer_init(void)
+                        1228 	.align	2
+                        1229 	.align	2
+                        1230 	.align	2
+                        1231 ..gh.f.a.2.e.11:
+                        1232 	.type	..gh.f.a.2.e.11,@object
+                        1233 	.size	..gh.f.a.2.e.11,0
+                        1234 	.global	_pe_icum_comm_timer_init
+                        1235 _pe_icum_comm_timer_init:
+                        1236 --	    .bf
+                        1237 .LDW23:
+                        1238 --311: {
+                        1239 --312:     OSTM0TT = 1u;
+00000464 010a           1240 	mov	1,r1
+00000466 80078d0900ae   1241 	st.b	r1,4292280344[zero]
+                        1242 --313:     OSTM0CTL = 0u;
+                        1243 --line313
+                        1244 ..lin.52575fc0..a5b8fda4.0_115::
+                        1245 .LDWlin115:
+0000046c 80070d0200ae   1246 	st.b	zero,4292280352[zero]
+                        1247 --314:     OSTM0CMP = PE_OSTM0_COMPARE_VALUE;
+                        1248 --line314
+                        1249 ..lin.52575fc0..a5b8fda4.0_116::
+                        1250 .LDWlin116:
+00000472 2106ff869303   1251 	mov	59999999,r1
+00000478 80070f0800ae   1252 	st.w	r1,4292280320[zero]
+                        1253 --315:     INTC2ICOSTM0 = 0x0040u;
+                        1254 --line315
+                        1255 ..lin.52575fc0..a5b8fda4.0_117::
+                        1256 .LDWlin117:
+0000047e 200e4000       1257 	movea	64,zero,r1
+00000482 600fa8b0       1258 	st.h	r1,lo(4294946984)[zero]
+                        1259 --316:     OSTM0TS = 1u;
+00000486 010a           1260 	mov	1,r1
+00000488 80074d0900ae   1261 	st.b	r1,4292280340[zero]
+                        1262 --317: }
+                        1263 --	    .ef
+                        1264 .LDW33:
+                        1265 .L1613:
+                        1266 --line317
+                        1267 ..lin.52575fc0..a5b8fda4.0_118::
+                        1268 .LDWlin118:
+                        1269 	.jumptype return
+0000048e 7f00           1270 	jmp	[lp]
 
                                                                       Page 22
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                        1271 	.size	_pe_icum_comm_timer_init,.-_pe_icum_comm_timer_init
-                        1272 	.align	2
-                        1273 
-                        1274 	.section ".bss","awb"
-                        1275 .L1586:
-                        1276 	.type	.L1586,@object
-                        1277 	.size	.L1586,0
-                        1278 	.section ".ghrettbl",""
-0000002c 00000000*      1279 .L1614:	.word	.L1613
-                        1280 	.type	.L1614,@object
-                        1281 	.size	.L1614,4
-                        1282 	.data
-                        1283 	.text
-                        1284 
-                        1285 
-                        1286 --318: //============================================================================
-                        1287 --319: // Interrupt Service Routines - ISR
-                        1288 --320: //============================================================================
-                        1289 --321: #pragma ghs interrupt
-                        1290 --322: void INTOSTM0(void)
-                        1291 	.align	2
-                        1292 	.align	2
-                        1293 	.align	2
-                        1294 ..gh.f.a.2.e.12:
-                        1295 	.type	..gh.f.a.2.e.12,@object
-                        1296 	.size	..gh.f.a.2.e.12,0
-                        1297 	.global	_INTOSTM0
-                        1298 _INTOSTM0:
-00000490 231efcff       1299 	movea	-4,sp,sp
-00000494 630f0100       1300 	st.w	r1,0[sp]
-                        1301 --	    .bf
-                        1302 .LDW43:
-                        1303 --323: {
-                        1304 --324:     PE_ICUM_PE2ICUSFS = 1u;
-00000498 231efcff       1305 	movea	-4,sp,sp
-0000049c 63f70100       1306 	st.w	ep,0[sp]
-000004a0 010a           1307 	mov	1,r1
-000004a2 3e0674001fff   1308 	mov	-14745484,ep
-000004a8 010d           1309 	sst.w	r1,0[ep]
-000004aa 23f70100       1310 	ld.w	0[sp],ep
-000004ae 231e0400       1311 	movea	4,sp,sp
-                        1312 --325: }
-                        1313 --	    .ef
-                        1314 .LDW53:
-                        1315 --line325
-                        1316 ..lin.52575fc0..c9048882.0_120::
-                        1317 .LDWlin120:
-000004b2 230f0100       1318 	ld.w	0[sp],r1
-000004b6 231e0400       1319 	movea	4,sp,sp
-                        1320 .L1649:
-000004ba e0074801       1321 	eiret
-                        1322 	.type	_INTOSTM0,@function
-                        1323 	.size	_INTOSTM0,.-_INTOSTM0
-                        1324 	.align	2
-                        1325 
-                        1326 	.section ".bss","awb"
-                        1327 .L1634:
-                        1328 	.type	.L1634,@object
-                        1329 	.size	.L1634,0
-                        1330 	.section ".ghrettbl",""
-00000030 00000000*      1331 .L1650:	.word	.L1649
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                        1271 --line317
+                        1272 ..lin.52575fc0..a5b8fda4.0_119::
+                        1273 	.type	_pe_icum_comm_timer_init,@function
+                        1274 	.size	_pe_icum_comm_timer_init,.-_pe_icum_comm_timer_init
+                        1275 	.align	2
+                        1276 
+                        1277 	.section ".bss","awb"
+                        1278 .L1586:
+                        1279 	.type	.L1586,@object
+                        1280 	.size	.L1586,0
+                        1281 	.section ".ghrettbl",""
+0000002c 00000000*      1282 .L1614:	.word	.L1613
+                        1283 	.type	.L1614,@object
+                        1284 	.size	.L1614,4
+                        1285 	.data
+                        1286 	.text
+                        1287 
+                        1288 
+                        1289 --320: //============================================================================
+                        1290 --321: // Interrupt Service Routines - ISR
+                        1291 --322: //============================================================================
+                        1292 --323: #pragma ghs interrupt
+                        1293 --324: void INTOSTM0(void)
+                        1294 	.align	2
+                        1295 	.align	2
+                        1296 	.align	2
+                        1297 ..gh.f.a.2.e.12:
+                        1298 	.type	..gh.f.a.2.e.12,@object
+                        1299 	.size	..gh.f.a.2.e.12,0
+                        1300 	.global	_INTOSTM0
+                        1301 _INTOSTM0:
+00000490 231efcff       1302 	movea	-4,sp,sp
+00000494 630f0100       1303 	st.w	r1,0[sp]
+00000498 f2476099       1304 	pushsp	r18-r19
+0000049c 231efcff       1305 	movea	-4,sp,sp
+000004a0 63f70100       1306 	st.w	ep,0[sp]
+                        1307 --	    .bf
+                        1308 .LDW43:
+                        1309 --325: {
+                        1310 --326:     uint32 index;
+                        1311 --327:     uint8 value = 0x55u;
+000004a4 200e5500       1312 	movea	85,zero,r1
+                        1313 --329:     g_shared_buffer[0] = value;
+000004a8 32060080fffe   1314 	mov	-16809984,r18
+000004ae 520f0000       1315 	st.b	r1,0[r18]
+                        1316 --330:     for (index = 1u; index < SHARED_BUFFER_SIZE; index++)
+                        1317 --line330
+                        1318 ..lin.52575fc0..c9048882.0_120::
+                        1319 .LDWlin120:
+000004b2 019a           1320 	mov	1,r19
+000004b4 950d*          1321 	br	.L1620
+                        1322 .L1619:
+                        1323 --331:     {
+                        1324 --332:         value++;
+                        1325 --line332
+                        1326 ..lin.52575fc0..c9048882.0_121::
+                        1327 .LDWlin121:
+000004b6 410a           1328 	add	1,r1
+000004b8 8100           1329 	zxb	r1
+                        1330 --333:         g_shared_buffer[index] = value;
+000004ba 3e060080fffe   1331 	mov	-16809984,ep
 
                                                                       Page 23
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                        1332 	.type	.L1650,@object
-                        1333 	.size	.L1650,4
-                        1334 	.data
-                        1335 	.text
-                        1336 
-                        1337 
-                        1338 --327: #pragma ghs interrupt
-                        1339 --329: void INTCSIH0IC(void)
-                        1340 	.align	2
-                        1341 	.align	2
-                        1342 	.align	2
-                        1343 ..gh.f.a.2.e.13:
-                        1344 	.type	..gh.f.a.2.e.13,@object
-                        1345 	.size	..gh.f.a.2.e.13,0
-                        1346 	.global	_INTCSIH0IC
-                        1347 _INTCSIH0IC:
-000004be 231efcff       1348 	movea	-4,sp,sp
-000004c2 630f0100       1349 	st.w	r1,0[sp]
-                        1350 --	    .bf
-                        1351 .LDW63:
-                        1352 --330: {
-                        1353 --332: 	PORTPNOT0=(1<<4);
-000004c6 200e1000       1354 	movea	16,zero,r1
-000004ca a0070d080e82   1355 	st.h	r1,4290840320[zero]
-                        1356 --333: }
-                        1357 --	    .ef
-                        1358 .LDW73:
-                        1359 --line333
-                        1360 ..lin.52575fc0..7fc41632.0_121::
-                        1361 .LDWlin121:
-000004d0 230f0100       1362 	ld.w	0[sp],r1
-000004d4 231e0400       1363 	movea	4,sp,sp
-                        1364 .L1697:
-000004d8 e0074801       1365 	eiret
-                        1366 	.type	_INTCSIH0IC,@function
-                        1367 	.size	_INTCSIH0IC,.-_INTCSIH0IC
-                        1368 	.align	2
-                        1369 
-                        1370 	.section ".bss","awb"
-                        1371 .L1682:
-                        1372 	.type	.L1682,@object
-                        1373 	.size	.L1682,0
-                        1374 	.section ".ghrettbl",""
-00000034 00000000*      1375 .L1698:	.word	.L1697
-                        1376 	.type	.L1698,@object
-                        1377 	.size	.L1698,4
-                        1378 	.data
-                        1379 	.text
-                        1380 
-                        1381 
-                        1382 --335: #pragma ghs interrupt
-                        1383 --336: void INTDMA0 (void)
-                        1384 	.align	2
-                        1385 	.align	2
-                        1386 	.align	2
-                        1387 ..gh.f.a.2.e.14:
-                        1388 	.type	..gh.f.a.2.e.14,@object
-                        1389 	.size	..gh.f.a.2.e.14,0
-                        1390 	.global	_INTDMA0
-                        1391 _INTDMA0:
-000004dc 231efcff       1392 	movea	-4,sp,sp
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+000004c0 d3f1           1332 	add	r19,ep
+000004c2 800b           1333 	sst.b	r1,0[ep]
+                        1334 --line330
+                        1335 ..lin.52575fc0..c9048882.0_122::
+                        1336 .LDWlin122:
+000004c4 419a           1337 	add	1,r19
+                        1338 .L1620:
+000004c6 130680ff       1339 	addi	-128,r19,zero
+000004ca e9f5*          1340 	bnl	.L1619
+                        1341 --334:     }
+                        1342 --335: #if defined _SharedMemoryTest_
+                        1343 --336:     PE_OSTM0_ICUM_PE2ICUFS = 1u;
+                        1344 --337:     PE_OSTM0_ICUM_PE2ICUSFS = 1u;
+                        1345 --338: #endif
+                        1346 --339: }
+                        1347 --	    .ef
+                        1348 .LDW53:
+                        1349 --line339
+                        1350 ..lin.52575fc0..c9048882.0_123::
+                        1351 .LDWlin123:
+000004cc 23f70100       1352 	ld.w	0[sp],ep
+000004d0 231e0400       1353 	movea	4,sp,sp
+000004d4 f2676099       1354 	popsp	r18-r19
+000004d8 230f0100       1355 	ld.w	0[sp],r1
+000004dc 231e0400       1356 	movea	4,sp,sp
+                        1357 .L1707:
+000004e0 e0074801       1358 	eiret
+                        1359 	.type	_INTOSTM0,@function
+                        1360 	.size	_INTOSTM0,.-_INTOSTM0
+                        1361 	.align	2
+                        1362 --_index	r19	local
+                        1363 --_value	r1	local
+                        1364 
+                        1365 	.section ".bss","awb"
+                        1366 .L1674:
+                        1367 	.type	.L1674,@object
+                        1368 	.size	.L1674,0
+                        1369 	.section ".ghrettbl",""
+00000030 00000000*      1370 .L1708:	.word	.L1707
+                        1371 	.type	.L1708,@object
+                        1372 	.size	.L1708,4
+                        1373 	.data
+                        1374 	.text
+                        1375 
+                        1376 
+                        1377 --341: #pragma ghs interrupt
+                        1378 --343: void INTCSIH0IC(void)
+                        1379 	.align	2
+                        1380 	.align	2
+                        1381 	.align	2
+                        1382 ..gh.f.a.2.e.13:
+                        1383 	.type	..gh.f.a.2.e.13,@object
+                        1384 	.size	..gh.f.a.2.e.13,0
+                        1385 	.global	_INTCSIH0IC
+                        1386 _INTCSIH0IC:
+000004e4 231efcff       1387 	movea	-4,sp,sp
+000004e8 630f0100       1388 	st.w	r1,0[sp]
+                        1389 --	    .bf
+                        1390 .LDW63:
+                        1391 --344: {
+                        1392 --346: 	PORTPNOT0=(1<<4);
 
                                                                       Page 24
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-000004e0 630f0100       1393 	st.w	r1,0[sp]
-000004e4 231efcff       1394 	movea	-4,sp,sp
-000004e8 639f0100       1395 	st.w	r19,0[sp]
-                        1396 --	    .bf
-                        1397 .LDW83:
-                        1398 --337: {
-                        1399 --338: 	
-                        1400 --339: 		
-                        1401 --340: 	if(dma0_sample >= dma0_samples_count)
-000004ec 240f0100*      1402 	ld.w	sdaoff(_dma0_samples_count)[gp],r1
-000004f0 249f0100*      1403 	ld.w	sdaoff(_dma0_sample)[gp],r19
-000004f4 e199           1404 	cmp	r1,r19
-000004f6 910d*          1405 	bl	.L1701
-                        1406 --341: 	{
-                        1407 --342: DMAC0DTCT0&=~(1<<13); 
-                        1408 --line342
-                        1409 ..lin.52575fc0..d785a1d1.0_122::
-                        1410 .LDWlin122:
-000004f8 200f0d84       1411 	ld.w	lo(4294935564)[zero],r1
-000004fc 209effdf       1412 	movea	-8193,zero,r19
-00000500 5309           1413 	and	r19,r1
-00000502 600f0d84       1414 	st.w	r1,lo(4294935564)[zero]
-00000506 f515*          1415 	br	.L1699
-                        1416 .L1701:
-                        1417 --344: 	}
-                        1418 --345: 	else if((dma0_sample) < dma0_samples_count)
-                        1419 --line345
-                        1420 ..lin.52575fc0..d785a1d1.0_123::
-                        1421 .LDWlin123:
-00000508 240f0100*      1422 	ld.w	sdaoff(_dma0_samples_count)[gp],r1
-0000050c 249f0100*      1423 	ld.w	sdaoff(_dma0_sample)[gp],r19
-00000510 e199           1424 	cmp	r1,r19
-00000512 9915*          1425 	bnl	.L1699
-                        1426 --346: 	{
-                        1427 --347: 	
-                        1428 --348: 	DMAC0DRSA0 = (uint32)&ddf[0]+dma0_sample*2;
-                        1429 --line348
-                        1430 ..lin.52575fc0..d785a1d1.0_124::
-                        1431 .LDWlin124:
-00000514 240f0100*      1432 	ld.w	sdaoff(_dma0_sample)[gp],r1
-00000518 259e0000*      1433 	movea	sdaoff2(_ddf),r5,r19
-0000051c c10a           1434 	shl	1,r1
-0000051e d309           1435 	add	r19,r1
-00000520 600f1184       1436 	st.w	r1,lo(4294935568)[zero]
-                        1437 --349: 	DMAC0DRTC0 = 0;
-00000524 60071984       1438 	st.w	zero,lo(4294935576)[zero]
-                        1439 --350: 	dma0_sample+=0x10000;
-00000528 240f0100*      1440 	ld.w	sdaoff(_dma0_sample)[gp],r1
-0000052c 410e0100       1441 	movhi	1,r1,r1
-00000530 640f0100*      1442 	st.w	r1,sdaoff(_dma0_sample)[gp]
-                        1443 .L1699:
-                        1444 --352: 	}
-                        1445 --353: 	
-                        1446 --354: 	
-                        1447 --355: 	
-                        1448 --356: }
-                        1449 --	    .ef
-                        1450 .LDW93:
-                        1451 --line356
-                        1452 ..lin.52575fc0..d785a1d1.0_125::
-                        1453 .LDWlin125:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+000004ec 200e1000       1393 	movea	16,zero,r1
+000004f0 a0070d080e82   1394 	st.h	r1,4290840320[zero]
+                        1395 --347: }
+                        1396 --	    .ef
+                        1397 .LDW73:
+                        1398 --line347
+                        1399 ..lin.52575fc0..7fc41632.0_124::
+                        1400 .LDWlin124:
+000004f6 230f0100       1401 	ld.w	0[sp],r1
+000004fa 231e0400       1402 	movea	4,sp,sp
+                        1403 .L1745:
+000004fe e0074801       1404 	eiret
+                        1405 	.type	_INTCSIH0IC,@function
+                        1406 	.size	_INTCSIH0IC,.-_INTCSIH0IC
+                        1407 	.align	2
+                        1408 
+                        1409 	.section ".bss","awb"
+                        1410 .L1730:
+                        1411 	.type	.L1730,@object
+                        1412 	.size	.L1730,0
+                        1413 	.section ".ghrettbl",""
+00000034 00000000*      1414 .L1746:	.word	.L1745
+                        1415 	.type	.L1746,@object
+                        1416 	.size	.L1746,4
+                        1417 	.data
+                        1418 	.text
+                        1419 
+                        1420 
+                        1421 --349: #pragma ghs interrupt
+                        1422 --350: void INTDMA0 (void)
+                        1423 	.align	2
+                        1424 	.align	2
+                        1425 	.align	2
+                        1426 ..gh.f.a.2.e.14:
+                        1427 	.type	..gh.f.a.2.e.14,@object
+                        1428 	.size	..gh.f.a.2.e.14,0
+                        1429 	.global	_INTDMA0
+                        1430 _INTDMA0:
+00000502 231efcff       1431 	movea	-4,sp,sp
+00000506 630f0100       1432 	st.w	r1,0[sp]
+0000050a 231efcff       1433 	movea	-4,sp,sp
+0000050e 639f0100       1434 	st.w	r19,0[sp]
+                        1435 --	    .bf
+                        1436 .LDW83:
+                        1437 --351: {
+                        1438 --352: 	
+                        1439 --353: 		
+                        1440 --354: 	if(dma0_sample >= dma0_samples_count)
+00000512 240f0100*      1441 	ld.w	sdaoff(_dma0_samples_count)[gp],r1
+00000516 249f0100*      1442 	ld.w	sdaoff(_dma0_sample)[gp],r19
+0000051a e199           1443 	cmp	r1,r19
+0000051c 910d*          1444 	bl	.L1749
+                        1445 --355: 	{
+                        1446 --356: DMAC0DTCT0&=~(1<<13); 
+                        1447 --line356
+                        1448 ..lin.52575fc0..d785a1d1.0_125::
+                        1449 .LDWlin125:
+0000051e 200f0d84       1450 	ld.w	lo(4294935564)[zero],r1
+00000522 209effdf       1451 	movea	-8193,zero,r19
+00000526 5309           1452 	and	r19,r1
+00000528 600f0d84       1453 	st.w	r1,lo(4294935564)[zero]
 
                                                                       Page 25
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-00000534 239f0100       1454 	ld.w	0[sp],r19
-00000538 231e0400       1455 	movea	4,sp,sp
-0000053c 230f0100       1456 	ld.w	0[sp],r1
-00000540 231e0400       1457 	movea	4,sp,sp
-                        1458 .L1773:
-00000544 e0074801       1459 	eiret
-                        1460 	.type	_INTDMA0,@function
-                        1461 	.size	_INTDMA0,.-_INTDMA0
-                        1462 	.align	2
-                        1463 
-                        1464 	.section ".bss","awb"
-                        1465 .L1746:
-                        1466 	.type	.L1746,@object
-                        1467 	.size	.L1746,0
-                        1468 	.section ".ghrettbl",""
-00000038 00000000*      1469 .L1774:	.word	.L1773
-                        1470 	.type	.L1774,@object
-                        1471 	.size	.L1774,4
-                        1472 	.data
-                        1473 	.text
-                        1474 
-                        1475 
-                        1476 --360: //============================================================================
-                        1477 --361: // Main function
-                        1478 --362: //============================================================================
-                        1479 --363: void main(void) {
-                        1480 	.align	2
-                        1481 	.align	2
-                        1482 	.align	2
-                        1483 ..gh.f.a.2.e.15:
-                        1484 	.type	..gh.f.a.2.e.15,@object
-                        1485 	.size	..gh.f.a.2.e.15,0
-                        1486 	.global	_main
-                        1487 _main:
-00000548 581a           1488 	add	-8,sp
-0000054a 63ff0500       1489 	st.w	lp,4[sp]
-0000054e 63ef0100       1490 	st.w	r29,0[sp]
-                        1491 --	    .bf
-                        1492 .LDW04:
-                        1493 --364: 	unsigned int i=0;
-00000552 00ea           1494 	mov	0,r29
-                        1495 --365: 	  /* initialize clocks */
-                        1496 --366:   init_clocks();
-                        1497 .L1953:
-                        1498 	jarl	_init_clocks,lp
-                        1498 <EXPANSION BEGIN>
-                        1498 jarl22 _init_clocks , lp 
-00000554 bfffacfa*      1498 <EXPANSION END>
-                        1499 --367:   
-                        1500 --368:   Debug_initPorts();
-                        1501 .L1955:
-                        1502 --line368
-                        1503 ..lin.52575fc0..ef387e9.0_126::
-                        1504 .LDWlin126:
-                        1505 	jarl	_Debug_initPorts,lp
-                        1505 <EXPANSION BEGIN>
-                        1505 jarl22 _Debug_initPorts , lp 
-00000558 bffffafe*      1505 <EXPANSION END>
-                        1506 --369:   
-                        1507 --370:   
-                        1508 --371: 	DMA_init();
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+0000052c f515*          1454 	br	.L1747
+                        1455 .L1749:
+                        1456 --358: 	}
+                        1457 --359: 	else if((dma0_sample) < dma0_samples_count)
+                        1458 --line359
+                        1459 ..lin.52575fc0..d785a1d1.0_126::
+                        1460 .LDWlin126:
+0000052e 240f0100*      1461 	ld.w	sdaoff(_dma0_samples_count)[gp],r1
+00000532 249f0100*      1462 	ld.w	sdaoff(_dma0_sample)[gp],r19
+00000536 e199           1463 	cmp	r1,r19
+00000538 9915*          1464 	bnl	.L1747
+                        1465 --360: 	{
+                        1466 --361: 	
+                        1467 --362: 	DMAC0DRSA0 = (uint32)&ddf[0]+dma0_sample*2;
+                        1468 --line362
+                        1469 ..lin.52575fc0..d785a1d1.0_127::
+                        1470 .LDWlin127:
+0000053a 240f0100*      1471 	ld.w	sdaoff(_dma0_sample)[gp],r1
+0000053e 259e0000*      1472 	movea	sdaoff2(_ddf),r5,r19
+00000542 c10a           1473 	shl	1,r1
+00000544 d309           1474 	add	r19,r1
+00000546 600f1184       1475 	st.w	r1,lo(4294935568)[zero]
+                        1476 --363: 	DMAC0DRTC0 = 0;
+0000054a 60071984       1477 	st.w	zero,lo(4294935576)[zero]
+                        1478 --364: 	dma0_sample+=0x10000;
+0000054e 240f0100*      1479 	ld.w	sdaoff(_dma0_sample)[gp],r1
+00000552 410e0100       1480 	movhi	1,r1,r1
+00000556 640f0100*      1481 	st.w	r1,sdaoff(_dma0_sample)[gp]
+                        1482 .L1747:
+                        1483 --366: 	}
+                        1484 --367: 	
+                        1485 --368: 	
+                        1486 --369: 	
+                        1487 --370: }
+                        1488 --	    .ef
+                        1489 .LDW93:
+                        1490 --line370
+                        1491 ..lin.52575fc0..d785a1d1.0_128::
+                        1492 .LDWlin128:
+0000055a 239f0100       1493 	ld.w	0[sp],r19
+0000055e 231e0400       1494 	movea	4,sp,sp
+00000562 230f0100       1495 	ld.w	0[sp],r1
+00000566 231e0400       1496 	movea	4,sp,sp
+                        1497 .L1821:
+0000056a e0074801       1498 	eiret
+                        1499 	.type	_INTDMA0,@function
+                        1500 	.size	_INTDMA0,.-_INTDMA0
+                        1501 	.align	2
+                        1502 
+                        1503 	.section ".bss","awb"
+                        1504 .L1794:
+                        1505 	.type	.L1794,@object
+                        1506 	.size	.L1794,0
+                        1507 	.section ".ghrettbl",""
+00000038 00000000*      1508 .L1822:	.word	.L1821
+                        1509 	.type	.L1822,@object
+                        1510 	.size	.L1822,4
+                        1511 	.data
+                        1512 	.text
+                        1513 
+                        1514 
 
                                                                       Page 26
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                        1509 .L1957:
-                        1510 --line371
-                        1511 ..lin.52575fc0..ef387e9.0_127::
-                        1512 .LDWlin127:
-                        1513 	jarl	_DMA_init,lp
-                        1513 <EXPANSION BEGIN>
-                        1513 jarl22 _DMA_init , lp 
-0000055c bfff5efe*      1513 <EXPANSION END>
-                        1514 --372: 	TAUD0_init();
-                        1515 .L1959:
-                        1516 --line372
-                        1517 ..lin.52575fc0..ef387e9.0_128::
-                        1518 .LDWlin128:
-                        1519 	jarl	_TAUD0_init,lp
-                        1519 <EXPANSION BEGIN>
-                        1519 jarl22 _TAUD0_init , lp 
-00000560 bfff46fd*      1519 <EXPANSION END>
-                        1520 --373: 	TAUD0_initPorts();
-                        1521 .L1961:
-                        1522 --line373
-                        1523 ..lin.52575fc0..ef387e9.0_129::
-                        1524 .LDWlin129:
-                        1525 	jarl	_TAUD0_initPorts,lp
-                        1525 <EXPANSION BEGIN>
-                        1525 jarl22 _TAUD0_initPorts , lp 
-00000564 bfff02fd*      1525 <EXPANSION END>
-                        1526 --374: 	
-                        1527 --375: 	csih0_init();
-                        1528 .L1963:
-                        1529 --line375
-                        1530 ..lin.52575fc0..ef387e9.0_130::
-                        1531 .LDWlin130:
-                        1532 	jarl	_csih0_init,lp
-                        1532 <EXPANSION BEGIN>
-                        1532 jarl22 _csih0_init , lp 
-00000568 bfffa6fd*      1532 <EXPANSION END>
-                        1533 --376: 	csih0_initPorts();
-                        1534 .L1965:
-                        1535 --line376
-                        1536 ..lin.52575fc0..ef387e9.0_131::
-                        1537 .LDWlin131:
-                        1538 	jarl	_csih0_initPorts,lp
-                        1538 <EXPANSION BEGIN>
-                        1538 jarl22 _csih0_initPorts , lp 
-0000056c bfff58fc*      1538 <EXPANSION END>
-                        1539 --377: 	for(i=0;i<10000000;i++);
-                        1540 --line377
-                        1541 ..lin.52575fc0..ef387e9.0_132::
-                        1542 .LDWlin132:
-00000570 00ea           1543 	mov	0,r29
-00000572 a505*          1544 	br	.L1780
-                        1545 .L1778:
-                        1546 --line377
-                        1547 ..lin.52575fc0..ef387e9.0_133::
-                        1548 .LDWlin133:
-00000574 41ea           1549 	add	1,r29
-                        1550 .L1780:
-00000576 210680969800   1551 	mov	10000000,r1
-0000057c e1e9           1552 	cmp	r1,r29
-0000057e b1fd*          1553 	bl	.L1778
-                        1554 --378: 	pe_icum_comm_timer_init();
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                        1515 --374: //============================================================================
+                        1516 --375: // Main function
+                        1517 --376: //============================================================================
+                        1518 --377: void main(void) {
+                        1519 	.align	2
+                        1520 	.align	2
+                        1521 	.align	2
+                        1522 ..gh.f.a.2.e.15:
+                        1523 	.type	..gh.f.a.2.e.15,@object
+                        1524 	.size	..gh.f.a.2.e.15,0
+                        1525 	.global	_main
+                        1526 _main:
+0000056e 581a           1527 	add	-8,sp
+00000570 63ff0500       1528 	st.w	lp,4[sp]
+00000574 63ef0100       1529 	st.w	r29,0[sp]
+                        1530 --	    .bf
+                        1531 .LDW04:
+                        1532 --378: 	unsigned int i=0;
+00000578 00ea           1533 	mov	0,r29
+                        1534 --379: 	  /* initialize clocks */
+                        1535 --380:   init_clocks();
+                        1536 .L2001:
+                        1537 	jarl	_init_clocks,lp
+                        1537 <EXPANSION BEGIN>
+                        1537 jarl22 _init_clocks , lp 
+0000057a bfff86fa*      1537 <EXPANSION END>
+                        1538 --381:   
+                        1539 --382:   Debug_initPorts();
+                        1540 .L2003:
+                        1541 --line382
+                        1542 ..lin.52575fc0..ef387e9.0_129::
+                        1543 .LDWlin129:
+                        1544 	jarl	_Debug_initPorts,lp
+                        1544 <EXPANSION BEGIN>
+                        1544 jarl22 _Debug_initPorts , lp 
+0000057e bfffd4fe*      1544 <EXPANSION END>
+                        1545 --383:   
+                        1546 --384:   
+                        1547 --385: 	DMA_init();
+                        1548 .L2005:
+                        1549 --line385
+                        1550 ..lin.52575fc0..ef387e9.0_130::
+                        1551 .LDWlin130:
+                        1552 	jarl	_DMA_init,lp
+                        1552 <EXPANSION BEGIN>
+                        1552 jarl22 _DMA_init , lp 
+00000582 bfff38fe*      1552 <EXPANSION END>
+                        1553 --386: 	TAUD0_init();
+                        1554 .L2007:
+                        1555 --line386
+                        1556 ..lin.52575fc0..ef387e9.0_131::
+                        1557 .LDWlin131:
+                        1558 	jarl	_TAUD0_init,lp
+                        1558 <EXPANSION BEGIN>
+                        1558 jarl22 _TAUD0_init , lp 
+00000586 bfff20fd*      1558 <EXPANSION END>
+                        1559 --387: 	TAUD0_initPorts();
+                        1560 .L2009:
+                        1561 --line387
+                        1562 ..lin.52575fc0..ef387e9.0_132::
+                        1563 .LDWlin132:
 
                                                                       Page 27
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                        1555 .L1967:
-                        1556 --line378
-                        1557 ..lin.52575fc0..ef387e9.0_134::
-                        1558 .LDWlin134:
-                        1559 	jarl	_pe_icum_comm_timer_init,lp
-                        1559 <EXPANSION BEGIN>
-                        1559 jarl22 _pe_icum_comm_timer_init , lp 
-00000580 bfffe4fe*      1559 <EXPANSION END>
-                        1560 --379: 	__EI();
-                        1561 --line379
-                        1562 ..lin.52575fc0..ef387e9.0_135::
-                        1563 .LDWlin135:
-00000584 e0876001       1564 	ei
-                        1565 --380: 	
-                        1566 --381: 	csih0_start();
-                        1567 .L1969:
-                        1568 	jarl	_csih0_start,lp
-                        1568 <EXPANSION BEGIN>
-                        1568 jarl22 _csih0_start , lp 
-00000588 bfffdcfd*      1568 <EXPANSION END>
-                        1569 --382: 	TAUD0_start();
-                        1570 .L1971:
-                        1571 --line382
-                        1572 ..lin.52575fc0..ef387e9.0_136::
-                        1573 .LDWlin136:
-                        1574 	jarl	_TAUD0_start,lp
-                        1574 <EXPANSION BEGIN>
-                        1574 jarl22 _TAUD0_start , lp 
-0000058c bffff8fd*      1574 <EXPANSION END>
-                        1575 --383:   while(1);
-                        1576 .L1781:
-                        1577 --line383
-                        1578 ..lin.52575fc0..ef387e9.0_137::
-                        1579 .LDWlin137:
-00000590 8505*          1580 	br	.L1781
-                        1581 --	    .ef
-                        1582 .LDW14:
-                        1583 --line385
-                        1584 ..lin.52575fc0..ef387e9.0_138::
-                        1585 	.type	_main,@function
-                        1586 	.size	_main,.-_main
-                        1587 	.align	2
-                        1588 --_i	r29	local
-                        1589 
-                        1590 	.section ".bss","awb"
-                        1591 .L1893:
-                        1592 	.type	.L1893,@object
-                        1593 	.size	.L1893,0
-                        1594 	.section ".ghcalltbl",""
-                        1595 	.align	4
-00000000 00000000*      1596 .L1954:	.word	.L1953
-                        1597 	.type	.L1954,@object
-                        1598 	.size	.L1954,4
-00000004 00000000*      1599 .L1956:	.word	.L1955
-                        1600 	.type	.L1956,@object
-                        1601 	.size	.L1956,4
-00000008 00000000*      1602 .L1958:	.word	.L1957
-                        1603 	.type	.L1958,@object
-                        1604 	.size	.L1958,4
-0000000c 00000000*      1605 .L1960:	.word	.L1959
-                        1606 	.type	.L1960,@object
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                        1564 	jarl	_TAUD0_initPorts,lp
+                        1564 <EXPANSION BEGIN>
+                        1564 jarl22 _TAUD0_initPorts , lp 
+0000058a bfffdcfc*      1564 <EXPANSION END>
+                        1565 --388: 	
+                        1566 --389: 	csih0_init();
+                        1567 .L2011:
+                        1568 --line389
+                        1569 ..lin.52575fc0..ef387e9.0_133::
+                        1570 .LDWlin133:
+                        1571 	jarl	_csih0_init,lp
+                        1571 <EXPANSION BEGIN>
+                        1571 jarl22 _csih0_init , lp 
+0000058e bfff80fd*      1571 <EXPANSION END>
+                        1572 --390: 	csih0_initPorts();
+                        1573 .L2013:
+                        1574 --line390
+                        1575 ..lin.52575fc0..ef387e9.0_134::
+                        1576 .LDWlin134:
+                        1577 	jarl	_csih0_initPorts,lp
+                        1577 <EXPANSION BEGIN>
+                        1577 jarl22 _csih0_initPorts , lp 
+00000592 bfff32fc*      1577 <EXPANSION END>
+                        1578 --391: 	for(i=0;i<10000000;i++);
+                        1579 --line391
+                        1580 ..lin.52575fc0..ef387e9.0_135::
+                        1581 .LDWlin135:
+00000596 00ea           1582 	mov	0,r29
+00000598 a505*          1583 	br	.L1828
+                        1584 .L1826:
+                        1585 --line391
+                        1586 ..lin.52575fc0..ef387e9.0_136::
+                        1587 .LDWlin136:
+0000059a 41ea           1588 	add	1,r29
+                        1589 .L1828:
+0000059c 210680969800   1590 	mov	10000000,r1
+000005a2 e1e9           1591 	cmp	r1,r29
+000005a4 b1fd*          1592 	bl	.L1826
+                        1593 --392: 	pe_icum_comm_timer_init();
+                        1594 .L2015:
+                        1595 --line392
+                        1596 ..lin.52575fc0..ef387e9.0_137::
+                        1597 .LDWlin137:
+                        1598 	jarl	_pe_icum_comm_timer_init,lp
+                        1598 <EXPANSION BEGIN>
+                        1598 jarl22 _pe_icum_comm_timer_init , lp 
+000005a6 bfffbefe*      1598 <EXPANSION END>
+                        1599 --393: 	__EI();
+                        1600 --line393
+                        1601 ..lin.52575fc0..ef387e9.0_138::
+                        1602 .LDWlin138:
+000005aa e0876001       1603 	ei
+                        1604 --394: 	
+                        1605 --395: 	csih0_start();
+                        1606 .L2017:
+                        1607 	jarl	_csih0_start,lp
+                        1607 <EXPANSION BEGIN>
+                        1607 jarl22 _csih0_start , lp 
+000005ae bfffb6fd*      1607 <EXPANSION END>
+                        1608 --396: 	TAUD0_start();
+                        1609 .L2019:
 
                                                                       Page 28
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vr01.s
-                        1607 	.size	.L1960,4
-00000010 00000000*      1608 .L1962:	.word	.L1961
-                        1609 	.type	.L1962,@object
-                        1610 	.size	.L1962,4
-00000014 00000000*      1611 .L1964:	.word	.L1963
-                        1612 	.type	.L1964,@object
-                        1613 	.size	.L1964,4
-00000018 00000000*      1614 .L1966:	.word	.L1965
-                        1615 	.type	.L1966,@object
-                        1616 	.size	.L1966,4
-0000001c 00000000*      1617 .L1968:	.word	.L1967
-                        1618 	.type	.L1968,@object
-                        1619 	.size	.L1968,4
-00000020 00000000*      1620 .L1970:	.word	.L1969
-                        1621 	.type	.L1970,@object
-                        1622 	.size	.L1970,4
-00000024 00000000*      1623 .L1972:	.word	.L1971
-                        1624 	.type	.L1972,@object
-                        1625 	.size	.L1972,4
-                        1626 	.data
-                        1627 	.text
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                        1610 --line396
+                        1611 ..lin.52575fc0..ef387e9.0_139::
+                        1612 .LDWlin139:
+                        1613 	jarl	_TAUD0_start,lp
+                        1613 <EXPANSION BEGIN>
+                        1613 jarl22 _TAUD0_start , lp 
+000005b2 bfffd2fd*      1613 <EXPANSION END>
+                        1614 --397:   while(1);
+                        1615 .L1829:
+                        1616 --line397
+                        1617 ..lin.52575fc0..ef387e9.0_140::
+                        1618 .LDWlin140:
+000005b6 8505*          1619 	br	.L1829
+                        1620 --	    .ef
+                        1621 .LDW14:
+                        1622 --line399
+                        1623 ..lin.52575fc0..ef387e9.0_141::
+                        1624 	.type	_main,@function
+                        1625 	.size	_main,.-_main
+                        1626 	.align	2
+                        1627 --_i	r29	local
                         1628 
-                        1629 --385: }
-                        1630 	.align	2
-                        1631 --_PORT	4290838528	import
-                        1632 --_OSTM0	4292280320	import
-                        1633 --_CSIH0	4292345856	import
-                        1634 --_TAUD0	4293001216	import
-                        1635 --_WPROTR	4294443008	import
-                        1636 --_CLKCTL	4294447104	import
-                        1637 --_INTC1	4294896144	import
-                        1638 --_DMAC0	4294934528	import
-                        1639 --_INTC2	4294946880	import
-                        1640 --_PE_ICUM_PE2ICUSFS	4280221812	import
-                        1641 --_ddf_size	sdaoff2(_ddf_size)	import
-                        1642 --_ddf	sdaoff2(_ddf)	import
-                        1643 
-                        1644 	.section ".sdata","aw"
-                        1645 	.align	4
-                        1646 	.global	_dma0_sample
-00000000 00000000       1647 _dma0_sample:	.space	4
-                        1648 	.type	_dma0_sample,@object
-                        1649 	.size	_dma0_sample,4
-                        1650 	.global	_dma0_samples_count
-00000004 00000000       1651 _dma0_samples_count:	.space	4
-                        1652 	.type	_dma0_samples_count,@object
-                        1653 	.size	_dma0_samples_count,4
-                        1654 	.data
-                        1655 	.ghsnote version,30
-                        1656 	.ghsnote tools,3
-                        1657 	.ghsnote options,656
-                        1658 	.text
-                        1659 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD81DC5..0::
-                        1660 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0
+                        1629 	.section ".bss","awb"
+                        1630 .L1941:
+                        1631 	.type	.L1941,@object
+                        1632 	.size	.L1941,0
+                        1633 	.section ".ghcalltbl",""
+                        1634 	.align	4
+00000000 00000000*      1635 .L2002:	.word	.L2001
+                        1636 	.type	.L2002,@object
+                        1637 	.size	.L2002,4
+00000004 00000000*      1638 .L2004:	.word	.L2003
+                        1639 	.type	.L2004,@object
+                        1640 	.size	.L2004,4
+00000008 00000000*      1641 .L2006:	.word	.L2005
+                        1642 	.type	.L2006,@object
+                        1643 	.size	.L2006,4
+0000000c 00000000*      1644 .L2008:	.word	.L2007
+                        1645 	.type	.L2008,@object
+                        1646 	.size	.L2008,4
+00000010 00000000*      1647 .L2010:	.word	.L2009
+                        1648 	.type	.L2010,@object
+                        1649 	.size	.L2010,4
+00000014 00000000*      1650 .L2012:	.word	.L2011
+                        1651 	.type	.L2012,@object
+                        1652 	.size	.L2012,4
+00000018 00000000*      1653 .L2014:	.word	.L2013
+                        1654 	.type	.L2014,@object
+                        1655 	.size	.L2014,4
+0000001c 00000000*      1656 .L2016:	.word	.L2015
+                        1657 	.type	.L2016,@object
+                        1658 	.size	.L2016,4
+00000020 00000000*      1659 .L2018:	.word	.L2017
+                        1660 	.type	.L2018,@object
+                        1661 	.size	.L2018,4
+00000024 00000000*      1662 .L2020:	.word	.L2019
+                        1663 	.type	.L2020,@object
+                        1664 	.size	.L2020,4
+                        1665 	.data
+                        1666 	.text
+                        1667 
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_000026c1.s
+                        1668 --399: }
+                        1669 	.align	2
+                        1670 --_PORT	4290838528	import
+                        1671 --_OSTM0	4292280320	import
+                        1672 --_CSIH0	4292345856	import
+                        1673 --_TAUD0	4293001216	import
+                        1674 --_WPROTR	4294443008	import
+                        1675 --_CLKCTL	4294447104	import
+                        1676 --_INTC1	4294896144	import
+                        1677 --_DMAC0	4294934528	import
+                        1678 --_INTC2	4294946880	import
+                        1679 --_ddf_size	sdaoff2(_ddf_size)	import
+                        1680 --_ddf	sdaoff2(_ddf)	import
+                        1681 
+                        1682 	.section ".sdata","aw"
+                        1683 	.align	4
+                        1684 	.global	_dma0_sample
+00000000 00000000       1685 _dma0_sample:	.space	4
+                        1686 	.type	_dma0_sample,@object
+                        1687 	.size	_dma0_sample,4
+                        1688 	.global	_dma0_samples_count
+00000004 00000000       1689 _dma0_samples_count:	.space	4
+                        1690 	.type	_dma0_samples_count,@object
+                        1691 	.size	_dma0_samples_count,4
+                        1692 	.data
+                        1693 	.ghsnote version,30
+                        1694 	.ghsnote tools,3
+                        1695 	.ghsnote options,656
+                        1696 	.text
+                        1697 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD834A7..0::
+                        1698 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

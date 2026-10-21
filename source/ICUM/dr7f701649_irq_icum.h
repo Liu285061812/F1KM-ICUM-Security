@@ -59,6 +59,7 @@
 #define RESET_ENABLE                    RESET_ICUM_ENABLE
 
 #define INTPES_ENABLE                   IRQ_ICUM_TABLE_START
+#define INTPE_ENABLE                    (IRQ_ICUM_TABLE_START + 0x00000004u)
 
 // #define INTICUOSTM1_FE_ENABLE           (IRQ_ICUM_TABLE_START + 0x00000000u)
 

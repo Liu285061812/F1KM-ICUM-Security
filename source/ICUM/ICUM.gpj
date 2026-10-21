@@ -19,6 +19,7 @@ primaryTarget=v800_standalone.tgt
 	:postexec='gsrec -e 0 -noS5 output/icum -o output/icum.rec'
 	--no_additional_output
 	-I.
+	-I..
 	-I..\..\device
 	-fsoft
 	-cpu=rh850
@@ -34,8 +35,19 @@ dr7f701649i.dvf.h
 ..\..\device\io_macros_v2.h
 ..\..\device\cpu.h
 dr7f701649_irq_icum.h
+..\shared_memory.h
 icum_crypto.c
 icum_crypto.h
+aes_test.c
+aes_test.h
+icum_hash.c
+icum_hash.h
+hash_test.c
+hash_test.h
+icum_rsa.c
+icum_rsa.h
+rsa_test.c
+rsa_test.h
 icum_comm.c
 icum_comm.h
 icum_ostm.c

@@ -1,0 +1,751 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\hash_test.dbo -source=hash_test.c -comp -o output\objects\icum\gh_0000b0s1.o -list=output\list\icum\hash_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+Source File: hash_test.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Idevice -G
+                           2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
+                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
+                           4 --		-filetype.c source\ICUM\hash_test.c -o
+                           5 --		output\objects\icum\hash_test.o
+                           6 --Source File:   source\ICUM\hash_test.c
+                           7 --Directory:     
+                           8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                           9 --Compile Date:  Wed Oct 21 14:50:04 2026
+                          10 --Host OS:       Win64
+                          11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          12 --Release:       Compiler v2023.5.4
+                          13 --Revision Date: Wed Sep 06 02:44:56 2023
+                          14 --Release Date:  Wed Sep 06 02:00:00 2023
+                          15 -- ecom  -g -w
+                          16 
+                          17 --1: #include "hash_test.h"
+                          18 --3: static int hash_matches(icum_hash_algorithm algorithm,
+                          19 	.text
+                          20 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609C..0::
+                          21 	.align	2
+                          22 	.align	2
+                          23 ..gh.f.a.2.e.0:
+                          24 	.type	..gh.f.a.2.e.0,@object
+                          25 	.size	..gh.f.a.2.e.0,0
+                          26 	.global	_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test.
+                          27 _hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test.:
+                          28 _hash_matches:
+00000000 031ea8ff         29 	addi	-88,sp,sp
+00000004 63ff5500         30 	st.w	lp,84[sp]
+00000008 63cf5100         31 	st.w	r25,80[sp]
+0000000c 63d74d00         32 	st.w	r26,76[sp]
+00000010 63df4900         33 	st.w	r27,72[sp]
+00000014 63ef4100         34 	st.w	r29,64[sp]
+00000018 63e74500         35 	st.w	r28,68[sp]
+0000001c 06e8             36 	mov	r6,r29
+0000001e 07d8             37 	mov	r7,r27
+00000020 08d0             38 	mov	r8,r26
+00000022 09c8             39 	mov	r9,r25
+                          40 --	    .bf
+                          41 .LDW01:
+                          42 --4:                         const char *message,
+                          43 --5:                         unsigned long message_length,
+                          44 --6:                         const unsigned char *expected)
+                          45 --7: {
+                          46 --8:     unsigned char digest[64];
+                          47 --9:     unsigned long i, size;
+                          48 --11:     size=icum_hash_digest_size(algorithm);
+00000024 1d30             49 	mov	r29,r6
+                          50 .L105:
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                          51 	jarl	_icum_hash_digest_size,lp
+                          51 <EXPANSION BEGIN>
+                          51 jarl22 _icum_hash_digest_size , lp 
+00000026 80ff0000*        51 <EXPANSION END>
+0000002a 0ae0             52 	mov	r10,r28
+                          53 --12:     if (!icum_hash_compute(algorithm,(const unsigned char *)message,message_length,digest)) 
+                          54 --line12
+                          55 ..lin.aa17fe57..cd3501cc.0_1::
+                          56 .LDWlin1:
+0000002c 1d30             57 	mov	r29,r6
+0000002e 1b38             58 	mov	r27,r7
+00000030 1a40             59 	mov	r26,r8
+00000032 234e0000         60 	movea	0,sp,r9
+                          61 .L107:
+                          62 	jarl	_icum_hash_compute,lp
+                          62 <EXPANSION BEGIN>
+                          62 jarl22 _icum_hash_compute , lp 
+00000036 80ff0000*        62 <EXPANSION END>
+0000003a e051             63 	cmp	zero,r10
+0000003c ba05*            64 	bne	.L4
+                          65 --13:         return 0;
+                          66 --line13
+                          67 ..lin.aa17fe57..cd3501cc.0_2::
+                          68 .LDWlin2:
+0000003e 0052             69 	mov	0,r10
+00000040 a515*            70 	br	.L2
+                          71 .L4:
+                          72 --14:     for(i=0ul;i<size;++i) 
+                          73 --line14
+                          74 ..lin.aa17fe57..cd3501cc.0_3::
+                          75 .LDWlin3:
+00000042 000a             76 	mov	0,r1
+00000044 d50d*            77 	br	.L10
+                          78 .L9:
+                          79 --15:     {
+                          80 --16:         if(digest[i]!=expected[i]) 
+                          81 --line16
+                          82 ..lin.aa17fe57..cd3501cc.0_4::
+                          83 .LDWlin4:
+00000046 03f0             84 	mov	sp,ep
+00000048 c1f1             85 	add	r1,ep
+0000004a 0110             86 	mov	r1,r2
+0000004c d911             87 	add	r25,r2
+0000004e 82170100         88 	ld.bu	0[r2],r2
+00000052 6098             89 	sld.bu	0[ep],r19
+00000054 e299             90 	cmp	r2,r19
+00000056 b205*            91 	be	.L8
+                          92 --17:             return 0;
+                          93 --line17
+                          94 ..lin.aa17fe57..cd3501cc.0_5::
+                          95 .LDWlin5:
+00000058 0052             96 	mov	0,r10
+0000005a d505*            97 	br	.L2
+                          98 .L8:
+                          99 --line14
+                         100 ..lin.aa17fe57..cd3501cc.0_6::
+                         101 .LDWlin6:
+0000005c 410a            102 	add	1,r1
+                         103 .L10:
+0000005e fc09            104 	cmp	r28,r1
+00000060 b1f5*           105 	bl	.L9
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                         106 --18:     }
+                         107 --19:     return 1;
+                         108 --line19
+                         109 ..lin.aa17fe57..cd3501cc.0_7::
+                         110 .LDWlin7:
+00000062 0152            111 	mov	1,r10
+                         112 .L2:
+                         113 --	    .ef
+                         114 .LDW11:
+00000064 23ff5500        115 	ld.w	84[sp],lp
+00000068 23ef4100        116 	ld.w	64[sp],r29
+0000006c 23e74500        117 	ld.w	68[sp],r28
+00000070 23df4900        118 	ld.w	72[sp],r27
+00000074 23d74d00        119 	ld.w	76[sp],r26
+00000078 23cf5100        120 	ld.w	80[sp],r25
+0000007c 031e5800        121 	addi	88,sp,sp
+                         122 .L109:
+                         123 	.jumptype return
+00000080 7f00            124 	jmp	[lp]
+                         125 --line19
+                         126 ..lin.aa17fe57..cd3501cc.0_8::
+                         127 	.type	_hash_matches,@function
+                         128 	.size	_hash_matches,.-_hash_matches
+                         129 	.type	_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test.,@function
+                         130 	.size	_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test.,.-_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test.
+                         131 	.align	2
+                         132 --_digest	0[sp]	local
+                         133 --_i	r1	local
+                         134 --_size	r28	local
+                         135 
+                         136 --_algorithm	r29	param
+                         137 --_message	r27	param
+                         138 --_message_length	r26	param
+                         139 --_expected	r25	param
+                         140 
+                         141 	.section ".bss","awb"
+                         142 .L66:
+                         143 	.type	.L66,@object
+                         144 	.size	.L66,0
+                         145 	.section ".ghcalltbl",""
+                         146 	.align	4
+00000000 00000000*       147 .L106:	.word	.L105
+                         148 	.type	.L106,@object
+                         149 	.size	.L106,4
+00000004 00000000*       150 .L108:	.word	.L107
+                         151 	.type	.L108,@object
+                         152 	.size	.L108,4
+                         153 	.section ".ghrettbl",""
+                         154 	.align	4
+00000000 00000000*       155 .L110:	.word	.L109
+                         156 	.type	.L110,@object
+                         157 	.size	.L110,4
+                         158 	.data
+                         159 	.text
+                         160 
+                         161 --20: }
+                         162 
+                         163 --22: int icum_hash_self_test(icum_hash_algorithm algorithm)
+                         164 	.align	2
+                         165 	.align	2
+                         166 	.align	2
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                         167 	.align	2
+                         168 ..gh.f.a.2.e.1:
+                         169 	.type	..gh.f.a.2.e.1,@object
+                         170 	.size	..gh.f.a.2.e.1,0
+                         171 	.global	_icum_hash_self_test
+                         172 _icum_hash_self_test:
+00000082 031e84ff        173 	addi	-124,sp,sp
+00000086 63ff7900        174 	st.w	lp,120[sp]
+0000008a 63ef7100        175 	st.w	r29,112[sp]
+0000008e 63e77500        176 	st.w	r28,116[sp]
+00000092 06e8            177 	mov	r6,r29
+                         178 --	    .bf
+                         179 .LDW21:
+                         180 --23: {
+                         181 --24:     static const unsigned char sha1_empty[20]={
+                         182 --25:         0xda,0x39,0xa3,0xee,0x5e,0x6b,0x4b,0x0d,0x32,0x55,0xbf,0xef,0x95,0x60,0x18,0x90,0xaf,0xd8,0x07,0x09};
+                         183 --26:     static const unsigned char sha256_empty[32]={
+                         184 --27:         0xe3,0xb0,0xc4,0x42,0x98,0xfc,0x1c,0x14,0x9a,0xfb,0xf4,0xc8,0x99,0x6f,0xb9,0x24,
+                         185 --28:         0x27,0xae,0x41,0xe4,0x64,0x9b,0x93,0x4c,0xa4,0x95,0x99,0x1b,0x78,0x52,0xb8,0x55};
+                         186 --29:     static const unsigned char sha384_empty[48]={
+                         187 --30:         0x38,0xb0,0x60,0xa7,0x51,0xac,0x96,0x38,0x4c,0xd9,0x32,0x7e,0xb1,0xb1,0xe3,0x6a,
+                         188 --31:         0x21,0xfd,0xb7,0x11,0x14,0xbe,0x07,0x43,0x4c,0x0c,0xc7,0xbf,0x63,0xf6,0xe1,0xda,
+                         189 --32:         0x27,0x4e,0xde,0xbf,0xe7,0x6f,0x65,0xfb,0xd5,0x1a,0xd2,0xf1,0x48,0x98,0xb9,0x5b};
+                         190 --33:     static const unsigned char sha512_empty[64]={
+                         191 --34:         0xcf,0x83,0xe1,0x35,0x7e,0xef,0xb8,0xbd,0xf1,0x54,0x28,0x50,0xd6,0x6d,0x80,0x07,
+                         192 --35:         0xd6,0x20,0xe4,0x05,0x0b,0x57,0x15,0xdc,0x83,0xf4,0xa9,0x21,0xd3,0x6c,0xe9,0xce,
+                         193 --36:         0x47,0xd0,0xd1,0x3c,0x5d,0x85,0xf2,0xb0,0xff,0x83,0x18,0xd2,0x87,0x7e,0xec,0x2f,
+                         194 --37:         0x63,0xb9,0x31,0xbd,0x47,0x41,0x7a,0x81,0xa5,0x38,0x32,0x7a,0xf9,0x27,0xda,0x3e};
+                         195 --38:     static const unsigned char sha1_a56[20]={
+                         196 --39:         0xc2,0xdb,0x33,0x0f,0x60,0x83,0x85,0x4c,0x99,0xd4,0xb5,0xbf,0xb6,0xe8,0xf2,0x9f,0x20,0x1b,0xe6,0x99};
+                         197 --40:     static const unsigned char sha256_a56[32]={
+                         198 --41:         0xb3,0x54,0x39,0xa4,0xac,0x6f,0x09,0x48,0xb6,0xd6,0xf9,0xe3,0xc6,0xaf,0x0f,0x5f,
+                         199 --42:         0x59,0x0c,0xe2,0x0f,0x1b,0xde,0x70,0x90,0xef,0x79,0x70,0x68,0x6e,0xc6,0x73,0x8a};
+                         200 --43:     static const unsigned char sha384_a112[48]={
+                         201 --44:         0x18,0x7d,0x4e,0x07,0xcb,0x30,0x61,0x03,0xc6,0x99,0x67,0xbf,0x54,0x4d,0x0d,0xfb,
+                         202 --45:         0xe9,0x04,0x25,0x77,0x59,0x9c,0x73,0xc3,0x30,0xab,0xc0,0xcb,0x64,0xc6,0x12,0x36,
+                         203 --46:         0xd5,0xed,0x56,0x5e,0xe1,0x91,0x19,0xd8,0xc3,0x17,0x79,0xa3,0x8f,0x79,0x1f,0xcd};
+                         204 --47:     static const unsigned char sha512_a112[64]={
+                         205 --48:         0xc0,0x1d,0x08,0x0e,0xfd,0x49,0x27,0x76,0xa1,0xc4,0x3b,0xd2,0x3d,0xd9,0x9d,0x0a,
+                         206 --49:         0x2e,0x62,0x6d,0x48,0x1e,0x16,0x78,0x2e,0x75,0xd5,0x4c,0x25,0x03,0xb5,0xdc,0x32,
+                         207 --50:         0xbd,0x05,0xf0,0xf1,0xba,0x33,0xe5,0x68,0xb8,0x8f,0xd2,0xd9,0x70,0x92,0x9b,0x71,
+                         208 --51:         0x9e,0xcb,0xb1,0x52,0xf5,0x8f,0x13,0x0a,0x40,0x7c,0x88,0x30,0x60,0x4b,0x70,0xca};
+                         209 --52:     unsigned char padding_test[112];
+                         210 --53:     unsigned int i;
+                         211 --55:     if ((algorithm != ICUM_HASH_SHA1)
+00000094 61ea            212 	cmp	1,r29
+00000096 920d*           213 	be	.L113
+                         214 --line56
+                         215 ..lin.aa17fe57..b48c6edd.0_9::
+                         216 .LDWlin9:
+00000098 62ea            217 	cmp	2,r29
+0000009a f205*           218 	be	.L113
+                         219 --line57
+                         220 ..lin.aa17fe57..b48c6edd.0_10::
+                         221 .LDWlin10:
+0000009c 63ea            222 	cmp	3,r29
+0000009e d205*           223 	be	.L113
+                         224 --line58
+                         225 ..lin.aa17fe57..b48c6edd.0_11::
+                         226 .LDWlin11:
+000000a0 64ea            227 	cmp	4,r29
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+000000a2 b205*           228 	be	.L113
+                         229 --56:         && (algorithm != ICUM_HASH_SHA256)
+                         230 --57:         && (algorithm != ICUM_HASH_SHA384)
+                         231 --58:         && (algorithm != ICUM_HASH_SHA512)) 
+                         232 --59:             return 0;
+                         233 --line59
+                         234 ..lin.aa17fe57..b48c6edd.0_12::
+                         235 .LDWlin12:
+000000a4 0052            236 	mov	0,r10
+000000a6 d57d*           237 	br	.L111
+                         238 .L113:
+                         239 --61:     for (i=0u;i<sizeof(padding_test);++i)
+                         240 --line61
+                         241 ..lin.aa17fe57..b48c6edd.0_13::
+                         242 .LDWlin13:
+000000a8 00e2            243 	mov	0,r28
+000000aa f505*           244 	br	.L122
+                         245 .L121:
+                         246 --62:         padding_test[i]=(unsigned char)'a';
+                         247 --line62
+                         248 ..lin.aa17fe57..b48c6edd.0_14::
+                         249 .LDWlin14:
+000000ac 03f0            250 	mov	sp,ep
+000000ae dcf1            251 	add	r28,ep
+000000b0 200e6100        252 	movea	97,zero,r1
+000000b4 800b            253 	sst.b	r1,0[ep]
+000000b6 41e2            254 	add	1,r28
+                         255 .L122:
+000000b8 1c0690ff        256 	addi	-112,r28,zero
+000000bc 89fd*           257 	bnl	.L121
+                         258 --64:     if (algorithm == ICUM_HASH_SHA1) {
+                         259 --line64
+                         260 ..lin.aa17fe57..b48c6edd.0_15::
+                         261 .LDWlin15:
+000000be 61ea            262 	cmp	1,r29
+000000c0 ca1d*           263 	bne	.L123
+                         264 --65:         if(!hash_matches(algorithm, "", 0ul, sha1_empty))
+                         265 --line65
+                         266 ..lin.aa17fe57..b48c6edd.0_16::
+                         267 .LDWlin16:
+000000c2 1d30            268 	mov	r29,r6
+000000c4 253e0000*       269 	movea	sdaoff2(.L303),r5,r7
+000000c8 0042            270 	mov	0,r8
+000000ca 254e0000*       271 	movea	sdaoff2(.L382),r5,r9
+                         272 .L419:
+                         273 	jarl	_hash_matches,lp
+                         273 <EXPANSION BEGIN>
+                         273 jarl22 _hash_matches , lp 
+000000ce bfff32ff*       273 <EXPANSION END>
+000000d2 e051            274 	cmp	zero,r10
+000000d4 ba05*           275 	bne	.L125
+                         276 --66:             return 0;
+                         277 --line66
+                         278 ..lin.aa17fe57..b48c6edd.0_17::
+                         279 .LDWlin17:
+000000d6 0052            280 	mov	0,r10
+000000d8 c565*           281 	br	.L111
+                         282 .L125:
+                         283 --67:         if(!hash_matches(algorithm, (const char *)padding_test, 56ul, sha1_a56))
+                         284 --line67
+                         285 ..lin.aa17fe57..b48c6edd.0_18::
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                         286 .LDWlin18:
+000000da 1d30            287 	mov	r29,r6
+000000dc 233e0000        288 	movea	0,sp,r7
+000000e0 20463800        289 	movea	56,zero,r8
+000000e4 254e0000*       290 	movea	sdaoff2(.L383),r5,r9
+                         291 .L421:
+                         292 	jarl	_hash_matches,lp
+                         292 <EXPANSION BEGIN>
+                         292 jarl22 _hash_matches , lp 
+000000e8 bfff18ff*       292 <EXPANSION END>
+000000ec e051            293 	cmp	zero,r10
+000000ee ba05*           294 	bne	.L128
+                         295 --68:             return 0;
+                         296 --line68
+                         297 ..lin.aa17fe57..b48c6edd.0_19::
+                         298 .LDWlin19:
+000000f0 0052            299 	mov	0,r10
+000000f2 f555*           300 	br	.L111
+                         301 .L128:
+                         302 --69:         return 1;
+                         303 --line69
+                         304 ..lin.aa17fe57..b48c6edd.0_20::
+                         305 .LDWlin20:
+000000f4 0152            306 	mov	1,r10
+000000f6 d555*           307 	br	.L111
+                         308 .L123:
+                         309 --70:     }
+                         310 --71:     if(algorithm == ICUM_HASH_SHA256) {
+                         311 --line71
+                         312 ..lin.aa17fe57..b48c6edd.0_21::
+                         313 .LDWlin21:
+000000f8 62ea            314 	cmp	2,r29
+000000fa ca1d*           315 	bne	.L132
+                         316 --72:         if(!hash_matches(algorithm, "", 0ul, sha256_empty)) 
+                         317 --line72
+                         318 ..lin.aa17fe57..b48c6edd.0_22::
+                         319 .LDWlin22:
+000000fc 1d30            320 	mov	r29,r6
+000000fe 253e0000*       321 	movea	sdaoff2(.L303),r5,r7
+00000102 0042            322 	mov	0,r8
+00000104 254e0000*       323 	movea	sdaoff2(.L376),r5,r9
+                         324 .L423:
+                         325 	jarl	_hash_matches,lp
+                         325 <EXPANSION BEGIN>
+                         325 jarl22 _hash_matches , lp 
+00000108 bffff8fe*       325 <EXPANSION END>
+0000010c e051            326 	cmp	zero,r10
+0000010e ba05*           327 	bne	.L134
+                         328 --73:             return 0;
+                         329 --line73
+                         330 ..lin.aa17fe57..b48c6edd.0_23::
+                         331 .LDWlin23:
+00000110 0052            332 	mov	0,r10
+00000112 f545*           333 	br	.L111
+                         334 .L134:
+                         335 --74:         if(!hash_matches(algorithm, (const char *)padding_test, 56ul, sha256_a56))
+                         336 --line74
+                         337 ..lin.aa17fe57..b48c6edd.0_24::
+                         338 .LDWlin24:
+00000114 1d30            339 	mov	r29,r6
+00000116 233e0000        340 	movea	0,sp,r7
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+0000011a 20463800        341 	movea	56,zero,r8
+0000011e 254e0000*       342 	movea	sdaoff2(.L379),r5,r9
+                         343 .L425:
+                         344 	jarl	_hash_matches,lp
+                         344 <EXPANSION BEGIN>
+                         344 jarl22 _hash_matches , lp 
+00000122 bfffdefe*       344 <EXPANSION END>
+00000126 e051            345 	cmp	zero,r10
+00000128 ba05*           346 	bne	.L137
+                         347 --75:             return 0;
+                         348 --line75
+                         349 ..lin.aa17fe57..b48c6edd.0_25::
+                         350 .LDWlin25:
+0000012a 0052            351 	mov	0,r10
+0000012c a53d*           352 	br	.L111
+                         353 .L137:
+                         354 --76:         return 1;
+                         355 --line76
+                         356 ..lin.aa17fe57..b48c6edd.0_26::
+                         357 .LDWlin26:
+0000012e 0152            358 	mov	1,r10
+00000130 853d*           359 	br	.L111
+                         360 .L132:
+                         361 --77:     }
+                         362 --78:     if(algorithm == ICUM_HASH_SHA384) {
+                         363 --line78
+                         364 ..lin.aa17fe57..b48c6edd.0_27::
+                         365 .LDWlin27:
+00000132 63ea            366 	cmp	3,r29
+00000134 ca1d*           367 	bne	.L141
+                         368 --79:         if(!hash_matches(algorithm, "", 0ul, sha384_empty)) 
+                         369 --line79
+                         370 ..lin.aa17fe57..b48c6edd.0_28::
+                         371 .LDWlin28:
+00000136 1d30            372 	mov	r29,r6
+00000138 253e0000*       373 	movea	sdaoff2(.L303),r5,r7
+0000013c 0042            374 	mov	0,r8
+0000013e 254e0000*       375 	movea	sdaoff2(.L377),r5,r9
+                         376 .L427:
+                         377 	jarl	_hash_matches,lp
+                         377 <EXPANSION BEGIN>
+                         377 jarl22 _hash_matches , lp 
+00000142 bfffbefe*       377 <EXPANSION END>
+00000146 e051            378 	cmp	zero,r10
+00000148 ba05*           379 	bne	.L143
+                         380 --80:             return 0;
+                         381 --line80
+                         382 ..lin.aa17fe57..b48c6edd.0_29::
+                         383 .LDWlin29:
+0000014a 0052            384 	mov	0,r10
+0000014c a52d*           385 	br	.L111
+                         386 .L143:
+                         387 --81:         if(!hash_matches(algorithm, (const char *)padding_test, 112ul, sha384_a112)) 
+                         388 --line81
+                         389 ..lin.aa17fe57..b48c6edd.0_30::
+                         390 .LDWlin30:
+0000014e 1d30            391 	mov	r29,r6
+00000150 233e0000        392 	movea	0,sp,r7
+00000154 20467000        393 	movea	112,zero,r8
+00000158 254e0000*       394 	movea	sdaoff2(.L380),r5,r9
+                         395 .L429:
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                         396 	jarl	_hash_matches,lp
+                         396 <EXPANSION BEGIN>
+                         396 jarl22 _hash_matches , lp 
+0000015c bfffa4fe*       396 <EXPANSION END>
+00000160 e051            397 	cmp	zero,r10
+00000162 ba05*           398 	bne	.L146
+                         399 --82:             return 0;
+                         400 --line82
+                         401 ..lin.aa17fe57..b48c6edd.0_31::
+                         402 .LDWlin31:
+00000164 0052            403 	mov	0,r10
+00000166 d51d*           404 	br	.L111
+                         405 .L146:
+                         406 --83:         return 1;
+                         407 --line83
+                         408 ..lin.aa17fe57..b48c6edd.0_32::
+                         409 .LDWlin32:
+00000168 0152            410 	mov	1,r10
+0000016a b51d*           411 	br	.L111
+                         412 .L141:
+                         413 --84:     }
+                         414 --85:     if(!hash_matches(algorithm, "", 0ul, sha512_empty)) 
+                         415 --line85
+                         416 ..lin.aa17fe57..b48c6edd.0_33::
+                         417 .LDWlin33:
+0000016c 1d30            418 	mov	r29,r6
+0000016e 253e0000*       419 	movea	sdaoff2(.L303),r5,r7
+00000172 0042            420 	mov	0,r8
+00000174 254e0000*       421 	movea	sdaoff2(.L378),r5,r9
+                         422 .L431:
+                         423 	jarl	_hash_matches,lp
+                         423 <EXPANSION BEGIN>
+                         423 jarl22 _hash_matches , lp 
+00000178 bfff88fe*       423 <EXPANSION END>
+0000017c e051            424 	cmp	zero,r10
+0000017e ba05*           425 	bne	.L150
+                         426 --86:         return 0;
+                         427 --line86
+                         428 ..lin.aa17fe57..b48c6edd.0_34::
+                         429 .LDWlin34:
+00000180 0052            430 	mov	0,r10
+00000182 f50d*           431 	br	.L111
+                         432 .L150:
+                         433 --87:     if(!hash_matches(algorithm, (const char *)padding_test, 112ul, sha512_a112))
+                         434 --line87
+                         435 ..lin.aa17fe57..b48c6edd.0_35::
+                         436 .LDWlin35:
+00000184 1d30            437 	mov	r29,r6
+00000186 233e0000        438 	movea	0,sp,r7
+0000018a 20467000        439 	movea	112,zero,r8
+0000018e 254e0000*       440 	movea	sdaoff2(.L381),r5,r9
+                         441 .L433:
+                         442 	jarl	_hash_matches,lp
+                         442 <EXPANSION BEGIN>
+                         442 jarl22 _hash_matches , lp 
+00000192 bfff6efe*       442 <EXPANSION END>
+00000196 e051            443 	cmp	zero,r10
+00000198 ba05*           444 	bne	.L153
+                         445 --88:         return 0;
+                         446 --line88
+                         447 ..lin.aa17fe57..b48c6edd.0_36::
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                         448 .LDWlin36:
+0000019a 0052            449 	mov	0,r10
+0000019c a505*           450 	br	.L111
+                         451 .L153:
+                         452 --89:     return 1;
+                         453 --line89
+                         454 ..lin.aa17fe57..b48c6edd.0_37::
+                         455 .LDWlin37:
+0000019e 0152            456 	mov	1,r10
+                         457 .L111:
+                         458 --	    .ef
+                         459 .LDW31:
+000001a0 23ff7900        460 	ld.w	120[sp],lp
+000001a4 23ef7100        461 	ld.w	112[sp],r29
+000001a8 23e77500        462 	ld.w	116[sp],r28
+000001ac 031e7c00        463 	addi	124,sp,sp
+                         464 .L435:
+                         465 	.jumptype return
+000001b0 7f00            466 	jmp	[lp]
+                         467 --line89
+                         468 ..lin.aa17fe57..b48c6edd.0_38::
+                         469 	.type	_icum_hash_self_test,@function
+                         470 	.size	_icum_hash_self_test,.-_icum_hash_self_test
+                         471 	.align	2
+                         472 --_sha1_empty	sdaoff2(.L382)	static
+                         473 --_sha256_empty	sdaoff2(.L376)	static
+                         474 --_sha384_empty	sdaoff2(.L377)	static
+                         475 --_sha512_empty	sdaoff2(.L378)	static
+                         476 --_sha1_a56	sdaoff2(.L383)	static
+                         477 --_sha256_a56	sdaoff2(.L379)	static
+                         478 --_sha384_a112	sdaoff2(.L380)	static
+                         479 --_sha512_a112	sdaoff2(.L381)	static
+                         480 --_padding_test	0[sp]	local
+                         481 --_i	r28	local
+                         482 
+                         483 --_algorithm	r29	param
+                         484 
+                         485 	.section ".bss","awb"
+                         486 .L302:
+                         487 	.type	.L302,@object
+                         488 	.size	.L302,0
+                         489 	.section ".rosdata","a"
+                         490 .L303:--	""
+00000000 00              491 	.byte	0
+                         492 	.type	.L303,@object
+                         493 	.size	.L303,1
+                         494 .L376:
+                         495 	.global	_sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..0
+                         496 _sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..0:
+00000001 e3b0c442        497 	.byte	227,176,196,66
+00000005 98fc1c14        498 	.byte	152,252,28,20
+00000009 9afbf4c8        499 	.byte	154,251,244,200
+0000000d 996fb924        500 	.byte	153,111,185,36
+00000011 27ae41e4        501 	.byte	39,174,65,228
+00000015 649b934c        502 	.byte	100,155,147,76
+00000019 a495991b        503 	.byte	164,149,153,27
+0000001d 7852b855        504 	.byte	120,82,184,85
+                         505 	.type	_sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..0,@object
+                         506 	.size	_sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..0,32
+                         507 	.type	.L376,@object
+                         508 	.size	.L376,32
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                         509 .L377:
+                         510 	.global	_sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..1
+                         511 _sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..1:
+00000021 38b060a7        512 	.byte	56,176,96,167
+00000025 51ac9638        513 	.byte	81,172,150,56
+00000029 4cd9327e        514 	.byte	76,217,50,126
+0000002d b1b1e36a        515 	.byte	177,177,227,106
+00000031 21fdb711        516 	.byte	33,253,183,17
+00000035 14be0743        517 	.byte	20,190,7,67
+00000039 4c0cc7bf        518 	.byte	76,12,199,191
+0000003d 63f6e1da        519 	.byte	99,246,225,218
+00000041 274edebf        520 	.byte	39,78,222,191
+00000045 e76f65fb        521 	.byte	231,111,101,251
+00000049 d51ad2f1        522 	.byte	213,26,210,241
+0000004d 4898b95b        523 	.byte	72,152,185,91
+                         524 	.type	_sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..1,@object
+                         525 	.size	_sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..1,48
+                         526 	.type	.L377,@object
+                         527 	.size	.L377,48
+                         528 .L378:
+                         529 	.global	_sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..2
+                         530 _sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..2:
+00000051 cf83e135        531 	.byte	207,131,225,53
+00000055 7eefb8bd        532 	.byte	126,239,184,189
+00000059 f1542850        533 	.byte	241,84,40,80
+0000005d d66d8007        534 	.byte	214,109,128,7
+00000061 d620e405        535 	.byte	214,32,228,5
+00000065 0b5715dc        536 	.byte	11,87,21,220
+00000069 83f4a921        537 	.byte	131,244,169,33
+0000006d d36ce9ce        538 	.byte	211,108,233,206
+00000071 47d0d13c        539 	.byte	71,208,209,60
+00000075 5d85f2b0        540 	.byte	93,133,242,176
+00000079 ff8318d2        541 	.byte	255,131,24,210
+0000007d 877eec2f        542 	.byte	135,126,236,47
+00000081 63b931bd        543 	.byte	99,185,49,189
+00000085 47417a81        544 	.byte	71,65,122,129
+00000089 a538327a        545 	.byte	165,56,50,122
+0000008d f927da3e        546 	.byte	249,39,218,62
+                         547 	.type	_sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..2,@object
+                         548 	.size	_sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..2,64
+                         549 	.type	.L378,@object
+                         550 	.size	.L378,64
+                         551 .L379:
+                         552 	.global	_sha256_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..3
+                         553 _sha256_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..3:
+00000091 b35439a4        554 	.byte	179,84,57,164
+00000095 ac6f0948        555 	.byte	172,111,9,72
+00000099 b6d6f9e3        556 	.byte	182,214,249,227
+0000009d c6af0f5f        557 	.byte	198,175,15,95
+000000a1 590ce20f        558 	.byte	89,12,226,15
+000000a5 1bde7090        559 	.byte	27,222,112,144
+000000a9 ef797068        560 	.byte	239,121,112,104
+000000ad 6ec6738a        561 	.byte	110,198,115,138
+                         562 	.type	_sha256_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..3,@object
+                         563 	.size	_sha256_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..3,32
+                         564 	.type	.L379,@object
+                         565 	.size	.L379,32
+                         566 .L380:
+                         567 	.global	_sha384_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..4
+                         568 _sha384_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..4:
+000000b1 187d4e07        569 	.byte	24,125,78,7
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+000000b5 cb306103        570 	.byte	203,48,97,3
+000000b9 c69967bf        571 	.byte	198,153,103,191
+000000bd 544d0dfb        572 	.byte	84,77,13,251
+000000c1 e9042577        573 	.byte	233,4,37,119
+000000c5 599c73c3        574 	.byte	89,156,115,195
+000000c9 30abc0cb        575 	.byte	48,171,192,203
+000000cd 64c61236        576 	.byte	100,198,18,54
+000000d1 d5ed565e        577 	.byte	213,237,86,94
+000000d5 e19119d8        578 	.byte	225,145,25,216
+000000d9 c31779a3        579 	.byte	195,23,121,163
+000000dd 8f791fcd        580 	.byte	143,121,31,205
+                         581 	.type	_sha384_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..4,@object
+                         582 	.size	_sha384_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..4,48
+                         583 	.type	.L380,@object
+                         584 	.size	.L380,48
+                         585 .L381:
+                         586 	.global	_sha512_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..5
+                         587 _sha512_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..5:
+000000e1 c01d080e        588 	.byte	192,29,8,14
+000000e5 fd492776        589 	.byte	253,73,39,118
+000000e9 a1c43bd2        590 	.byte	161,196,59,210
+000000ed 3dd99d0a        591 	.byte	61,217,157,10
+000000f1 2e626d48        592 	.byte	46,98,109,72
+000000f5 1e16782e        593 	.byte	30,22,120,46
+000000f9 75d54c25        594 	.byte	117,213,76,37
+000000fd 03b5dc32        595 	.byte	3,181,220,50
+00000101 bd05f0f1        596 	.byte	189,5,240,241
+00000105 ba33e568        597 	.byte	186,51,229,104
+00000109 b88fd2d9        598 	.byte	184,143,210,217
+0000010d 70929b71        599 	.byte	112,146,155,113
+00000111 9ecbb152        600 	.byte	158,203,177,82
+00000115 f58f130a        601 	.byte	245,143,19,10
+00000119 407c8830        602 	.byte	64,124,136,48
+0000011d 604b70ca        603 	.byte	96,75,112,202
+                         604 	.type	_sha512_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..5,@object
+                         605 	.size	_sha512_a112.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..5,64
+                         606 	.type	.L381,@object
+                         607 	.size	.L381,64
+                         608 .L382:
+                         609 	.global	_sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..6
+                         610 _sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..6:
+00000121 da39a3ee        611 	.byte	218,57,163,238
+00000125 5e6b4b0d        612 	.byte	94,107,75,13
+00000129 3255bfef        613 	.byte	50,85,191,239
+0000012d 95601890        614 	.byte	149,96,24,144
+00000131 afd80709        615 	.byte	175,216,7,9
+                         616 	.type	_sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..6,@object
+                         617 	.size	_sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..6,20
+                         618 	.type	.L382,@object
+                         619 	.size	.L382,20
+                         620 .L383:
+                         621 	.global	_sha1_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..7
+                         622 _sha1_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..7:
+00000135 c2db330f        623 	.byte	194,219,51,15
+00000139 6083854c        624 	.byte	96,131,133,76
+0000013d 99d4b5bf        625 	.byte	153,212,181,191
+00000141 b6e8f29f        626 	.byte	182,232,242,159
+00000145 201be699        627 	.byte	32,27,230,153
+                         628 	.type	_sha1_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..7,@object
+                         629 	.size	_sha1_a56.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..7,20
+                         630 	.type	.L383,@object
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                         631 	.size	.L383,20
+                         632 	.section ".ghcalltbl",""
+00000008 00000000*       633 .L420:	.word	.L419
+                         634 	.type	.L420,@object
+                         635 	.size	.L420,4
+0000000c 00000000*       636 .L422:	.word	.L421
+                         637 	.type	.L422,@object
+                         638 	.size	.L422,4
+00000010 00000000*       639 .L424:	.word	.L423
+                         640 	.type	.L424,@object
+                         641 	.size	.L424,4
+00000014 00000000*       642 .L426:	.word	.L425
+                         643 	.type	.L426,@object
+                         644 	.size	.L426,4
+00000018 00000000*       645 .L428:	.word	.L427
+                         646 	.type	.L428,@object
+                         647 	.size	.L428,4
+0000001c 00000000*       648 .L430:	.word	.L429
+                         649 	.type	.L430,@object
+                         650 	.size	.L430,4
+00000020 00000000*       651 .L432:	.word	.L431
+                         652 	.type	.L432,@object
+                         653 	.size	.L432,4
+00000024 00000000*       654 .L434:	.word	.L433
+                         655 	.type	.L434,@object
+                         656 	.size	.L434,4
+                         657 	.section ".ghrettbl",""
+00000004 00000000*       658 .L436:	.word	.L435
+                         659 	.type	.L436,@object
+                         660 	.size	.L436,4
+                         661 	.data
+                         662 	.text
+                         663 
+                         664 --90: }
+                         665 	.align	2
+                         666 
+                         667 	.data
+                         668 	.ghsnote version,30
+                         669 	.ghsnote tools,3
+                         670 	.ghsnote options,656
+                         671 	.text
+                         672 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609C..0::
+                         673 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

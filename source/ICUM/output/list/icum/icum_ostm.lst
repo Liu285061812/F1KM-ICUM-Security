@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp81.s
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I. -I..\..\device -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\output\objects\icum\icum_ostm.dbo -source=icum_ostm.c -comp -o output\objects\icum\gh_0000rp81.o -list=output\list\icum\icum_ostm.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000rp81.s 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000rp81.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000l9s1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I. -I.. -I..\..\device -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\output\objects\icum\icum_ostm.dbo -source=icum_ostm.c -comp -o output\objects\icum\gh_0000l9s1.o -list=output\list\icum\icum_ostm.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000l9s1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000l9s1.s
 Source File: icum_ostm.c
 Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
 Host OS: Windows
@@ -13,14 +13,14 @@ Revision Date: Wed Sep 06 02:44:09 2023
 
 Release Date: Wed Sep 06 02:00:00 2023
 
-                           1 --Driver Command: ccrh850 -c -MD -I. -I..\..\device -G
+                           1 --Driver Command: ccrh850 -c -MD -I. -I.. -I..\..\device -G
                            2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
                            3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
                            4 --		-filetype.c icum_ostm.c -o output\objects\icum\icum_ostm.o
                            5 --Source File:   icum_ostm.c
                            6 --Directory:     
                            7 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
-                           8 --Compile Date:  Tue Oct 20 17:23:47 2026
+                           8 --Compile Date:  Wed Oct 21 11:30:27 2026
                            9 --Host OS:       Win64
                           10 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           11 --Release:       Compiler v2023.5.4
@@ -29,161 +29,178 @@ Release Date: Wed Sep 06 02:00:00 2023
                           14 -- ecom  -g -w
                           15 
                           16 --1: #include "device.h"
-                          17 --2: #include "icum_ostm.h"
-                          18 --4: __IOREG(ICUM_OSTM0CMP, 0xFFFEE000, __READ_WRITE, uint32);
-                          19 --5: __IOREG(ICUM_OSTM0TS, 0xFFFEE014, __READ_WRITE, uint8);
-                          20 --6: __IOREG(ICUM_OSTM0TT, 0xFFFEE018, __READ_WRITE, uint8);
-                          21 --7: __IOREG(ICUM_OSTM0CTL, 0xFFFEE020, __READ_WRITE, uint8);
-                          22 --8: __IOREG(ICUM_CTLREGICUM_GPIO, 0xFFFEE208, __READ_WRITE, uint32);
-                          23 --9: __IOREG(ICUM_ICICUOSTM0, 0xFFFEEA0E, __READ_WRITE, uint16);
-                          24 --11: #define ICUM_OSTM0_CLOCK_HZ       60000000UL
-                          25 --12: #define ICUM_OSTM0_INTERVAL_MS    100UL
-                          26 --13: #define ICUM_OSTM0_COMPARE_VALUE \
-                          27 --14:     ((ICUM_OSTM0_CLOCK_HZ / 1000UL) * ICUM_OSTM0_INTERVAL_MS - 1UL)
-                          28 --16: #define ICUM_GPIO_SECOUT0_MASK    0x00000007UL
-                          29 --17: #define ICUM_GPIO_SECOUT0_ENABLE  0x00000006UL
-                          30 --19: void icum_ostm_init(void)
-                          31 	.text
-                          32 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_ostm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD73323..0::
-                          33 	.align	2
-                          34 	.align	2
-                          35 ..gh.f.a.2.e.0:
-                          36 	.type	..gh.f.a.2.e.0,@object
-                          37 	.size	..gh.f.a.2.e.0,0
-                          38 	.global	_icum_ostm_init
-                          39 _icum_ostm_init:
-                          40 --	    .bf
-                          41 .LDW01:
-                          42 --20: {
-                          43 --21:     ICUM_OSTM0TT = 1u;
-00000000 010a             44 	mov	1,r1
-00000002 80078d09c0fd     45 	st.b	r1,4294893592[zero]
-                          46 --22:     ICUM_OSTM0CTL = 0u;
-                          47 --line22
-                          48 ..lin.68662d8f..617df447.0_1::
-                          49 .LDWlin1:
-00000008 80070d02c0fd     50 	st.b	zero,4294893600[zero]
+                          17 --2: #include "icum_comm.h"
+                          18 --3: #include "icum_ostm.h"
+                          19 --5: __IOREG(ICUM_OSTM0CMP, 0xFFFEE000, __READ_WRITE, uint32);
+                          20 --6: __IOREG(ICUM_OSTM0TS, 0xFFFEE014, __READ_WRITE, uint8);
+                          21 --7: __IOREG(ICUM_OSTM0TT, 0xFFFEE018, __READ_WRITE, uint8);
+                          22 --8: __IOREG(ICUM_OSTM0CTL, 0xFFFEE020, __READ_WRITE, uint8);
+                          23 --9: __IOREG(ICUM_CTLREGICUM_GPIO, 0xFFFEE208, __READ_WRITE, uint32);
+                          24 --10: __IOREG(ICUM_ICICUOSTM0, 0xFFFEEA0E, __READ_WRITE, uint16);
+                          25 --12: /* CPUCLK is 240 MHz; CKDIVMD=1 makes CPUCLK_L (the OSTM clock) CPUCLK/4. */
+                          26 --13: #define ICUM_OSTM0_CLOCK_HZ       60000000UL
+                          27 --14: #define ICUM_OSTM0_INTERVAL_MS    100UL
+                          28 --15: #define ICUM_OSTM0_COMPARE_VALUE \
+                          29 --16:     ((ICUM_OSTM0_CLOCK_HZ / 1000UL) * ICUM_OSTM0_INTERVAL_MS - 1UL)
+                          30 --18: #define ICUM_GPIO_SECOUT0_MASK    0x00000007UL
+                          31 --19: #define ICUM_GPIO_SECOUT0_ENABLE  0x00000006UL
+                          32 --21: void icum_ostm_init(void)
+                          33 	.text
+                          34 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_ostm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD831D4..0::
+                          35 	.align	2
+                          36 	.align	2
+                          37 ..gh.f.a.2.e.0:
+                          38 	.type	..gh.f.a.2.e.0,@object
+                          39 	.size	..gh.f.a.2.e.0,0
+                          40 	.global	_icum_ostm_init
+                          41 _icum_ostm_init:
+                          42 --	    .bf
+                          43 .LDW01:
+                          44 --22: {
+                          45 --23:     ICUM_OSTM0TT = 1u;
+00000000 010a             46 	mov	1,r1
+00000002 80078d09c0fd     47 	st.b	r1,4294893592[zero]
+                          48 --24:     ICUM_OSTM0CTL = 0u;
+                          49 --line24
+                          50 ..lin.68662d8f..617df447.0_1::
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp81.s
-                          51 --23:     ICUM_OSTM0CMP = ICUM_OSTM0_COMPARE_VALUE;
-                          52 --line23
-                          53 ..lin.68662d8f..617df447.0_2::
-                          54 .LDWlin2:
-0000000e 21067f8d5b00     55 	mov	5999999,r1
-00000014 80070f08c0fd     56 	st.w	r1,4294893568[zero]
-                          57 --25:     ICUM_CTLREGICUM_GPIO =
-                          58 --line25
-                          59 ..lin.68662d8f..617df447.0_3::
-                          60 .LDWlin3:
-0000001a 80078908c4fd     61 	ld.w	4294894088[zero],r1
-00000020 1812             62 	mov	-8,r2
-00000022 4209             63 	and	r2,r1
-00000024 810e0600         64 	ori	6,r1,r1
-00000028 80078f08c4fd     65 	st.w	r1,4294894088[zero]
-                          66 --26:         (ICUM_CTLREGICUM_GPIO & ~ICUM_GPIO_SECOUT0_MASK) |
-                          67 --27:         ICUM_GPIO_SECOUT0_ENABLE;
-                          68 --29:     ICUM_ICICUOSTM0 = 0x0040u;
-                          69 --line29
-                          70 ..lin.68662d8f..617df447.0_4::
-                          71 .LDWlin4:
-0000002e 200e4000         72 	movea	64,zero,r1
-00000032 a007ed08d4fd     73 	st.h	r1,4294896142[zero]
-                          74 --30:     ICUM_OSTM0TS = 1u;
-                          75 --line30
-                          76 ..lin.68662d8f..617df447.0_5::
-                          77 .LDWlin5:
-00000038 010a             78 	mov	1,r1
-0000003a 80074d09c0fd     79 	st.b	r1,4294893588[zero]
-                          80 --31:     __EI();
-                          81 --line31
-                          82 ..lin.68662d8f..617df447.0_6::
-                          83 .LDWlin6:
-00000040 e0876001         84 	ei
-                          85 --32: }
-                          86 --	    .ef
-                          87 .LDW11:
-                          88 .L91:
-                          89 	.jumptype return
-00000044 7f00             90 	jmp	[lp]
-                          91 --line31
-                          92 ..lin.68662d8f..617df447.0_7::
-                          93 	.type	_icum_ostm_init,@function
-                          94 	.size	_icum_ostm_init,.-_icum_ostm_init
-                          95 	.align	2
-                          96 
-                          97 	.section ".bss","awb"
-                          98 .L58:
-                          99 	.type	.L58,@object
-                         100 	.size	.L58,0
-                         101 	.section ".ghrettbl",""
-                         102 	.align	4
-00000000 00000000*       103 .L92:	.word	.L91
-                         104 	.type	.L92,@object
-                         105 	.size	.L92,4
-                         106 	.data
-                         107 	.text
-                         108 
-                         109 
-                         110 --34: #pragma ghs interrupt
-                         111 --35: void INTICUOSTM0(void)
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000l9s1.s
+                          51 .LDWlin1:
+00000008 80070d02c0fd     52 	st.b	zero,4294893600[zero]
+                          53 --25:     ICUM_OSTM0CMP = ICUM_OSTM0_COMPARE_VALUE;
+                          54 --line25
+                          55 ..lin.68662d8f..617df447.0_2::
+                          56 .LDWlin2:
+0000000e 21067f8d5b00     57 	mov	5999999,r1
+00000014 80070f08c0fd     58 	st.w	r1,4294893568[zero]
+                          59 --27:     /* OPBT12.ICUMOPGPIO must be set to 1 to enable ICUM GPIO control. */
+                          60 --28:     ICUM_CTLREGICUM_GPIO =
+                          61 --line28
+                          62 ..lin.68662d8f..617df447.0_3::
+                          63 .LDWlin3:
+0000001a 80078908c4fd     64 	ld.w	4294894088[zero],r1
+00000020 1812             65 	mov	-8,r2
+00000022 4209             66 	and	r2,r1
+00000024 810e0600         67 	ori	6,r1,r1
+00000028 80078f08c4fd     68 	st.w	r1,4294894088[zero]
+                          69 --29:         (ICUM_CTLREGICUM_GPIO & ~ICUM_GPIO_SECOUT0_MASK) |
+                          70 --30:         ICUM_GPIO_SECOUT0_ENABLE;
+                          71 --32:     ICUM_ICICUOSTM0 = 0x0040u;
+                          72 --line32
+                          73 ..lin.68662d8f..617df447.0_4::
+                          74 .LDWlin4:
+0000002e 200e4000         75 	movea	64,zero,r1
+00000032 a007ed08d4fd     76 	st.h	r1,4294896142[zero]
+                          77 --33:     ICUM_OSTM0TS = 1u;
+                          78 --line33
+                          79 ..lin.68662d8f..617df447.0_5::
+                          80 .LDWlin5:
+00000038 010a             81 	mov	1,r1
+0000003a 80074d09c0fd     82 	st.b	r1,4294893588[zero]
+                          83 --34:     __EI();
+                          84 --line34
+                          85 ..lin.68662d8f..617df447.0_6::
+                          86 .LDWlin6:
+00000040 e0876001         87 	ei
+                          88 --35: }
+                          89 --	    .ef
+                          90 .LDW11:
+                          91 .L91:
+                          92 	.jumptype return
+00000044 7f00             93 	jmp	[lp]
+                          94 --line34
+                          95 ..lin.68662d8f..617df447.0_7::
+                          96 	.type	_icum_ostm_init,@function
+                          97 	.size	_icum_ostm_init,.-_icum_ostm_init
+                          98 	.align	2
+                          99 
+                         100 	.section ".bss","awb"
+                         101 .L58:
+                         102 	.type	.L58,@object
+                         103 	.size	.L58,0
+                         104 	.section ".ghrettbl",""
+                         105 	.align	4
+00000000 00000000*       106 .L92:	.word	.L91
+                         107 	.type	.L92,@object
+                         108 	.size	.L92,4
+                         109 	.data
+                         110 	.text
+                         111 
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rp81.s
-                         112 	.align	2
-                         113 	.align	2
-                         114 	.align	2
-                         115 ..gh.f.a.2.e.1:
-                         116 	.type	..gh.f.a.2.e.1,@object
-                         117 	.size	..gh.f.a.2.e.1,0
-                         118 	.global	_INTICUOSTM0
-                         119 _INTICUOSTM0:
-00000046 231efcff        120 	movea	-4,sp,sp
-0000004a 630f0100        121 	st.w	r1,0[sp]
-                         122 --	    .bf
-                         123 .LDW21:
-                         124 --36: {
-                         125 --37:     ICUM_CTLREGICUM_GPIO ^= 0x00000001u;
-0000004e 80078908c4fd    126 	ld.w	4294894088[zero],r1
-00000054 a10e0100        127 	xori	1,r1,r1
-00000058 80078f08c4fd    128 	st.w	r1,4294894088[zero]
-                         129 --38: }
-                         130 --	    .ef
-                         131 .LDW31:
-                         132 --line38
-                         133 ..lin.68662d8f..4ebe0243.0_8::
-                         134 .LDWlin8:
-0000005e 230f0100        135 	ld.w	0[sp],r1
-00000062 231e0400        136 	movea	4,sp,sp
-                         137 .L129:
-00000066 e0074801        138 	eiret
-                         139 	.type	_INTICUOSTM0,@function
-                         140 	.size	_INTICUOSTM0,.-_INTICUOSTM0
-                         141 	.align	2
-                         142 
-                         143 	.section ".bss","awb"
-                         144 .L114:
-                         145 	.type	.L114,@object
-                         146 	.size	.L114,0
-                         147 	.section ".ghrettbl",""
-00000004 00000000*       148 .L130:	.word	.L129
-                         149 	.type	.L130,@object
-                         150 	.size	.L130,4
-                         151 	.data
-                         152 	.text
-                         153 
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000l9s1.s
+                         112 
+                         113 --37: #pragma ghs interrupt
+                         114 --38: void INTICUOSTM0(void)
+                         115 	.align	2
+                         116 	.align	2
+                         117 	.align	2
+                         118 ..gh.f.a.2.e.1:
+                         119 	.type	..gh.f.a.2.e.1,@object
+                         120 	.size	..gh.f.a.2.e.1,0
+                         121 	.global	_INTICUOSTM0
+                         122 _INTICUOSTM0:
+00000046 231efcff        123 	movea	-4,sp,sp
+0000004a 630f0100        124 	st.w	r1,0[sp]
+                         125 --	    .bf
+                         126 .LDW21:
+                         127 --39: {
+                         128 --40:     if (g_icum_comm_status != 0u)
+0000004e 240f0100*       129 	ld.w	sdaoff(_g_icum_comm_status)[gp],r1
+00000052 e009            130 	cmp	zero,r1
+00000054 920d*           131 	be	.L93
+                         132 --41:     {
+                         133 --42:         ICUM_CTLREGICUM_GPIO ^= 0x00000001u;
+                         134 --line42
+                         135 ..lin.68662d8f..4ebe0243.0_8::
+                         136 .LDWlin8:
+00000056 80078908c4fd    137 	ld.w	4294894088[zero],r1
+0000005c a10e0100        138 	xori	1,r1,r1
+00000060 80078f08c4fd    139 	st.w	r1,4294894088[zero]
+                         140 .L93:
+                         141 --43:     }
+                         142 --44: }
+                         143 --	    .ef
+                         144 .LDW31:
+                         145 --line44
+                         146 ..lin.68662d8f..4ebe0243.0_9::
+                         147 .LDWlin9:
+00000066 230f0100        148 	ld.w	0[sp],r1
+0000006a 231e0400        149 	movea	4,sp,sp
+                         150 .L129:
+0000006e e0074801        151 	eiret
+                         152 	.type	_INTICUOSTM0,@function
+                         153 	.size	_INTICUOSTM0,.-_INTICUOSTM0
                          154 	.align	2
-                         155 --_ICUM_OSTM0CMP	4294893568	import
-                         156 --_ICUM_OSTM0TS	4294893588	import
-                         157 --_ICUM_OSTM0TT	4294893592	import
-                         158 --_ICUM_OSTM0CTL	4294893600	import
-                         159 --_ICUM_CTLREGICUM_GPIO	4294894088	import
-                         160 --_ICUM_ICICUOSTM0	4294896142	import
-                         161 
-                         162 	.data
-                         163 	.ghsnote version,30
-                         164 	.ghsnote tools,3
-                         165 	.ghsnote options,656
-                         166 	.text
-                         167 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_ostm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD73323..0::
-                         168 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0
+                         155 
+                         156 	.section ".bss","awb"
+                         157 .L114:
+                         158 	.type	.L114,@object
+                         159 	.size	.L114,0
+                         160 	.section ".ghrettbl",""
+00000004 00000000*       161 .L130:	.word	.L129
+                         162 	.type	.L130,@object
+                         163 	.size	.L130,4
+                         164 	.data
+                         165 	.text
+                         166 
+                         167 	.align	2
+                         168 --_g_icum_comm_status	sdaoff(_g_icum_comm_status)	import
+                         169 --_ICUM_OSTM0CMP	4294893568	import
+                         170 --_ICUM_OSTM0TS	4294893588	import
+                         171 --_ICUM_OSTM0TT	4294893592	import
+                         172 --_ICUM_OSTM0CTL	4294893600	import
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000l9s1.s
+                         173 --_ICUM_CTLREGICUM_GPIO	4294894088	import
+                         174 --_ICUM_ICICUOSTM0	4294896142	import
+                         175 
+                         176 	.data
+                         177 	.ghsnote version,30
+                         178 	.ghsnote tools,3
+                         179 	.ghsnote options,656
+                         180 	.text
+                         181 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_ostm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD831D4..0::
+                         182 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

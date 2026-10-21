@@ -1,0 +1,1244 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\rsa_test.dbo -source=rsa_test.c -comp -o output\objects\icum\gh_0000ljk1.o -list=output\list\icum\rsa_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+Source File: rsa_test.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Idevice -G
+                           2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
+                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
+                           4 --		-filetype.c source\ICUM\rsa_test.c -o
+                           5 --		output\objects\icum\rsa_test.o
+                           6 --Source File:   source\ICUM\rsa_test.c
+                           7 --Directory:     
+                           8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                           9 --Compile Date:  Wed Oct 21 14:56:32 2026
+                          10 --Host OS:       Win64
+                          11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          12 --Release:       Compiler v2023.5.4
+                          13 --Revision Date: Wed Sep 06 02:44:56 2023
+                          14 --Release Date:  Wed Sep 06 02:00:00 2023
+                          15 -- ecom  -g -w
+                          16 
+                          17 --1: #include "rsa_test.h"
+                          18 --2: #include "icum_rsa.h"
+                          19 --4: static int rsa_hex_decode(const char *hex,
+                          20 	.text
+                          21 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD86220..0::
+                          22 	.align	2
+                          23 	.align	2
+                          24 ..gh.f.a.2.e.0:
+                          25 	.type	..gh.f.a.2.e.0,@object
+                          26 	.size	..gh.f.a.2.e.0,0
+                          27 	.global	_rsa_hex_decode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.
+                          28 _rsa_hex_decode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.:
+                          29 _rsa_hex_decode:
+00000000 0688             30 	mov	r6,r17
+00000002 0778             31 	mov	r7,r15
+00000004 0880             32 	mov	r8,r16
+                          33 --	    .bf
+                          34 .LDW01:
+                          35 --5:                           unsigned char *output,
+                          36 --6:                           unsigned long output_length)
+                          37 --7: {
+                          38 --8:     unsigned long i;
+                          39 --9:     unsigned int high, low;
+                          40 --10:     char c;
+                          41 --12:     for (i = 0ul; i < output_length; ++i) {
+00000006 0092             42 	mov	0,r18
+00000008 9555*            43 	br	.L7
+                          44 .L6:
+                          45 --13:         c = hex[i * 2ul];
+                          46 --line13
+                          47 ..lin.19e471f9..1e4b1931.0_1::
+                          48 .LDWlin1:
+0000000a 12f0             49 	mov	r18,ep
+0000000c c1f2             50 	shl	1,ep
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+0000000e d1f1             51 	add	r17,ep
+00000010 000b             52 	sld.b	0[ep],r1
+                          53 --14:         high = (c >= '0' && c <= '9') ? (unsigned int)(c - '0')
+00000012 0106d0ff         54 	addi	-48,r1,zero
+00000016 f605*            55 	blt	.L8
+00000018 0106c7ff         56 	addi	-57,r1,zero
+0000001c cf05*            57 	bgt	.L8
+0000001e 0116d0ff         58 	addi	-48,r1,r2
+00000022 d515*            59 	br	.L85
+                          60 .L8:
+                          61 --line15
+                          62 ..lin.19e471f9..1e4b1931.0_2::
+                          63 .LDWlin2:
+00000024 01069fff         64 	addi	-97,r1,zero
+00000028 f605*            65 	blt	.L12
+0000002a 01069aff         66 	addi	-102,r1,zero
+0000002e cf05*            67 	bgt	.L12
+00000030 0116a9ff         68 	addi	-87,r1,r2
+00000034 c50d*            69 	br	.L85
+                          70 .L12:
+                          71 --line16
+                          72 ..lin.19e471f9..1e4b1931.0_3::
+                          73 .LDWlin3:
+00000036 0106bfff         74 	addi	-65,r1,zero
+0000003a f605*            75 	blt	.L16
+0000003c 0106baff         76 	addi	-70,r1,zero
+00000040 cf05*            77 	bgt	.L16
+00000042 0116c9ff         78 	addi	-55,r1,r2
+00000046 b505*            79 	br	.L85
+                          80 .L16:
+00000048 20161000         81 	movea	16,zero,r2
+                          82 .L85:
+                          83 --15:              : (c >= 'a' && c <= 'f') ? (unsigned int)(c - 'a' + 10)
+                          84 --16:              : (c >= 'A' && c <= 'F') ? (unsigned int)(c - 'A' + 10) : 16u;
+                          85 --17:         c = hex[i * 2ul + 1ul];
+                          86 --line17
+                          87 ..lin.19e471f9..1e4b1931.0_4::
+                          88 .LDWlin4:
+0000004c 12f0             89 	mov	r18,ep
+0000004e c1f2             90 	shl	1,ep
+00000050 41f2             91 	add	1,ep
+00000052 d1f1             92 	add	r17,ep
+00000054 000b             93 	sld.b	0[ep],r1
+                          94 --18:         low = (c >= '0' && c <= '9') ? (unsigned int)(c - '0')
+00000056 0106d0ff         95 	addi	-48,r1,zero
+0000005a f605*            96 	blt	.L20
+0000005c 0106c7ff         97 	addi	-57,r1,zero
+00000060 cf05*            98 	bgt	.L20
+00000062 019ed0ff         99 	addi	-48,r1,r19
+00000066 d515*           100 	br	.L87
+                         101 .L20:
+                         102 --line19
+                         103 ..lin.19e471f9..1e4b1931.0_5::
+                         104 .LDWlin5:
+00000068 01069fff        105 	addi	-97,r1,zero
+0000006c f605*           106 	blt	.L24
+0000006e 01069aff        107 	addi	-102,r1,zero
+00000072 cf05*           108 	bgt	.L24
+00000074 019ea9ff        109 	addi	-87,r1,r19
+00000078 c50d*           110 	br	.L87
+                         111 .L24:
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                         112 --line20
+                         113 ..lin.19e471f9..1e4b1931.0_6::
+                         114 .LDWlin6:
+0000007a 0106bfff        115 	addi	-65,r1,zero
+0000007e f605*           116 	blt	.L28
+00000080 0106baff        117 	addi	-70,r1,zero
+00000084 cf05*           118 	bgt	.L28
+00000086 019ec9ff        119 	addi	-55,r1,r19
+0000008a b505*           120 	br	.L87
+                         121 .L28:
+0000008c 209e1000        122 	movea	16,zero,r19
+                         123 .L87:
+                         124 --19:             : (c >= 'a' && c <= 'f') ? (unsigned int)(c - 'a' + 10)
+                         125 --20:             : (c >= 'A' && c <= 'F') ? (unsigned int)(c - 'A' + 10) : 16u;
+                         126 --21:         if ((high > 15u) || (low > 15u)) {
+                         127 --line21
+                         128 ..lin.19e471f9..1e4b1931.0_7::
+                         129 .LDWlin7:
+00000090 6f12            130 	cmp	15,r2
+00000092 bb05*           131 	bh	.L33
+00000094 6f9a            132 	cmp	15,r19
+00000096 b305*           133 	bnh	.L32
+                         134 .L33:
+                         135 --22:             return 0;
+                         136 --line22
+                         137 ..lin.19e471f9..1e4b1931.0_8::
+                         138 .LDWlin8:
+00000098 0052            139 	mov	0,r10
+0000009a 9515*           140 	br	.L2
+                         141 .L32:
+                         142 --23:         }
+                         143 --24:         output[i] = (unsigned char)((high << 4) | low);
+                         144 --line24
+                         145 ..lin.19e471f9..1e4b1931.0_9::
+                         146 .LDWlin9:
+0000009c 0270            147 	mov	r2,r14
+0000009e c472            148 	shl	4,r14
+000000a0 12f0            149 	mov	r18,ep
+000000a2 cff1            150 	add	r15,ep
+000000a4 1371            151 	or	r19,r14
+000000a6 8073            152 	sst.b	r14,0[ep]
+000000a8 4192            153 	add	1,r18
+                         154 .L7:
+000000aa f091            155 	cmp	r16,r18
+000000ac f1ad*           156 	bl	.L6
+                         157 --25:     }
+                         158 --26:     return hex[output_length * 2ul] == '\0';
+                         159 --line26
+                         160 ..lin.19e471f9..1e4b1931.0_10::
+                         161 .LDWlin10:
+000000ae 10f0            162 	mov	r16,ep
+000000b0 c1f2            163 	shl	1,ep
+000000b2 d1f1            164 	add	r17,ep
+000000b4 0073            165 	sld.b	0[ep],r14
+000000b6 e071            166 	cmp	zero,r14
+000000b8 e2570000        167 	setfe	r10
+                         168 .L2:
+                         169 --	    .ef
+                         170 .LDW11:
+                         171 .L326:
+                         172 	.jumptype return
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+000000bc 7f00            173 	jmp	[lp]
+                         174 --line26
+                         175 ..lin.19e471f9..1e4b1931.0_11::
+                         176 	.type	_rsa_hex_decode,@function
+                         177 	.size	_rsa_hex_decode,.-_rsa_hex_decode
+                         178 	.type	_rsa_hex_decode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.,@function
+                         179 	.size	_rsa_hex_decode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.,.-_rsa_hex_decode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.
+                         180 	.align	2
+                         181 --_i	r18	local
+                         182 --_high	r2	local
+                         183 --_low	r19	local
+                         184 --_c	r1	local
+                         185 
+                         186 --_hex	r17	param
+                         187 --_output	r15	param
+                         188 --_output_length	r16	param
+                         189 
+                         190 	.section ".bss","awb"
+                         191 .L206:
+                         192 	.type	.L206,@object
+                         193 	.size	.L206,0
+                         194 	.section ".ghrettbl",""
+                         195 	.align	4
+00000000 00000000*       196 .L327:	.word	.L326
+                         197 	.type	.L327,@object
+                         198 	.size	.L327,4
+                         199 	.data
+                         200 	.text
+                         201 
+                         202 --27: }
+                         203 
+                         204 --29: static int rsa_bytes_equal(const unsigned char *left,
+                         205 	.align	2
+                         206 	.align	2
+                         207 	.align	2
+                         208 ..gh.f.a.2.e.1:
+                         209 	.type	..gh.f.a.2.e.1,@object
+                         210 	.size	..gh.f.a.2.e.1,0
+                         211 	.global	_rsa_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.
+                         212 _rsa_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.:
+                         213 _rsa_bytes_equal:
+000000be 0698            214 	mov	r6,r19
+000000c0 0790            215 	mov	r7,r18
+000000c2 0888            216 	mov	r8,r17
+                         217 --	    .bf
+                         218 .LDW21:
+                         219 --30:                            const unsigned char *right,
+                         220 --31:                            unsigned long length)
+                         221 --32: {
+                         222 --33:     unsigned long i;
+                         223 --34:     unsigned int difference;
+                         224 --35:     difference = 0u;
+000000c4 0012            225 	mov	0,r2
+                         226 --36:     for (i = 0ul; i < length; ++i) difference |= left[i] ^ right[i];
+000000c6 000a            227 	mov	0,r1
+000000c8 b50d*           228 	br	.L333
+                         229 .L332:
+                         230 --line36
+                         231 ..lin.19e471f9..44bebd27.0_12::
+                         232 .LDWlin12:
+000000ca 01f0            233 	mov	r1,ep
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+000000cc d3f1            234 	add	r19,ep
+000000ce 0180            235 	mov	r1,r16
+000000d0 d281            236 	add	r18,r16
+000000d2 90870100        237 	ld.bu	0[r16],r16
+000000d6 6078            238 	sld.bu	0[ep],r15
+000000d8 2f81            239 	xor	r15,r16
+000000da 1011            240 	or	r16,r2
+000000dc 410a            241 	add	1,r1
+                         242 .L333:
+000000de f109            243 	cmp	r17,r1
+000000e0 d1f5*           244 	bl	.L332
+                         245 --37:     return difference == 0u;
+                         246 --line37
+                         247 ..lin.19e471f9..44bebd27.0_13::
+                         248 .LDWlin13:
+000000e2 e011            249 	cmp	zero,r2
+000000e4 e2570000        250 	setfe	r10
+                         251 --	    .ef
+                         252 .LDW31:
+                         253 .L404:
+                         254 	.jumptype return
+000000e8 7f00            255 	jmp	[lp]
+                         256 --line37
+                         257 ..lin.19e471f9..44bebd27.0_14::
+                         258 	.type	_rsa_bytes_equal,@function
+                         259 	.size	_rsa_bytes_equal,.-_rsa_bytes_equal
+                         260 	.type	_rsa_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.,@function
+                         261 	.size	_rsa_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.,.-_rsa_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.
+                         262 	.align	2
+                         263 --_i	r1	local
+                         264 --_difference	r2	local
+                         265 
+                         266 --_left	r19	param
+                         267 --_right	r18	param
+                         268 --_length	r17	param
+                         269 
+                         270 	.section ".bss","awb"
+                         271 .L374:
+                         272 	.type	.L374,@object
+                         273 	.size	.L374,0
+                         274 	.section ".ghrettbl",""
+00000004 00000000*       275 .L405:	.word	.L404
+                         276 	.type	.L405,@object
+                         277 	.size	.L405,4
+                         278 	.data
+                         279 	.text
+                         280 
+                         281 --38: }
+                         282 
+                         283 --40: int icum_rsa_self_test(unsigned long timeout)
+                         284 	.align	2
+                         285 	.align	2
+                         286 	.align	2
+                         287 ..gh.f.a.2.e.2:
+                         288 	.type	..gh.f.a.2.e.2,@object
+                         289 	.size	..gh.f.a.2.e.2,0
+                         290 	.global	_icum_rsa_self_test
+                         291 _icum_rsa_self_test:
+000000ea 031e50fc        292 	addi	-944,sp,sp
+000000ee 63ffad03        293 	st.w	lp,940[sp]
+000000f2 63efa903        294 	st.w	r29,936[sp]
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+000000f6 06e8            295 	mov	r6,r29
+                         296 --	    .bf
+                         297 .LDW41:
+                         298 --41: {
+                         299 --42:     /* This key is a public test vector and must never protect application data. */
+                         300 --43:     static const char n_hex[] =
+                         301 --44:         "858e9a74981ac06b56620bfec30819d45b6877c3876dd4c39e28ba561e6e68fa"
+                         302 --45:         "e38baa093803aa0877c23c4b1e0bb43a83a7609f13269866264d831452d41497"
+                         303 --46:         "67b8a3493172424ced21c360e108822865eee75bab0858f8492ca49082b8c7f"
+                         304 --47:         "6926f913cf99988a316227f4864a84e5298f6486d44ccd1ce28ec734048423987";
+                         305 --48:     static const char d_hex[] =
+                         306 --49:         "215742aeb5a4040227bbed43a99b759b424077996bcf1accc4c8651007a3c778"
+                         307 --50:         "4e62b8cd795accd135585b65e337c7c3cdc6f48371abf26299d042d74980212d"
+                         308 --51:         "78873fed78241296186b483ba4116889dd3097926e91bf659c8a0ea915221e"
+                         309 --52:         "836a3c63a311631a9a29a2a72426e80e6d3ad2c4ac6090a7b666c8b5bf8456796d";
+                         310 --53:     static const char pkcs_signature_hex[] =
+                         311 --54:         "5159ae0d610d501ac8ef42fde6868fa966a563d959dbaadeb03dee7ac90319ff"
+                         312 --55:         "07aabc6b9da4aecab446bc9d8c59c09ff3a5f0821f92ecaeb75dc45c04fff45"
+                         313 --56:         "75373ed0196e771997115b2616cf39274cf30c4842284bc73908246462ffd883"
+                         314 --57:         "d33d2e586fead47aaa0ded3f41433495a7a97ce02c5551d4d3ad63617c11c79d6";
+                         315 --58:     static const char pss_signature_hex[] =
+                         316 --59:         "56e07f951e94a9f12b527a33e5c1dd556c6d10a55390242198111f925cd32343"
+                         317 --60:         "ccade819c7b3fec92126e20508ca98521feedc5f37d7124e1566b6e28ddd642"
+                         318 --61:         "05bbea3e49064cd8d64326e42d1ac7a989869cce11dbce0aef16be25a710133"
+                         319 --62:         "64607c4a33ca797325e44aed78b9adde10948c0057a1c0f652853fe28eed81268e";
+                         320 --63:     static const unsigned char test_message[] = "icum rsa self test";
+                         321 --64:     static const unsigned char changed_message[] = "icum rsa self tesu";
+                         322 --65:     unsigned char modulus[128], private_exponent[128];
+                         323 --66:     unsigned char pkcs_signature[128], pss_signature[128], signature[128];
+                         324 --67:     unsigned char ciphertext[128], plaintext[128];
+                         325 --68:     unsigned long plaintext_length;
+                         326 --69:     icum_rsa_public_key public_key;
+                         327 --70:     icum_rsa_private_key private_key;
+                         328 --72:     if (!rsa_hex_decode(n_hex, modulus, sizeof(modulus))) {
+000000f8 25360000*       329 	movea	sdaoff2(.L717),r5,r6
+000000fc 233e2803        330 	movea	808,sp,r7
+00000100 20468000        331 	movea	128,zero,r8
+                         332 .L762:
+                         333 	jarl	_rsa_hex_decode,lp
+                         333 <EXPANSION BEGIN>
+                         333 jarl22 _rsa_hex_decode , lp 
+00000104 bffffcfe*       333 <EXPANSION END>
+00000108 e051            334 	cmp	zero,r10
+0000010a ca05*           335 	bne	.L408
+                         336 --73:         return 0;
+                         337 --line73
+                         338 ..lin.19e471f9..b2875c1f.0_15::
+                         339 .LDWlin15:
+0000010c 0052            340 	mov	0,r10
+0000010e 80072a02*       341 	br	.L406
+                         342 .L408:
+                         343 --74:     }
+                         344 --75:     if (!rsa_hex_decode(d_hex, private_exponent, sizeof(private_exponent))) {
+                         345 --line75
+                         346 ..lin.19e471f9..b2875c1f.0_16::
+                         347 .LDWlin16:
+00000112 25360000*       348 	movea	sdaoff2(.L718),r5,r6
+00000116 233ea802        349 	movea	680,sp,r7
+0000011a 20468000        350 	movea	128,zero,r8
+                         351 .L764:
+                         352 	jarl	_rsa_hex_decode,lp
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                         352 <EXPANSION BEGIN>
+                         352 jarl22 _rsa_hex_decode , lp 
+0000011e bfffe2fe*       352 <EXPANSION END>
+00000122 e051            353 	cmp	zero,r10
+00000124 ca05*           354 	bne	.L411
+                         355 --76:         return 0;
+                         356 --line76
+                         357 ..lin.19e471f9..b2875c1f.0_17::
+                         358 .LDWlin17:
+00000126 0052            359 	mov	0,r10
+00000128 80071002*       360 	br	.L406
+                         361 .L411:
+                         362 --77:     }
+                         363 --78:     if (!rsa_hex_decode(pkcs_signature_hex, pkcs_signature, sizeof(pkcs_signature))) {
+                         364 --line78
+                         365 ..lin.19e471f9..b2875c1f.0_18::
+                         366 .LDWlin18:
+0000012c 25360000*       367 	movea	sdaoff2(.L719),r5,r6
+00000130 233e2802        368 	movea	552,sp,r7
+00000134 20468000        369 	movea	128,zero,r8
+                         370 .L766:
+                         371 	jarl	_rsa_hex_decode,lp
+                         371 <EXPANSION BEGIN>
+                         371 jarl22 _rsa_hex_decode , lp 
+00000138 bfffc8fe*       371 <EXPANSION END>
+0000013c e051            372 	cmp	zero,r10
+0000013e ca05*           373 	bne	.L414
+                         374 --79:         return 0;
+                         375 --line79
+                         376 ..lin.19e471f9..b2875c1f.0_19::
+                         377 .LDWlin19:
+00000140 0052            378 	mov	0,r10
+00000142 8007f601*       379 	br	.L406
+                         380 .L414:
+                         381 --80:     }
+                         382 --81:     if (!rsa_hex_decode(pss_signature_hex, pss_signature, sizeof(pss_signature))) {
+                         383 --line81
+                         384 ..lin.19e471f9..b2875c1f.0_20::
+                         385 .LDWlin20:
+00000146 25360000*       386 	movea	sdaoff2(.L720),r5,r6
+0000014a 233ea801        387 	movea	424,sp,r7
+0000014e 20468000        388 	movea	128,zero,r8
+                         389 .L768:
+                         390 	jarl	_rsa_hex_decode,lp
+                         390 <EXPANSION BEGIN>
+                         390 jarl22 _rsa_hex_decode , lp 
+00000152 bfffaefe*       390 <EXPANSION END>
+00000156 e051            391 	cmp	zero,r10
+00000158 ca05*           392 	bne	.L417
+                         393 --82:         return 0;
+                         394 --line82
+                         395 ..lin.19e471f9..b2875c1f.0_21::
+                         396 .LDWlin21:
+0000015a 0052            397 	mov	0,r10
+0000015c 8007dc01*       398 	br	.L406
+                         399 .L417:
+                         400 --83:     }
+                         401 --85:     public_key.modulus = modulus;
+                         402 --line85
+                         403 ..lin.19e471f9..b2875c1f.0_22::
+                         404 .LDWlin22:
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+00000160 230e2803        405 	movea	808,sp,r1
+00000164 630f1d00        406 	st.w	r1,28[sp]
+                         407 --86:     public_key.modulus_length = sizeof(modulus);
+00000168 200e8000        408 	movea	128,zero,r1
+0000016c 630f2100        409 	st.w	r1,32[sp]
+                         410 --87:     public_key.public_exponent = 65537ul;
+00000170 210601000100    411 	mov	65537,r1
+00000176 630f2500        412 	st.w	r1,36[sp]
+                         413 --88:     private_key.modulus = modulus;
+                         414 --line88
+                         415 ..lin.19e471f9..b2875c1f.0_23::
+                         416 .LDWlin23:
+0000017a 230e2803        417 	movea	808,sp,r1
+0000017e 630f1100        418 	st.w	r1,16[sp]
+                         419 --89:     private_key.private_exponent = private_exponent;
+00000182 230ea802        420 	movea	680,sp,r1
+00000186 630f1500        421 	st.w	r1,20[sp]
+                         422 --90:     private_key.modulus_length = sizeof(modulus);
+0000018a 200e8000        423 	movea	128,zero,r1
+0000018e 630f1900        424 	st.w	r1,24[sp]
+                         425 --92:     if (!icum_rsa_verify_pkcs1_v15(&public_key, ICUM_HASH_SHA256,
+00000192 230e2802        426 	movea	552,sp,r1
+00000196 630f0100        427 	st.w	r1,0[sp]
+0000019a 23361c00        428 	movea	28,sp,r6
+0000019e 023a            429 	mov	2,r7
+000001a0 25460000*       430 	movea	sdaoff2(.L715),r5,r8
+000001a4 204e1200        431 	movea	18,zero,r9
+                         432 .L770:
+                         433 	jarl	_icum_rsa_verify_pkcs1_v15,lp
+                         433 <EXPANSION BEGIN>
+                         433 jarl22 _icum_rsa_verify_pkcs1_v15 , lp 
+000001a8 80ff0000*       433 <EXPANSION END>
+000001ac e051            434 	cmp	zero,r10
+000001ae ca05*           435 	bne	.L420
+                         436 --93:                                    test_message, sizeof(test_message) - 1ul,
+                         437 --94:                                    pkcs_signature)) {
+                         438 --95:         return 0;
+                         439 --line95
+                         440 ..lin.19e471f9..b2875c1f.0_24::
+                         441 .LDWlin24:
+000001b0 0052            442 	mov	0,r10
+000001b2 80078601*       443 	br	.L406
+                         444 .L420:
+                         445 --96:     }
+                         446 --97:     if (icum_rsa_verify_pkcs1_v15(&public_key, ICUM_HASH_SHA256,
+                         447 --line97
+                         448 ..lin.19e471f9..b2875c1f.0_25::
+                         449 .LDWlin25:
+000001b6 230e2802        450 	movea	552,sp,r1
+000001ba 630f0100        451 	st.w	r1,0[sp]
+000001be 23361c00        452 	movea	28,sp,r6
+000001c2 023a            453 	mov	2,r7
+000001c4 25460000*       454 	movea	sdaoff2(.L716),r5,r8
+000001c8 204e1200        455 	movea	18,zero,r9
+                         456 .L772:
+                         457 	jarl	_icum_rsa_verify_pkcs1_v15,lp
+                         457 <EXPANSION BEGIN>
+                         457 jarl22 _icum_rsa_verify_pkcs1_v15 , lp 
+000001cc 80ff0000*       457 <EXPANSION END>
+000001d0 e051            458 	cmp	zero,r10
+000001d2 c205*           459 	be	.L423
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                         460 --98:                                   changed_message, sizeof(changed_message) - 1ul,
+                         461 --99:                                   pkcs_signature)) {
+                         462 --100:         return 0;
+                         463 --line100
+                         464 ..lin.19e471f9..b2875c1f.0_26::
+                         465 .LDWlin26:
+000001d4 0052            466 	mov	0,r10
+000001d6 80076201*       467 	br	.L406
+                         468 .L423:
+                         469 --101:     }
+                         470 --102:     if (!icum_rsa_sign_pkcs1_v15(&private_key, ICUM_HASH_SHA256,
+                         471 --line102
+                         472 ..lin.19e471f9..b2875c1f.0_27::
+                         473 .LDWlin27:
+000001da 230e2801        474 	movea	296,sp,r1
+000001de 630f0100        475 	st.w	r1,0[sp]
+000001e2 23361000        476 	movea	16,sp,r6
+000001e6 023a            477 	mov	2,r7
+000001e8 25460000*       478 	movea	sdaoff2(.L715),r5,r8
+000001ec 204e1200        479 	movea	18,zero,r9
+                         480 .L774:
+                         481 	jarl	_icum_rsa_sign_pkcs1_v15,lp
+                         481 <EXPANSION BEGIN>
+                         481 jarl22 _icum_rsa_sign_pkcs1_v15 , lp 
+000001f0 80ff0000*       481 <EXPANSION END>
+000001f4 e051            482 	cmp	zero,r10
+000001f6 ca05*           483 	bne	.L426
+                         484 --103:                                  test_message, sizeof(test_message) - 1ul,
+                         485 --104:                                  signature)) {
+                         486 --105:         return 0;
+                         487 --line105
+                         488 ..lin.19e471f9..b2875c1f.0_28::
+                         489 .LDWlin28:
+000001f8 0052            490 	mov	0,r10
+000001fa 80073e01*       491 	br	.L406
+                         492 .L426:
+                         493 --106:     }
+                         494 --107:     if (!rsa_bytes_equal(signature, pkcs_signature, sizeof(signature))) {
+                         495 --line107
+                         496 ..lin.19e471f9..b2875c1f.0_29::
+                         497 .LDWlin29:
+000001fe 23362801        498 	movea	296,sp,r6
+00000202 233e2802        499 	movea	552,sp,r7
+00000206 20468000        500 	movea	128,zero,r8
+                         501 .L776:
+                         502 	jarl	_rsa_bytes_equal,lp
+                         502 <EXPANSION BEGIN>
+                         502 jarl22 _rsa_bytes_equal , lp 
+0000020a bfffb4fe*       502 <EXPANSION END>
+0000020e e051            503 	cmp	zero,r10
+00000210 ca05*           504 	bne	.L429
+                         505 --108:         return 0;
+                         506 --line108
+                         507 ..lin.19e471f9..b2875c1f.0_30::
+                         508 .LDWlin30:
+00000212 0052            509 	mov	0,r10
+00000214 80072401*       510 	br	.L406
+                         511 .L429:
+                         512 --109:     }
+                         513 --110:     if (!icum_rsa_verify_pss(&public_key, ICUM_HASH_SHA256,
+                         514 --line110
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                         515 ..lin.19e471f9..b2875c1f.0_31::
+                         516 .LDWlin31:
+00000218 200e2000        517 	movea	32,zero,r1
+0000021c 630f0100        518 	st.w	r1,0[sp]
+00000220 230ea801        519 	movea	424,sp,r1
+00000224 630f0500        520 	st.w	r1,4[sp]
+00000228 23361c00        521 	movea	28,sp,r6
+0000022c 023a            522 	mov	2,r7
+0000022e 25460000*       523 	movea	sdaoff2(.L715),r5,r8
+00000232 204e1200        524 	movea	18,zero,r9
+                         525 .L778:
+                         526 	jarl	_icum_rsa_verify_pss,lp
+                         526 <EXPANSION BEGIN>
+                         526 jarl22 _icum_rsa_verify_pss , lp 
+00000236 80ff0000*       526 <EXPANSION END>
+0000023a e051            527 	cmp	zero,r10
+0000023c ba05*           528 	bne	.L432
+                         529 --111:                              test_message, sizeof(test_message) - 1ul,
+                         530 --112:                              32ul, pss_signature)) {
+                         531 --113:         return 0;
+                         532 --line113
+                         533 ..lin.19e471f9..b2875c1f.0_32::
+                         534 .LDWlin32:
+0000023e 0052            535 	mov	0,r10
+00000240 c57d*           536 	br	.L406
+                         537 .L432:
+                         538 --114:     }
+                         539 --115:     if (icum_rsa_verify_pss(&public_key, ICUM_HASH_SHA256,
+                         540 --line115
+                         541 ..lin.19e471f9..b2875c1f.0_33::
+                         542 .LDWlin33:
+00000242 200e2000        543 	movea	32,zero,r1
+00000246 630f0100        544 	st.w	r1,0[sp]
+0000024a 230ea801        545 	movea	424,sp,r1
+0000024e 630f0500        546 	st.w	r1,4[sp]
+00000252 23361c00        547 	movea	28,sp,r6
+00000256 023a            548 	mov	2,r7
+00000258 25460000*       549 	movea	sdaoff2(.L716),r5,r8
+0000025c 204e1200        550 	movea	18,zero,r9
+                         551 .L780:
+                         552 	jarl	_icum_rsa_verify_pss,lp
+                         552 <EXPANSION BEGIN>
+                         552 jarl22 _icum_rsa_verify_pss , lp 
+00000260 80ff0000*       552 <EXPANSION END>
+00000264 e051            553 	cmp	zero,r10
+00000266 b205*           554 	be	.L435
+                         555 --116:                             changed_message, sizeof(changed_message) - 1ul,
+                         556 --117:                             32ul, pss_signature)) {
+                         557 --118:         return 0;
+                         558 --line118
+                         559 ..lin.19e471f9..b2875c1f.0_34::
+                         560 .LDWlin34:
+00000268 0052            561 	mov	0,r10
+0000026a f565*           562 	br	.L406
+                         563 .L435:
+                         564 --119:     }
+                         565 --120:     if (!icum_rsa_sign_pss(&private_key, ICUM_HASH_SHA256,
+                         566 --line120
+                         567 ..lin.19e471f9..b2875c1f.0_35::
+                         568 .LDWlin35:
+0000026c 200e2000        569 	movea	32,zero,r1
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+00000270 630f0100        570 	st.w	r1,0[sp]
+00000274 230e2801        571 	movea	296,sp,r1
+00000278 630f0500        572 	st.w	r1,4[sp]
+0000027c 63ef0900        573 	st.w	r29,8[sp]
+00000280 23361000        574 	movea	16,sp,r6
+00000284 023a            575 	mov	2,r7
+00000286 25460000*       576 	movea	sdaoff2(.L715),r5,r8
+0000028a 204e1200        577 	movea	18,zero,r9
+                         578 .L782:
+                         579 	jarl	_icum_rsa_sign_pss,lp
+                         579 <EXPANSION BEGIN>
+                         579 jarl22 _icum_rsa_sign_pss , lp 
+0000028e 80ff0000*       579 <EXPANSION END>
+00000292 e051            580 	cmp	zero,r10
+00000294 ba05*           581 	bne	.L438
+                         582 --121:                            test_message, sizeof(test_message) - 1ul,
+                         583 --122:                            32ul, signature, timeout)) {
+                         584 --123:         return 0;
+                         585 --line123
+                         586 ..lin.19e471f9..b2875c1f.0_36::
+                         587 .LDWlin36:
+00000296 0052            588 	mov	0,r10
+00000298 8555*           589 	br	.L406
+                         590 .L438:
+                         591 --124:     }
+                         592 --125:     if (!icum_rsa_verify_pss(&public_key, ICUM_HASH_SHA256,
+                         593 --line125
+                         594 ..lin.19e471f9..b2875c1f.0_37::
+                         595 .LDWlin37:
+0000029a 200e2000        596 	movea	32,zero,r1
+0000029e 630f0100        597 	st.w	r1,0[sp]
+000002a2 230e2801        598 	movea	296,sp,r1
+000002a6 630f0500        599 	st.w	r1,4[sp]
+000002aa 23361c00        600 	movea	28,sp,r6
+000002ae 023a            601 	mov	2,r7
+000002b0 25460000*       602 	movea	sdaoff2(.L715),r5,r8
+000002b4 204e1200        603 	movea	18,zero,r9
+                         604 .L784:
+                         605 	jarl	_icum_rsa_verify_pss,lp
+                         605 <EXPANSION BEGIN>
+                         605 jarl22 _icum_rsa_verify_pss , lp 
+000002b8 80ff0000*       605 <EXPANSION END>
+000002bc e051            606 	cmp	zero,r10
+000002be ba05*           607 	bne	.L441
+                         608 --126:                              test_message, sizeof(test_message) - 1ul,
+                         609 --127:                              32ul, signature)) {
+                         610 --128:         return 0;
+                         611 --line128
+                         612 ..lin.19e471f9..b2875c1f.0_38::
+                         613 .LDWlin38:
+000002c0 0052            614 	mov	0,r10
+000002c2 b53d*           615 	br	.L406
+                         616 .L441:
+                         617 --129:     }
+                         618 --130:     if (!icum_rsa_encrypt_pkcs1_v15(&public_key,
+                         619 --line130
+                         620 ..lin.19e471f9..b2875c1f.0_39::
+                         621 .LDWlin39:
+000002c4 63ef0100        622 	st.w	r29,0[sp]
+000002c8 23361c00        623 	movea	28,sp,r6
+000002cc 253e0000*       624 	movea	sdaoff2(.L715),r5,r7
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+000002d0 20461200        625 	movea	18,zero,r8
+000002d4 234ea800        626 	movea	168,sp,r9
+                         627 .L786:
+                         628 	jarl	_icum_rsa_encrypt_pkcs1_v15,lp
+                         628 <EXPANSION BEGIN>
+                         628 jarl22 _icum_rsa_encrypt_pkcs1_v15 , lp 
+000002d8 80ff0000*       628 <EXPANSION END>
+000002dc e051            629 	cmp	zero,r10
+000002de ba05*           630 	bne	.L444
+                         631 --131:                                     test_message, sizeof(test_message) - 1ul,
+                         632 --132:                                     ciphertext, timeout)) {
+                         633 --133:         return 0;
+                         634 --line133
+                         635 ..lin.19e471f9..b2875c1f.0_40::
+                         636 .LDWlin40:
+000002e0 0052            637 	mov	0,r10
+000002e2 b52d*           638 	br	.L406
+                         639 .L444:
+                         640 --134:     }
+                         641 --135:     if (!icum_rsa_decrypt_pkcs1_v15(&private_key, ciphertext,
+                         642 --line135
+                         643 ..lin.19e471f9..b2875c1f.0_41::
+                         644 .LDWlin41:
+000002e4 200e8000        645 	movea	128,zero,r1
+000002e8 630f0100        646 	st.w	r1,0[sp]
+000002ec 230e0c00        647 	movea	12,sp,r1
+000002f0 630f0500        648 	st.w	r1,4[sp]
+000002f4 23361000        649 	movea	16,sp,r6
+000002f8 233ea800        650 	movea	168,sp,r7
+000002fc 20468000        651 	movea	128,zero,r8
+00000300 234e2800        652 	movea	40,sp,r9
+                         653 .L788:
+                         654 	jarl	_icum_rsa_decrypt_pkcs1_v15,lp
+                         654 <EXPANSION BEGIN>
+                         654 jarl22 _icum_rsa_decrypt_pkcs1_v15 , lp 
+00000304 80ff0000*       654 <EXPANSION END>
+00000308 e051            655 	cmp	zero,r10
+0000030a ba05*           656 	bne	.L447
+                         657 --136:                                     sizeof(ciphertext), plaintext,
+                         658 --137:                                     sizeof(plaintext), &plaintext_length)) {
+                         659 --138:         return 0;
+                         660 --line138
+                         661 ..lin.19e471f9..b2875c1f.0_42::
+                         662 .LDWlin42:
+0000030c 0052            663 	mov	0,r10
+0000030e d515*           664 	br	.L406
+                         665 .L447:
+                         666 --139:     }
+                         667 --140:     if (plaintext_length != sizeof(test_message) - 1ul) {
+                         668 --line140
+                         669 ..lin.19e471f9..b2875c1f.0_43::
+                         670 .LDWlin43:
+00000310 230f0d00        671 	ld.w	12[sp],r1
+00000314 0106eeff        672 	addi	-18,r1,zero
+00000318 b205*           673 	be	.L450
+                         674 --141:         return 0;
+                         675 --line141
+                         676 ..lin.19e471f9..b2875c1f.0_44::
+                         677 .LDWlin44:
+0000031a 0052            678 	mov	0,r10
+0000031c e50d*           679 	br	.L406
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                         680 .L450:
+                         681 --142:     }
+                         682 --143:     if (!rsa_bytes_equal(plaintext, test_message, plaintext_length)) {
+                         683 --line143
+                         684 ..lin.19e471f9..b2875c1f.0_45::
+                         685 .LDWlin45:
+0000031e 23470d00        686 	ld.w	12[sp],r8
+00000322 23362800        687 	movea	40,sp,r6
+00000326 253e0000*       688 	movea	sdaoff2(.L715),r5,r7
+                         689 .L790:
+                         690 	jarl	_rsa_bytes_equal,lp
+                         690 <EXPANSION BEGIN>
+                         690 jarl22 _rsa_bytes_equal , lp 
+0000032a bfff94fd*       690 <EXPANSION END>
+0000032e e051            691 	cmp	zero,r10
+00000330 ba05*           692 	bne	.L453
+                         693 --144:         return 0;
+                         694 --line144
+                         695 ..lin.19e471f9..b2875c1f.0_46::
+                         696 .LDWlin46:
+00000332 0052            697 	mov	0,r10
+00000334 a505*           698 	br	.L406
+                         699 .L453:
+                         700 --145:     }
+                         701 --147:     return 1;
+                         702 --line147
+                         703 ..lin.19e471f9..b2875c1f.0_47::
+                         704 .LDWlin47:
+00000336 0152            705 	mov	1,r10
+                         706 .L406:
+                         707 --	    .ef
+                         708 .LDW51:
+00000338 23ffad03        709 	ld.w	940[sp],lp
+0000033c 23efa903        710 	ld.w	936[sp],r29
+00000340 031eb003        711 	addi	944,sp,sp
+                         712 .L792:
+                         713 	.jumptype return
+00000344 7f00            714 	jmp	[lp]
+                         715 --line147
+                         716 ..lin.19e471f9..b2875c1f.0_48::
+                         717 	.type	_icum_rsa_self_test,@function
+                         718 	.size	_icum_rsa_self_test,.-_icum_rsa_self_test
+                         719 	.align	2
+                         720 --_n_hex	sdaoff2(.L717)	static
+                         721 --_d_hex	sdaoff2(.L718)	static
+                         722 --_pkcs_signature_hex	sdaoff2(.L719)	static
+                         723 --_pss_signature_hex	sdaoff2(.L720)	static
+                         724 --_test_message	sdaoff2(.L715)	static
+                         725 --_changed_message	sdaoff2(.L716)	static
+                         726 --_modulus	808[sp]	local
+                         727 --_private_exponent	680[sp]	local
+                         728 --_pkcs_signature	552[sp]	local
+                         729 --_pss_signature	424[sp]	local
+                         730 --_signature	296[sp]	local
+                         731 --_ciphertext	168[sp]	local
+                         732 --_plaintext	40[sp]	local
+                         733 --_plaintext_length	12[sp]	local
+                         734 --_public_key	28[sp]	local
+                         735 --_private_key	16[sp]	local
+                         736 
+                         737 --_timeout	r29	param
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                         738 
+                         739 	.section ".bss","awb"
+                         740 .L630:
+                         741 	.type	.L630,@object
+                         742 	.size	.L630,0
+                         743 	.section ".rosdata","a"
+                         744 .L715:
+                         745 	.global	_test_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..0
+                         746 _test_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..0:
+                         747 --	"icum rsa self test"
+00000000 6963756d        748 	.byte	105,99,117,109
+00000004 20727361        749 	.byte	32,114,115,97
+00000008 2073656c        750 	.byte	32,115,101,108
+0000000c 66207465        751 	.byte	102,32,116,101
+00000010 7374            752 	.byte	115,116
+00000012 00              753 	.byte	0
+                         754 	.type	_test_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..0,@object
+                         755 	.size	_test_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..0,19
+                         756 	.type	.L715,@object
+                         757 	.size	.L715,19
+                         758 .L716:
+                         759 	.global	_changed_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..1
+                         760 _changed_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..1:
+                         761 --	"icum rsa self tesu"
+00000013 6963756d        762 	.byte	105,99,117,109
+00000017 20727361        763 	.byte	32,114,115,97
+0000001b 2073656c        764 	.byte	32,115,101,108
+0000001f 66207465        765 	.byte	102,32,116,101
+00000023 7375            766 	.byte	115,117
+00000025 00              767 	.byte	0
+                         768 	.type	_changed_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..1,@object
+                         769 	.size	_changed_message.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..1,19
+                         770 	.type	.L716,@object
+                         771 	.size	.L716,19
+                         772 .L717:
+                         773 	.global	_n_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..2
+                         774 _n_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..2:
+                         775 --	"858e9a74981ac06b56620bfec30819d45b6877c3876dd4c39e28ba561e6e68fae38ba..."
+00000026 38353865        776 	.byte	56,53,56,101
+0000002a 39613734        777 	.byte	57,97,55,52
+0000002e 39383161        778 	.byte	57,56,49,97
+00000032 63303662        779 	.byte	99,48,54,98
+00000036 35363632        780 	.byte	53,54,54,50
+0000003a 30626665        781 	.byte	48,98,102,101
+0000003e 63333038        782 	.byte	99,51,48,56
+00000042 31396434        783 	.byte	49,57,100,52
+00000046 35623638        784 	.byte	53,98,54,56
+0000004a 37376333        785 	.byte	55,55,99,51
+0000004e 38373664        786 	.byte	56,55,54,100
+00000052 64346333        787 	.byte	100,52,99,51
+00000056 39653238        788 	.byte	57,101,50,56
+0000005a 62613536        789 	.byte	98,97,53,54
+0000005e 31653665        790 	.byte	49,101,54,101
+00000062 36386661        791 	.byte	54,56,102,97
+00000066 65333862        792 	.byte	101,51,56,98
+0000006a 61613039        793 	.byte	97,97,48,57
+0000006e 33383033        794 	.byte	51,56,48,51
+00000072 61613038        795 	.byte	97,97,48,56
+00000076 37376332        796 	.byte	55,55,99,50
+0000007a 33633462        797 	.byte	51,99,52,98
+0000007e 31653062        798 	.byte	49,101,48,98
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+00000082 62343361        799 	.byte	98,52,51,97
+00000086 38336137        800 	.byte	56,51,97,55
+0000008a 36303966        801 	.byte	54,48,57,102
+0000008e 31333236        802 	.byte	49,51,50,54
+00000092 39383636        803 	.byte	57,56,54,54
+00000096 32363464        804 	.byte	50,54,52,100
+0000009a 38333134        805 	.byte	56,51,49,52
+0000009e 35326434        806 	.byte	53,50,100,52
+000000a2 31343937        807 	.byte	49,52,57,55
+000000a6 36376238        808 	.byte	54,55,98,56
+000000aa 61333439        809 	.byte	97,51,52,57
+000000ae 33313732        810 	.byte	51,49,55,50
+000000b2 34323463        811 	.byte	52,50,52,99
+000000b6 65643231        812 	.byte	101,100,50,49
+000000ba 63333630        813 	.byte	99,51,54,48
+000000be 65313038        814 	.byte	101,49,48,56
+000000c2 38323238        815 	.byte	56,50,50,56
+000000c6 36356565        816 	.byte	54,53,101,101
+000000ca 65373562        817 	.byte	101,55,53,98
+000000ce 61623038        818 	.byte	97,98,48,56
+000000d2 35386638        819 	.byte	53,56,102,56
+000000d6 34393263        820 	.byte	52,57,50,99
+000000da 61343930        821 	.byte	97,52,57,48
+000000de 38326238        822 	.byte	56,50,98,56
+000000e2 63376636        823 	.byte	99,55,102,54
+000000e6 39323666        824 	.byte	57,50,54,102
+000000ea 39313363        825 	.byte	57,49,51,99
+000000ee 66393939        826 	.byte	102,57,57,57
+000000f2 38386133        827 	.byte	56,56,97,51
+000000f6 31363232        828 	.byte	49,54,50,50
+000000fa 37663438        829 	.byte	55,102,52,56
+000000fe 36346138        830 	.byte	54,52,97,56
+00000102 34653532        831 	.byte	52,101,53,50
+00000106 39386636        832 	.byte	57,56,102,54
+0000010a 34383664        833 	.byte	52,56,54,100
+0000010e 34346363        834 	.byte	52,52,99,99
+00000112 64316365        835 	.byte	100,49,99,101
+00000116 32386563        836 	.byte	50,56,101,99
+0000011a 37333430        837 	.byte	55,51,52,48
+0000011e 34383432        838 	.byte	52,56,52,50
+00000122 33393837        839 	.byte	51,57,56,55
+00000126 00              840 	.byte	0
+                         841 	.type	_n_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..2,@object
+                         842 	.size	_n_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..2,257
+                         843 	.type	.L717,@object
+                         844 	.size	.L717,257
+                         845 .L718:
+                         846 	.global	_d_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..3
+                         847 _d_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..3:
+                         848 --	"215742aeb5a4040227bbed43a99b759b424077996bcf1accc4c8651007a3c7784e62b..."
+00000127 32313537        849 	.byte	50,49,53,55
+0000012b 34326165        850 	.byte	52,50,97,101
+0000012f 62356134        851 	.byte	98,53,97,52
+00000133 30343032        852 	.byte	48,52,48,50
+00000137 32376262        853 	.byte	50,55,98,98
+0000013b 65643433        854 	.byte	101,100,52,51
+0000013f 61393962        855 	.byte	97,57,57,98
+00000143 37353962        856 	.byte	55,53,57,98
+00000147 34323430        857 	.byte	52,50,52,48
+0000014b 37373939        858 	.byte	55,55,57,57
+0000014f 36626366        859 	.byte	54,98,99,102
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+00000153 31616363        860 	.byte	49,97,99,99
+00000157 63346338        861 	.byte	99,52,99,56
+0000015b 36353130        862 	.byte	54,53,49,48
+0000015f 30376133        863 	.byte	48,55,97,51
+00000163 63373738        864 	.byte	99,55,55,56
+00000167 34653632        865 	.byte	52,101,54,50
+0000016b 62386364        866 	.byte	98,56,99,100
+0000016f 37393561        867 	.byte	55,57,53,97
+00000173 63636431        868 	.byte	99,99,100,49
+00000177 33353538        869 	.byte	51,53,53,56
+0000017b 35623635        870 	.byte	53,98,54,53
+0000017f 65333337        871 	.byte	101,51,51,55
+00000183 63376333        872 	.byte	99,55,99,51
+00000187 63646336        873 	.byte	99,100,99,54
+0000018b 66343833        874 	.byte	102,52,56,51
+0000018f 37316162        875 	.byte	55,49,97,98
+00000193 66323632        876 	.byte	102,50,54,50
+00000197 39396430        877 	.byte	57,57,100,48
+0000019b 34326437        878 	.byte	52,50,100,55
+0000019f 34393830        879 	.byte	52,57,56,48
+000001a3 32313264        880 	.byte	50,49,50,100
+000001a7 37383837        881 	.byte	55,56,56,55
+000001ab 33666564        882 	.byte	51,102,101,100
+000001af 37383234        883 	.byte	55,56,50,52
+000001b3 31323936        884 	.byte	49,50,57,54
+000001b7 31383662        885 	.byte	49,56,54,98
+000001bb 34383362        886 	.byte	52,56,51,98
+000001bf 61343131        887 	.byte	97,52,49,49
+000001c3 36383839        888 	.byte	54,56,56,57
+000001c7 64643330        889 	.byte	100,100,51,48
+000001cb 39373932        890 	.byte	57,55,57,50
+000001cf 36653931        891 	.byte	54,101,57,49
+000001d3 62663635        892 	.byte	98,102,54,53
+000001d7 39633861        893 	.byte	57,99,56,97
+000001db 30656139        894 	.byte	48,101,97,57
+000001df 31353232        895 	.byte	49,53,50,50
+000001e3 31653833        896 	.byte	49,101,56,51
+000001e7 36613363        897 	.byte	54,97,51,99
+000001eb 36336133        898 	.byte	54,51,97,51
+000001ef 31313633        899 	.byte	49,49,54,51
+000001f3 31613961        900 	.byte	49,97,57,97
+000001f7 32396132        901 	.byte	50,57,97,50
+000001fb 61373234        902 	.byte	97,55,50,52
+000001ff 32366538        903 	.byte	50,54,101,56
+00000203 30653664        904 	.byte	48,101,54,100
+00000207 33616432        905 	.byte	51,97,100,50
+0000020b 63346163        906 	.byte	99,52,97,99
+0000020f 36303930        907 	.byte	54,48,57,48
+00000213 61376236        908 	.byte	97,55,98,54
+00000217 36366338        909 	.byte	54,54,99,56
+0000021b 62356266        910 	.byte	98,53,98,102
+0000021f 38343536        911 	.byte	56,52,53,54
+00000223 37393664        912 	.byte	55,57,54,100
+00000227 00              913 	.byte	0
+                         914 	.type	_d_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..3,@object
+                         915 	.size	_d_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..3,257
+                         916 	.type	.L718,@object
+                         917 	.size	.L718,257
+                         918 .L719:
+                         919 	.global	_pkcs_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..4
+                         920 _pkcs_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..4:
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                         921 --	"5159ae0d610d501ac8ef42fde6868fa966a563d959dbaadeb03dee7ac90319ff07aab..."
+00000228 35313539        922 	.byte	53,49,53,57
+0000022c 61653064        923 	.byte	97,101,48,100
+00000230 36313064        924 	.byte	54,49,48,100
+00000234 35303161        925 	.byte	53,48,49,97
+00000238 63386566        926 	.byte	99,56,101,102
+0000023c 34326664        927 	.byte	52,50,102,100
+00000240 65363836        928 	.byte	101,54,56,54
+00000244 38666139        929 	.byte	56,102,97,57
+00000248 36366135        930 	.byte	54,54,97,53
+0000024c 36336439        931 	.byte	54,51,100,57
+00000250 35396462        932 	.byte	53,57,100,98
+00000254 61616465        933 	.byte	97,97,100,101
+00000258 62303364        934 	.byte	98,48,51,100
+0000025c 65653761        935 	.byte	101,101,55,97
+00000260 63393033        936 	.byte	99,57,48,51
+00000264 31396666        937 	.byte	49,57,102,102
+00000268 30376161        938 	.byte	48,55,97,97
+0000026c 62633662        939 	.byte	98,99,54,98
+00000270 39646134        940 	.byte	57,100,97,52
+00000274 61656361        941 	.byte	97,101,99,97
+00000278 62343436        942 	.byte	98,52,52,54
+0000027c 62633964        943 	.byte	98,99,57,100
+00000280 38633539        944 	.byte	56,99,53,57
+00000284 63303966        945 	.byte	99,48,57,102
+00000288 66336135        946 	.byte	102,51,97,53
+0000028c 66303832        947 	.byte	102,48,56,50
+00000290 31663932        948 	.byte	49,102,57,50
+00000294 65636165        949 	.byte	101,99,97,101
+00000298 62373564        950 	.byte	98,55,53,100
+0000029c 63343563        951 	.byte	99,52,53,99
+000002a0 30346666        952 	.byte	48,52,102,102
+000002a4 66343537        953 	.byte	102,52,53,55
+000002a8 35333733        954 	.byte	53,51,55,51
+000002ac 65643031        955 	.byte	101,100,48,49
+000002b0 39366537        956 	.byte	57,54,101,55
+000002b4 37313939        957 	.byte	55,49,57,57
+000002b8 37313135        958 	.byte	55,49,49,53
+000002bc 62323631        959 	.byte	98,50,54,49
+000002c0 36636633        960 	.byte	54,99,102,51
+000002c4 39323734        961 	.byte	57,50,55,52
+000002c8 63663330        962 	.byte	99,102,51,48
+000002cc 63343834        963 	.byte	99,52,56,52
+000002d0 32323834        964 	.byte	50,50,56,52
+000002d4 62633733        965 	.byte	98,99,55,51
+000002d8 39303832        966 	.byte	57,48,56,50
+000002dc 34363436        967 	.byte	52,54,52,54
+000002e0 32666664        968 	.byte	50,102,102,100
+000002e4 38383364        969 	.byte	56,56,51,100
+000002e8 33336432        970 	.byte	51,51,100,50
+000002ec 65353836        971 	.byte	101,53,56,54
+000002f0 66656164        972 	.byte	102,101,97,100
+000002f4 34376161        973 	.byte	52,55,97,97
+000002f8 61306465        974 	.byte	97,48,100,101
+000002fc 64336634        975 	.byte	100,51,102,52
+00000300 31343333        976 	.byte	49,52,51,51
+00000304 34393561        977 	.byte	52,57,53,97
+00000308 37613937        978 	.byte	55,97,57,55
+0000030c 63653032        979 	.byte	99,101,48,50
+00000310 63353535        980 	.byte	99,53,53,53
+00000314 31643464        981 	.byte	49,100,52,100
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+00000318 33616436        982 	.byte	51,97,100,54
+0000031c 33363137        983 	.byte	51,54,49,55
+00000320 63313163        984 	.byte	99,49,49,99
+00000324 37396436        985 	.byte	55,57,100,54
+00000328 00              986 	.byte	0
+                         987 	.type	_pkcs_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..4,@object
+                         988 	.size	_pkcs_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..4,257
+                         989 	.type	.L719,@object
+                         990 	.size	.L719,257
+                         991 .L720:
+                         992 	.global	_pss_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..5
+                         993 _pss_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..5:
+                         994 --	"56e07f951e94a9f12b527a33e5c1dd556c6d10a55390242198111f925cd32343ccade..."
+00000329 35366530        995 	.byte	53,54,101,48
+0000032d 37663935        996 	.byte	55,102,57,53
+00000331 31653934        997 	.byte	49,101,57,52
+00000335 61396631        998 	.byte	97,57,102,49
+00000339 32623532        999 	.byte	50,98,53,50
+0000033d 37613333       1000 	.byte	55,97,51,51
+00000341 65356331       1001 	.byte	101,53,99,49
+00000345 64643535       1002 	.byte	100,100,53,53
+00000349 36633664       1003 	.byte	54,99,54,100
+0000034d 31306135       1004 	.byte	49,48,97,53
+00000351 35333930       1005 	.byte	53,51,57,48
+00000355 32343231       1006 	.byte	50,52,50,49
+00000359 39383131       1007 	.byte	57,56,49,49
+0000035d 31663932       1008 	.byte	49,102,57,50
+00000361 35636433       1009 	.byte	53,99,100,51
+00000365 32333433       1010 	.byte	50,51,52,51
+00000369 63636164       1011 	.byte	99,99,97,100
+0000036d 65383139       1012 	.byte	101,56,49,57
+00000371 63376233       1013 	.byte	99,55,98,51
+00000375 66656339       1014 	.byte	102,101,99,57
+00000379 32313236       1015 	.byte	50,49,50,54
+0000037d 65323035       1016 	.byte	101,50,48,53
+00000381 30386361       1017 	.byte	48,56,99,97
+00000385 39383532       1018 	.byte	57,56,53,50
+00000389 31666565       1019 	.byte	49,102,101,101
+0000038d 64633566       1020 	.byte	100,99,53,102
+00000391 33376437       1021 	.byte	51,55,100,55
+00000395 31323465       1022 	.byte	49,50,52,101
+00000399 31353636       1023 	.byte	49,53,54,54
+0000039d 62366532       1024 	.byte	98,54,101,50
+000003a1 38646464       1025 	.byte	56,100,100,100
+000003a5 36343230       1026 	.byte	54,52,50,48
+000003a9 35626265       1027 	.byte	53,98,98,101
+000003ad 61336534       1028 	.byte	97,51,101,52
+000003b1 39303634       1029 	.byte	57,48,54,52
+000003b5 63643864       1030 	.byte	99,100,56,100
+000003b9 36343332       1031 	.byte	54,52,51,50
+000003bd 36653432       1032 	.byte	54,101,52,50
+000003c1 64316163       1033 	.byte	100,49,97,99
+000003c5 37613938       1034 	.byte	55,97,57,56
+000003c9 39383639       1035 	.byte	57,56,54,57
+000003cd 63636531       1036 	.byte	99,99,101,49
+000003d1 31646263       1037 	.byte	49,100,98,99
+000003d5 65306165       1038 	.byte	101,48,97,101
+000003d9 66313662       1039 	.byte	102,49,54,98
+000003dd 65323561       1040 	.byte	101,50,53,97
+000003e1 37313031       1041 	.byte	55,49,48,49
+000003e5 33333634       1042 	.byte	51,51,54,52
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+000003e9 36303763       1043 	.byte	54,48,55,99
+000003ed 34613333       1044 	.byte	52,97,51,51
+000003f1 63613739       1045 	.byte	99,97,55,57
+000003f5 37333235       1046 	.byte	55,51,50,53
+000003f9 65343461       1047 	.byte	101,52,52,97
+000003fd 65643738       1048 	.byte	101,100,55,56
+00000401 62396164       1049 	.byte	98,57,97,100
+00000405 64653130       1050 	.byte	100,101,49,48
+00000409 39343863       1051 	.byte	57,52,56,99
+0000040d 30303537       1052 	.byte	48,48,53,55
+00000411 61316330       1053 	.byte	97,49,99,48
+00000415 66363532       1054 	.byte	102,54,53,50
+00000419 38353366       1055 	.byte	56,53,51,102
+0000041d 65323865       1056 	.byte	101,50,56,101
+00000421 65643831       1057 	.byte	101,100,56,49
+00000425 32363865       1058 	.byte	50,54,56,101
+00000429 00             1059 	.byte	0
+                        1060 	.type	_pss_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..5,@object
+                        1061 	.size	_pss_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..5,257
+                        1062 	.type	.L720,@object
+                        1063 	.size	.L720,257
+                        1064 	.section ".ghcalltbl",""
+                        1065 	.align	4
+00000000 00000000*      1066 .L763:	.word	.L762
+                        1067 	.type	.L763,@object
+                        1068 	.size	.L763,4
+00000004 00000000*      1069 .L765:	.word	.L764
+                        1070 	.type	.L765,@object
+                        1071 	.size	.L765,4
+00000008 00000000*      1072 .L767:	.word	.L766
+                        1073 	.type	.L767,@object
+                        1074 	.size	.L767,4
+0000000c 00000000*      1075 .L769:	.word	.L768
+                        1076 	.type	.L769,@object
+                        1077 	.size	.L769,4
+00000010 00000000*      1078 .L771:	.word	.L770
+                        1079 	.type	.L771,@object
+                        1080 	.size	.L771,4
+00000014 00000000*      1081 .L773:	.word	.L772
+                        1082 	.type	.L773,@object
+                        1083 	.size	.L773,4
+00000018 00000000*      1084 .L775:	.word	.L774
+                        1085 	.type	.L775,@object
+                        1086 	.size	.L775,4
+0000001c 00000000*      1087 .L777:	.word	.L776
+                        1088 	.type	.L777,@object
+                        1089 	.size	.L777,4
+00000020 00000000*      1090 .L779:	.word	.L778
+                        1091 	.type	.L779,@object
+                        1092 	.size	.L779,4
+00000024 00000000*      1093 .L781:	.word	.L780
+                        1094 	.type	.L781,@object
+                        1095 	.size	.L781,4
+00000028 00000000*      1096 .L783:	.word	.L782
+                        1097 	.type	.L783,@object
+                        1098 	.size	.L783,4
+0000002c 00000000*      1099 .L785:	.word	.L784
+                        1100 	.type	.L785,@object
+                        1101 	.size	.L785,4
+00000030 00000000*      1102 .L787:	.word	.L786
+                        1103 	.type	.L787,@object
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                        1104 	.size	.L787,4
+00000034 00000000*      1105 .L789:	.word	.L788
+                        1106 	.type	.L789,@object
+                        1107 	.size	.L789,4
+00000038 00000000*      1108 .L791:	.word	.L790
+                        1109 	.type	.L791,@object
+                        1110 	.size	.L791,4
+                        1111 	.section ".ghrettbl",""
+00000008 00000000*      1112 .L793:	.word	.L792
+                        1113 	.type	.L793,@object
+                        1114 	.size	.L793,4
+                        1115 	.data
+                        1116 	.text
+                        1117 
+                        1118 --148: }
+                        1119 	.align	2
+                        1120 
+                        1121 	.data
+                        1122 	.ghsnote version,30
+                        1123 	.ghsnote tools,3
+                        1124 	.ghsnote options,656
+                        1125 	.text
+                        1126 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD86220..0::
+                        1127 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

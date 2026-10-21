@@ -53,10 +53,20 @@
 //============================================================================
 #include "device.h"
 #include "icum_crypto.h"
+#include "aes_test.h"
+#include "icum_hash.h"
+#include "hash_test.h"
+#include "icum_rsa.h"
+#include "rsa_test.h"
 #include "icum_comm.h"
 #include "icum_ostm.h"
 
 volatile icum_u32 g_icum_crypto_test_result;
+volatile icum_u32 g_icum_hash_sha1_test_result;
+volatile icum_u32 g_icum_hash_sha256_test_result;
+volatile icum_u32 g_icum_hash_sha384_test_result;
+volatile icum_u32 g_icum_hash_sha512_test_result;
+volatile icum_u32 g_icum_rsa_test_result;
 
 
 void init_clocks(void)
@@ -108,6 +118,12 @@ void main_icum(void)
     icum_comm_init();
     icum_ostm_init();
     g_icum_crypto_test_result = icum_crypto_self_test(0x01000000ul);
+    g_icum_hash_sha1_test_result = (icum_hash_self_test(ICUM_HASH_SHA1) != 0) ? 1ul : 0ul;
+    g_icum_hash_sha256_test_result = (icum_hash_self_test(ICUM_HASH_SHA256) != 0) ? 1ul : 0ul;
+    g_icum_hash_sha384_test_result = (icum_hash_self_test(ICUM_HASH_SHA384) != 0) ? 1ul : 0ul;
+    g_icum_hash_sha512_test_result = (icum_hash_self_test(ICUM_HASH_SHA512) != 0) ? 1ul : 0ul;
+    g_icum_rsa_test_result =
+        (icum_rsa_self_test(0x01000000ul) != 0) ? 1ul : 0ul;
     while(1)
     {
         // Main loop

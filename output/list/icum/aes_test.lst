@@ -1,0 +1,1040 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\aes_test.dbo -source=aes_test.c -comp -o output\objects\icum\gh_0000vb01.o -list=output\list\icum\aes_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+Source File: aes_test.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Idevice -G
+                           2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
+                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
+                           4 --		-filetype.c source\ICUM\aes_test.c -o
+                           5 --		output\objects\icum\aes_test.o
+                           6 --Source File:   source\ICUM\aes_test.c
+                           7 --Directory:     
+                           8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                           9 --Compile Date:  Wed Oct 21 14:50:02 2026
+                          10 --Host OS:       Win64
+                          11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          12 --Release:       Compiler v2023.5.4
+                          13 --Revision Date: Wed Sep 06 02:44:56 2023
+                          14 --Release Date:  Wed Sep 06 02:00:00 2023
+                          15 -- ecom  -g -w
+                          16 
+                          17 --1: #include "aes_test.h"
+                          18 --3: static int bytes_equal(const unsigned char *left,
+                          19 	.text
+                          20 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609B..0::
+                          21 	.align	2
+                          22 	.align	2
+                          23 ..gh.f.a.2.e.0:
+                          24 	.type	..gh.f.a.2.e.0,@object
+                          25 	.size	..gh.f.a.2.e.0,0
+                          26 	.global	_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test.
+                          27 _bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test.:
+                          28 _bytes_equal:
+00000000 0610             29 	mov	r6,r2
+00000002 0798             30 	mov	r7,r19
+00000004 0890             31 	mov	r8,r18
+                          32 --	    .bf
+                          33 .LDW01:
+                          34 --4:                        const unsigned char *right,
+                          35 --5:                        unsigned int length)
+                          36 --6: {
+                          37 --7:     unsigned int index;
+                          38 --9:     for (index = 0u; index < length; ++index) {
+00000006 000a             39 	mov	0,r1
+00000008 d50d*            40 	br	.L7
+                          41 .L6:
+                          42 --10:         if (left[index] != right[index]) {
+                          43 --line10
+                          44 ..lin.5dd2d7cc..f1319702.0_1::
+                          45 .LDWlin1:
+0000000a 01f0             46 	mov	r1,ep
+0000000c c2f1             47 	add	r2,ep
+0000000e 0188             48 	mov	r1,r17
+00000010 d389             49 	add	r19,r17
+00000012 918f0100         50 	ld.bu	0[r17],r17
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+00000016 6080             51 	sld.bu	0[ep],r16
+00000018 f181             52 	cmp	r17,r16
+0000001a b205*            53 	be	.L5
+                          54 --11:             return 0;
+                          55 --line11
+                          56 ..lin.5dd2d7cc..f1319702.0_2::
+                          57 .LDWlin2:
+0000001c 0052             58 	mov	0,r10
+0000001e d505*            59 	br	.L2
+                          60 .L5:
+                          61 --line9
+                          62 ..lin.5dd2d7cc..f1319702.0_3::
+                          63 .LDWlin3:
+00000020 410a             64 	add	1,r1
+                          65 .L7:
+00000022 f209             66 	cmp	r18,r1
+00000024 b1f5*            67 	bl	.L6
+                          68 --12:         }
+                          69 --13:     }
+                          70 --15:     return 1;
+                          71 --line15
+                          72 ..lin.5dd2d7cc..f1319702.0_4::
+                          73 .LDWlin4:
+00000026 0152             74 	mov	1,r10
+                          75 .L2:
+                          76 --	    .ef
+                          77 .LDW11:
+                          78 .L84:
+                          79 	.jumptype return
+00000028 7f00             80 	jmp	[lp]
+                          81 --line15
+                          82 ..lin.5dd2d7cc..f1319702.0_5::
+                          83 	.type	_bytes_equal,@function
+                          84 	.size	_bytes_equal,.-_bytes_equal
+                          85 	.type	_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test.,@function
+                          86 	.size	_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test.,.-_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test.
+                          87 	.align	2
+                          88 --_index	r1	local
+                          89 
+                          90 --_left	r2	param
+                          91 --_right	r19	param
+                          92 --_length	r18	param
+                          93 
+                          94 	.section ".bss","awb"
+                          95 .L54:
+                          96 	.type	.L54,@object
+                          97 	.size	.L54,0
+                          98 	.section ".ghrettbl",""
+                          99 	.align	4
+00000000 00000000*       100 .L85:	.word	.L84
+                         101 	.type	.L85,@object
+                         102 	.size	.L85,4
+                         103 	.data
+                         104 	.text
+                         105 
+                         106 --16: }
+                         107 
+                         108 --18: icum_u32 icum_crypto_self_test(icum_u32 timeout)
+                         109 	.align	2
+                         110 	.align	2
+                         111 	.align	2
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+                         112 ..gh.f.a.2.e.1:
+                         113 	.type	..gh.f.a.2.e.1,@object
+                         114 	.size	..gh.f.a.2.e.1,0
+                         115 	.global	_icum_crypto_self_test
+                         116 _icum_crypto_self_test:
+0000002a 031e48ff        117 	addi	-184,sp,sp
+0000002e 63ffb500        118 	st.w	lp,180[sp]
+00000032 63e7b100        119 	st.w	r28,176[sp]
+00000036 63efad00        120 	st.w	r29,172[sp]
+0000003a 06e0            121 	mov	r6,r28
+                         122 --	    .bf
+                         123 .LDW21:
+                         124 --19: {
+                         125 --20:     static const unsigned char key[16] = {
+                         126 --21: #if 0
+                         127 --22:         0x2bu, 0x7eu, 0x15u, 0x16u, 0x28u, 0xa6u, 0xd2u, 0xa6u,
+                         128 --23:         0xabu, 0xf7u, 0x15u, 0x88u, 0x09u, 0xcfu, 0x4fu, 0x3cu
+                         129 --24: #else
+                         130 --25:         0x00u, 0x01u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u,
+                         131 --26:         0x08u, 0x09u, 0x0au, 0x0bu, 0x0cu, 0x0du, 0x0eu, 0x0fu
+                         132 --27: #endif
+                         133 --28:     };
+                         134 --29:     static const unsigned char plaintext[16] = {
+                         135 --30: #if 0
+                         136 --31:         0x6bu, 0xc0u, 0xbcu, 0xe1u, 0x2au, 0x45u, 0x99u, 0x91u,
+                         137 --32:         0xe1u, 0x34u, 0x74u, 0x1au, 0x7fu, 0x9eu, 0x19u, 0x25u
+                         138 --33: #else
+                         139 --34:         0x00u, 0x11u, 0x22u, 0x33u, 0x44u, 0x55u, 0x66u, 0x77u,
+                         140 --35:         0x88u, 0x99u, 0xaau, 0xbbu, 0xccu, 0xddu, 0xeeu, 0xffu
+                         141 --36: #endif
+                         142 --37:         };
+                         143 --38:     static const unsigned char ciphertext_expected[16] = {
+                         144 --39: #if 0
+                         145 --40:         0x76u, 0x49u, 0xabu, 0xacu, 0x81u, 0x19u, 0xb2u, 0x46u,
+                         146 --41:         0xceu, 0xe9u, 0x8eu, 0x9bu, 0x12u, 0xe9u, 0x19u, 0x7du
+                         147 --42: #else
+                         148 --43:         0x69u, 0xc4u, 0xe0u, 0xd8u, 0x6au, 0x7bu, 0x04u, 0x30u,
+                         149 --44:         0xd8u, 0xcdu, 0xb7u, 0x80u, 0x70u, 0xb4u, 0xc5u, 0x5au
+                         150 --45: #endif
+                         151 --46:         };
+                         152 --47:     static const unsigned char cbc_key[16] = {
+                         153 --48:         0x2bu, 0x7eu, 0x15u, 0x16u, 0x28u, 0xaeu, 0xd2u, 0xa6u,
+                         154 --49:         0xabu, 0xf7u, 0x15u, 0x88u, 0x09u, 0xcfu, 0x4fu, 0x3cu
+                         155 --50:     };
+                         156 --51:     static const unsigned char cbc_iv[16] = {
+                         157 --52:         0x00u, 0x01u, 0x02u, 0x03u, 0x04u, 0x05u, 0x06u, 0x07u,
+                         158 --53:         0x08u, 0x09u, 0x0au, 0x0bu, 0x0cu, 0x0du, 0x0eu, 0x0fu
+                         159 --54:     };
+                         160 --55:     static const unsigned char cbc_plaintext[32] = {
+                         161 --56:         0x6bu, 0xc1u, 0xbeu, 0xe2u, 0x2eu, 0x40u, 0x9fu, 0x96u,
+                         162 --57:         0xe9u, 0x3du, 0x7eu, 0x11u, 0x73u, 0x93u, 0x17u, 0x2au,
+                         163 --58:         0xaeu, 0x2du, 0x8au, 0x57u, 0x1eu, 0x03u, 0xacu, 0x9cu,
+                         164 --59:         0x9eu, 0xb7u, 0x6fu, 0xacu, 0x45u, 0xafu, 0x8eu, 0x51u
+                         165 --60:     };
+                         166 --61:     static const unsigned char cbc_ciphertext_expected[32] = {
+                         167 --62:         0x76u, 0x49u, 0xabu, 0xacu, 0x81u, 0x19u, 0xb2u, 0x46u,
+                         168 --63:         0xceu, 0xe9u, 0x8eu, 0x9bu, 0x12u, 0xe9u, 0x19u, 0x7du,
+                         169 --64:         0x50u, 0x86u, 0xcbu, 0x9bu, 0x50u, 0x72u, 0x19u, 0xeeu,
+                         170 --65:         0x95u, 0xdbu, 0x11u, 0x3au, 0x91u, 0x76u, 0x78u, 0xb2u
+                         171 --66:         };
+                         172 --67:     static const unsigned char ecb_multiblock_expected[32] = {
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+                         173 --68:         0x3au, 0xd7u, 0x7bu, 0xb4u, 0x0du, 0x7au, 0x36u, 0x60u,
+                         174 --69:         0xa8u, 0x9eu, 0xcau, 0xf3u, 0x24u, 0x66u, 0xefu, 0x97u,
+                         175 --70:         0xf5u, 0xd3u, 0xd5u, 0x85u, 0x03u, 0xb9u, 0x69u, 0x9du,
+                         176 --71:         0xe7u, 0x85u, 0x89u, 0x5au, 0x96u, 0xfdu, 0xbau, 0xafu
+                         177 --72:     };
+                         178 --73:     static const unsigned char cmac_empty_expected[16] = {
+                         179 --74:         0xbbu, 0x1du, 0x69u, 0x29u, 0xe9u, 0x59u, 0x37u, 0x28u,
+                         180 --75:         0x7fu, 0xa3u, 0x7du, 0x12u, 0x9bu, 0x75u, 0x67u, 0x46u
+                         181 --76:     };
+                         182 --77:     static const unsigned char cmac_full_expected[16] = {
+                         183 --78:         0x07u, 0x0au, 0x16u, 0xb4u, 0x6bu, 0x4du, 0x41u, 0x44u,
+                         184 --79:         0xf7u, 0x9bu, 0xddu, 0x9du, 0xd0u, 0x4au, 0x28u, 0x7cu
+                         185 --80:     };
+                         186 --81:     static const unsigned char cmac_multiblock_message[64] = {
+                         187 --82:         0x6bu, 0xc1u, 0xbeu, 0xe2u, 0x2eu, 0x40u, 0x9fu, 0x96u,
+                         188 --83:         0xe9u, 0x3du, 0x7eu, 0x11u, 0x73u, 0x93u, 0x17u, 0x2au,
+                         189 --84:         0xaeu, 0x2du, 0x8au, 0x57u, 0x1eu, 0x03u, 0xacu, 0x9cu,
+                         190 --85:         0x9eu, 0xb7u, 0x6fu, 0xacu, 0x45u, 0xafu, 0x8eu, 0x51u,
+                         191 --86:         0x30u, 0xc8u, 0x1cu, 0x46u, 0xa3u, 0x5cu, 0xe4u, 0x11u,
+                         192 --87:         0xe5u, 0xfbu, 0xc1u, 0x19u, 0x1au, 0x0au, 0x52u, 0xefu,
+                         193 --88:         0xf6u, 0x9fu, 0x24u, 0x45u, 0xdfu, 0x4fu, 0x9bu, 0x17u,
+                         194 --89:         0xadu, 0x2bu, 0x41u, 0x7bu, 0xe6u, 0x6cu, 0x37u, 0x10u
+                         195 --90:     };
+                         196 --91:     static const unsigned char cmac_multiblock_expected[16] = {
+                         197 --92:         0x51u, 0xf0u, 0xbeu, 0xbfu, 0x7eu, 0x3bu, 0x9du, 0x92u,
+                         198 --93:         0xfcu, 0x49u, 0x74u, 0x17u, 0x79u, 0x36u, 0x3cu, 0xfeu
+                         199 --94:     };
+                         200 --95:     static const unsigned char cmac_partial_message[40] = {
+                         201 --96:         0x6bu, 0xc1u, 0xbeu, 0xe2u, 0x2eu, 0x40u, 0x9fu, 0x96u,
+                         202 --97:         0xe9u, 0x3du, 0x7eu, 0x11u, 0x73u, 0x93u, 0x17u, 0x2au,
+                         203 --98:         0xaeu, 0x2du, 0x8au, 0x57u, 0x1eu, 0x03u, 0xacu, 0x9cu,
+                         204 --99:         0x9eu, 0xb7u, 0x6fu, 0xacu, 0x45u, 0xafu, 0x8eu, 0x51u,
+                         205 --100:         0x30u, 0xc8u, 0x1cu, 0x46u, 0xa3u, 0x5cu, 0xe4u, 0x11u
+                         206 --101:     };
+                         207 --102:     static const unsigned char cmac_partial_expected[16] = {
+                         208 --103:         0xdfu, 0xa6u, 0x67u, 0x47u, 0xdeu, 0x9au, 0xe6u, 0x30u,
+                         209 --104:         0x30u, 0xcau, 0x32u, 0x61u, 0x14u, 0x97u, 0xc8u, 0x27u
+                         210 --105:     };
+                         211 --106:     unsigned char ciphertext[16];
+                         212 --107:     unsigned char ecb_multiblock_ciphertext[32];
+                         213 --108:     unsigned char plaintext_result[16];
+                         214 --109:     unsigned char cbc_ciphertext[32];
+                         215 --110:     unsigned char cbc_plaintext_result[32];
+                         216 --111:     unsigned char cmac_result[16];
+                         217 --112:     icum_u32 random_words[4];
+                         218 --113:     icum_u32 result;
+                         219 --115:     result = 0u;
+0000003c 00ea            220 	mov	0,r29
+                         221 --116:     if (icum_aes128_ecb_crypt(key, plaintext, ciphertext, 16ul, 0, timeout)
+0000003e 63070100        222 	st.w	zero,0[sp]
+00000042 63e70500        223 	st.w	r28,4[sp]
+00000046 25360000*       224 	movea	sdaoff2(.L397),r5,r6
+0000004a 253e0000*       225 	movea	sdaoff2(.L398),r5,r7
+0000004e 23469c00        226 	movea	156,sp,r8
+00000052 204e1000        227 	movea	16,zero,r9
+                         228 .L455:
+                         229 	jarl	_icum_aes128_ecb_crypt,lp
+                         229 <EXPANSION BEGIN>
+                         229 jarl22 _icum_aes128_ecb_crypt , lp 
+00000056 80ff0000*       229 <EXPANSION END>
+0000005a e051            230 	cmp	zero,r10
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+0000005c e20d*           231 	be	.L88
+                         232 --line117
+                         233 ..lin.5dd2d7cc..639c217a.0_6::
+                         234 .LDWlin6:
+0000005e 23369c00        235 	movea	156,sp,r6
+00000062 253e0000*       236 	movea	sdaoff2(.L399),r5,r7
+00000066 20461000        237 	movea	16,zero,r8
+                         238 .L457:
+                         239 	jarl	_bytes_equal,lp
+                         239 <EXPANSION BEGIN>
+                         239 jarl22 _bytes_equal , lp 
+0000006a bfff96ff*       239 <EXPANSION END>
+0000006e e051            240 	cmp	zero,r10
+00000070 c205*           241 	be	.L88
+                         242 --117:         && bytes_equal(ciphertext, ciphertext_expected, 16u)) {
+                         243 --118:         result |= ICUM_CRYPTO_TEST_AES_ENCRYPT_PASS;
+                         244 --line118
+                         245 ..lin.5dd2d7cc..639c217a.0_7::
+                         246 .LDWlin7:
+00000072 9dee0100        247 	ori	1,r29,r29
+00000076 b505*           248 	br	.L91
+                         249 .L88:
+                         250 --119:     } else {
+                         251 --120:         result |= ICUM_CRYPTO_TEST_AES_ENCRYPT_FAIL;
+                         252 --line120
+                         253 ..lin.5dd2d7cc..639c217a.0_8::
+                         254 .LDWlin8:
+00000078 9dee0001        255 	ori	256,r29,r29
+                         256 .L91:
+                         257 --121:     }
+                         258 --123:     if (icum_aes128_ecb_crypt(key,
+0000007c 010a            259 	mov	1,r1
+0000007e 630f0100        260 	st.w	r1,0[sp]
+00000082 63e70500        261 	st.w	r28,4[sp]
+00000086 25360000*       262 	movea	sdaoff2(.L397),r5,r6
+0000008a 253e0000*       263 	movea	sdaoff2(.L399),r5,r7
+0000008e 23466c00        264 	movea	108,sp,r8
+00000092 204e1000        265 	movea	16,zero,r9
+                         266 .L459:
+                         267 	jarl	_icum_aes128_ecb_crypt,lp
+                         267 <EXPANSION BEGIN>
+                         267 jarl22 _icum_aes128_ecb_crypt , lp 
+00000096 80ff0000*       267 <EXPANSION END>
+0000009a e051            268 	cmp	zero,r10
+0000009c e20d*           269 	be	.L92
+                         270 --line129
+                         271 ..lin.5dd2d7cc..639c217a.0_9::
+                         272 .LDWlin9:
+0000009e 23366c00        273 	movea	108,sp,r6
+000000a2 253e0000*       274 	movea	sdaoff2(.L398),r5,r7
+000000a6 20461000        275 	movea	16,zero,r8
+                         276 .L461:
+                         277 	jarl	_bytes_equal,lp
+                         277 <EXPANSION BEGIN>
+                         277 jarl22 _bytes_equal , lp 
+000000aa bfff56ff*       277 <EXPANSION END>
+000000ae e051            278 	cmp	zero,r10
+000000b0 c205*           279 	be	.L92
+                         280 --124:                               ciphertext_expected,
+                         281 --125:                               plaintext_result,
+                         282 --126:                               16ul,
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+                         283 --127:                               1,
+                         284 --128:                               timeout)
+                         285 --129:         && bytes_equal(plaintext_result, plaintext, 16u)) {
+                         286 --130:         result |= ICUM_CRYPTO_TEST_AES_DECRYPT_PASS;
+                         287 --line130
+                         288 ..lin.5dd2d7cc..639c217a.0_10::
+                         289 .LDWlin10:
+000000b2 9dee0200        290 	ori	2,r29,r29
+000000b6 b505*           291 	br	.L95
+                         292 .L92:
+                         293 --131:     } else {
+                         294 --132:         result |= ICUM_CRYPTO_TEST_AES_DECRYPT_FAIL;
+                         295 --line132
+                         296 ..lin.5dd2d7cc..639c217a.0_11::
+                         297 .LDWlin11:
+000000b8 9dee0002        298 	ori	512,r29,r29
+                         299 .L95:
+                         300 --133:     }
+                         301 --135:     if (icum_aes128_ecb_crypt(cbc_key, cbc_plaintext,
+000000bc 63070100        302 	st.w	zero,0[sp]
+000000c0 63e70500        303 	st.w	r28,4[sp]
+000000c4 25360000*       304 	movea	sdaoff2(.L400),r5,r6
+000000c8 253e0000*       305 	movea	sdaoff2(.L402),r5,r7
+000000cc 23467c00        306 	movea	124,sp,r8
+000000d0 204e2000        307 	movea	32,zero,r9
+                         308 .L463:
+                         309 	jarl	_icum_aes128_ecb_crypt,lp
+                         309 <EXPANSION BEGIN>
+                         309 jarl22 _icum_aes128_ecb_crypt , lp 
+000000d4 80ff0000*       309 <EXPANSION END>
+000000d8 e051            310 	cmp	zero,r10
+000000da f20d*           311 	be	.L96
+                         312 --line137
+                         313 ..lin.5dd2d7cc..639c217a.0_12::
+                         314 .LDWlin12:
+000000dc 23367c00        315 	movea	124,sp,r6
+000000e0 253e0000*       316 	movea	sdaoff2(.L404),r5,r7
+000000e4 20462000        317 	movea	32,zero,r8
+                         318 .L465:
+                         319 	jarl	_bytes_equal,lp
+                         319 <EXPANSION BEGIN>
+                         319 jarl22 _bytes_equal , lp 
+000000e8 bfff18ff*       319 <EXPANSION END>
+000000ec e051            320 	cmp	zero,r10
+000000ee d205*           321 	be	.L96
+                         322 --136:                               ecb_multiblock_ciphertext, 32ul, 0, timeout)
+                         323 --137:         && bytes_equal(ecb_multiblock_ciphertext,
+                         324 --138:                        ecb_multiblock_expected, 32u)) {
+                         325 --139:         result |= ICUM_CRYPTO_TEST_AES_MULTIBLOCK_PASS;
+                         326 --line139
+                         327 ..lin.5dd2d7cc..639c217a.0_13::
+                         328 .LDWlin13:
+000000f0 400e0400        329 	movhi	hi(262144),zero,r1
+000000f4 01e9            330 	or	r1,r29
+000000f6 c505*           331 	br	.L99
+                         332 .L96:
+                         333 --140:     } else {
+                         334 --141:         result |= ICUM_CRYPTO_TEST_AES_MULTIBLOCK_FAIL;
+                         335 --line141
+                         336 ..lin.5dd2d7cc..639c217a.0_14::
+                         337 .LDWlin14:
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+000000f8 400e0800        338 	movhi	hi(524288),zero,r1
+000000fc 01e9            339 	or	r1,r29
+                         340 .L99:
+                         341 --142:     }
+                         342 --144:     if (icum_aes128_cbc_crypt(cbc_key, cbc_iv, cbc_plaintext,
+                         343 --line144
+                         344 ..lin.5dd2d7cc..639c217a.0_15::
+                         345 .LDWlin15:
+000000fe 200e2000        346 	movea	32,zero,r1
+00000102 630f0100        347 	st.w	r1,0[sp]
+00000106 63070500        348 	st.w	zero,4[sp]
+0000010a 63e70900        349 	st.w	r28,8[sp]
+0000010e 25360000*       350 	movea	sdaoff2(.L400),r5,r6
+00000112 253e0000*       351 	movea	sdaoff2(.L401),r5,r7
+00000116 25460000*       352 	movea	sdaoff2(.L402),r5,r8
+0000011a 234e4c00        353 	movea	76,sp,r9
+                         354 .L467:
+                         355 	jarl	_icum_aes128_cbc_crypt,lp
+                         355 <EXPANSION BEGIN>
+                         355 jarl22 _icum_aes128_cbc_crypt , lp 
+0000011e 80ff0000*       355 <EXPANSION END>
+00000122 e051            356 	cmp	zero,r10
+00000124 e20d*           357 	be	.L100
+                         358 --line146
+                         359 ..lin.5dd2d7cc..639c217a.0_16::
+                         360 .LDWlin16:
+00000126 23364c00        361 	movea	76,sp,r6
+0000012a 253e0000*       362 	movea	sdaoff2(.L403),r5,r7
+0000012e 20462000        363 	movea	32,zero,r8
+                         364 .L469:
+                         365 	jarl	_bytes_equal,lp
+                         365 <EXPANSION BEGIN>
+                         365 jarl22 _bytes_equal , lp 
+00000132 bfffcefe*       365 <EXPANSION END>
+00000136 e051            366 	cmp	zero,r10
+00000138 c205*           367 	be	.L100
+                         368 --145:                               cbc_ciphertext, 32ul, 0, timeout)
+                         369 --146:         && bytes_equal(cbc_ciphertext, cbc_ciphertext_expected, 32u)) {
+                         370 --147:         result |= ICUM_CRYPTO_TEST_CBC_ENCRYPT_PASS;
+                         371 --line147
+                         372 ..lin.5dd2d7cc..639c217a.0_17::
+                         373 .LDWlin17:
+0000013a 9dee0800        374 	ori	8,r29,r29
+0000013e b505*           375 	br	.L103
+                         376 .L100:
+                         377 --148:     } else {
+                         378 --149:         result |= ICUM_CRYPTO_TEST_CBC_ENCRYPT_FAIL;
+                         379 --line149
+                         380 ..lin.5dd2d7cc..639c217a.0_18::
+                         381 .LDWlin18:
+00000140 9dee0008        382 	ori	2048,r29,r29
+                         383 .L103:
+                         384 --150:     }
+                         385 --152:     if (icum_aes128_cbc_crypt(cbc_key, cbc_iv, cbc_ciphertext_expected,
+00000144 200e2000        386 	movea	32,zero,r1
+00000148 630f0100        387 	st.w	r1,0[sp]
+0000014c 010a            388 	mov	1,r1
+0000014e 630f0500        389 	st.w	r1,4[sp]
+00000152 63e70900        390 	st.w	r28,8[sp]
+00000156 25360000*       391 	movea	sdaoff2(.L400),r5,r6
+0000015a 253e0000*       392 	movea	sdaoff2(.L401),r5,r7
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+0000015e 25460000*       393 	movea	sdaoff2(.L403),r5,r8
+00000162 234e2c00        394 	movea	44,sp,r9
+                         395 .L471:
+                         396 	jarl	_icum_aes128_cbc_crypt,lp
+                         396 <EXPANSION BEGIN>
+                         396 jarl22 _icum_aes128_cbc_crypt , lp 
+00000166 80ff0000*       396 <EXPANSION END>
+0000016a e051            397 	cmp	zero,r10
+0000016c e20d*           398 	be	.L104
+                         399 --line154
+                         400 ..lin.5dd2d7cc..639c217a.0_19::
+                         401 .LDWlin19:
+0000016e 23362c00        402 	movea	44,sp,r6
+00000172 253e0000*       403 	movea	sdaoff2(.L402),r5,r7
+00000176 20462000        404 	movea	32,zero,r8
+                         405 .L473:
+                         406 	jarl	_bytes_equal,lp
+                         406 <EXPANSION BEGIN>
+                         406 jarl22 _bytes_equal , lp 
+0000017a bfff86fe*       406 <EXPANSION END>
+0000017e e051            407 	cmp	zero,r10
+00000180 c205*           408 	be	.L104
+                         409 --153:                               cbc_plaintext_result, 32ul, 1, timeout)
+                         410 --154:         && bytes_equal(cbc_plaintext_result, cbc_plaintext, 32u)) {
+                         411 --155:         result |= ICUM_CRYPTO_TEST_CBC_DECRYPT_PASS;
+                         412 --line155
+                         413 ..lin.5dd2d7cc..639c217a.0_20::
+                         414 .LDWlin20:
+00000182 9dee1000        415 	ori	16,r29,r29
+00000186 b505*           416 	br	.L107
+                         417 .L104:
+                         418 --156:     } else {
+                         419 --157:         result |= ICUM_CRYPTO_TEST_CBC_DECRYPT_FAIL;
+                         420 --line157
+                         421 ..lin.5dd2d7cc..639c217a.0_21::
+                         422 .LDWlin21:
+00000188 9dee0010        423 	ori	4096,r29,r29
+                         424 .L107:
+                         425 --158:     }
+                         426 --160:     if (icum_aes128_cmac(cbc_key, (const unsigned char *)0, 0ul,
+0000018c 63e70100        427 	st.w	r28,0[sp]
+00000190 25360000*       428 	movea	sdaoff2(.L400),r5,r6
+00000194 003a            429 	mov	0,r7
+00000196 0042            430 	mov	0,r8
+00000198 234e1c00        431 	movea	28,sp,r9
+                         432 .L475:
+                         433 	jarl	_icum_aes128_cmac,lp
+                         433 <EXPANSION BEGIN>
+                         433 jarl22 _icum_aes128_cmac , lp 
+0000019c 80ff0000*       433 <EXPANSION END>
+000001a0 e051            434 	cmp	zero,r10
+000001a2 e20d*           435 	be	.L108
+                         436 --line162
+                         437 ..lin.5dd2d7cc..639c217a.0_22::
+                         438 .LDWlin22:
+000001a4 23361c00        439 	movea	28,sp,r6
+000001a8 253e0000*       440 	movea	sdaoff2(.L405),r5,r7
+000001ac 20461000        441 	movea	16,zero,r8
+                         442 .L477:
+                         443 	jarl	_bytes_equal,lp
+                         443 <EXPANSION BEGIN>
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+                         443 jarl22 _bytes_equal , lp 
+000001b0 bfff50fe*       443 <EXPANSION END>
+000001b4 e051            444 	cmp	zero,r10
+000001b6 c205*           445 	be	.L108
+                         446 --161:                          cmac_result, timeout)
+                         447 --162:         && bytes_equal(cmac_result, cmac_empty_expected, 16u)) {
+                         448 --163:         result |= ICUM_CRYPTO_TEST_CMAC_EMPTY_PASS;
+                         449 --line163
+                         450 ..lin.5dd2d7cc..639c217a.0_23::
+                         451 .LDWlin23:
+000001b8 9dee2000        452 	ori	32,r29,r29
+000001bc b505*           453 	br	.L111
+                         454 .L108:
+                         455 --164:     } else {
+                         456 --165:         result |= ICUM_CRYPTO_TEST_CMAC_EMPTY_FAIL;
+                         457 --line165
+                         458 ..lin.5dd2d7cc..639c217a.0_24::
+                         459 .LDWlin24:
+000001be 9dee0020        460 	ori	8192,r29,r29
+                         461 .L111:
+                         462 --166:     }
+                         463 --168:     if (icum_aes128_cmac(cbc_key, cbc_plaintext, 16ul,
+000001c2 63e70100        464 	st.w	r28,0[sp]
+000001c6 25360000*       465 	movea	sdaoff2(.L400),r5,r6
+000001ca 253e0000*       466 	movea	sdaoff2(.L402),r5,r7
+000001ce 20461000        467 	movea	16,zero,r8
+000001d2 234e1c00        468 	movea	28,sp,r9
+                         469 .L479:
+                         470 	jarl	_icum_aes128_cmac,lp
+                         470 <EXPANSION BEGIN>
+                         470 jarl22 _icum_aes128_cmac , lp 
+000001d6 80ff0000*       470 <EXPANSION END>
+000001da e051            471 	cmp	zero,r10
+000001dc e20d*           472 	be	.L112
+                         473 --line170
+                         474 ..lin.5dd2d7cc..639c217a.0_25::
+                         475 .LDWlin25:
+000001de 23361c00        476 	movea	28,sp,r6
+000001e2 253e0000*       477 	movea	sdaoff2(.L406),r5,r7
+000001e6 20461000        478 	movea	16,zero,r8
+                         479 .L481:
+                         480 	jarl	_bytes_equal,lp
+                         480 <EXPANSION BEGIN>
+                         480 jarl22 _bytes_equal , lp 
+000001ea bfff16fe*       480 <EXPANSION END>
+000001ee e051            481 	cmp	zero,r10
+000001f0 c205*           482 	be	.L112
+                         483 --169:                          cmac_result, timeout)
+                         484 --170:         && bytes_equal(cmac_result, cmac_full_expected, 16u)) {
+                         485 --171:         result |= ICUM_CRYPTO_TEST_CMAC_FULL_PASS;
+                         486 --line171
+                         487 ..lin.5dd2d7cc..639c217a.0_26::
+                         488 .LDWlin26:
+000001f2 9dee8000        489 	ori	128,r29,r29
+000001f6 b505*           490 	br	.L115
+                         491 .L112:
+                         492 --172:     } else {
+                         493 --173:         result |= ICUM_CRYPTO_TEST_CMAC_FULL_FAIL;
+                         494 --line173
+                         495 ..lin.5dd2d7cc..639c217a.0_27::
+                         496 .LDWlin27:
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+000001f8 9dee0080        497 	ori	32768,r29,r29
+                         498 .L115:
+                         499 --174:     }
+                         500 --176:     if (icum_aes128_cmac(cbc_key, cmac_multiblock_message, 64ul,
+000001fc 63e70100        501 	st.w	r28,0[sp]
+00000200 25360000*       502 	movea	sdaoff2(.L400),r5,r6
+00000204 253e0000*       503 	movea	sdaoff2(.L407),r5,r7
+00000208 20464000        504 	movea	64,zero,r8
+0000020c 234e1c00        505 	movea	28,sp,r9
+                         506 .L483:
+                         507 	jarl	_icum_aes128_cmac,lp
+                         507 <EXPANSION BEGIN>
+                         507 jarl22 _icum_aes128_cmac , lp 
+00000210 80ff0000*       507 <EXPANSION END>
+00000214 e051            508 	cmp	zero,r10
+00000216 f20d*           509 	be	.L116
+                         510 --line178
+                         511 ..lin.5dd2d7cc..639c217a.0_28::
+                         512 .LDWlin28:
+00000218 23361c00        513 	movea	28,sp,r6
+0000021c 253e0000*       514 	movea	sdaoff2(.L408),r5,r7
+00000220 20461000        515 	movea	16,zero,r8
+                         516 .L485:
+                         517 	jarl	_bytes_equal,lp
+                         517 <EXPANSION BEGIN>
+                         517 jarl22 _bytes_equal , lp 
+00000224 bfffdcfd*       517 <EXPANSION END>
+00000228 e051            518 	cmp	zero,r10
+0000022a d205*           519 	be	.L116
+                         520 --177:                          cmac_result, timeout)
+                         521 --178:         && bytes_equal(cmac_result, cmac_multiblock_expected, 16u)) {
+                         522 --179:         result |= ICUM_CRYPTO_TEST_CMAC_MULTIBLOCK_PASS;
+                         523 --line179
+                         524 ..lin.5dd2d7cc..639c217a.0_29::
+                         525 .LDWlin29:
+0000022c 400e0100        526 	movhi	hi(65536),zero,r1
+00000230 01e9            527 	or	r1,r29
+00000232 c505*           528 	br	.L119
+                         529 .L116:
+                         530 --180:     } else {
+                         531 --181:         result |= ICUM_CRYPTO_TEST_CMAC_MULTIBLOCK_FAIL;
+                         532 --line181
+                         533 ..lin.5dd2d7cc..639c217a.0_30::
+                         534 .LDWlin30:
+00000234 400e0200        535 	movhi	hi(131072),zero,r1
+00000238 01e9            536 	or	r1,r29
+                         537 .L119:
+                         538 --182:     }
+                         539 --184:     if (icum_aes128_cmac(cbc_key, cmac_partial_message, 40ul,
+                         540 --line184
+                         541 ..lin.5dd2d7cc..639c217a.0_31::
+                         542 .LDWlin31:
+0000023a 63e70100        543 	st.w	r28,0[sp]
+0000023e 25360000*       544 	movea	sdaoff2(.L400),r5,r6
+00000242 253e0000*       545 	movea	sdaoff2(.L409),r5,r7
+00000246 20462800        546 	movea	40,zero,r8
+0000024a 234e1c00        547 	movea	28,sp,r9
+                         548 .L487:
+                         549 	jarl	_icum_aes128_cmac,lp
+                         549 <EXPANSION BEGIN>
+                         549 jarl22 _icum_aes128_cmac , lp 
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+0000024e 80ff0000*       549 <EXPANSION END>
+00000252 e051            550 	cmp	zero,r10
+00000254 e20d*           551 	be	.L120
+                         552 --line186
+                         553 ..lin.5dd2d7cc..639c217a.0_32::
+                         554 .LDWlin32:
+00000256 23361c00        555 	movea	28,sp,r6
+0000025a 253e0000*       556 	movea	sdaoff2(.L410),r5,r7
+0000025e 20461000        557 	movea	16,zero,r8
+                         558 .L489:
+                         559 	jarl	_bytes_equal,lp
+                         559 <EXPANSION BEGIN>
+                         559 jarl22 _bytes_equal , lp 
+00000262 bfff9efd*       559 <EXPANSION END>
+00000266 e051            560 	cmp	zero,r10
+00000268 c205*           561 	be	.L120
+                         562 --185:                          cmac_result, timeout)
+                         563 --186:         && bytes_equal(cmac_result, cmac_partial_expected, 16u)) {
+                         564 --187:         result |= ICUM_CRYPTO_TEST_CMAC_PARTIAL_PASS;
+                         565 --line187
+                         566 ..lin.5dd2d7cc..639c217a.0_33::
+                         567 .LDWlin33:
+0000026a 9dee4000        568 	ori	64,r29,r29
+0000026e b505*           569 	br	.L123
+                         570 .L120:
+                         571 --188:     } else {
+                         572 --189:         result |= ICUM_CRYPTO_TEST_CMAC_PARTIAL_FAIL;
+                         573 --line189
+                         574 ..lin.5dd2d7cc..639c217a.0_34::
+                         575 .LDWlin34:
+00000270 9dee0040        576 	ori	16384,r29,r29
+                         577 .L123:
+                         578 --190:     }
+                         579 --192:     if (icum_trng_read_words(random_words, 4ul, timeout)
+00000274 1c40            580 	mov	r28,r8
+00000276 23360c00        581 	movea	12,sp,r6
+0000027a 043a            582 	mov	4,r7
+                         583 .L491:
+                         584 	jarl	_icum_trng_read_words,lp
+                         584 <EXPANSION BEGIN>
+                         584 jarl22 _icum_trng_read_words , lp 
+0000027c 80ff0000*       584 <EXPANSION END>
+00000280 e051            585 	cmp	zero,r10
+00000282 8215*           586 	be	.L124
+                         587 --line194
+                         588 ..lin.5dd2d7cc..639c217a.0_35::
+                         589 .LDWlin35:
+00000284 230f1100        590 	ld.w	16[sp],r1
+00000288 23170d00        591 	ld.w	12[sp],r2
+0000028c 0209            592 	or	r2,r1
+0000028e 23171500        593 	ld.w	20[sp],r2
+00000292 0111            594 	or	r1,r2
+00000294 230f1900        595 	ld.w	24[sp],r1
+00000298 0209            596 	or	r2,r1
+0000029a c205*           597 	be	.L124
+                         598 --193:         && ((random_words[0] | random_words[1]
+                         599 --194:              | random_words[2] | random_words[3]) != 0u)) {
+                         600 --195:         result |= ICUM_CRYPTO_TEST_TRNG_PASS;
+                         601 --line195
+                         602 ..lin.5dd2d7cc..639c217a.0_36::
+                         603 .LDWlin36:
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+0000029c 9dee0400        604 	ori	4,r29,r29
+000002a0 b505*           605 	br	.L127
+                         606 .L124:
+                         607 --196:     } else {
+                         608 --197:         result |= ICUM_CRYPTO_TEST_TRNG_FAIL;
+                         609 --line197
+                         610 ..lin.5dd2d7cc..639c217a.0_37::
+                         611 .LDWlin37:
+000002a2 9dee0004        612 	ori	1024,r29,r29
+                         613 .L127:
+                         614 --198:     }
+                         615 --200:     return result;
+000002a6 1d50            616 	mov	r29,r10
+                         617 --	    .ef
+                         618 .LDW31:
+000002a8 23ffb500        619 	ld.w	180[sp],lp
+000002ac 23efad00        620 	ld.w	172[sp],r29
+000002b0 23e7b100        621 	ld.w	176[sp],r28
+000002b4 031eb800        622 	addi	184,sp,sp
+                         623 .L493:
+                         624 	.jumptype return
+000002b8 7f00            625 	jmp	[lp]
+                         626 --line197
+                         627 ..lin.5dd2d7cc..639c217a.0_38::
+                         628 	.type	_icum_crypto_self_test,@function
+                         629 	.size	_icum_crypto_self_test,.-_icum_crypto_self_test
+                         630 	.align	2
+                         631 --_key	sdaoff2(.L397)	static
+                         632 --_plaintext	sdaoff2(.L398)	static
+                         633 --_ciphertext_expected	sdaoff2(.L399)	static
+                         634 --_cbc_key	sdaoff2(.L400)	static
+                         635 --_cbc_iv	sdaoff2(.L401)	static
+                         636 --_cbc_plaintext	sdaoff2(.L402)	static
+                         637 --_cbc_ciphertext_expected	sdaoff2(.L403)	static
+                         638 --_ecb_multiblock_expected	sdaoff2(.L404)	static
+                         639 --_cmac_empty_expected	sdaoff2(.L405)	static
+                         640 --_cmac_full_expected	sdaoff2(.L406)	static
+                         641 --_cmac_multiblock_message	sdaoff2(.L407)	static
+                         642 --_cmac_multiblock_expected	sdaoff2(.L408)	static
+                         643 --_cmac_partial_message	sdaoff2(.L409)	static
+                         644 --_cmac_partial_expected	sdaoff2(.L410)	static
+                         645 --_ciphertext	156[sp]	local
+                         646 --_ecb_multiblock_ciphertext	124[sp]	local
+                         647 --_plaintext_result	108[sp]	local
+                         648 --_cbc_ciphertext	76[sp]	local
+                         649 --_cbc_plaintext_result	44[sp]	local
+                         650 --_cmac_result	28[sp]	local
+                         651 --_random_words	12[sp]	local
+                         652 --_result	r29	local
+                         653 
+                         654 --_timeout	r28	param
+                         655 
+                         656 	.section ".bss","awb"
+                         657 .L306:
+                         658 	.type	.L306,@object
+                         659 	.size	.L306,0
+                         660 	.section ".rosdata","a"
+                         661 .L397:
+                         662 	.global	_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..0
+                         663 _key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..0:
+00000000 00010203        664 	.byte	0,1,2,3
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+00000004 04050607        665 	.byte	4,5,6,7
+00000008 08090a0b        666 	.byte	8,9,10,11
+0000000c 0c0d0e0f        667 	.byte	12,13,14,15
+                         668 	.type	_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..0,@object
+                         669 	.size	_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..0,16
+                         670 	.type	.L397,@object
+                         671 	.size	.L397,16
+                         672 .L398:
+                         673 	.global	_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..1
+                         674 _plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..1:
+00000010 00112233        675 	.byte	0,17,34,51
+00000014 44556677        676 	.byte	68,85,102,119
+00000018 8899aabb        677 	.byte	136,153,170,187
+0000001c ccddeeff        678 	.byte	204,221,238,255
+                         679 	.type	_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..1,@object
+                         680 	.size	_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..1,16
+                         681 	.type	.L398,@object
+                         682 	.size	.L398,16
+                         683 .L399:
+                         684 	.global	_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..2
+                         685 _ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..2:
+00000020 69c4e0d8        686 	.byte	105,196,224,216
+00000024 6a7b0430        687 	.byte	106,123,4,48
+00000028 d8cdb780        688 	.byte	216,205,183,128
+0000002c 70b4c55a        689 	.byte	112,180,197,90
+                         690 	.type	_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..2,@object
+                         691 	.size	_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..2,16
+                         692 	.type	.L399,@object
+                         693 	.size	.L399,16
+                         694 .L400:
+                         695 	.global	_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..3
+                         696 _cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..3:
+00000030 2b7e1516        697 	.byte	43,126,21,22
+00000034 28aed2a6        698 	.byte	40,174,210,166
+00000038 abf71588        699 	.byte	171,247,21,136
+0000003c 09cf4f3c        700 	.byte	9,207,79,60
+                         701 	.type	_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..3,@object
+                         702 	.size	_cbc_key.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..3,16
+                         703 	.type	.L400,@object
+                         704 	.size	.L400,16
+                         705 .L401:
+                         706 	.global	_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..4
+                         707 _cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..4:
+00000040 00010203        708 	.byte	0,1,2,3
+00000044 04050607        709 	.byte	4,5,6,7
+00000048 08090a0b        710 	.byte	8,9,10,11
+0000004c 0c0d0e0f        711 	.byte	12,13,14,15
+                         712 	.type	_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..4,@object
+                         713 	.size	_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..4,16
+                         714 	.type	.L401,@object
+                         715 	.size	.L401,16
+                         716 .L402:
+                         717 	.global	_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..5
+                         718 _cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..5:
+00000050 6bc1bee2        719 	.byte	107,193,190,226
+00000054 2e409f96        720 	.byte	46,64,159,150
+00000058 e93d7e11        721 	.byte	233,61,126,17
+0000005c 7393172a        722 	.byte	115,147,23,42
+00000060 ae2d8a57        723 	.byte	174,45,138,87
+00000064 1e03ac9c        724 	.byte	30,3,172,156
+00000068 9eb76fac        725 	.byte	158,183,111,172
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+0000006c 45af8e51        726 	.byte	69,175,142,81
+                         727 	.type	_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..5,@object
+                         728 	.size	_cbc_plaintext.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..5,32
+                         729 	.type	.L402,@object
+                         730 	.size	.L402,32
+                         731 .L403:
+                         732 	.global	_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..6
+                         733 _cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..6:
+00000070 7649abac        734 	.byte	118,73,171,172
+00000074 8119b246        735 	.byte	129,25,178,70
+00000078 cee98e9b        736 	.byte	206,233,142,155
+0000007c 12e9197d        737 	.byte	18,233,25,125
+00000080 5086cb9b        738 	.byte	80,134,203,155
+00000084 507219ee        739 	.byte	80,114,25,238
+00000088 95db113a        740 	.byte	149,219,17,58
+0000008c 917678b2        741 	.byte	145,118,120,178
+                         742 	.type	_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..6,@object
+                         743 	.size	_cbc_ciphertext_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..6,32
+                         744 	.type	.L403,@object
+                         745 	.size	.L403,32
+                         746 .L404:
+                         747 	.global	_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..7
+                         748 _ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..7:
+00000090 3ad77bb4        749 	.byte	58,215,123,180
+00000094 0d7a3660        750 	.byte	13,122,54,96
+00000098 a89ecaf3        751 	.byte	168,158,202,243
+0000009c 2466ef97        752 	.byte	36,102,239,151
+000000a0 f5d3d585        753 	.byte	245,211,213,133
+000000a4 03b9699d        754 	.byte	3,185,105,157
+000000a8 e785895a        755 	.byte	231,133,137,90
+000000ac 96fdbaaf        756 	.byte	150,253,186,175
+                         757 	.type	_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..7,@object
+                         758 	.size	_ecb_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..7,32
+                         759 	.type	.L404,@object
+                         760 	.size	.L404,32
+                         761 .L405:
+                         762 	.global	_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..8
+                         763 _cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..8:
+000000b0 bb1d6929        764 	.byte	187,29,105,41
+000000b4 e9593728        765 	.byte	233,89,55,40
+000000b8 7fa37d12        766 	.byte	127,163,125,18
+000000bc 9b756746        767 	.byte	155,117,103,70
+                         768 	.type	_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..8,@object
+                         769 	.size	_cmac_empty_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..8,16
+                         770 	.type	.L405,@object
+                         771 	.size	.L405,16
+                         772 .L406:
+                         773 	.global	_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..9
+                         774 _cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..9:
+000000c0 070a16b4        775 	.byte	7,10,22,180
+000000c4 6b4d4144        776 	.byte	107,77,65,68
+000000c8 f79bdd9d        777 	.byte	247,155,221,157
+000000cc d04a287c        778 	.byte	208,74,40,124
+                         779 	.type	_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..9,@object
+                         780 	.size	_cmac_full_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..9,16
+                         781 	.type	.L406,@object
+                         782 	.size	.L406,16
+                         783 .L407:
+                         784 	.global	_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..10
+                         785 _cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..10:
+000000d0 6bc1bee2        786 	.byte	107,193,190,226
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+000000d4 2e409f96        787 	.byte	46,64,159,150
+000000d8 e93d7e11        788 	.byte	233,61,126,17
+000000dc 7393172a        789 	.byte	115,147,23,42
+000000e0 ae2d8a57        790 	.byte	174,45,138,87
+000000e4 1e03ac9c        791 	.byte	30,3,172,156
+000000e8 9eb76fac        792 	.byte	158,183,111,172
+000000ec 45af8e51        793 	.byte	69,175,142,81
+000000f0 30c81c46        794 	.byte	48,200,28,70
+000000f4 a35ce411        795 	.byte	163,92,228,17
+000000f8 e5fbc119        796 	.byte	229,251,193,25
+000000fc 1a0a52ef        797 	.byte	26,10,82,239
+00000100 f69f2445        798 	.byte	246,159,36,69
+00000104 df4f9b17        799 	.byte	223,79,155,23
+00000108 ad2b417b        800 	.byte	173,43,65,123
+0000010c e66c3710        801 	.byte	230,108,55,16
+                         802 	.type	_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..10,@object
+                         803 	.size	_cmac_multiblock_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..10,64
+                         804 	.type	.L407,@object
+                         805 	.size	.L407,64
+                         806 .L408:
+                         807 	.global	_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..11
+                         808 _cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..11:
+00000110 51f0bebf        809 	.byte	81,240,190,191
+00000114 7e3b9d92        810 	.byte	126,59,157,146
+00000118 fc497417        811 	.byte	252,73,116,23
+0000011c 79363cfe        812 	.byte	121,54,60,254
+                         813 	.type	_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..11,@object
+                         814 	.size	_cmac_multiblock_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..11,16
+                         815 	.type	.L408,@object
+                         816 	.size	.L408,16
+                         817 .L409:
+                         818 	.global	_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..12
+                         819 _cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..12:
+00000120 6bc1bee2        820 	.byte	107,193,190,226
+00000124 2e409f96        821 	.byte	46,64,159,150
+00000128 e93d7e11        822 	.byte	233,61,126,17
+0000012c 7393172a        823 	.byte	115,147,23,42
+00000130 ae2d8a57        824 	.byte	174,45,138,87
+00000134 1e03ac9c        825 	.byte	30,3,172,156
+00000138 9eb76fac        826 	.byte	158,183,111,172
+0000013c 45af8e51        827 	.byte	69,175,142,81
+00000140 30c81c46        828 	.byte	48,200,28,70
+00000144 a35ce411        829 	.byte	163,92,228,17
+                         830 	.type	_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..12,@object
+                         831 	.size	_cmac_partial_message.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..12,40
+                         832 	.type	.L409,@object
+                         833 	.size	.L409,40
+                         834 .L410:
+                         835 	.global	_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..13
+                         836 _cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..13:
+00000148 dfa66747        837 	.byte	223,166,103,71
+0000014c de9ae630        838 	.byte	222,154,230,48
+00000150 30ca3261        839 	.byte	48,202,50,97
+00000154 1497c827        840 	.byte	20,151,200,39
+                         841 	.type	_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..13,@object
+                         842 	.size	_cmac_partial_expected.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test..13,16
+                         843 	.type	.L410,@object
+                         844 	.size	.L410,16
+                         845 	.section ".ghcalltbl",""
+                         846 	.align	4
+00000000 00000000*       847 .L456:	.word	.L455
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+                         848 	.type	.L456,@object
+                         849 	.size	.L456,4
+00000004 00000000*       850 .L458:	.word	.L457
+                         851 	.type	.L458,@object
+                         852 	.size	.L458,4
+00000008 00000000*       853 .L460:	.word	.L459
+                         854 	.type	.L460,@object
+                         855 	.size	.L460,4
+0000000c 00000000*       856 .L462:	.word	.L461
+                         857 	.type	.L462,@object
+                         858 	.size	.L462,4
+00000010 00000000*       859 .L464:	.word	.L463
+                         860 	.type	.L464,@object
+                         861 	.size	.L464,4
+00000014 00000000*       862 .L466:	.word	.L465
+                         863 	.type	.L466,@object
+                         864 	.size	.L466,4
+00000018 00000000*       865 .L468:	.word	.L467
+                         866 	.type	.L468,@object
+                         867 	.size	.L468,4
+0000001c 00000000*       868 .L470:	.word	.L469
+                         869 	.type	.L470,@object
+                         870 	.size	.L470,4
+00000020 00000000*       871 .L472:	.word	.L471
+                         872 	.type	.L472,@object
+                         873 	.size	.L472,4
+00000024 00000000*       874 .L474:	.word	.L473
+                         875 	.type	.L474,@object
+                         876 	.size	.L474,4
+00000028 00000000*       877 .L476:	.word	.L475
+                         878 	.type	.L476,@object
+                         879 	.size	.L476,4
+0000002c 00000000*       880 .L478:	.word	.L477
+                         881 	.type	.L478,@object
+                         882 	.size	.L478,4
+00000030 00000000*       883 .L480:	.word	.L479
+                         884 	.type	.L480,@object
+                         885 	.size	.L480,4
+00000034 00000000*       886 .L482:	.word	.L481
+                         887 	.type	.L482,@object
+                         888 	.size	.L482,4
+00000038 00000000*       889 .L484:	.word	.L483
+                         890 	.type	.L484,@object
+                         891 	.size	.L484,4
+0000003c 00000000*       892 .L486:	.word	.L485
+                         893 	.type	.L486,@object
+                         894 	.size	.L486,4
+00000040 00000000*       895 .L488:	.word	.L487
+                         896 	.type	.L488,@object
+                         897 	.size	.L488,4
+00000044 00000000*       898 .L490:	.word	.L489
+                         899 	.type	.L490,@object
+                         900 	.size	.L490,4
+00000048 00000000*       901 .L492:	.word	.L491
+                         902 	.type	.L492,@object
+                         903 	.size	.L492,4
+                         904 	.section ".ghrettbl",""
+00000004 00000000*       905 .L494:	.word	.L493
+                         906 	.type	.L494,@object
+                         907 	.size	.L494,4
+                         908 	.data
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vb01.s
+                         909 	.text
+                         910 
+                         911 --201: }
+                         912 	.align	2
+                         913 
+                         914 	.data
+                         915 	.ghsnote version,30
+                         916 	.ghsnote tools,3
+                         917 	.ghsnote options,656
+                         918 	.text
+                         919 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609B..0::
+                         920 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

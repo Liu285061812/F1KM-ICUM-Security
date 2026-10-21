@@ -2,8 +2,8 @@ Function	Function Call	Call Count	Percent of Total	Max Displacement (bits)
 #% BEGIN STATIC GRAPH
 __start	out	4	in	0
 	out	4	100%
-	_exit	1	25%	0	0	0
 	___ghs_ind_crt0	1	25%	0	241	0
+	_exit	1	25%	0	0	0
 	___ghs_initial_dotsyscall	1	25%	0	23	0
 	___dotsyscall	1	25%	0	0	0
 	in	0	100%
@@ -19,49 +19,49 @@ ___ghs_multicore_init_done	out	0	in	0
 _init_clocks	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1365	0
+	_main	1	100%	0	1403	0
 _csih0_initPorts	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1389	452
+	_main	1	100%	0	1427	452
 _TAUD0_initPorts	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1381	614
+	_main	1	100%	0	1419	614
 _TAUD0_init	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1377	678
+	_main	1	100%	0	1415	678
 _csih0_init	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1385	782
+	_main	1	100%	0	1423	782
 _csih0_start	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1417	868
+	_main	1	100%	0	1455	868
 _csih0_stop	out	0	in	0
 	out	0	100%
 	in	0	100%
 _TAUD0_start	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1421	900
+	_main	1	100%	0	1459	900
 _TAUD0_stop	out	0	in	0
 	out	0	100%
 	in	0	100%
 _DMA_init	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1373	954
+	_main	1	100%	0	1411	954
 _Debug_initPorts	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1369	1106
+	_main	1	100%	0	1407	1106
 _pe_icum_comm_timer_init	out	0	in	1
 	out	0	100%
 	in	1	100%
-	_main	1	100%	0	1409	1124
+	_main	1	100%	0	1447	1124
 _INTOSTM0	out	0	in	0
 	out	0	100%
 	in	0	100%
@@ -73,16 +73,16 @@ _INTDMA0	out	0	in	0
 	in	0	100%
 _main	out	10	in	1
 	out	10	100%
-	_init_clocks	1	10%	0	1365	0
-	_csih0_initPorts	1	10%	0	1389	452
-	_csih0_init	1	10%	0	1385	782
-	_TAUD0_init	1	10%	0	1377	678
-	_TAUD0_initPorts	1	10%	0	1381	614
-	_pe_icum_comm_timer_init	1	10%	0	1409	1124
-	_Debug_initPorts	1	10%	0	1369	1106
-	_csih0_start	1	10%	0	1417	868
-	_TAUD0_start	1	10%	0	1421	900
-	_DMA_init	1	10%	0	1373	954
+	_init_clocks	1	10%	0	1403	0
+	_TAUD0_init	1	10%	0	1415	678
+	_TAUD0_initPorts	1	10%	0	1419	614
+	_csih0_initPorts	1	10%	0	1427	452
+	_csih0_init	1	10%	0	1423	782
+	_DMA_init	1	10%	0	1411	954
+	_Debug_initPorts	1	10%	0	1407	1106
+	_pe_icum_comm_timer_init	1	10%	0	1447	1124
+	_TAUD0_start	1	10%	0	1459	900
+	_csih0_start	1	10%	0	1455	868
 	in	1	100%
 	___ghs_ind_crt1	1	100%	0	237	0
 __multiend	out	1	in	0

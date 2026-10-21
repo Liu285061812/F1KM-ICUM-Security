@@ -1,6 +1,6 @@
 output\icum      .intvect            2020
-output\icum      .rosdata             344
-output\icum      .text               5380
+output\icum      .rosdata            2707
+output\icum      .text              18386
 output\icum      .secinfo             120
 output\icum      .syscall               6
 output\icum      .romdata               5

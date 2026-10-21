@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I. -I..\..\device -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\output\objects\icum\icum_crypto.dbo -source=icum_crypto.c -comp -o output\objects\icum\gh_0000j7g1.o -list=output\list\icum\icum_crypto.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I. -I.. -I..\..\device -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\output\objects\icum\icum_crypto.dbo -source=icum_crypto.c -comp -o output\objects\icum\gh_0000qno1.o -list=output\list\icum\icum_crypto.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 Source File: icum_crypto.c
 Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
 Host OS: Windows
@@ -13,14 +13,14 @@ Revision Date: Wed Sep 06 02:44:09 2023
 
 Release Date: Wed Sep 06 02:00:00 2023
 
-                           1 --Driver Command: ccrh850 -c -MD -I. -I..\..\device -G
+                           1 --Driver Command: ccrh850 -c -MD -I. -I.. -I..\..\device -G
                            2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
                            3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
                            4 --		-filetype.c icum_crypto.c -o output\objects\icum\icum_crypto.o
                            5 --Source File:   icum_crypto.c
                            6 --Directory:     
                            7 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
-                           8 --Compile Date:  Tue Oct 20 16:52:48 2026
+                           8 --Compile Date:  Wed Oct 21 11:30:23 2026
                            9 --Host OS:       Win64
                           10 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           11 --Release:       Compiler v2023.5.4
@@ -49,7 +49,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           34 --22: #define TRNG_CR_GE             (1u << 0)
                           35 --24: static uint32 aes_pack_word(const unsigned char *data, unsigned int word_index)
                           36 	.text
-                          37 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD72BE1..0::
+                          37 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD831CF..0::
                           38 	.align	2
                           39 	.align	2
                           40 ..gh.f.a.2.e.0:
@@ -65,7 +65,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           50 --25: {
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                           51 --26:     unsigned int offset;
                           52 --28:     offset = word_index * 4u;
 00000004 1308             53 	mov	r19,r1
@@ -129,7 +129,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          111 	.align	2
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          112 	.align	2
                          113 ..gh.f.a.2.e.1:
                          114 	.type	..gh.f.a.2.e.1,@object
@@ -193,7 +193,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          172 	.section ".bss","awb"
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          173 .L98:
                          174 	.type	.L98,@object
                          175 	.size	.L98,0
@@ -257,7 +257,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          233 .LDWlin6:
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 00000090 80070999c2fd    234 	ld.w	4294893840[zero],r19
 00000096 d39e0100        235 	andi	1,r19,r19
 0000009a e011            236 	cmp	zero,r2
@@ -321,7 +321,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000000d8 23e73100        294 	ld.w	48[sp],r28
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000000dc 09c0            295 	mov	r9,r24
 000000de 08a8            296 	mov	r8,r21
 000000e0 07b0            297 	mov	r7,r22
@@ -385,7 +385,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          355 --line82
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          356 ..lin.fe9aa74d..85ded89f.0_15::
                          357 .LDWlin15:
 00000102 1c38            358 	mov	r28,r7
@@ -449,7 +449,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000134 200e1000        413 	movea	16,zero,r1
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 00000138 e059            414 	cmp	zero,r11
 0000013a e00f24a3        415 	cmove	zero,r1,r20
                          416 --95:     ICUM_AESB0CCTL0 = context_control;
@@ -513,7 +513,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000017a e20f0000        471 	setfe	r1
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 0000017e 80074f08c2fd    472 	st.w	r1,4294893828[zero]
                          473 --108:         for (word_index = 0u; word_index < 4u; ++word_index) {
                          474 --line108
@@ -577,7 +577,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000001b6 80070fc8c2fd    526 	st.w	r25,4294893824[zero]
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          527 --118:         for (word_index = 0u; word_index < 4u; ++word_index) {
                          528 --line118
                          529 ..lin.fe9aa74d..85ded89f.0_37::
@@ -641,7 +641,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000001f0 23ef0100        584 	ld.w	0[sp],r29
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000001f4 23e70500        585 	ld.w	4[sp],r28
 000001f8 23df0900        586 	ld.w	8[sp],r27
 000001fc 23d70d00        587 	ld.w	12[sp],r26
@@ -705,7 +705,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          645 
 
                                                                       Page 12
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          646 --131: static void xor_block(unsigned char *output,
                          647 	.align	2
                          648 	.align	2
@@ -769,7 +769,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          706 --_output	r2	param
 
                                                                       Page 13
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          707 --_left	r19	param
                          708 --_right	r18	param
                          709 
@@ -833,7 +833,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          767 ..lin.fe9aa74d..fd9e5e7d.0_48::
 
                                                                       Page 14
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          768 .LDWlin48:
 0000028e e0b9            769 	cmp	zero,r23
 00000290 c20d*           770 	be	.L715
@@ -897,7 +897,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000002c2 41ea            828 	add	1,r29
 
                                                                       Page 15
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          829 .L726:
 000002c4 1d06f0ff        830 	addi	-16,r29,zero
 000002c8 d9f5*           831 	bnl	.L725
@@ -961,7 +961,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          886 --line178
 
                                                                       Page 16
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          887 ..lin.fe9aa74d..fd9e5e7d.0_62::
                          888 .LDWlin62:
 00000310 0052            889 	mov	0,r10
@@ -1025,7 +1025,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          943 <EXPANSION BEGIN>
 
                                                                       Page 17
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                          943 jarl22 _xor_block , lp 
 00000360 bfffbefe*       943 <EXPANSION END>
                          944 --187:             if (!icum_aes128_ecb_crypt(key, transformed, block,
@@ -1089,7 +1089,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          999 .LDWlin71:
 
                                                                       Page 18
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000003b6 1ce61000       1000 	addi	16,r28,r28
                         1001 .L730:
 000003ba f9e1           1002 	cmp	r25,r28
@@ -1153,7 +1153,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1060 	.type	.L1070,@object
 
                                                                       Page 19
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1061 	.size	.L1070,4
 00000020 00000000*      1062 .L1072:	.word	.L1071
                         1063 	.type	.L1072,@object
@@ -1217,7 +1217,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000430 e0a1           1121 	cmp	zero,r20
 
                                                                       Page 20
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 00000432 ba05*          1122 	bne	.L1080
 00000434 e0c1           1123 	cmp	zero,r24
 00000436 fa05*          1124 	bne	.L1078
@@ -1281,7 +1281,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1179 --229:         if (timeout == 0u) {
 
                                                                       Page 21
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1180 --line229
                         1181 ..lin.fe9aa74d..65dfb378.0_82::
                         1182 .LDWlin82:
@@ -1345,7 +1345,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000004a6 41ea           1237 	add	1,r29
 
                                                                       Page 22
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1238 .L1096:
 000004a8 64ea           1239 	cmp	4,r29
 000004aa f1f5*          1240 	bl	.L1095
@@ -1409,7 +1409,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000004ee 99fd*          1298 	bnl	.L1104
 
                                                                       Page 23
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1299 --254:         }
                         1300 --255:         for (index = 0u; index < 4u; ++index) {
                         1301 --line255
@@ -1473,7 +1473,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000522 00e2           1353 	mov	0,r28
 
                                                                       Page 24
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 00000524 9565*          1354 	br	.L1117
                         1355 .L1116:
                         1356 --264:             final_bytes = (block_index + 1ul == block_count)
@@ -1537,7 +1537,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000056e 6008           1414 	sld.bu	0[ep],r1
 
                                                                       Page 25
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 00000570 a505*          1415 	br	.L1134
                         1416 .L1132:
 00000572 000a           1417 	mov	0,r1
@@ -1601,7 +1601,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1469 .LDWlin114:
 
                                                                       Page 26
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000005aa 010a           1470 	mov	1,r1
 000005ac 80070f08c2fd   1471 	st.w	r1,4294893824[zero]
                         1472 --289:                 return 0;
@@ -1665,7 +1665,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000005e6 fae1           1527 	cmp	r26,r28
 
                                                                       Page 27
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000005e8 f19d*          1528 	bl	.L1116
                         1529 .L1113:
                         1530 --298:             }
@@ -1729,7 +1729,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1585 --line307
 
                                                                       Page 28
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1586 ..lin.fe9aa74d..65dfb378.0_128::
                         1587 	.type	_icum_aes128_cmac,@function
                         1588 	.size	_icum_aes128_cmac,.-_icum_aes128_cmac
@@ -1793,7 +1793,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1646 	.align	2
 
                                                                       Page 29
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1647 ..gh.f.a.2.e.7:
                         1648 	.type	..gh.f.a.2.e.7,@object
                         1649 	.size	..gh.f.a.2.e.7,0
@@ -1857,7 +1857,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000066c 9525*          1707 	br	.L1830
 
                                                                       Page 30
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1708 .L1829:
                         1709 --327:         while ((ICUM_TRNGC0SR & TRNG_SR_RRDY) == 0u) {
                         1710 --line327
@@ -1921,7 +1921,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1768 .LDWlin144:
 
                                                                       Page 31
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000006a8 0052           1769 	mov	0,r10
 000006aa 850d*          1770 	br	.L1820
                         1771 .L1828:
@@ -1985,7 +1985,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1829 _bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.:
 
                                                                       Page 32
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1830 _bytes_equal:
 000006bc 0610           1831 	mov	r6,r2
 000006be 0798           1832 	mov	r7,r19
@@ -2049,7 +2049,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1890 --_index	r1	local
 
                                                                       Page 33
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1891 
                         1892 --_left	r2	param
                         1893 --_right	r19	param
@@ -2113,7 +2113,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1951 --388: #endif
 
                                                                       Page 34
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         1952 --389:         };
                         1953 --390:     static const unsigned char cbc_key[16] = {
                         1954 --391:         0x2bu, 0x7eu, 0x15u, 0x16u, 0x28u, 0xaeu, 0xd2u, 0xa6u,
@@ -2177,7 +2177,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2012 --449:     unsigned char ciphertext[16];
 
                                                                       Page 35
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2013 --450:     unsigned char ecb_multiblock_ciphertext[32];
                         2014 --451:     unsigned char plaintext_result[16];
                         2015 --452:     unsigned char cbc_ciphertext[32];
@@ -2241,7 +2241,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2067 .L2491:
 
                                                                       Page 36
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2068 	jarl	_icum_aes128_ecb_crypt,lp
                         2068 <EXPANSION BEGIN>
                         2068 jarl22 _icum_aes128_ecb_crypt , lp 
@@ -2305,7 +2305,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2119 .L2497:
 
                                                                       Page 37
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2120 	jarl	_bytes_equal,lp
                         2120 <EXPANSION BEGIN>
                         2120 jarl22 _bytes_equal , lp 
@@ -2369,7 +2369,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2171 --490:         result |= ICUM_CRYPTO_TEST_CBC_ENCRYPT_PASS;
 
                                                                       Page 38
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2172 --line490
                         2173 ..lin.fe9aa74d..639c217a.0_165::
                         2174 .LDWlin165:
@@ -2433,7 +2433,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2226 --501:     }
 
                                                                       Page 39
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2227 --503:     if (icum_aes128_cmac(cbc_key, (const unsigned char *)0, 0ul,
 00000848 63e70100       2228 	st.w	r28,0[sp]
 0000084c 25360000*      2229 	movea	sdaoff2(.L2432),r5,r6
@@ -2497,7 +2497,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000089e 253e0000*      2278 	movea	sdaoff2(.L2438),r5,r7
 
                                                                       Page 40
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000008a2 20461000       2279 	movea	16,zero,r8
                         2280 .L2513:
                         2281 	jarl	_bytes_equal,lp
@@ -2561,7 +2561,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2330 .L2148:
 
                                                                       Page 41
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2331 --523:     } else {
                         2332 --524:         result |= ICUM_CRYPTO_TEST_CMAC_MULTIBLOCK_FAIL;
                         2333 --line524
@@ -2625,7 +2625,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2385 	jarl	_icum_trng_read_words,lp
 
                                                                       Page 42
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2385 <EXPANSION BEGIN>
                         2385 jarl22 _icum_trng_read_words , lp 
 00000938 bfff06fd*      2385 <EXPANSION END>
@@ -2689,7 +2689,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2443 --_cmac_multiblock_expected	sdaoff2(.L2440)	static
 
                                                                       Page 43
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2444 --_cmac_partial_message	sdaoff2(.L2441)	static
                         2445 --_cmac_partial_expected	sdaoff2(.L2442)	static
                         2446 --_ciphertext	156[sp]	local
@@ -2753,7 +2753,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2504 	.type	.L2432,@object
 
                                                                       Page 44
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2505 	.size	.L2432,16
                         2506 .L2433:
                         2507 	.global	_cbc_iv.icum_crypto_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto..4
@@ -2817,7 +2817,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000000b0 bb1d6929       2565 	.byte	187,29,105,41
 
                                                                       Page 45
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 000000b4 e9593728       2566 	.byte	233,89,55,40
 000000b8 7fa37d12       2567 	.byte	127,163,125,18
 000000bc 9b756746       2568 	.byte	155,117,103,70
@@ -2881,7 +2881,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000134 1e03ac9c       2626 	.byte	30,3,172,156
 
                                                                       Page 46
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
 00000138 9eb76fac       2627 	.byte	158,183,111,172
 0000013c 45af8e51       2628 	.byte	69,175,142,81
 00000140 30c81c46       2629 	.byte	48,200,28,70
@@ -2945,7 +2945,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2687 	.type	.L2514,@object
 
                                                                       Page 47
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000j7g1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000qno1.s
                         2688 	.size	.L2514,4
 0000007c 00000000*      2689 .L2516:	.word	.L2515
                         2690 	.type	.L2516,@object
@@ -2979,5 +2979,5 @@ Release Date: Wed Sep 06 02:00:00 2023
                         2718 	.ghsnote tools,3
                         2719 	.ghsnote options,656
                         2720 	.text
-                        2721 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD72BE1..0::
+                        2721 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_crypto...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD831CF..0::
                         2722 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

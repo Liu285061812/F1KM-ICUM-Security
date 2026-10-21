@@ -1,7 +1,9 @@
 output\icum: ICUM.ld C:\ghs\comp_202354\lib\rh850\crt0.o \
  output\objects\icum\dr7f701649_startup_icum.o \
- output\objects\icum\icum_crypto.o output\objects\icum\icum_ostm.o \
- output\objects\icum\main.o C:\ghs\comp_202354\lib\rh850\libmulti.a \
+ output\objects\icum\icum_crypto.o output\objects\icum\icum_hash.o \
+ output\objects\icum\icum_rsa.o output\objects\icum\icum_comm.o \
+ output\objects\icum\icum_ostm.o output\objects\icum\main.o \
+ C:\ghs\comp_202354\lib\rh850\libmulti.a \
  C:\ghs\comp_202354\lib\rh850\libfmalloc.a \
  C:\ghs\comp_202354\lib\rh850\libwchar_s32.a \
  C:\ghs\comp_202354\lib\rh850\libansi.a \
@@ -11,11 +13,11 @@ output\icum: ICUM.ld C:\ghs\comp_202354\lib\rh850\crt0.o \
  C:\ghs\comp_202354\lib\rh850\libstartup.a \
  C:\ghs\comp_202354\lib\rh850\libsys.a C:\ghs\comp_202354\lib\rh850\libarch.a
 
-:cmdList=gmemfile output/icum -o output/icum.mem ; gsrec -e 0 -hex386 output/icum -o output/icum.hex ; gsrec -e 0 -noS5 output/icum -o output/icum.rec ; ccrh850 $(FILETYPEOPTIONS) $(OBJECTS) -MD -I. -I..\..\device -G -object_dir=output\objects\icum -map -gsize -e _RESET -Mx -bsp generic -sda=all -callgraph -fsoft -cpu=rh850 -ansi -top_project C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\ICUM.gpj -o output\icum ; 
-:cmdHash=0xe581af32
+:cmdList=gmemfile output/icum -o output/icum.mem ; gsrec -e 0 -hex386 output/icum -o output/icum.hex ; gsrec -e 0 -noS5 output/icum -o output/icum.rec ; ccrh850 $(FILETYPEOPTIONS) $(OBJECTS) -MD -I. -I.. -I..\..\device -G -object_dir=output\objects\icum -map -gsize -e _RESET -Mx -bsp generic -sda=all -callgraph -fsoft -cpu=rh850 -ansi -top_project C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\ICUM.gpj -o output\icum ; 
+:cmdHash=0x0227377d
 
-:objList=ICUM.ld output\objects\icum\dr7f701649_startup_icum.o output\objects\icum\icum_crypto.o output\objects\icum\icum_ostm.o output\objects\icum\main.o ; 
-:objHash=0x1f63a5d4
+:objList=ICUM.ld output\objects\icum\dr7f701649_startup_icum.o output\objects\icum\icum_crypto.o output\objects\icum\icum_hash.o output\objects\icum\icum_rsa.o output\objects\icum\icum_comm.o output\objects\icum\icum_ostm.o output\objects\icum\main.o ; 
+:objHash=0x70b3ff86
 
 :installDir=c:\ghs\comp_202354
 :installDirHash=0x9d2c864f

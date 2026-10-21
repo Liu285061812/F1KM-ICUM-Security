@@ -59,6 +59,7 @@ MEMORY
   iROM_1         : ORIGIN = 0x01000000,  LENGTH = 32k
   iRAM_0         : ORIGIN = 0xFEBC0000,  LENGTH = 256k
   iRAM_R         : ORIGIN = 0xFEF00000,  LENGTH = 64k
+  sharedRAM      : ORIGIN = 0xFEFF8000,  LENGTH = 32k
  }
 
 SECTIONS
@@ -120,6 +121,7 @@ SECTIONS
   .rdata    align(4)                    :>iRAM_R     /* user defined segment for for initialized data located in retention RAM  */
   .rbss     align(4)                    :>.          /* user defined segment for zero initialized data located in retention RAM */
   __top_of_iRAM_R = MEMENDADDR( iRAM_R);
+  .shared   align(4) pad(0x8000) NOCLEAR :>sharedRAM
 
 /*  Symbols for compiler references */
 

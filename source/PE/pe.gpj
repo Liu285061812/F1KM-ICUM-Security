@@ -19,6 +19,7 @@ primaryTarget=v800_standalone.tgt
 	:postexec='gsrec -e 0 -noS5 output/pe -o output/pe.rec'
 	--no_additional_output
 	-I.
+	-I..
 	-I..\..\device
 	-fsoft
 	-cpu=rh850
@@ -34,5 +35,6 @@ dr7f701649_startup.850
 ..\..\device\cpu.h
 sound.h
 sound.c
+..\shared_memory.h
 main.c
 ..\..\debug\debug.gpj [Subproject]

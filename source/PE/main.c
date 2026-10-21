@@ -52,11 +52,13 @@
 // Includes
 //============================================================================
 #include "device.h"
+#include "shared_memory.h"
 
-__IOREG(PE_ICUM_PE2ICUSFS, 0xFF1F0074, __WRITE, uint32);
+__IOREG(PE_OSTM0_ICUM_PE2ICUFS, 0xFF1F0044, __WRITE, uint32);
+__IOREG(PE_OSTM0_ICUM_PE2ICUSFS, 0xFF1F0074, __WRITE, uint32);
 
 #define PE_OSTM0_CLOCK_HZ       60000000UL
-#define PE_OSTM0_INTERVAL_MS    500UL
+#define PE_OSTM0_INTERVAL_MS    1000UL
 #define PE_OSTM0_COMPARE_VALUE \
     ((PE_OSTM0_CLOCK_HZ / 1000UL) * PE_OSTM0_INTERVAL_MS - 1UL)
 
@@ -64,7 +66,7 @@ __IOREG(PE_ICUM_PE2ICUSFS, 0xFF1F0074, __WRITE, uint32);
 //============================================================================
 // Defines
 //============================================================================
-
+//#define _SharedMemoryTest_
 
 
 //============================================================================
@@ -116,7 +118,7 @@ void init_clocks(void)
     while((CLKCTLPLL1S&0x04u) != 0x04u){}                               /* Wait for active PLL */
   }
   
-  /* CPLLOUT = VCOOUT × 1/2 = 240 MHz */
+  /* CPLLOUT = VCOOUT ï¿½ 1/2 = 240 MHz */
   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKD_CTL,0x29);
   while(CLKCTLCKSC_CPUCLKD_ACT!=0x29);  
   
@@ -169,16 +171,16 @@ void TAUD0_init(void)
    TAUD0RDE = 0x0000;	// Disables simultaneous rewrite of the data register
    TAUD0RDM = 0x0000;	// TAUA0RDM selects the signal that controls simultaneous rewrite
    
-   /* Channel 2 Config interval timer as I²S Word Select clock*/
+   /* Channel 2 Config interval timer as Iï¿½S Word Select clock*/
    /* Mode selection for Interval timer */
    TAUD0CMOR2 = 0x0000;	
    TAUD0CMUR2 = 0x0000; // (not used)
-   TAUD0CDR2  = 832-1-52; // 80MHz/832= 96,154kHz (Fixed I²S sampling rate = 48kHz)
+   TAUD0CDR2  = 832-1-52; // 80MHz/832= 96,154kHz (Fixed Iï¿½S sampling rate = 48kHz)
 
    /* enable interrupt for TAUD0 channel 1*/
    //ICTAUD0I2 = 0x0047; 		// enable reference table jump
 
-   /* Channel 4 Config: interval timer as clock source for I²S data stream */
+   /* Channel 4 Config: interval timer as clock source for Iï¿½S data stream */
    /* Mode selection for Interval timer */
    TAUD0CMOR4 = 0x0001;	
    TAUD0CMUR4 = 0x0000; // (not used)
@@ -321,7 +323,19 @@ void pe_icum_comm_timer_init(void)
 #pragma ghs interrupt
 void INTOSTM0(void)
 {
-    PE_ICUM_PE2ICUSFS = 1u;
+    uint32 index;
+    uint8 value = 0x55u;
+
+    g_shared_buffer[0] = value;
+    for (index = 1u; index < SHARED_BUFFER_SIZE; index++)
+    {
+        value++;
+        g_shared_buffer[index] = value;
+    }
+#if defined _SharedMemoryTest_
+    PE_OSTM0_ICUM_PE2ICUFS = 1u;
+    PE_OSTM0_ICUM_PE2ICUSFS = 1u;
+#endif
 }
 
 #pragma ghs interrupt
@@ -383,5 +397,4 @@ void main(void) {
   while(1);
 
 }
-
 

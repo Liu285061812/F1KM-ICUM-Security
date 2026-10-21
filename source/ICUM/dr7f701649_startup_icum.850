@@ -375,6 +375,14 @@ __ex_icum_entry:
     .word __unused_isr
   #endif
 
+  .offset (IRQ_TABLE_START+0x0004)
+  #if (INTPE_ENABLE > 0x00000000)
+    .extern _INTPE
+    .word _INTPE
+  #else
+    .word __unused_isr
+  #endif
+
   .offset (IRQ_TABLE_START+0x001c)
   #if (INTICUOSTM0_ENABLE > 0x00000000)
     .extern _INTICUOSTM0

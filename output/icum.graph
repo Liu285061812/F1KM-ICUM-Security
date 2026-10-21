@@ -4,8 +4,8 @@ __start	out	4	in	0
 	out	4	100%
 	_exit	1	25%	0	0	0
 	___ghs_ind_crt0	1	25%	0	241	0
-	___dotsyscall	1	25%	0	0	0
 	___ghs_initial_dotsyscall	1	25%	0	23	0
+	___dotsyscall	1	25%	0	0	0
 	in	0	100%
 ___ghs_multicore_wait_for_init	out	0	in	0
 	out	0	100%
@@ -16,51 +16,223 @@ ___ghs_multicore_init_done	out	0	in	0
 .intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cdr7f701649_startup_icum.	out	0	in	0
 	out	0	100%
 	in	0	100%
-_aes_pack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+_aes_gf_multiply..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
-_aes_unpack_word..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+_aes_gf_inverse..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
-_aes_wait_status..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+_aes_rotate_left..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_aes_sub_byte..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_aes_inverse_sub_byte..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_aes_expand_key..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_aes_add_round_key..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_aes_shift_rows..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_aes_mix_columns..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_aes_crypt_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
 _icum_aes128_ecb_crypt	out	0	in	2
 	out	0	100%
 	in	5	100%
-	_icum_aes128_cbc_crypt	2	40%	0	891	168
-	_icum_crypto_self_test	3	60%	0	1937	168
+	_icum_aes128_cbc_crypt	2	40%	0	2185	1692
+	_icum_crypto_self_test	3	60%	0	213	0
 _xor_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
 _icum_aes128_cbc_crypt	out	1	in	1
 	out	2	100%
-	_icum_aes128_ecb_crypt	2	100%	0	891	168
+	_icum_aes128_ecb_crypt	2	100%	0	2185	1692
 	in	2	100%
-	_icum_crypto_self_test	2	100%	0	2083	586
+	_icum_crypto_self_test	2	100%	0	359	0
 _icum_aes128_cmac	out	0	in	1
 	out	0	100%
 	in	4	100%
-	_icum_crypto_self_test	4	100%	0	2315	1006
-_icum_trng_read_words	out	0	in	1
+	_icum_crypto_self_test	4	100%	0	591	0
+_icum_trng_read_words	out	0	in	3
 	out	0	100%
-	in	1	100%
-	_icum_crypto_self_test	1	100%	0	2361	1598
-_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
+	in	3	100%
+	_icum_crypto_self_test	1	33%	0	637	0
+	.static000005cf	1	33%	0	2521	0
+	.static000005c4	1	33%	0	2361	0
+_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test.	out	0	in	0
 	out	0	100%
 	in	0	100%
 _icum_crypto_self_test	out	4	in	1
 	out	10	100%
-	_icum_aes128_ecb_crypt	3	30%	0	1937	168
-	_icum_aes128_cmac	4	40%	0	2315	1006
-	_icum_aes128_cbc_crypt	2	20%	0	2083	586
-	_icum_trng_read_words	1	10%	0	2361	1598
+	_icum_aes128_cbc_crypt	2	20%	0	359	0
+	_icum_aes128_cmac	4	40%	0	591	0
+	_icum_aes128_ecb_crypt	3	30%	0	213	0
+	_icum_trng_read_words	1	10%	0	637	0
 	in	1	100%
 	_main_icum	1	100%	0	475	0
+_get_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_hash.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_put_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_hash.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_get_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_hash.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_put_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_hash.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_sha1_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_hash.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_sha256_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_hash.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_sha512_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_hash.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_hash_digest_size	out	0	in	6
+	out	0	100%
+	in	6	100%
+	_icum_hash_compute	1	16%	0	3187	3080
+	.static000004c1	1	16%	0	39	0
+	.static000005fb	1	16%	0	3247	0
+	.static0000062b	1	16%	0	4053	0
+	.static0000063b	1	16%	0	4363	0
+	_icum_rsa_verify_pss	1	16%	0	5269	0
+_icum_hash_compute	out	2	in	5
+	out	3	100%
+	_icum_hash_digest_size	1	33%	0	3187	3080
+	___gh_shrl_64_32	2	66%	0	4131	0
+	in	7	100%
+	.static000004c1	1	14%	0	55	0
+	.static000005fb	1	14%	0	3267	0
+	.static0000062b	1	14%	0	4185	0
+	.static0000063b	2	28%	0	4545	0
+	_icum_rsa_verify_pss	2	28%	0	5783	0
+_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_hash_self_test	out	0	in	1
+	out	0	100%
+	in	4	100%
+	_main_icum	4	100%	0	533	0
+_rsa_zero..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_from_bytes..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_to_bytes..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_compare..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_subtract..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_mod_double..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_montgomery_inverse..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_montgomery_multiply..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_modulus_bits..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_modexp..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_key_valid..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_exponent_bytes..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_public_operation..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_private_operation..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_random_bytes..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_random_nonzero..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_rsa_encrypt_pkcs1_v15	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_rsa_self_test	1	100%	0	729	0
+_icum_rsa_decrypt_pkcs1_v15	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_rsa_self_test	1	100%	0	773	0
+_rsa_digest_info..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_rsa_sign_pkcs1_v15	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_rsa_self_test	1	100%	0	497	0
+_icum_rsa_verify_pkcs1_v15	out	0	in	1
+	out	0	100%
+	in	2	100%
+	_icum_rsa_self_test	2	100%	0	461	0
+_rsa_mgf1..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_pss_encode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_rsa.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_rsa_sign_pss	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_rsa_self_test	1	100%	0	655	0
+_icum_rsa_verify_pss	out	2	in	1
+	out	3	100%
+	_icum_hash_compute	2	66%	0	5783	0
+	_icum_hash_digest_size	1	33%	0	5269	0
+	in	3	100%
+	_icum_rsa_self_test	3	100%	0	697	0
+_rsa_hex_decode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_rsa_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_rsa_self_test	out	6	in	1
+	out	9	100%
+	_icum_rsa_verify_pkcs1_v15	2	22%	0	461	0
+	_icum_rsa_sign_pkcs1_v15	1	11%	0	497	0
+	_icum_rsa_encrypt_pkcs1_v15	1	11%	0	729	0
+	_icum_rsa_decrypt_pkcs1_v15	1	11%	0	773	0
+	_icum_rsa_sign_pss	1	11%	0	655	0
+	_icum_rsa_verify_pss	3	33%	0	697	0
+	in	1	100%
+	_main_icum	1	100%	0	551	0
 _icum_comm_init	out	0	in	1
 	out	0	100%
 	in	1	100%
 	_main_icum	1	100%	0	463	0
+_INTPE	out	0	in	0
+	out	0	100%
+	in	0	100%
 _INTPES	out	0	in	0
 	out	0	100%
 	in	0	100%
@@ -75,17 +247,19 @@ _init_clocks	out	0	in	1
 	out	0	100%
 	in	1	100%
 	_main_icum	1	100%	0	459	0
-_main_icum	out	4	in	1
-	out	4	100%
-	_icum_crypto_self_test	1	25%	0	475	0
-	_icum_ostm_init	1	25%	0	467	0
-	_icum_comm_init	1	25%	0	463	0
-	_init_clocks	1	25%	0	459	0
+_main_icum	out	6	in	1
+	out	9	100%
+	_icum_crypto_self_test	1	11%	0	475	0
+	_icum_hash_self_test	4	44%	0	533	0
+	_icum_rsa_self_test	1	11%	0	551	0
+	_icum_comm_init	1	11%	0	463	0
+	_icum_ostm_init	1	11%	0	467	0
+	_init_clocks	1	11%	0	459	0
 	in	1	100%
-	_main	1	100%	0	491	452
+	_main	1	100%	0	573	452
 _main	out	1	in	1
 	out	1	100%
-	_main_icum	1	100%	0	491	452
+	_main_icum	1	100%	0	573	452
 	in	1	100%
 	___ghs_ind_crt1	1	100%	0	237	0
 __multiend	out	1	in	0
@@ -104,8 +278,8 @@ _exit	out	1	in	2
 	___ghs_ind_crt1	1	50%	0	243	0
 ___ghs_ind_crt0	out	3	in	1
 	out	6	100%
-	_memcpy	2	33%	0	74	0
 	_memset	2	33%	0	70	0
+	_memcpy	2	33%	0	74	0
 	___ghs_ind_crt1	2	33%	0	66	0
 	in	1	100%
 	__start	1	100%	0	241	0
@@ -128,9 +302,9 @@ __exit	out	0	in	0
 	in	0	100%
 __Exit	out	3	in	1
 	out	3	100%
+	___ghs_syscall	1	33%	0	97	0
 	___ghsLock	1	33%	0	35	0
 	___ghsUnlock	1	33%	0	89	0
-	___ghs_syscall	1	33%	0	97	0
 	in	1	100%
 	_exit	1	100%	0	77	0
 ___ghs_at_exit	out	2	in	0
@@ -183,5 +357,42 @@ ___gh_errno_ptr	out	0	in	0
 	in	0	100%
 ___gh_get_errno	out	0	in	0
 	out	0	100%
+	in	0	100%
+___gh_shrl_64_32	out	0	in	2
+	out	0	100%
+	in	3	100%
+	_icum_hash_compute	2	66%	0	4131	0
+	___gh_shrl_64_64	1	33%	0	59	0
+___gh_shrl_64_64	out	1	in	0
+	out	1	100%
+	___gh_shrl_64_32	1	100%	0	59	0
+	in	0	100%
+.static000004c1	out	2	in	0
+	out	2	100%
+	_icum_hash_compute	1	50%	0	55	0
+	_icum_hash_digest_size	1	50%	0	39	0
+	in	0	100%
+.static000005cf	out	1	in	0
+	out	1	100%
+	_icum_trng_read_words	1	100%	0	2521	0
+	in	0	100%
+.static000005fb	out	2	in	0
+	out	2	100%
+	_icum_hash_compute	1	50%	0	3267	0
+	_icum_hash_digest_size	1	50%	0	3247	0
+	in	0	100%
+.static000005c4	out	1	in	0
+	out	1	100%
+	_icum_trng_read_words	1	100%	0	2361	0
+	in	0	100%
+.static0000062b	out	2	in	0
+	out	2	100%
+	_icum_hash_compute	1	50%	0	4185	0
+	_icum_hash_digest_size	1	50%	0	4053	0
+	in	0	100%
+.static0000063b	out	2	in	0
+	out	3	100%
+	_icum_hash_compute	2	66%	0	4545	0
+	_icum_hash_digest_size	1	33%	0	4363	0
 	in	0	100%
 #% END STATIC GRAPH

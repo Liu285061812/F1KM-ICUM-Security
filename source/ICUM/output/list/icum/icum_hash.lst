@@ -1,0 +1,3398 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -I. -I.. -I..\..\device -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM\output\objects\icum\icum_hash.dbo -source=icum_hash.c -comp -o output\objects\icum\gh_0000v8k1.o -list=output\list\icum\icum_hash.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+Source File: icum_hash.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -I. -I.. -I..\..\device -G
+                           2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
+                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
+                           4 --		-filetype.c icum_hash.c -o output\objects\icum\icum_hash.o
+                           5 --Source File:   icum_hash.c
+                           6 --Directory:     
+                           7 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\source\ICUM
+                           8 --Compile Date:  Wed Oct 21 11:30:24 2026
+                           9 --Host OS:       Win64
+                          10 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          11 --Release:       Compiler v2023.5.4
+                          12 --Revision Date: Wed Sep 06 02:44:56 2023
+                          13 --Release Date:  Wed Sep 06 02:00:00 2023
+                          14 -- ecom  -g -w
+                          15 
+                          16 --1: #include "icum_hash.h"
+                          17 --2: #include "device.h"
+                          18 --4: typedef unsigned long long icum_u64;
+                          19 --6: #define SHA1_ROL(x, n) (((x) << (n)) | ((x) >> (32u - (n))))
+                          20 --7: #define SHA256_ROTR(x, n) (((x) >> (n)) | ((x) << (32u - (n))))
+                          21 --8: #define SHA512_ROTR(x, n) (((x) >> (n)) | ((x) << (64u - (n))))
+                          22 --10: static const uint32 sha256_k[64] =
+                          23 --11: {
+                          24 --12:     0x428a2f98ul,0x71374491ul,0xb5c0fbcful,0xe9b5dba5ul,
+                          25 --13:     0x3956c25bul,0x59f111f1ul,0x923f82a4ul,0xab1c5ed5ul,
+                          26 --14:     0xd807aa98ul,0x12835b01ul,0x243185beul,0x550c7dc3ul,
+                          27 --15:     0x72be5d74ul,0x80deb1feul,0x9bdc06a7ul,0xc19bf174ul,
+                          28 --16:     0xe49b69c1ul,0xefbe4786ul,0x0fc19dc6ul,0x240ca1ccul,
+                          29 --17:     0x2de92c6ful,0x4a7484aaul,0x5cb0a9dcul,0x76f988daul,
+                          30 --18:     0x983e5152ul,0xa831c66dul,0xb00327c8ul,0xbf597fc7ul,
+                          31 --19:     0xc6e00bf3ul,0xd5a79147ul,0x06ca6351ul,0x14292967ul,
+                          32 --20:     0x27b70a85ul,0x2e1b2138ul,0x4d2c6dfcul,0x53380d13ul,
+                          33 --21:     0x650a7354ul,0x766a0abbul,0x81c2c92eul,0x92722c85ul,
+                          34 --22:     0xa2bfe8a1ul,0xa81a664bul,0xc24b8b70ul,0xc76c51a3ul,
+                          35 --23:     0xd192e819ul,0xd6990624ul,0xf40e3585ul,0x106aa070ul,
+                          36 --24:     0x19a4c116ul,0x1e376c08ul,0x2748774cul,0x34b0bcb5ul,
+                          37 --25:     0x391c0cb3ul,0x4ed8aa4aul,0x5b9cca4ful,0x682e6ff3ul,
+                          38 --26:     0x748f82eeul,0x78a5636ful,0x84c87814ul,0x8cc70208ul,
+                          39 --27:     0x90befffaul,0xa4506cebul,0xbef9a3f7ul,0xc67178f2ul
+                          40 --28: };
+                          41 --30: static const icum_u64 sha512_k[80] =
+                          42 --31: {
+                          43 --32:     0x428a2f98d728ae22ull,0x7137449123ef65cdull,0xb5c0fbcfec4d3b2full,0xe9b5dba58189dbbcull,
+                          44 --33:     0x3956c25bf348b538ull,0x59f111f1b605d019ull,0x923f82a4af194f9bull,0xab1c5ed5da6d8118ull,
+                          45 --34:     0xd807aa98a3030242ull,0x12835b0145706fbeull,0x243185be4ee4b28cull,0x550c7dc3d5ffb4e2ull,
+                          46 --35:     0x72be5d74f27b896full,0x80deb1fe3b1696b1ull,0x9bdc06a725c71235ull,0xc19bf174cf692694ull,
+                          47 --36:     0xe49b69c19ef14ad2ull,0xefbe4786384f25e3ull,0x0fc19dc68b8cd5b5ull,0x240ca1cc77ac9c65ull,
+                          48 --37:     0x2de92c6f592b0275ull,0x4a7484aa6ea6e483ull,0x5cb0a9dcbd41fbd4ull,0x76f988da831153b5ull,
+                          49 --38:     0x983e5152ee66dfabull,0xa831c66d2db43210ull,0xb00327c898fb213full,0xbf597fc7beef0ee4ull,
+                          50 --39:     0xc6e00bf33da88fc2ull,0xd5a79147930aa725ull,0x06ca6351e003826full,0x142929670a0e6e70ull,
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                          51 --40:     0x27b70a8546d22ffCull,0x2e1b21385c26c926ull,0x4d2c6dfc5ac42aedull,0x53380d139d95b3dfull,
+                          52 --41:     0x650a73548baf63deull,0x766a0abb3c77b2a8ull,0x81c2c92e47edaee6ull,0x92722c851482353bull,
+                          53 --42:     0xa2bfe8a14cf10364ull,0xa81a664bbc423001ull,0xc24b8b70d0f89791ull,0xc76c51a30654be30ull,
+                          54 --43:     0xd192e819d6ef5218ull,0xd69906245565a910ull,0xf40e35855771202aull,0x106aa07032bbd1b8ull,
+                          55 --44:     0x19a4c116b8d2d0c8ull,0x1e376c085141ab53ull,0x2748774cdf8eeb99ull,0x34b0bcb5e19b48a8ull,
+                          56 --45:     0x391c0cb3c5c95a63ull,0x4ed8aa4ae3418acbull,0x5b9cca4f7763e373ull,0x682e6ff3d6b2b8a3ull,
+                          57 --46:     0x748f82ee5defb2fcull,0x78a5636f43172f60ull,0x84c87814a1f0ab72ull,0x8cc702081a6439ecull,
+                          58 --47:     0x90befffa23631e28ull,0xa4506cebde82bde9ull,0xbef9a3f7b2c67915ull,0xc67178f2e372532bull,
+                          59 --48:     0xca273eceea26619cull,0xd186b8c721c0c207ull,0xeada7dd6cde0eb1eull,0xf57d4f7fee6ed178ull,
+                          60 --49:     0x06f067aa72176fbaull,0x0a637dc5a2c898a6ull,0x113f9804bef90daeull,0x1b710b35131c471bull,
+                          61 --50:     0x28db77f523047d84ull,0x32caab7b40c72493ull,0x3c9ebe0a15c9bebcull,0x431d67c49c100d4cull,
+                          62 --51:     0x4cc5d4becb3e42b6ull,0x597f299cfc657e2aull,0x5fcb6fab3ad6faecull,0x6c44198c4a475817ull
+                          63 --52: };
+                          64 --54: static uint32 get_be32(const unsigned char *p)
+                          65 	.text
+                          66 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD831D0..0::
+                          67 	.align	2
+                          68 	.align	2
+                          69 ..gh.f.a.2.e.0:
+                          70 	.type	..gh.f.a.2.e.0,@object
+                          71 	.size	..gh.f.a.2.e.0,0
+                          72 	.global	_get_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                          73 _get_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                          74 _get_be32:
+00000000 06f0             75 	mov	r6,ep
+                          76 --	    .bf
+                          77 .LDW01:
+                          78 --55: {
+                          79 --56:     return ((uint32)p[0] << 24) | ((uint32)p[1] << 16)
+00000002 6008             80 	sld.bu	0[ep],r1
+00000004 6110             81 	sld.bu	1[ep],r2
+00000006 d80a             82 	shl	24,r1
+00000008 d012             83 	shl	16,r2
+0000000a 0209             84 	or	r2,r1
+0000000c 6210             85 	sld.bu	2[ep],r2
+0000000e c812             86 	shl	8,r2
+00000010 0209             87 	or	r2,r1
+00000012 6310             88 	sld.bu	3[ep],r2
+00000014 0250             89 	mov	r2,r10
+00000016 0151             90 	or	r1,r10
+                          91 --	    .ef
+                          92 .LDW11:
+                          93 .L42:
+                          94 	.jumptype return
+00000018 7f00             95 	jmp	[lp]
+                          96 --line55
+                          97 ..lin.68620a30..af060b0f.0_1::
+                          98 	.type	_get_be32,@function
+                          99 	.size	_get_be32,.-_get_be32
+                         100 	.type	_get_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+                         101 	.size	_get_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_get_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         102 	.align	2
+                         103 
+                         104 --_p	ep	param
+                         105 
+                         106 	.section ".bss","awb"
+                         107 .L30:
+                         108 	.type	.L30,@object
+                         109 	.size	.L30,0
+                         110 	.section ".ghrettbl",""
+                         111 	.align	4
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000000 00000000*       112 .L43:	.word	.L42
+                         113 	.type	.L43,@object
+                         114 	.size	.L43,4
+                         115 	.data
+                         116 	.text
+                         117 
+                         118 --57:          | ((uint32)p[2] << 8) | (uint32)p[3];
+                         119 --58: }
+                         120 
+                         121 --60: static void put_be32(unsigned char *p, uint32 value)
+                         122 	.align	2
+                         123 	.align	2
+                         124 	.align	2
+                         125 ..gh.f.a.2.e.1:
+                         126 	.type	..gh.f.a.2.e.1,@object
+                         127 	.size	..gh.f.a.2.e.1,0
+                         128 	.global	_put_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         129 _put_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                         130 _put_be32:
+0000001a 06f0            131 	mov	r6,ep
+0000001c 0708            132 	mov	r7,r1
+                         133 --	    .bf
+                         134 .LDW21:
+                         135 --61: {
+                         136 --62:     p[0] = (unsigned char)(value >> 24);
+0000001e 0110            137 	mov	r1,r2
+00000020 9812            138 	shr	24,r2
+00000022 8013            139 	sst.b	r2,0[ep]
+                         140 --63:     p[1] = (unsigned char)(value >> 16);
+00000024 0110            141 	mov	r1,r2
+00000026 9012            142 	shr	16,r2
+00000028 8113            143 	sst.b	r2,1[ep]
+                         144 --64:     p[2] = (unsigned char)(value >> 8);
+0000002a 0110            145 	mov	r1,r2
+0000002c 8812            146 	shr	8,r2
+0000002e 8213            147 	sst.b	r2,2[ep]
+                         148 --65:     p[3] = (unsigned char)value;
+00000030 830b            149 	sst.b	r1,3[ep]
+                         150 --66: }
+                         151 --	    .ef
+                         152 .LDW31:
+                         153 .L102:
+                         154 	.jumptype return
+00000032 7f00            155 	jmp	[lp]
+                         156 --line61
+                         157 ..lin.68620a30..ccfa5308.0_2::
+                         158 	.type	_put_be32,@function
+                         159 	.size	_put_be32,.-_put_be32
+                         160 	.type	_put_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+                         161 	.size	_put_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_put_be32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         162 	.align	2
+                         163 
+                         164 --_p	ep	param
+                         165 --_value	r1	param
+                         166 
+                         167 	.section ".bss","awb"
+                         168 .L78:
+                         169 	.type	.L78,@object
+                         170 	.size	.L78,0
+                         171 	.section ".ghrettbl",""
+00000004 00000000*       172 .L103:	.word	.L102
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                         173 	.type	.L103,@object
+                         174 	.size	.L103,4
+                         175 	.data
+                         176 	.text
+                         177 
+                         178 
+                         179 --68: static icum_u64 get_be64(const unsigned char *p)
+                         180 	.align	2
+                         181 	.align	2
+                         182 	.align	2
+                         183 ..gh.f.a.2.e.2:
+                         184 	.type	..gh.f.a.2.e.2,@object
+                         185 	.size	..gh.f.a.2.e.2,0
+                         186 	.global	_get_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         187 _get_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                         188 _get_be64:
+00000034 501a            189 	add	-16,sp
+00000036 63ff0d00        190 	st.w	lp,12[sp]
+0000003a 63ef0100        191 	st.w	r29,0[sp]
+0000003e 63d70900        192 	st.w	r26,8[sp]
+00000042 63df0500        193 	st.w	r27,4[sp]
+00000046 06e8            194 	mov	r6,r29
+                         195 --	    .bf
+                         196 .LDW41:
+                         197 --69: {
+                         198 --70:     return ((icum_u64)get_be32(p) << 32) | get_be32(p + 4);
+00000048 1d30            199 	mov	r29,r6
+                         200 .L138:
+                         201 	jarl	_get_be32,lp
+                         201 <EXPANSION BEGIN>
+                         201 jarl22 _get_be32 , lp 
+0000004a bfffb6ff*       201 <EXPANSION END>
+0000004e 0ad8            202 	mov	r10,r27
+00000050 1d360400        203 	addi	4,r29,r6
+                         204 .L140:
+                         205 	jarl	_get_be32,lp
+                         205 <EXPANSION BEGIN>
+                         205 jarl22 _get_be32 , lp 
+00000054 bfffacff*       205 <EXPANSION END>
+00000058 0a08            206 	mov	r10,r1
+0000005a 0150            207 	mov	r1,r10
+0000005c 1b08            208 	mov	r27,r1
+0000005e 0158            209 	mov	r1,r11
+                         210 --	    .ef
+                         211 .LDW51:
+                         212 --line71
+                         213 ..lin.68620a30..af060b74.0_3::
+                         214 .LDWlin3:
+00000060 23ff0d00        215 	ld.w	12[sp],lp
+00000064 23ef0100        216 	ld.w	0[sp],r29
+00000068 23df0500        217 	ld.w	4[sp],r27
+0000006c 23d70900        218 	ld.w	8[sp],r26
+00000070 031e1000        219 	addi	16,sp,sp
+                         220 .L142:
+                         221 	.jumptype return
+00000074 7f00            222 	jmp	[lp]
+                         223 --line71
+                         224 ..lin.68620a30..af060b74.0_4::
+                         225 	.type	_get_be64,@function
+                         226 	.size	_get_be64,.-_get_be64
+                         227 	.type	_get_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                         228 	.size	_get_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_get_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         229 	.align	2
+                         230 
+                         231 --_p	r29	param
+                         232 
+                         233 	.section ".bss","awb"
+                         234 .L126:
+                         235 	.type	.L126,@object
+                         236 	.size	.L126,0
+                         237 	.section ".ghcalltbl",""
+                         238 	.align	4
+00000000 00000000*       239 .L139:	.word	.L138
+                         240 	.type	.L139,@object
+                         241 	.size	.L139,4
+00000004 00000000*       242 .L141:	.word	.L140
+                         243 	.type	.L141,@object
+                         244 	.size	.L141,4
+                         245 	.section ".ghrettbl",""
+00000008 00000000*       246 .L143:	.word	.L142
+                         247 	.type	.L143,@object
+                         248 	.size	.L143,4
+                         249 	.data
+                         250 	.text
+                         251 
+                         252 --71: }
+                         253 
+                         254 --73: static void put_be64(unsigned char *p, icum_u64 value)
+                         255 	.align	2
+                         256 	.align	2
+                         257 	.align	2
+                         258 ..gh.f.a.2.e.3:
+                         259 	.type	..gh.f.a.2.e.3,@object
+                         260 	.size	..gh.f.a.2.e.3,0
+                         261 	.global	_put_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         262 _put_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                         263 _put_be64:
+00000076 501a            264 	add	-16,sp
+00000078 63ff0d00        265 	st.w	lp,12[sp]
+0000007c 63d70900        266 	st.w	r26,8[sp]
+00000080 63df0500        267 	st.w	r27,4[sp]
+00000084 63ef0100        268 	st.w	r29,0[sp]
+00000088 06e8            269 	mov	r6,r29
+0000008a 08d0            270 	mov	r8,r26
+0000008c 09d8            271 	mov	r9,r27
+                         272 --	    .bf
+                         273 .LDW61:
+                         274 --74: {
+                         275 --75:     put_be32(p, (uint32)(value >> 32));
+0000008e 1d30            276 	mov	r29,r6
+00000090 1b38            277 	mov	r27,r7
+                         278 .L200:
+                         279 	jarl	_put_be32,lp
+                         279 <EXPANSION BEGIN>
+                         279 jarl22 _put_be32 , lp 
+00000092 bfff88ff*       279 <EXPANSION END>
+                         280 --76:     put_be32(p + 4, (uint32)value);
+                         281 --line76
+                         282 ..lin.68620a30..ccfa536d.0_5::
+                         283 .LDWlin5:
+00000096 1d360400        284 	addi	4,r29,r6
+0000009a 1a38            285 	mov	r26,r7
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                         286 .L202:
+                         287 	jarl	_put_be32,lp
+                         287 <EXPANSION BEGIN>
+                         287 jarl22 _put_be32 , lp 
+0000009c bfff7eff*       287 <EXPANSION END>
+                         288 --77: }
+                         289 --	    .ef
+                         290 .LDW71:
+                         291 --line77
+                         292 ..lin.68620a30..ccfa536d.0_6::
+                         293 .LDWlin6:
+000000a0 23ff0d00        294 	ld.w	12[sp],lp
+000000a4 23ef0100        295 	ld.w	0[sp],r29
+000000a8 23df0500        296 	ld.w	4[sp],r27
+000000ac 23d70900        297 	ld.w	8[sp],r26
+000000b0 031e1000        298 	addi	16,sp,sp
+                         299 .L204:
+                         300 	.jumptype return
+000000b4 7f00            301 	jmp	[lp]
+                         302 --line77
+                         303 ..lin.68620a30..ccfa536d.0_7::
+                         304 	.type	_put_be64,@function
+                         305 	.size	_put_be64,.-_put_be64
+                         306 	.type	_put_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+                         307 	.size	_put_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_put_be64..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         308 	.align	2
+                         309 
+                         310 --_p	r29	param
+                         311 --_value	r26	param
+                         312 
+                         313 	.section ".bss","awb"
+                         314 .L182:
+                         315 	.type	.L182,@object
+                         316 	.size	.L182,0
+                         317 	.section ".ghcalltbl",""
+00000008 00000000*       318 .L201:	.word	.L200
+                         319 	.type	.L201,@object
+                         320 	.size	.L201,4
+0000000c 00000000*       321 .L203:	.word	.L202
+                         322 	.type	.L203,@object
+                         323 	.size	.L203,4
+                         324 	.section ".ghrettbl",""
+0000000c 00000000*       325 .L205:	.word	.L204
+                         326 	.type	.L205,@object
+                         327 	.size	.L205,4
+                         328 	.data
+                         329 	.text
+                         330 
+                         331 
+                         332 --79: static void sha1_block(uint32 state[5], const unsigned char block[64])
+                         333 	.align	2
+                         334 	.align	2
+                         335 	.align	2
+                         336 ..gh.f.a.2.e.4:
+                         337 	.type	..gh.f.a.2.e.4,@object
+                         338 	.size	..gh.f.a.2.e.4,0
+                         339 	.global	_sha1_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         340 _sha1_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                         341 _sha1_block:
+000000b6 031eacfe        342 	addi	-340,sp,sp
+000000ba 63ff5101        343 	st.w	lp,336[sp]
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000000be 63df4901        344 	st.w	r27,328[sp]
+000000c2 63e74501        345 	st.w	r28,324[sp]
+000000c6 63d74d01        346 	st.w	r26,332[sp]
+000000ca 63ef4101        347 	st.w	r29,320[sp]
+000000ce 06e0            348 	mov	r6,r28
+000000d0 07d8            349 	mov	r7,r27
+                         350 --	    .bf
+                         351 .LDW81:
+                         352 --80: {
+                         353 --81:     uint32 w[80];
+                         354 --82:     uint32 a, b, c, d, e, f, k, temp;
+                         355 --83:     unsigned int i;
+                         356 --85:     for (i = 0u; i < 16u; ++i) {
+000000d2 00ea            357 	mov	0,r29
+000000d4 b50d*           358 	br	.L211
+                         359 .L210:
+                         360 --86:         w[i] = get_be32(block + 4u * i);
+                         361 --line86
+                         362 ..lin.68620a30..b1ba02db.0_8::
+                         363 .LDWlin8:
+000000d6 1d30            364 	mov	r29,r6
+000000d8 c232            365 	shl	2,r6
+000000da 03d0            366 	mov	sp,r26
+000000dc c6d1            367 	add	r6,r26
+000000de db31            368 	add	r27,r6
+                         369 .L553:
+                         370 	jarl	_get_be32,lp
+                         370 <EXPANSION BEGIN>
+                         370 jarl22 _get_be32 , lp 
+000000e0 bfff20ff*       370 <EXPANSION END>
+000000e4 7a570100        371 	st.w	r10,0[r26]
+                         372 --line85
+                         373 ..lin.68620a30..b1ba02db.0_9::
+                         374 .LDWlin9:
+000000e8 41ea            375 	add	1,r29
+                         376 .L211:
+000000ea 1d06f0ff        377 	addi	-16,r29,zero
+000000ee c9f5*           378 	bnl	.L210
+                         379 --87:     }
+                         380 --88:     for (i = 16u; i < 80u; ++i) {
+                         381 --line88
+                         382 ..lin.68620a30..b1ba02db.0_10::
+                         383 .LDWlin10:
+000000f0 20ee1000        384 	movea	16,zero,r29
+000000f4 b535*           385 	br	.L215
+                         386 .L214:
+                         387 --89:         w[i] = SHA1_ROL(w[i - 3u] ^ w[i - 8u] ^ w[i - 14u] ^ w[i - 16u], 1u);
+                         388 --line89
+                         389 ..lin.68620a30..b1ba02db.0_11::
+                         390 .LDWlin11:
+000000f6 1d88            391 	mov	r29,r17
+000000f8 c28a            392 	shl	2,r17
+000000fa 03f0            393 	mov	sp,ep
+000000fc 1e98            394 	mov	ep,r19
+000000fe d199            395 	add	r17,r19
+00000100 54f2            396 	add	-12,ep
+00000102 230ee0ff        397 	movea	-32,sp,r1
+00000106 d1f1            398 	add	r17,ep
+00000108 d109            399 	add	r17,r1
+0000010a 0015            400 	sld.w	0[ep],r2
+0000010c 210f0100        401 	ld.w	0[r1],r1
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000110 23f6c8ff        402 	movea	-56,sp,ep
+00000114 d1f1            403 	add	r17,ep
+00000116 2209            404 	xor	r2,r1
+00000118 0015            405 	sld.w	0[ep],r2
+0000011a 23f6c0ff        406 	movea	-64,sp,ep
+0000011e d1f1            407 	add	r17,ep
+00000120 0095            408 	sld.w	0[ep],r18
+00000122 2111            409 	xor	r1,r2
+00000124 23f6f4ff        410 	movea	-12,sp,ep
+00000128 230ee0ff        411 	movea	-32,sp,r1
+0000012c 2291            412 	xor	r2,r18
+0000012e d1f1            413 	add	r17,ep
+00000130 d109            414 	add	r17,r1
+00000132 0015            415 	sld.w	0[ep],r2
+00000134 210f0100        416 	ld.w	0[r1],r1
+00000138 23f6c8ff        417 	movea	-56,sp,ep
+0000013c d1f1            418 	add	r17,ep
+0000013e c192            419 	shl	1,r18
+00000140 2209            420 	xor	r2,r1
+00000142 0015            421 	sld.w	0[ep],r2
+00000144 23f6c0ff        422 	movea	-64,sp,ep
+00000148 d1f1            423 	add	r17,ep
+0000014a 2111            424 	xor	r1,r2
+0000014c 000d            425 	sld.w	0[ep],r1
+0000014e 2209            426 	xor	r2,r1
+00000150 9f0a            427 	shr	31,r1
+00000152 1209            428 	or	r18,r1
+00000154 730f0100        429 	st.w	r1,0[r19]
+00000158 41ea            430 	add	1,r29
+                         431 .L215:
+0000015a 1d06b0ff        432 	addi	-80,r29,zero
+0000015e c9cd*           433 	bnl	.L214
+                         434 --90:     }
+                         435 --91:     a = state[0]; b = state[1]; c = state[2]; d = state[3]; e = state[4];
+                         436 --line91
+                         437 ..lin.68620a30..b1ba02db.0_12::
+                         438 .LDWlin12:
+00000160 3c870100        439 	ld.w	0[r28],r16
+00000164 3c0f0500        440 	ld.w	4[r28],r1
+00000168 3c170900        441 	ld.w	8[r28],r2
+0000016c 3c9f0d00        442 	ld.w	12[r28],r19
+00000170 3c7f1100        443 	ld.w	16[r28],r15
+                         444 --92:     for (i = 0u; i < 80u; ++i) {
+00000174 00ea            445 	mov	0,r29
+00000176 b545*           446 	br	.L219
+                         447 .L218:
+                         448 --93:         if (i < 20u) {
+                         449 --line93
+                         450 ..lin.68620a30..b1ba02db.0_13::
+                         451 .LDWlin13:
+00000178 1d06ecff        452 	addi	-20,r29,zero
+0000017c b10d*           453 	bl	.L220
+                         454 --94:             f = (b & c) | ((~b) & d); k = 0x5a827999ul;
+                         455 --line94
+                         456 ..lin.68620a30..b1ba02db.0_14::
+                         457 .LDWlin14:
+0000017e 2160            458 	not	r1,r12
+00000180 0268            459 	mov	r2,r13
+00000182 4169            460 	and	r1,r13
+00000184 5361            461 	and	r19,r12
+00000186 0c90            462 	mov	r12,r18
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000188 0d91            463 	or	r13,r18
+0000018a 31069979825a    464 	mov	1518500249,r17
+00000190 b525*           465 	br	.L222
+                         466 .L220:
+                         467 --95:         } else if (i < 40u) {
+                         468 --line95
+                         469 ..lin.68620a30..b1ba02db.0_15::
+                         470 .LDWlin15:
+00000192 1d06d8ff        471 	addi	-40,r29,zero
+00000196 910d*           472 	bl	.L223
+                         473 --96:             f = b ^ c ^ d; k = 0x6ed9eba1ul;
+                         474 --line96
+                         475 ..lin.68620a30..b1ba02db.0_16::
+                         476 .LDWlin16:
+00000198 0268            477 	mov	r2,r13
+0000019a 2169            478 	xor	r1,r13
+0000019c 1390            479 	mov	r19,r18
+0000019e 2d91            480 	xor	r13,r18
+000001a0 3106a1ebd96e    481 	mov	1859775393,r17
+000001a6 851d*           482 	br	.L222
+                         483 .L223:
+                         484 --97:         } else if (i < 60u) {
+                         485 --line97
+                         486 ..lin.68620a30..b1ba02db.0_17::
+                         487 .LDWlin17:
+000001a8 1d06c4ff        488 	addi	-60,r29,zero
+000001ac e10d*           489 	bl	.L226
+                         490 --98:             f = (b & c) | (b & d) | (c & d); k = 0x8f1bbcdcul;
+                         491 --line98
+                         492 ..lin.68620a30..b1ba02db.0_18::
+                         493 .LDWlin18:
+000001ae 0268            494 	mov	r2,r13
+000001b0 4169            495 	and	r1,r13
+000001b2 1360            496 	mov	r19,r12
+000001b4 4161            497 	and	r1,r12
+000001b6 0c69            498 	or	r12,r13
+000001b8 1360            499 	mov	r19,r12
+000001ba 4261            500 	and	r2,r12
+000001bc 0c90            501 	mov	r12,r18
+000001be 0d91            502 	or	r13,r18
+000001c0 3106dcbc1b8f    503 	mov	-1894007588,r17
+000001c6 850d*           504 	br	.L222
+                         505 .L226:
+                         506 --99:         } else {
+                         507 --100:             f = b ^ c ^ d; k = 0xca62c1d6ul;
+                         508 --line100
+                         509 ..lin.68620a30..b1ba02db.0_19::
+                         510 .LDWlin19:
+000001c8 0268            511 	mov	r2,r13
+000001ca 2169            512 	xor	r1,r13
+000001cc 1390            513 	mov	r19,r18
+000001ce 2d91            514 	xor	r13,r18
+000001d0 3106d6c162ca    515 	mov	-899497514,r17
+                         516 .L222:
+                         517 --101:         }
+                         518 --102:         temp = SHA1_ROL(a, 5u) + f + e + k + w[i];
+                         519 --line102
+                         520 ..lin.68620a30..b1ba02db.0_20::
+                         521 .LDWlin20:
+000001d6 1df0            522 	mov	r29,ep
+000001d8 c2f2            523 	shl	2,ep
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000001da 235e0000        524 	movea	0,sp,r11
+000001de cbf1            525 	add	r11,ep
+000001e0 e587c468        526 	rotl	5,r16,r13
+000001e4 0075            527 	sld.w	0[ep],r14
+000001e6 d269            528 	add	r18,r13
+000001e8 cf69            529 	add	r15,r13
+000001ea d169            530 	add	r17,r13
+000001ec cd71            531 	add	r13,r14
+                         532 --103:         e = d; d = c; c = SHA1_ROL(b, 30u); b = a; a = temp;
+000001ee 1378            533 	mov	r19,r15
+000001f0 0298            534 	mov	r2,r19
+000001f2 fe0fc410        535 	rotl	30,r1,r2
+000001f6 1008            536 	mov	r16,r1
+000001f8 0e80            537 	mov	r14,r16
+000001fa 41ea            538 	add	1,r29
+                         539 .L219:
+000001fc 1d06b0ff        540 	addi	-80,r29,zero
+00000200 c9bd*           541 	bnl	.L218
+                         542 --104:     }
+                         543 --105:     state[0] += a; state[1] += b; state[2] += c; state[3] += d; state[4] += e;
+                         544 --line105
+                         545 ..lin.68620a30..b1ba02db.0_21::
+                         546 .LDWlin21:
+00000202 3c6f0100        547 	ld.w	0[r28],r13
+00000206 d069            548 	add	r16,r13
+00000208 7c6f0100        549 	st.w	r13,0[r28]
+0000020c 3c6f0500        550 	ld.w	4[r28],r13
+00000210 c169            551 	add	r1,r13
+00000212 7c6f0500        552 	st.w	r13,4[r28]
+00000216 3c6f0900        553 	ld.w	8[r28],r13
+0000021a c269            554 	add	r2,r13
+0000021c 7c6f0900        555 	st.w	r13,8[r28]
+00000220 3c6f0d00        556 	ld.w	12[r28],r13
+00000224 d369            557 	add	r19,r13
+00000226 7c6f0d00        558 	st.w	r13,12[r28]
+0000022a 3c6f1100        559 	ld.w	16[r28],r13
+0000022e cf69            560 	add	r15,r13
+00000230 7c6f1100        561 	st.w	r13,16[r28]
+                         562 --106: }
+                         563 --	    .ef
+                         564 .LDW91:
+00000234 23ff5101        565 	ld.w	336[sp],lp
+00000238 23ef4101        566 	ld.w	320[sp],r29
+0000023c 23e74501        567 	ld.w	324[sp],r28
+00000240 23df4901        568 	ld.w	328[sp],r27
+00000244 23d74d01        569 	ld.w	332[sp],r26
+00000248 031e5401        570 	addi	340,sp,sp
+                         571 .L555:
+                         572 	.jumptype return
+0000024c 7f00            573 	jmp	[lp]
+                         574 --line105
+                         575 ..lin.68620a30..b1ba02db.0_22::
+                         576 	.type	_sha1_block,@function
+                         577 	.size	_sha1_block,.-_sha1_block
+                         578 	.type	_sha1_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+                         579 	.size	_sha1_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_sha1_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         580 	.align	2
+                         581 --_w	0[sp]	local
+                         582 --_a	r16	local
+                         583 --_b	r1	local
+                         584 --_c	r2	local
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                         585 --_d	r19	local
+                         586 --_e	r15	local
+                         587 --_f	r18	local
+                         588 --_k	r17	local
+                         589 --_temp	r14	local
+                         590 --_i	r29	local
+                         591 
+                         592 --_state	r28	param
+                         593 --_block	r27	param
+                         594 
+                         595 	.section ".bss","awb"
+                         596 .L418:
+                         597 	.type	.L418,@object
+                         598 	.size	.L418,0
+                         599 	.section ".ghcalltbl",""
+00000010 00000000*       600 .L554:	.word	.L553
+                         601 	.type	.L554,@object
+                         602 	.size	.L554,4
+                         603 	.section ".ghrettbl",""
+00000010 00000000*       604 .L556:	.word	.L555
+                         605 	.type	.L556,@object
+                         606 	.size	.L556,4
+                         607 	.data
+                         608 	.text
+                         609 
+                         610 
+                         611 --108: static void sha256_block(uint32 state[8], const unsigned char block[64])
+                         612 	.align	2
+                         613 	.align	2
+                         614 	.align	2
+                         615 	.align	2
+                         616 ..gh.f.a.2.e.5:
+                         617 	.type	..gh.f.a.2.e.5,@object
+                         618 	.size	..gh.f.a.2.e.5,0
+                         619 	.global	_sha256_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         620 _sha256_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                         621 _sha256_block:
+0000024e 031ee8fe        622 	addi	-280,sp,sp
+00000252 63ff1501        623 	st.w	lp,276[sp]
+00000256 63df0901        624 	st.w	r27,264[sp]
+0000025a 63e70501        625 	st.w	r28,260[sp]
+0000025e 63cf1101        626 	st.w	r25,272[sp]
+00000262 63d70d01        627 	st.w	r26,268[sp]
+00000266 63ef0101        628 	st.w	r29,256[sp]
+0000026a 06e0            629 	mov	r6,r28
+0000026c 07d8            630 	mov	r7,r27
+                         631 --	    .bf
+                         632 .LDW02:
+                         633 --109: {
+                         634 --110:     uint32 w[64];
+                         635 --111:     uint32 a, b, c, d, e, f, g, h, s0, s1, ch, maj, t1, t2;
+                         636 --112:     unsigned int i;
+                         637 --114:     for (i = 0u; i < 16u; ++i) w[i] = get_be32(block + 4u * i);
+0000026e 00ea            638 	mov	0,r29
+00000270 b50d*           639 	br	.L562
+                         640 .L561:
+                         641 --line114
+                         642 ..lin.68620a30..5fb9f767.0_23::
+                         643 .LDWlin23:
+00000272 1d30            644 	mov	r29,r6
+00000274 c232            645 	shl	2,r6
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000276 03d0            646 	mov	sp,r26
+00000278 c6d1            647 	add	r6,r26
+0000027a db31            648 	add	r27,r6
+                         649 .L924:
+                         650 	jarl	_get_be32,lp
+                         650 <EXPANSION BEGIN>
+                         650 jarl22 _get_be32 , lp 
+0000027c bfff84fd*       650 <EXPANSION END>
+00000280 7a570100        651 	st.w	r10,0[r26]
+                         652 --line114
+                         653 ..lin.68620a30..5fb9f767.0_24::
+                         654 .LDWlin24:
+00000284 41ea            655 	add	1,r29
+                         656 .L562:
+00000286 1d06f0ff        657 	addi	-16,r29,zero
+0000028a c9f5*           658 	bnl	.L561
+                         659 --115:     for (i = 16u; i < 64u; ++i) {
+                         660 --line115
+                         661 ..lin.68620a30..5fb9f767.0_25::
+                         662 .LDWlin25:
+0000028c 20ee1000        663 	movea	16,zero,r29
+00000290 f555*           664 	br	.L566
+                         665 .L565:
+                         666 --116:         s0 = SHA256_ROTR(w[i - 15u], 7u) ^ SHA256_ROTR(w[i - 15u], 18u) ^ (w[i - 15u] >> 3);
+                         667 --line116
+                         668 ..lin.68620a30..5fb9f767.0_26::
+                         669 .LDWlin26:
+00000292 23f6c4ff        670 	movea	-60,sp,ep
+00000296 1d90            671 	mov	r29,r18
+00000298 c292            672 	shl	2,r18
+0000029a d2f1            673 	add	r18,ep
+0000029c 0015            674 	sld.w	0[ep],r2
+0000029e 23f6c4ff        675 	movea	-60,sp,ep
+000002a2 d2f1            676 	add	r18,ep
+000002a4 000d            677 	sld.w	0[ep],r1
+000002a6 23f6c4ff        678 	movea	-60,sp,ep
+000002aa d2f1            679 	add	r18,ep
+000002ac 009d            680 	sld.w	0[ep],r19
+000002ae 8712            681 	shr	7,r2
+000002b0 d90a            682 	shl	25,r1
+000002b2 23f6c4ff        683 	movea	-60,sp,ep
+000002b6 0111            684 	or	r1,r2
+000002b8 d2f1            685 	add	r18,ep
+000002ba 000d            686 	sld.w	0[ep],r1
+000002bc 929a            687 	shr	18,r19
+000002be 23f6c4ff        688 	movea	-60,sp,ep
+000002c2 d2f1            689 	add	r18,ep
+000002c4 ce0a            690 	shl	14,r1
+000002c6 1309            691 	or	r19,r1
+000002c8 2111            692 	xor	r1,r2
+000002ca 000d            693 	sld.w	0[ep],r1
+000002cc 830a            694 	shr	3,r1
+000002ce 0160            695 	mov	r1,r12
+000002d0 2261            696 	xor	r2,r12
+                         697 --117:         s1 = SHA256_ROTR(w[i - 2u], 17u) ^ SHA256_ROTR(w[i - 2u], 19u) ^ (w[i - 2u] >> 10);
+000002d2 23f6f8ff        698 	movea	-8,sp,ep
+000002d6 1d90            699 	mov	r29,r18
+000002d8 c292            700 	shl	2,r18
+000002da d2f1            701 	add	r18,ep
+000002dc 0015            702 	sld.w	0[ep],r2
+000002de 23f6f8ff        703 	movea	-8,sp,ep
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000002e2 d2f1            704 	add	r18,ep
+000002e4 000d            705 	sld.w	0[ep],r1
+000002e6 23f6f8ff        706 	movea	-8,sp,ep
+000002ea d2f1            707 	add	r18,ep
+000002ec 009d            708 	sld.w	0[ep],r19
+000002ee 9112            709 	shr	17,r2
+000002f0 cf0a            710 	shl	15,r1
+000002f2 23f6f8ff        711 	movea	-8,sp,ep
+000002f6 0111            712 	or	r1,r2
+000002f8 d2f1            713 	add	r18,ep
+000002fa 000d            714 	sld.w	0[ep],r1
+000002fc 939a            715 	shr	19,r19
+000002fe 23f6f8ff        716 	movea	-8,sp,ep
+00000302 d2f1            717 	add	r18,ep
+00000304 cd0a            718 	shl	13,r1
+00000306 1309            719 	or	r19,r1
+00000308 2111            720 	xor	r1,r2
+0000030a 000d            721 	sld.w	0[ep],r1
+0000030c 8a0a            722 	shr	10,r1
+0000030e 0158            723 	mov	r1,r11
+00000310 2259            724 	xor	r2,r11
+                         725 --118:         w[i] = w[i - 16u] + s0 + w[i - 7u] + s1;
+00000312 1df0            726 	mov	r29,ep
+00000314 c2f2            727 	shl	2,ep
+00000316 23160000        728 	movea	0,sp,r2
+0000031a 0308            729 	mov	sp,r1
+0000031c de11            730 	add	ep,r2
+0000031e 010ec0ff        731 	addi	-64,r1,r1
+00000322 c1f1            732 	add	r1,ep
+00000324 009d            733 	sld.w	0[ep],r19
+00000326 230ee4ff        734 	movea	-28,sp,r1
+0000032a 1df0            735 	mov	r29,ep
+0000032c c2f2            736 	shl	2,ep
+0000032e c1f1            737 	add	r1,ep
+00000330 000d            738 	sld.w	0[ep],r1
+00000332 cc99            739 	add	r12,r19
+00000334 d309            740 	add	r19,r1
+00000336 cb09            741 	add	r11,r1
+00000338 620f0100        742 	st.w	r1,0[r2]
+0000033c 41ea            743 	add	1,r29
+                         744 .L566:
+0000033e 1d06c0ff        745 	addi	-64,r29,zero
+00000342 89ad*           746 	bnl	.L565
+                         747 --119:     }
+                         748 --120:     a=state[0]; b=state[1]; c=state[2]; d=state[3];
+                         749 --line120
+                         750 ..lin.68620a30..5fb9f767.0_27::
+                         751 .LDWlin27:
+00000344 3c0f0100        752 	ld.w	0[r28],r1
+00000348 3c9f0500        753 	ld.w	4[r28],r19
+0000034c 3c970900        754 	ld.w	8[r28],r18
+00000350 3c770d00        755 	ld.w	12[r28],r14
+                         756 --121:     e=state[4]; f=state[5]; g=state[6]; h=state[7];
+00000354 3c171100        757 	ld.w	16[r28],r2
+00000358 3c8f1500        758 	ld.w	20[r28],r17
+0000035c 3c871900        759 	ld.w	24[r28],r16
+00000360 3c6f1d00        760 	ld.w	28[r28],r13
+                         761 --122:     for (i = 0u; i < 64u; ++i) {
+00000364 00ea            762 	mov	0,r29
+00000366 e53d*           763 	br	.L570
+                         764 .L569:
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                         765 --123:         s1 = SHA256_ROTR(e, 6u) ^ SHA256_ROTR(e, 11u) ^ SHA256_ROTR(e, 25u);
+                         766 --line123
+                         767 ..lin.68620a30..5fb9f767.0_28::
+                         768 .LDWlin28:
+00000368 fa17c4f8        769 	rotl	26,r2,lp
+0000036c f517c4d0        770 	rotl	21,r2,r26
+00000370 3af9            771 	xor	r26,lp
+00000372 e717c4d0        772 	rotl	7,r2,r26
+00000376 1a58            773 	mov	r26,r11
+00000378 3f59            774 	xor	lp,r11
+                         775 --124:         ch = (e & f) ^ ((~e) & g);
+0000037a 22d0            776 	not	r2,r26
+0000037c 11f8            777 	mov	r17,lp
+0000037e 42f9            778 	and	r2,lp
+00000380 50d1            779 	and	r16,r26
+00000382 1a50            780 	mov	r26,r10
+00000384 3f51            781 	xor	lp,r10
+                         782 --125:         t1 = h + s1 + ch + sha256_k[i] + w[i];
+00000386 1df0            783 	mov	r29,ep
+00000388 c2f2            784 	shl	2,ep
+0000038a 05f8            785 	mov	r5,lp
+0000038c def9            786 	add	ep,lp
+0000038e 23ce0000        787 	movea	0,sp,r25
+00000392 3fff0100*       788 	ld.w	sdaoff2(_sha256_k)[lp],lp
+00000396 d9f1            789 	add	r25,ep
+00000398 007d            790 	sld.w	0[ep],r15
+0000039a 0dd0            791 	mov	r13,r26
+0000039c cbd1            792 	add	r11,r26
+0000039e cad1            793 	add	r10,r26
+000003a0 daf9            794 	add	r26,lp
+000003a2 df79            795 	add	lp,r15
+                         796 --126:         s0 = SHA256_ROTR(a, 2u) ^ SHA256_ROTR(a, 13u) ^ SHA256_ROTR(a, 22u);
+000003a4 fe0fc4f8        797 	rotl	30,r1,lp
+000003a8 f30fc4d0        798 	rotl	19,r1,r26
+000003ac 3af9            799 	xor	r26,lp
+000003ae ea0fc4d0        800 	rotl	10,r1,r26
+000003b2 1a60            801 	mov	r26,r12
+000003b4 3f61            802 	xor	lp,r12
+                         803 --127:         maj = (a & b) ^ (a & c) ^ (b & c);
+000003b6 13f8            804 	mov	r19,lp
+000003b8 41f9            805 	and	r1,lp
+000003ba 12d0            806 	mov	r18,r26
+000003bc 41d1            807 	and	r1,r26
+000003be 3af9            808 	xor	r26,lp
+000003c0 12d0            809 	mov	r18,r26
+000003c2 53d1            810 	and	r19,r26
+000003c4 1a48            811 	mov	r26,r9
+000003c6 3f49            812 	xor	lp,r9
+                         813 --128:         t2 = s0 + maj;
+000003c8 0940            814 	mov	r9,r8
+000003ca cc41            815 	add	r12,r8
+                         816 --129:         h=g; g=f; f=e; e=d+t1; d=c; c=b; b=a; a=t1+t2;
+000003cc 1068            817 	mov	r16,r13
+000003ce 1180            818 	mov	r17,r16
+000003d0 0288            819 	mov	r2,r17
+000003d2 0f10            820 	mov	r15,r2
+000003d4 ce11            821 	add	r14,r2
+000003d6 1270            822 	mov	r18,r14
+000003d8 1390            823 	mov	r19,r18
+000003da 0198            824 	mov	r1,r19
+000003dc 0808            825 	mov	r8,r1
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000003de cf09            826 	add	r15,r1
+000003e0 41ea            827 	add	1,r29
+                         828 .L570:
+000003e2 1d06c0ff        829 	addi	-64,r29,zero
+000003e6 99c5*           830 	bnl	.L569
+                         831 --130:     }
+                         832 --131:     state[0]+=a; state[1]+=b; state[2]+=c; state[3]+=d;
+                         833 --line131
+                         834 ..lin.68620a30..5fb9f767.0_29::
+                         835 .LDWlin29:
+000003e8 3cff0100        836 	ld.w	0[r28],lp
+000003ec c1f9            837 	add	r1,lp
+000003ee 7cff0100        838 	st.w	lp,0[r28]
+000003f2 3cff0500        839 	ld.w	4[r28],lp
+000003f6 d3f9            840 	add	r19,lp
+000003f8 7cff0500        841 	st.w	lp,4[r28]
+000003fc 3cff0900        842 	ld.w	8[r28],lp
+00000400 d2f9            843 	add	r18,lp
+00000402 7cff0900        844 	st.w	lp,8[r28]
+00000406 3cff0d00        845 	ld.w	12[r28],lp
+0000040a cef9            846 	add	r14,lp
+0000040c 7cff0d00        847 	st.w	lp,12[r28]
+                         848 --132:     state[4]+=e; state[5]+=f; state[6]+=g; state[7]+=h;
+00000410 3cff1100        849 	ld.w	16[r28],lp
+00000414 c2f9            850 	add	r2,lp
+00000416 7cff1100        851 	st.w	lp,16[r28]
+0000041a 3cff1500        852 	ld.w	20[r28],lp
+0000041e d1f9            853 	add	r17,lp
+00000420 7cff1500        854 	st.w	lp,20[r28]
+00000424 3cff1900        855 	ld.w	24[r28],lp
+00000428 d0f9            856 	add	r16,lp
+0000042a 7cff1900        857 	st.w	lp,24[r28]
+0000042e 3cff1d00        858 	ld.w	28[r28],lp
+00000432 cdf9            859 	add	r13,lp
+00000434 7cff1d00        860 	st.w	lp,28[r28]
+                         861 --133: }
+                         862 --	    .ef
+                         863 .LDW12:
+00000438 23ff1501        864 	ld.w	276[sp],lp
+0000043c 23ef0101        865 	ld.w	256[sp],r29
+00000440 23e70501        866 	ld.w	260[sp],r28
+00000444 23df0901        867 	ld.w	264[sp],r27
+00000448 23d70d01        868 	ld.w	268[sp],r26
+0000044c 23cf1101        869 	ld.w	272[sp],r25
+00000450 031e1801        870 	addi	280,sp,sp
+                         871 .L926:
+                         872 	.jumptype return
+00000454 7f00            873 	jmp	[lp]
+                         874 --line131
+                         875 ..lin.68620a30..5fb9f767.0_30::
+                         876 	.type	_sha256_block,@function
+                         877 	.size	_sha256_block,.-_sha256_block
+                         878 	.type	_sha256_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+                         879 	.size	_sha256_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_sha256_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         880 	.align	2
+                         881 --_w	0[sp]	local
+                         882 --_a	r1	local
+                         883 --_b	r19	local
+                         884 --_c	r18	local
+                         885 --_d	r14	local
+                         886 --_e	r2	local
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                         887 --_f	r17	local
+                         888 --_g	r16	local
+                         889 --_h	r13	local
+                         890 --_s0	r12	local
+                         891 --_s1	r11	local
+                         892 --_ch	r10	local
+                         893 --_maj	r9	local
+                         894 --_t1	r15	local
+                         895 --_t2	r8	local
+                         896 --_i	r29	local
+                         897 
+                         898 --_state	r28	param
+                         899 --_block	r27	param
+                         900 
+                         901 	.section ".bss","awb"
+                         902 .L774:
+                         903 	.type	.L774,@object
+                         904 	.size	.L774,0
+                         905 	.section ".rosdata","a"
+                         906 	.align	4
+                         907 	.global	_sha256_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         908 _sha256_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+00000000 982f8a42        909 _sha256_k:	.byte	152,47,138,66
+00000004 91443771        910 	.byte	145,68,55,113
+00000008 cffbc0b5        911 	.byte	207,251,192,181
+0000000c a5dbb5e9        912 	.byte	165,219,181,233
+00000010 5bc25639        913 	.byte	91,194,86,57
+00000014 f111f159        914 	.byte	241,17,241,89
+00000018 a4823f92        915 	.byte	164,130,63,146
+0000001c d55e1cab        916 	.byte	213,94,28,171
+00000020 98aa07d8        917 	.byte	152,170,7,216
+00000024 015b8312        918 	.byte	1,91,131,18
+00000028 be853124        919 	.byte	190,133,49,36
+0000002c c37d0c55        920 	.byte	195,125,12,85
+00000030 745dbe72        921 	.byte	116,93,190,114
+00000034 feb1de80        922 	.byte	254,177,222,128
+00000038 a706dc9b        923 	.byte	167,6,220,155
+0000003c 74f19bc1        924 	.byte	116,241,155,193
+00000040 c1699be4        925 	.byte	193,105,155,228
+00000044 8647beef        926 	.byte	134,71,190,239
+00000048 c69dc10f        927 	.byte	198,157,193,15
+0000004c cca10c24        928 	.byte	204,161,12,36
+00000050 6f2ce92d        929 	.byte	111,44,233,45
+00000054 aa84744a        930 	.byte	170,132,116,74
+00000058 dca9b05c        931 	.byte	220,169,176,92
+0000005c da88f976        932 	.byte	218,136,249,118
+00000060 52513e98        933 	.byte	82,81,62,152
+00000064 6dc631a8        934 	.byte	109,198,49,168
+00000068 c82703b0        935 	.byte	200,39,3,176
+0000006c c77f59bf        936 	.byte	199,127,89,191
+00000070 f30be0c6        937 	.byte	243,11,224,198
+00000074 4791a7d5        938 	.byte	71,145,167,213
+00000078 5163ca06        939 	.byte	81,99,202,6
+0000007c 67292914        940 	.byte	103,41,41,20
+00000080 850ab727        941 	.byte	133,10,183,39
+00000084 38211b2e        942 	.byte	56,33,27,46
+00000088 fc6d2c4d        943 	.byte	252,109,44,77
+0000008c 130d3853        944 	.byte	19,13,56,83
+00000090 54730a65        945 	.byte	84,115,10,101
+00000094 bb0a6a76        946 	.byte	187,10,106,118
+00000098 2ec9c281        947 	.byte	46,201,194,129
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+0000009c 852c7292        948 	.byte	133,44,114,146
+000000a0 a1e8bfa2        949 	.byte	161,232,191,162
+000000a4 4b661aa8        950 	.byte	75,102,26,168
+000000a8 708b4bc2        951 	.byte	112,139,75,194
+000000ac a3516cc7        952 	.byte	163,81,108,199
+000000b0 19e892d1        953 	.byte	25,232,146,209
+000000b4 240699d6        954 	.byte	36,6,153,214
+000000b8 85350ef4        955 	.byte	133,53,14,244
+000000bc 70a06a10        956 	.byte	112,160,106,16
+000000c0 16c1a419        957 	.byte	22,193,164,25
+000000c4 086c371e        958 	.byte	8,108,55,30
+000000c8 4c774827        959 	.byte	76,119,72,39
+000000cc b5bcb034        960 	.byte	181,188,176,52
+000000d0 b30c1c39        961 	.byte	179,12,28,57
+000000d4 4aaad84e        962 	.byte	74,170,216,78
+000000d8 4fca9c5b        963 	.byte	79,202,156,91
+000000dc f36f2e68        964 	.byte	243,111,46,104
+000000e0 ee828f74        965 	.byte	238,130,143,116
+000000e4 6f63a578        966 	.byte	111,99,165,120
+000000e8 1478c884        967 	.byte	20,120,200,132
+000000ec 0802c78c        968 	.byte	8,2,199,140
+000000f0 faffbe90        969 	.byte	250,255,190,144
+000000f4 eb6c50a4        970 	.byte	235,108,80,164
+000000f8 f7a3f9be        971 	.byte	247,163,249,190
+000000fc f27871c6        972 	.byte	242,120,113,198
+                         973 	.type	_sha256_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@object
+                         974 	.size	_sha256_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,256
+                         975 	.type	_sha256_k,@object
+                         976 	.size	_sha256_k,256
+                         977 	.section ".ghcalltbl",""
+00000014 00000000*       978 .L925:	.word	.L924
+                         979 	.type	.L925,@object
+                         980 	.size	.L925,4
+                         981 	.section ".ghrettbl",""
+00000014 00000000*       982 .L927:	.word	.L926
+                         983 	.type	.L927,@object
+                         984 	.size	.L927,4
+                         985 	.data
+                         986 	.text
+                         987 
+                         988 
+                         989 --135: static void sha512_block(icum_u64 state[8], const unsigned char block[128])
+                         990 	.align	2
+                         991 	.align	2
+                         992 	.align	2
+                         993 ..gh.f.a.2.e.6:
+                         994 	.type	..gh.f.a.2.e.6,@object
+                         995 	.size	..gh.f.a.2.e.6,0
+                         996 	.global	_sha512_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                         997 _sha512_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                         998 _sha512_block:
+00000456 031e18fd        999 	addi	-744,sp,sp
+0000045a 63ffe502       1000 	st.w	lp,740[sp]
+0000045e 63a7e102       1001 	st.w	r20,736[sp]
+00000462 63afdd02       1002 	st.w	r21,732[sp]
+00000466 63b7d902       1003 	st.w	r22,728[sp]
+0000046a 63bfd502       1004 	st.w	r23,724[sp]
+0000046e 63c7d102       1005 	st.w	r24,720[sp]
+00000472 63cfcd02       1006 	st.w	r25,716[sp]
+00000476 63d7c902       1007 	st.w	r26,712[sp]
+0000047a 63dfc502       1008 	st.w	r27,708[sp]
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+0000047e 63e7c102       1009 	st.w	r28,704[sp]
+00000482 63efbd02       1010 	st.w	r29,700[sp]
+00000486 63370500       1011 	st.w	r6,4[sp]
+0000048a 633f0900       1012 	st.w	r7,8[sp]
+                        1013 --	    .bf
+                        1014 .LDW22:
+                        1015 --136: {
+                        1016 --137:     icum_u64 w[80];
+                        1017 --138:     icum_u64 a,b,c,d,e,f,g,h,s0,s1,ch,maj,t1,t2;
+                        1018 --139:     unsigned int i;
+                        1019 --141:     for (i = 0u; i < 16u; ++i) w[i] = get_be64(block + 8u * i);
+0000048e 63070100       1020 	st.w	zero,0[sp]
+00000492 c515*          1021 	br	.L933
+                        1022 .L932:
+                        1023 --line141
+                        1024 ..lin.68620a30..d83f03e2.0_31::
+                        1025 .LDWlin31:
+00000494 230f0100       1026 	ld.w	0[sp],r1
+00000498 23370900       1027 	ld.w	8[sp],r6
+0000049c 23ee3c00       1028 	movea	60,sp,r29
+000004a0 c30a           1029 	shl	3,r1
+000004a2 c1e9           1030 	add	r1,r29
+000004a4 c131           1031 	add	r1,r6
+                        1032 .L1292:
+                        1033 	jarl	_get_be64,lp
+                        1033 <EXPANSION BEGIN>
+                        1033 jarl22 _get_be64 , lp 
+000004a6 bfff8efb*      1033 <EXPANSION END>
+000004aa bd070f500000   1034 	st.dw	r10,0[r29]
+                        1035 --line141
+                        1036 ..lin.68620a30..d83f03e2.0_32::
+                        1037 .LDWlin32:
+000004b0 235f0100       1038 	ld.w	0[sp],r11
+000004b4 415a           1039 	add	1,r11
+000004b6 635f0100       1040 	st.w	r11,0[sp]
+                        1041 .L933:
+000004ba 235f0100       1042 	ld.w	0[sp],r11
+000004be 0b06f0ff       1043 	addi	-16,r11,zero
+000004c2 99ed*          1044 	bnl	.L932
+                        1045 --142:     for (i = 16u; i < 80u; ++i) {
+                        1046 --line142
+                        1047 ..lin.68620a30..d83f03e2.0_33::
+                        1048 .LDWlin33:
+000004c4 205e1000       1049 	movea	16,zero,r11
+000004c8 635f0100       1050 	st.w	r11,0[sp]
+000004cc 80073401*      1051 	br	.L937
+                        1052 .L936:
+                        1053 --143:         s0 = SHA512_ROTR(w[i-15u],1u) ^ SHA512_ROTR(w[i-15u],8u) ^ (w[i-15u] >> 7);
+                        1054 --line143
+                        1055 ..lin.68620a30..d83f03e2.0_34::
+                        1056 .LDWlin34:
+000004d0 23170100       1057 	ld.w	0[sp],r2
+000004d4 230ec4ff       1058 	movea	-60,sp,r1
+000004d8 02f0           1059 	mov	r2,ep
+000004da c3f2           1060 	shl	3,ep
+000004dc c1f1           1061 	add	r1,ep
+000004de be0709900000   1062 	ld.dw	0[ep],r18
+000004e4 02f0           1063 	mov	r2,ep
+000004e6 c3f2           1064 	shl	3,ep
+000004e8 c1f1           1065 	add	r1,ep
+000004ea be0709800000   1066 	ld.dw	0[ep],r16
+
+                                                                      Page 19
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000004f0 1350           1067 	mov	r19,r10
+000004f2 df52           1068 	shl	31,r10
+000004f4 8192           1069 	shr	1,r18
+000004f6 819a           1070 	shr	1,r19
+000004f8 1058           1071 	mov	r16,r11
+000004fa df5a           1072 	shl	31,r11
+000004fc 02f0           1073 	mov	r2,ep
+000004fe c3f2           1074 	shl	3,ep
+00000500 1251           1075 	or	r18,r10
+00000502 1359           1076 	or	r19,r11
+00000504 c1f1           1077 	add	r1,ep
+00000506 be0709900000   1078 	ld.dw	0[ep],r18
+0000050c 02f0           1079 	mov	r2,ep
+0000050e c3f2           1080 	shl	3,ep
+00000510 c1f1           1081 	add	r1,ep
+00000512 8892           1082 	shr	8,r18
+00000514 1380           1083 	mov	r19,r16
+00000516 d882           1084 	shl	24,r16
+00000518 1281           1085 	or	r18,r16
+0000051a 1388           1086 	mov	r19,r17
+0000051c 888a           1087 	shr	8,r17
+0000051e be0709900000   1088 	ld.dw	0[ep],r18
+00000524 3051           1089 	xor	r16,r10
+00000526 d892           1090 	shl	24,r18
+00000528 1289           1091 	or	r18,r17
+0000052a 3159           1092 	xor	r17,r11
+0000052c be0709800000   1093 	ld.dw	0[ep],r16
+00000532 8782           1094 	shr	7,r16
+00000534 1110           1095 	mov	r17,r2
+00000536 d912           1096 	shl	25,r2
+00000538 0281           1097 	or	r2,r16
+0000053a 878a           1098 	shr	7,r17
+0000053c 3051           1099 	xor	r16,r10
+0000053e 3159           1100 	xor	r17,r11
+00000540 0a70           1101 	mov	r10,r14
+00000542 0b78           1102 	mov	r11,r15
+                        1103 --144:         s1 = SHA512_ROTR(w[i-2u],19u) ^ SHA512_ROTR(w[i-2u],61u) ^ (w[i-2u] >> 6);
+                        1104 --line144
+                        1105 ..lin.68620a30..d83f03e2.0_35::
+                        1106 .LDWlin35:
+00000544 23670100       1107 	ld.w	0[sp],r12
+00000548 230e2c00       1108 	movea	44,sp,r1
+0000054c 0cf0           1109 	mov	r12,ep
+0000054e c3f2           1110 	shl	3,ep
+00000550 c1f1           1111 	add	r1,ep
+00000552 be0709900000   1112 	ld.dw	0[ep],r18
+00000558 0cf0           1113 	mov	r12,ep
+0000055a c3f2           1114 	shl	3,ep
+0000055c c1f1           1115 	add	r1,ep
+0000055e be0709800000   1116 	ld.dw	0[ep],r16
+00000564 0cf0           1117 	mov	r12,ep
+00000566 c3f2           1118 	shl	3,ep
+00000568 c1f1           1119 	add	r1,ep
+0000056a 1350           1120 	mov	r19,r10
+0000056c cd52           1121 	shl	13,r10
+0000056e 1058           1122 	mov	r16,r11
+00000570 cd5a           1123 	shl	13,r11
+00000572 be0709800000   1124 	ld.dw	0[ep],r16
+00000578 9392           1125 	shr	19,r18
+0000057a 939a           1126 	shr	19,r19
+0000057c 0cf0           1127 	mov	r12,ep
+
+                                                                      Page 20
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+0000057e c3f2           1128 	shl	3,ep
+00000580 1251           1129 	or	r18,r10
+00000582 1359           1130 	or	r19,r11
+00000584 c1f1           1131 	add	r1,ep
+00000586 be0709900000   1132 	ld.dw	0[ep],r18
+0000058c 1140           1133 	mov	r17,r8
+0000058e 9d42           1134 	shr	29,r8
+00000590 c39a           1135 	shl	3,r19
+00000592 1288           1136 	mov	r18,r17
+00000594 9d8a           1137 	shr	29,r17
+00000596 1389           1138 	or	r19,r17
+00000598 3159           1139 	xor	r17,r11
+0000059a be0709800000   1140 	ld.dw	0[ep],r16
+000005a0 c392           1141 	shl	3,r18
+000005a2 0891           1142 	or	r8,r18
+000005a4 3251           1143 	xor	r18,r10
+000005a6 8682           1144 	shr	6,r16
+000005a8 1110           1145 	mov	r17,r2
+000005aa da12           1146 	shl	26,r2
+000005ac 0281           1147 	or	r2,r16
+000005ae 868a           1148 	shr	6,r17
+000005b0 3051           1149 	xor	r16,r10
+000005b2 3159           1150 	xor	r17,r11
+000005b4 0a60           1151 	mov	r10,r12
+000005b6 0b68           1152 	mov	r11,r13
+                        1153 --145:         w[i] = w[i-16u] + s0 + w[i-7u] + s1;
+                        1154 --line145
+                        1155 ..lin.68620a30..d83f03e2.0_36::
+                        1156 .LDWlin36:
+000005b8 23470100       1157 	ld.w	0[sp],r8
+000005bc 230ebcff       1158 	movea	-68,sp,r1
+000005c0 23163c00       1159 	movea	60,sp,r2
+000005c4 23f60400       1160 	movea	4,sp,ep
+000005c8 c342           1161 	shl	3,r8
+000005ca c809           1162 	add	r8,r1
+000005cc a10709800000   1163 	ld.dw	0[r1],r16
+000005d2 c811           1164 	add	r8,r2
+000005d4 ce81           1165 	add	r14,r16
+000005d6 f17fa29b       1166 	adfl	r17,r15,r19
+000005da c8f1           1167 	add	r8,ep
+000005dc be0709500000   1168 	ld.dw	0[ep],r10
+000005e2 ca81           1169 	add	r10,r16
+000005e4 f35fa29b       1170 	adfl	r19,r11,r19
+000005e8 1090           1171 	mov	r16,r18
+000005ea cc91           1172 	add	r12,r18
+000005ec f36fa29b       1173 	adfl	r19,r13,r19
+000005f0 a2070f900000   1174 	st.dw	r18,0[r2]
+                        1175 --line142
+                        1176 ..lin.68620a30..d83f03e2.0_37::
+                        1177 .LDWlin37:
+000005f6 235f0100       1178 	ld.w	0[sp],r11
+000005fa 415a           1179 	add	1,r11
+000005fc 635f0100       1180 	st.w	r11,0[sp]
+                        1181 .L937:
+00000600 235f0100       1182 	ld.w	0[sp],r11
+00000604 0b06b0ff       1183 	addi	-80,r11,zero
+00000608 f907c9fe*      1184 	bnl	.L936
+                        1185 --146:     }
+                        1186 --147:     a=state[0]; b=state[1]; c=state[2]; d=state[3];
+                        1187 --line147
+                        1188 ..lin.68620a30..d83f03e2.0_38::
+
+                                                                      Page 21
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        1189 .LDWlin38:
+0000060c 235f0500       1190 	ld.w	4[sp],r11
+00000610 ab0709900000   1191 	ld.dw	0[r11],r18
+                        1192 --line147
+                        1193 ..lin.68620a30..d83f03e2.0_39::
+                        1194 .LDWlin39:
+00000616 235f0500       1195 	ld.w	4[sp],r11
+0000061a ab0789500000   1196 	ld.dw	8[r11],r10
+                        1197 --line147
+                        1198 ..lin.68620a30..d83f03e2.0_40::
+                        1199 .LDWlin40:
+00000620 23870500       1200 	ld.w	4[sp],r16
+00000624 b00709410000   1201 	ld.dw	16[r16],r8
+                        1202 --line147
+                        1203 ..lin.68620a30..d83f03e2.0_41::
+                        1204 .LDWlin41:
+0000062a 23870500       1205 	ld.w	4[sp],r16
+0000062e b00789c10000   1206 	ld.dw	24[r16],r24
+                        1207 --148:     e=state[4]; f=state[5]; g=state[6]; h=state[7];
+                        1208 --line148
+                        1209 ..lin.68620a30..d83f03e2.0_42::
+                        1210 .LDWlin42:
+00000634 23870500       1211 	ld.w	4[sp],r16
+00000638 b00709820000   1212 	ld.dw	32[r16],r16
+                        1213 --line148
+                        1214 ..lin.68620a30..d83f03e2.0_43::
+                        1215 .LDWlin43:
+0000063e 23a70500       1216 	ld.w	4[sp],r20
+00000642 b40789e20000   1217 	ld.dw	40[r20],r28
+                        1218 --line148
+                        1219 ..lin.68620a30..d83f03e2.0_44::
+                        1220 .LDWlin44:
+00000648 23a70500       1221 	ld.w	4[sp],r20
+0000064c b40709d30000   1222 	ld.dw	48[r20],r26
+                        1223 --line148
+                        1224 ..lin.68620a30..d83f03e2.0_45::
+                        1225 .LDWlin45:
+00000652 23a70500       1226 	ld.w	4[sp],r20
+00000656 b40789b30000   1227 	ld.dw	56[r20],r22
+                        1228 --149:     for (i = 0u; i < 80u; ++i) {
+                        1229 --line149
+                        1230 ..lin.68620a30..d83f03e2.0_46::
+                        1231 .LDWlin46:
+0000065c 63070100       1232 	st.w	zero,0[sp]
+00000660 80077a03*      1233 	br	.L941
+                        1234 .L940:
+                        1235 --150:         s1 = SHA512_ROTR(e,14u) ^ SHA512_ROTR(e,18u) ^ SHA512_ROTR(e,41u);
+                        1236 --line150
+                        1237 ..lin.68620a30..d83f03e2.0_47::
+                        1238 .LDWlin47:
+00000664 1008           1239 	mov	r16,r1
+00000666 8e0a           1240 	shr	14,r1
+00000668 1110           1241 	mov	r17,r2
+0000066a d212           1242 	shl	18,r2
+0000066c 0209           1243 	or	r2,r1
+0000066e 630f2500       1244 	st.w	r1,36[sp]
+00000672 1108           1245 	mov	r17,r1
+00000674 8e0a           1246 	shr	14,r1
+00000676 630f2900       1247 	st.w	r1,40[sp]
+0000067a a30749620000   1248 	ld.dw	36[sp],r12
+00000680 1010           1249 	mov	r16,r2
+
+                                                                      Page 22
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000682 d212           1250 	shl	18,r2
+00000684 a3074f610000   1251 	st.dw	r12,20[sp]
+0000068a 230f1500       1252 	ld.w	20[sp],r1
+0000068e 630f1d00       1253 	st.w	r1,28[sp]
+00000692 230f1900       1254 	ld.w	24[sp],r1
+00000696 0209           1255 	or	r2,r1
+00000698 630f2100       1256 	st.w	r1,32[sp]
+0000069c 1008           1257 	mov	r16,r1
+0000069e 920a           1258 	shr	18,r1
+000006a0 1110           1259 	mov	r17,r2
+000006a2 ce12           1260 	shl	14,r2
+000006a4 a307c9610000   1261 	ld.dw	28[sp],r12
+000006aa 0209           1262 	or	r2,r1
+000006ac 630f2500       1263 	st.w	r1,36[sp]
+000006b0 1108           1264 	mov	r17,r1
+000006b2 920a           1265 	shr	18,r1
+000006b4 a3074f610000   1266 	st.dw	r12,20[sp]
+000006ba 630f2900       1267 	st.w	r1,40[sp]
+000006be a30749620000   1268 	ld.dw	36[sp],r12
+000006c4 1010           1269 	mov	r16,r2
+000006c6 ce12           1270 	shl	14,r2
+000006c8 230f1900       1271 	ld.w	24[sp],r1
+000006cc 63072900       1272 	st.w	zero,40[sp]
+000006d0 a307cf600000   1273 	st.dw	r12,12[sp]
+000006d6 23671100       1274 	ld.w	16[sp],r12
+000006da 236f0d00       1275 	ld.w	12[sp],r13
+000006de 0261           1276 	or	r2,r12
+000006e0 23171500       1277 	ld.w	20[sp],r2
+000006e4 2c09           1278 	xor	r12,r1
+000006e6 630f2100       1279 	st.w	r1,32[sp]
+000006ea 1108           1280 	mov	r17,r1
+000006ec 890a           1281 	shr	9,r1
+000006ee 2d11           1282 	xor	r13,r2
+000006f0 63171d00       1283 	st.w	r2,28[sp]
+000006f4 a307c9610000   1284 	ld.dw	28[sp],r12
+000006fa 630f2500       1285 	st.w	r1,36[sp]
+000006fe 1010           1286 	mov	r16,r2
+00000700 8912           1287 	shr	9,r2
+00000702 1008           1288 	mov	r16,r1
+00000704 d70a           1289 	shl	23,r1
+00000706 a3074f610000   1290 	st.dw	r12,20[sp]
+0000070c a30749620000   1291 	ld.dw	36[sp],r12
+00000712 a307cf600000   1292 	st.dw	r12,12[sp]
+00000718 236f0d00       1293 	ld.w	12[sp],r13
+0000071c 1160           1294 	mov	r17,r12
+0000071e d762           1295 	shl	23,r12
+00000720 0261           1296 	or	r2,r12
+00000722 23171500       1297 	ld.w	20[sp],r2
+00000726 0169           1298 	or	r1,r13
+00000728 230f1900       1299 	ld.w	24[sp],r1
+0000072c 2269           1300 	xor	r2,r13
+0000072e 0c10           1301 	mov	r12,r2
+00000730 0d60           1302 	mov	r13,r12
+00000732 2209           1303 	xor	r2,r1
+00000734 0168           1304 	mov	r1,r13
+                        1305 --151:         ch = (e & f) ^ ((~e) & g);
+                        1306 --line151
+                        1307 ..lin.68620a30..d83f03e2.0_48::
+                        1308 .LDWlin48:
+00000736 1008           1309 	mov	r16,r1
+00000738 5c09           1310 	and	r28,r1
+
+                                                                      Page 23
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+0000073a 630f2500       1311 	st.w	r1,36[sp]
+0000073e 1108           1312 	mov	r17,r1
+00000740 5d09           1313 	and	r29,r1
+00000742 630f2900       1314 	st.w	r1,40[sp]
+00000746 231efcff       1315 	movea	-4,sp,sp
+0000074a 63f70100       1316 	st.w	ep,0[sp]
+0000074e a30789f20000   1317 	ld.dw	40[sp],ep
+00000754 1f12           1318 	mov	-1,r2
+00000756 0208           1319 	mov	r2,r1
+00000758 3009           1320 	xor	r16,r1
+0000075a 3111           1321 	xor	r17,r2
+0000075c a3070ff20000   1322 	st.dw	ep,32[sp]
+00000762 630f2900       1323 	st.w	r1,40[sp]
+00000766 63172d00       1324 	st.w	r2,44[sp]
+0000076a a30789f20000   1325 	ld.dw	40[sp],ep
+00000770 a3078ff10000   1326 	st.dw	ep,24[sp]
+00000776 231e0400       1327 	movea	4,sp,sp
+0000077a 23ff1500       1328 	ld.w	20[sp],lp
+0000077e 23171d00       1329 	ld.w	28[sp],r2
+00000782 230f1900       1330 	ld.w	24[sp],r1
+00000786 5af9           1331 	and	r26,lp
+00000788 3f11           1332 	xor	lp,r2
+0000078a 5b09           1333 	and	r27,r1
+0000078c 02f0           1334 	mov	r2,ep
+0000078e 0110           1335 	mov	r1,r2
+00000790 230f2100       1336 	ld.w	32[sp],r1
+00000794 2209           1337 	xor	r2,r1
+00000796 01f8           1338 	mov	r1,lp
+                        1339 --152:         t1 = h + s1 + ch + sha512_k[i] + w[i];
+                        1340 --line152
+                        1341 ..lin.68620a30..d83f03e2.0_49::
+                        1342 .LDWlin49:
+00000798 1608           1343 	mov	r22,r1
+0000079a cc09           1344 	add	r12,r1
+0000079c 630f2500       1345 	st.w	r1,36[sp]
+000007a0 f76fa20b       1346 	adfl	r23,r13,r1
+000007a4 630f2900       1347 	st.w	r1,40[sp]
+000007a8 a30749a20000   1348 	ld.dw	36[sp],r20
+000007ae a307cfa10000   1349 	st.dw	r20,28[sp]
+000007b4 230f1d00       1350 	ld.w	28[sp],r1
+000007b8 de09           1351 	add	ep,r1
+000007ba 630f2500       1352 	st.w	r1,36[sp]
+000007be 230f2100       1353 	ld.w	32[sp],r1
+000007c2 e1ffa20b       1354 	adfl	r1,lp,r1
+000007c6 630f2900       1355 	st.w	r1,40[sp]
+000007ca a30749a20000   1356 	ld.dw	36[sp],r20
+000007d0 a307cfa10000   1357 	st.dw	r20,28[sp]
+000007d6 23af0100       1358 	ld.w	0[sp],r21
+000007da 23171d00       1359 	ld.w	28[sp],r2
+000007de c3aa           1360 	shl	3,r21
+000007e0 c5a9           1361 	add	r5,r21
+000007e2 b50709a00000*  1362 	ld.dw	sdaoff2(_sha512_k)[r21],r20
+000007e8 a3074fa10000   1363 	st.dw	r20,20[sp]
+000007ee 230f1500       1364 	ld.w	20[sp],r1
+000007f2 23af0100       1365 	ld.w	0[sp],r21
+000007f6 c209           1366 	add	r2,r1
+000007f8 630f2500       1367 	st.w	r1,36[sp]
+000007fc 230f2100       1368 	ld.w	32[sp],r1
+00000800 23171900       1369 	ld.w	24[sp],r2
+00000804 e117a20b       1370 	adfl	r1,r2,r1
+00000808 c3aa           1371 	shl	3,r21
+
+                                                                      Page 24
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+0000080a 23163c00       1372 	movea	60,sp,r2
+0000080e c2a9           1373 	add	r2,r21
+00000810 b50709a00000   1374 	ld.dw	0[r21],r20
+00000816 630f2900       1375 	st.w	r1,40[sp]
+0000081a 23172500       1376 	ld.w	36[sp],r2
+0000081e a307cfa10000   1377 	st.dw	r20,28[sp]
+00000824 230f1d00       1378 	ld.w	28[sp],r1
+00000828 c209           1379 	add	r2,r1
+0000082a 01a0           1380 	mov	r1,r20
+0000082c 230f2900       1381 	ld.w	40[sp],r1
+00000830 23172100       1382 	ld.w	32[sp],r2
+00000834 e117a20b       1383 	adfl	r1,r2,r1
+00000838 01a8           1384 	mov	r1,r21
+                        1385 --153:         s0 = SHA512_ROTR(a,28u) ^ SHA512_ROTR(a,34u) ^ SHA512_ROTR(a,39u);
+                        1386 --line153
+                        1387 ..lin.68620a30..d83f03e2.0_50::
+                        1388 .LDWlin50:
+0000083a 1208           1389 	mov	r18,r1
+0000083c 9c0a           1390 	shr	28,r1
+0000083e 1310           1391 	mov	r19,r2
+00000840 c412           1392 	shl	4,r2
+00000842 0209           1393 	or	r2,r1
+00000844 630f2500       1394 	st.w	r1,36[sp]
+00000848 1308           1395 	mov	r19,r1
+0000084a 9c0a           1396 	shr	28,r1
+0000084c 630f2900       1397 	st.w	r1,40[sp]
+00000850 a30749720000   1398 	ld.dw	36[sp],r14
+00000856 1210           1399 	mov	r18,r2
+00000858 c412           1400 	shl	4,r2
+0000085a 63072900       1401 	st.w	zero,40[sp]
+0000085e a3074f710000   1402 	st.dw	r14,20[sp]
+00000864 230f1500       1403 	ld.w	20[sp],r1
+00000868 630f1d00       1404 	st.w	r1,28[sp]
+0000086c 230f1900       1405 	ld.w	24[sp],r1
+00000870 0209           1406 	or	r2,r1
+00000872 630f2100       1407 	st.w	r1,32[sp]
+00000876 a307c9710000   1408 	ld.dw	28[sp],r14
+0000087c 1308           1409 	mov	r19,r1
+0000087e 820a           1410 	shr	2,r1
+00000880 630f2500       1411 	st.w	r1,36[sp]
+00000884 1210           1412 	mov	r18,r2
+00000886 8212           1413 	shr	2,r2
+00000888 a3074f710000   1414 	st.dw	r14,20[sp]
+0000088e a30749720000   1415 	ld.dw	36[sp],r14
+00000894 1208           1416 	mov	r18,r1
+00000896 de0a           1417 	shl	30,r1
+00000898 63072900       1418 	st.w	zero,40[sp]
+0000089c a307cf700000   1419 	st.dw	r14,12[sp]
+000008a2 237f0d00       1420 	ld.w	12[sp],r15
+000008a6 1370           1421 	mov	r19,r14
+000008a8 de72           1422 	shl	30,r14
+000008aa 0271           1423 	or	r2,r14
+000008ac 23171500       1424 	ld.w	20[sp],r2
+000008b0 0179           1425 	or	r1,r15
+000008b2 230f1900       1426 	ld.w	24[sp],r1
+000008b6 2f11           1427 	xor	r15,r2
+000008b8 63171d00       1428 	st.w	r2,28[sp]
+000008bc 2e09           1429 	xor	r14,r1
+000008be 630f2100       1430 	st.w	r1,32[sp]
+000008c2 a307c9710000   1431 	ld.dw	28[sp],r14
+000008c8 1308           1432 	mov	r19,r1
+
+                                                                      Page 25
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000008ca 870a           1433 	shr	7,r1
+000008cc 630f2500       1434 	st.w	r1,36[sp]
+000008d0 1210           1435 	mov	r18,r2
+000008d2 8712           1436 	shr	7,r2
+000008d4 a3074f710000   1437 	st.dw	r14,20[sp]
+000008da a30749720000   1438 	ld.dw	36[sp],r14
+000008e0 1208           1439 	mov	r18,r1
+000008e2 d90a           1440 	shl	25,r1
+000008e4 a307cf700000   1441 	st.dw	r14,12[sp]
+000008ea 237f0d00       1442 	ld.w	12[sp],r15
+000008ee 1370           1443 	mov	r19,r14
+000008f0 d972           1444 	shl	25,r14
+000008f2 0271           1445 	or	r2,r14
+000008f4 23171500       1446 	ld.w	20[sp],r2
+000008f8 0179           1447 	or	r1,r15
+000008fa 230f1900       1448 	ld.w	24[sp],r1
+000008fe 2279           1449 	xor	r2,r15
+00000900 0e10           1450 	mov	r14,r2
+00000902 0f70           1451 	mov	r15,r14
+00000904 2209           1452 	xor	r2,r1
+00000906 0178           1453 	mov	r1,r15
+                        1454 --154:         maj = (a & b) ^ (a & c) ^ (b & c);
+                        1455 --line154
+                        1456 ..lin.68620a30..d83f03e2.0_51::
+                        1457 .LDWlin51:
+00000908 1208           1458 	mov	r18,r1
+0000090a 4a09           1459 	and	r10,r1
+0000090c 630f2500       1460 	st.w	r1,36[sp]
+00000910 1308           1461 	mov	r19,r1
+00000912 4b09           1462 	and	r11,r1
+00000914 630f2900       1463 	st.w	r1,40[sp]
+00000918 e6476039       1464 	pushsp	r6-r7
+0000091c a307c9320000   1465 	ld.dw	44[sp],r6
+00000922 a307cf310000   1466 	st.dw	r6,28[sp]
+00000928 e6676039       1467 	popsp	r6-r7
+0000092c 1208           1468 	mov	r18,r1
+0000092e 4809           1469 	and	r8,r1
+00000930 630f2500       1470 	st.w	r1,36[sp]
+00000934 1308           1471 	mov	r19,r1
+00000936 4909           1472 	and	r9,r1
+00000938 630f2900       1473 	st.w	r1,40[sp]
+0000093c 23171500       1474 	ld.w	20[sp],r2
+00000940 230f2500       1475 	ld.w	36[sp],r1
+00000944 2209           1476 	xor	r2,r1
+00000946 630f1d00       1477 	st.w	r1,28[sp]
+0000094a 230f1900       1478 	ld.w	24[sp],r1
+0000094e 23172900       1479 	ld.w	40[sp],r2
+00000952 2209           1480 	xor	r2,r1
+00000954 630f2100       1481 	st.w	r1,32[sp]
+00000958 0a08           1482 	mov	r10,r1
+0000095a 4809           1483 	and	r8,r1
+0000095c 630f2500       1484 	st.w	r1,36[sp]
+00000960 0b08           1485 	mov	r11,r1
+00000962 4909           1486 	and	r9,r1
+00000964 630f2900       1487 	st.w	r1,40[sp]
+00000968 23171d00       1488 	ld.w	28[sp],r2
+0000096c 230f2500       1489 	ld.w	36[sp],r1
+00000970 2209           1490 	xor	r2,r1
+00000972 630f3500       1491 	st.w	r1,52[sp]
+00000976 230f2100       1492 	ld.w	32[sp],r1
+0000097a 23172900       1493 	ld.w	40[sp],r2
+
+                                                                      Page 26
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+0000097e 2209           1494 	xor	r2,r1
+00000980 630f3900       1495 	st.w	r1,56[sp]
+                        1496 --155:         t2 = s0 + maj;
+                        1497 --line155
+                        1498 ..lin.68620a30..d83f03e2.0_52::
+                        1499 .LDWlin52:
+00000984 230f3500       1500 	ld.w	52[sp],r1
+00000988 23173900       1501 	ld.w	56[sp],r2
+0000098c ce09           1502 	add	r14,r1
+0000098e 630f2d00       1503 	st.w	r1,44[sp]
+00000992 ef17a20b       1504 	adfl	r15,r2,r1
+00000996 630f3100       1505 	st.w	r1,48[sp]
+                        1506 --156:         h=g; g=f; f=e; e=d+t1; d=c; c=b; b=a; a=t1+t2;
+0000099a 1ab0           1507 	mov	r26,r22
+0000099c 1bb8           1508 	mov	r27,r23
+0000099e 1cd0           1509 	mov	r28,r26
+000009a0 1dd8           1510 	mov	r29,r27
+000009a2 10e0           1511 	mov	r16,r28
+000009a4 11e8           1512 	mov	r17,r29
+000009a6 1808           1513 	mov	r24,r1
+000009a8 d409           1514 	add	r20,r1
+000009aa 0180           1515 	mov	r1,r16
+000009ac f9afa20b       1516 	adfl	r25,r21,r1
+000009b0 0188           1517 	mov	r1,r17
+000009b2 08c0           1518 	mov	r8,r24
+000009b4 09c8           1519 	mov	r9,r25
+000009b6 0a40           1520 	mov	r10,r8
+000009b8 0b48           1521 	mov	r11,r9
+000009ba 1250           1522 	mov	r18,r10
+000009bc 1358           1523 	mov	r19,r11
+000009be 230f2d00       1524 	ld.w	44[sp],r1
+000009c2 23173100       1525 	ld.w	48[sp],r2
+000009c6 d409           1526 	add	r20,r1
+000009c8 0190           1527 	mov	r1,r18
+000009ca f517a20b       1528 	adfl	r21,r2,r1
+000009ce 0198           1529 	mov	r1,r19
+000009d0 230f0100       1530 	ld.w	0[sp],r1
+000009d4 410a           1531 	add	1,r1
+000009d6 630f0100       1532 	st.w	r1,0[sp]
+                        1533 .L941:
+000009da 230f0100       1534 	ld.w	0[sp],r1
+000009de 0106b0ff       1535 	addi	-80,r1,zero
+000009e2 f90783fc*      1536 	bnl	.L940
+                        1537 --157:     }
+                        1538 --158:     state[0]+=a; state[1]+=b; state[2]+=c; state[3]+=d;
+                        1539 --line158
+                        1540 ..lin.68620a30..d83f03e2.0_53::
+                        1541 .LDWlin53:
+000009e6 230f0500       1542 	ld.w	4[sp],r1
+000009ea e6476039       1543 	pushsp	r6-r7
+000009ee a10709300000   1544 	ld.dw	0[r1],r6
+000009f4 a3074f320000   1545 	st.dw	r6,36[sp]
+000009fa 230f2500       1546 	ld.w	36[sp],r1
+000009fe d209           1547 	add	r18,r1
+00000a00 630f2d00       1548 	st.w	r1,44[sp]
+00000a04 230f2900       1549 	ld.w	40[sp],r1
+00000a08 e19fa20b       1550 	adfl	r1,r19,r1
+00000a0c 630f3100       1551 	st.w	r1,48[sp]
+00000a10 a307c9320000   1552 	ld.dw	44[sp],r6
+00000a16 230f0d00       1553 	ld.w	12[sp],r1
+00000a1a a1070f300000   1554 	st.dw	r6,0[r1]
+
+                                                                      Page 27
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000a20 e6676039       1555 	popsp	r6-r7
+                        1556 --line158
+                        1557 ..lin.68620a30..d83f03e2.0_54::
+                        1558 .LDWlin54:
+00000a24 230f0500       1559 	ld.w	4[sp],r1
+00000a28 e6476039       1560 	pushsp	r6-r7
+00000a2c a10789300000   1561 	ld.dw	8[r1],r6
+00000a32 a3074f320000   1562 	st.dw	r6,36[sp]
+00000a38 230f2500       1563 	ld.w	36[sp],r1
+00000a3c ca09           1564 	add	r10,r1
+00000a3e 630f2d00       1565 	st.w	r1,44[sp]
+00000a42 230f2900       1566 	ld.w	40[sp],r1
+00000a46 e15fa20b       1567 	adfl	r1,r11,r1
+00000a4a 630f3100       1568 	st.w	r1,48[sp]
+00000a4e a307c9320000   1569 	ld.dw	44[sp],r6
+00000a54 230f0d00       1570 	ld.w	12[sp],r1
+00000a58 a1078f300000   1571 	st.dw	r6,8[r1]
+00000a5e e6676039       1572 	popsp	r6-r7
+                        1573 --line158
+                        1574 ..lin.68620a30..d83f03e2.0_55::
+                        1575 .LDWlin55:
+00000a62 230f0500       1576 	ld.w	4[sp],r1
+00000a66 e6476039       1577 	pushsp	r6-r7
+00000a6a a10709310000   1578 	ld.dw	16[r1],r6
+00000a70 a3074f320000   1579 	st.dw	r6,36[sp]
+00000a76 230f2500       1580 	ld.w	36[sp],r1
+00000a7a c809           1581 	add	r8,r1
+00000a7c 630f2d00       1582 	st.w	r1,44[sp]
+00000a80 230f2900       1583 	ld.w	40[sp],r1
+00000a84 e14fa20b       1584 	adfl	r1,r9,r1
+00000a88 630f3100       1585 	st.w	r1,48[sp]
+00000a8c a307c9320000   1586 	ld.dw	44[sp],r6
+00000a92 230f0d00       1587 	ld.w	12[sp],r1
+00000a96 a1070f310000   1588 	st.dw	r6,16[r1]
+00000a9c e6676039       1589 	popsp	r6-r7
+                        1590 --line158
+                        1591 ..lin.68620a30..d83f03e2.0_56::
+                        1592 .LDWlin56:
+00000aa0 230f0500       1593 	ld.w	4[sp],r1
+00000aa4 e6476039       1594 	pushsp	r6-r7
+00000aa8 a10789310000   1595 	ld.dw	24[r1],r6
+00000aae a3074f320000   1596 	st.dw	r6,36[sp]
+00000ab4 230f2500       1597 	ld.w	36[sp],r1
+00000ab8 d809           1598 	add	r24,r1
+00000aba 630f2d00       1599 	st.w	r1,44[sp]
+00000abe 230f2900       1600 	ld.w	40[sp],r1
+00000ac2 e1cfa20b       1601 	adfl	r1,r25,r1
+00000ac6 630f3100       1602 	st.w	r1,48[sp]
+00000aca a307c9320000   1603 	ld.dw	44[sp],r6
+00000ad0 230f0d00       1604 	ld.w	12[sp],r1
+00000ad4 a1078f310000   1605 	st.dw	r6,24[r1]
+00000ada e6676039       1606 	popsp	r6-r7
+                        1607 --159:     state[4]+=e; state[5]+=f; state[6]+=g; state[7]+=h;
+                        1608 --line159
+                        1609 ..lin.68620a30..d83f03e2.0_57::
+                        1610 .LDWlin57:
+00000ade 230f0500       1611 	ld.w	4[sp],r1
+00000ae2 e6476039       1612 	pushsp	r6-r7
+00000ae6 a10709320000   1613 	ld.dw	32[r1],r6
+00000aec a3074f320000   1614 	st.dw	r6,36[sp]
+00000af2 230f2500       1615 	ld.w	36[sp],r1
+
+                                                                      Page 28
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000af6 d009           1616 	add	r16,r1
+00000af8 630f2d00       1617 	st.w	r1,44[sp]
+00000afc 230f2900       1618 	ld.w	40[sp],r1
+00000b00 e18fa20b       1619 	adfl	r1,r17,r1
+00000b04 630f3100       1620 	st.w	r1,48[sp]
+00000b08 a307c9320000   1621 	ld.dw	44[sp],r6
+00000b0e 230f0d00       1622 	ld.w	12[sp],r1
+00000b12 a1070f320000   1623 	st.dw	r6,32[r1]
+00000b18 e6676039       1624 	popsp	r6-r7
+                        1625 --line159
+                        1626 ..lin.68620a30..d83f03e2.0_58::
+                        1627 .LDWlin58:
+00000b1c 230f0500       1628 	ld.w	4[sp],r1
+00000b20 e6476039       1629 	pushsp	r6-r7
+00000b24 a10789320000   1630 	ld.dw	40[r1],r6
+00000b2a a3074f320000   1631 	st.dw	r6,36[sp]
+00000b30 230f2500       1632 	ld.w	36[sp],r1
+00000b34 dc09           1633 	add	r28,r1
+00000b36 630f2d00       1634 	st.w	r1,44[sp]
+00000b3a 230f2900       1635 	ld.w	40[sp],r1
+00000b3e e1efa20b       1636 	adfl	r1,r29,r1
+00000b42 630f3100       1637 	st.w	r1,48[sp]
+00000b46 a307c9320000   1638 	ld.dw	44[sp],r6
+00000b4c 230f0d00       1639 	ld.w	12[sp],r1
+00000b50 a1078f320000   1640 	st.dw	r6,40[r1]
+00000b56 e6676039       1641 	popsp	r6-r7
+                        1642 --line159
+                        1643 ..lin.68620a30..d83f03e2.0_59::
+                        1644 .LDWlin59:
+00000b5a 230f0500       1645 	ld.w	4[sp],r1
+00000b5e e6476039       1646 	pushsp	r6-r7
+00000b62 a10709330000   1647 	ld.dw	48[r1],r6
+00000b68 a3074f320000   1648 	st.dw	r6,36[sp]
+00000b6e 230f2500       1649 	ld.w	36[sp],r1
+00000b72 da09           1650 	add	r26,r1
+00000b74 630f2d00       1651 	st.w	r1,44[sp]
+00000b78 230f2900       1652 	ld.w	40[sp],r1
+00000b7c e1dfa20b       1653 	adfl	r1,r27,r1
+00000b80 630f3100       1654 	st.w	r1,48[sp]
+00000b84 a307c9320000   1655 	ld.dw	44[sp],r6
+00000b8a 230f0d00       1656 	ld.w	12[sp],r1
+00000b8e a1070f330000   1657 	st.dw	r6,48[r1]
+00000b94 e6676039       1658 	popsp	r6-r7
+                        1659 --line159
+                        1660 ..lin.68620a30..d83f03e2.0_60::
+                        1661 .LDWlin60:
+00000b98 230f0500       1662 	ld.w	4[sp],r1
+00000b9c e6476039       1663 	pushsp	r6-r7
+00000ba0 a10789330000   1664 	ld.dw	56[r1],r6
+00000ba6 a3074f320000   1665 	st.dw	r6,36[sp]
+00000bac 230f2500       1666 	ld.w	36[sp],r1
+00000bb0 d609           1667 	add	r22,r1
+00000bb2 630f2d00       1668 	st.w	r1,44[sp]
+00000bb6 230f2900       1669 	ld.w	40[sp],r1
+00000bba e1bfa20b       1670 	adfl	r1,r23,r1
+00000bbe 630f3100       1671 	st.w	r1,48[sp]
+00000bc2 a307c9320000   1672 	ld.dw	44[sp],r6
+00000bc8 230f0d00       1673 	ld.w	12[sp],r1
+00000bcc a1078f330000   1674 	st.dw	r6,56[r1]
+00000bd2 e6676039       1675 	popsp	r6-r7
+                        1676 --160: }
+
+                                                                      Page 29
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        1677 --	    .ef
+                        1678 .LDW32:
+                        1679 --line160
+                        1680 ..lin.68620a30..d83f03e2.0_61::
+                        1681 .LDWlin61:
+00000bd6 23ffe502       1682 	ld.w	740[sp],lp
+00000bda 23efbd02       1683 	ld.w	700[sp],r29
+00000bde 23e7c102       1684 	ld.w	704[sp],r28
+00000be2 23dfc502       1685 	ld.w	708[sp],r27
+00000be6 23d7c902       1686 	ld.w	712[sp],r26
+00000bea 23cfcd02       1687 	ld.w	716[sp],r25
+00000bee 23c7d102       1688 	ld.w	720[sp],r24
+00000bf2 23bfd502       1689 	ld.w	724[sp],r23
+00000bf6 23b7d902       1690 	ld.w	728[sp],r22
+00000bfa 23afdd02       1691 	ld.w	732[sp],r21
+00000bfe 23a7e102       1692 	ld.w	736[sp],r20
+00000c02 031ee802       1693 	addi	744,sp,sp
+                        1694 .L1294:
+                        1695 	.jumptype return
+00000c06 7f00           1696 	jmp	[lp]
+                        1697 --line160
+                        1698 ..lin.68620a30..d83f03e2.0_62::
+                        1699 	.type	_sha512_block,@function
+                        1700 	.size	_sha512_block,.-_sha512_block
+                        1701 	.type	_sha512_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+                        1702 	.size	_sha512_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_sha512_block..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                        1703 	.align	2
+                        1704 --_w	60[sp]	local
+                        1705 --_a	r18	local
+                        1706 --_b	r10	local
+                        1707 --_c	r8	local
+                        1708 --_d	r24	local
+                        1709 --_e	r16	local
+                        1710 --_f	r28	local
+                        1711 --_g	r26	local
+                        1712 --_h	r22	local
+                        1713 --_s0	r14	local
+                        1714 --_s1	r12	local
+                        1715 --_ch	ep	local
+                        1716 --_maj	52[sp]	local
+                        1717 --_t1	r20	local
+                        1718 --_t2	44[sp]	local
+                        1719 --_i	0[sp]	local
+                        1720 
+                        1721 --_state	4[sp]	param
+                        1722 --_block	8[sp]	param
+                        1723 
+                        1724 	.section ".bss","awb"
+                        1725 .L1142:
+                        1726 	.type	.L1142,@object
+                        1727 	.size	.L1142,0
+                        1728 	.section ".rosdata","a"
+                        1729 	.align	8
+                        1730 	.global	_sha512_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                        1731 _sha512_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+00000100 22ae28d7       1732 _sha512_k:	.byte	34,174,40,215
+00000104 982f8a42       1733 	.byte	152,47,138,66
+00000108 cd65ef23       1734 	.byte	205,101,239,35
+0000010c 91443771       1735 	.byte	145,68,55,113
+00000110 2f3b4dec       1736 	.byte	47,59,77,236
+00000114 cffbc0b5       1737 	.byte	207,251,192,181
+
+                                                                      Page 30
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000118 bcdb8981       1738 	.byte	188,219,137,129
+0000011c a5dbb5e9       1739 	.byte	165,219,181,233
+00000120 38b548f3       1740 	.byte	56,181,72,243
+00000124 5bc25639       1741 	.byte	91,194,86,57
+00000128 19d005b6       1742 	.byte	25,208,5,182
+0000012c f111f159       1743 	.byte	241,17,241,89
+00000130 9b4f19af       1744 	.byte	155,79,25,175
+00000134 a4823f92       1745 	.byte	164,130,63,146
+00000138 18816dda       1746 	.byte	24,129,109,218
+0000013c d55e1cab       1747 	.byte	213,94,28,171
+00000140 420203a3       1748 	.byte	66,2,3,163
+00000144 98aa07d8       1749 	.byte	152,170,7,216
+00000148 be6f7045       1750 	.byte	190,111,112,69
+0000014c 015b8312       1751 	.byte	1,91,131,18
+00000150 8cb2e44e       1752 	.byte	140,178,228,78
+00000154 be853124       1753 	.byte	190,133,49,36
+00000158 e2b4ffd5       1754 	.byte	226,180,255,213
+0000015c c37d0c55       1755 	.byte	195,125,12,85
+00000160 6f897bf2       1756 	.byte	111,137,123,242
+00000164 745dbe72       1757 	.byte	116,93,190,114
+00000168 b196163b       1758 	.byte	177,150,22,59
+0000016c feb1de80       1759 	.byte	254,177,222,128
+00000170 3512c725       1760 	.byte	53,18,199,37
+00000174 a706dc9b       1761 	.byte	167,6,220,155
+00000178 942669cf       1762 	.byte	148,38,105,207
+0000017c 74f19bc1       1763 	.byte	116,241,155,193
+00000180 d24af19e       1764 	.byte	210,74,241,158
+00000184 c1699be4       1765 	.byte	193,105,155,228
+00000188 e3254f38       1766 	.byte	227,37,79,56
+0000018c 8647beef       1767 	.byte	134,71,190,239
+00000190 b5d58c8b       1768 	.byte	181,213,140,139
+00000194 c69dc10f       1769 	.byte	198,157,193,15
+00000198 659cac77       1770 	.byte	101,156,172,119
+0000019c cca10c24       1771 	.byte	204,161,12,36
+000001a0 75022b59       1772 	.byte	117,2,43,89
+000001a4 6f2ce92d       1773 	.byte	111,44,233,45
+000001a8 83e4a66e       1774 	.byte	131,228,166,110
+000001ac aa84744a       1775 	.byte	170,132,116,74
+000001b0 d4fb41bd       1776 	.byte	212,251,65,189
+000001b4 dca9b05c       1777 	.byte	220,169,176,92
+000001b8 b5531183       1778 	.byte	181,83,17,131
+000001bc da88f976       1779 	.byte	218,136,249,118
+000001c0 abdf66ee       1780 	.byte	171,223,102,238
+000001c4 52513e98       1781 	.byte	82,81,62,152
+000001c8 1032b42d       1782 	.byte	16,50,180,45
+000001cc 6dc631a8       1783 	.byte	109,198,49,168
+000001d0 3f21fb98       1784 	.byte	63,33,251,152
+000001d4 c82703b0       1785 	.byte	200,39,3,176
+000001d8 e40eefbe       1786 	.byte	228,14,239,190
+000001dc c77f59bf       1787 	.byte	199,127,89,191
+000001e0 c28fa83d       1788 	.byte	194,143,168,61
+000001e4 f30be0c6       1789 	.byte	243,11,224,198
+000001e8 25a70a93       1790 	.byte	37,167,10,147
+000001ec 4791a7d5       1791 	.byte	71,145,167,213
+000001f0 6f8203e0       1792 	.byte	111,130,3,224
+000001f4 5163ca06       1793 	.byte	81,99,202,6
+000001f8 706e0e0a       1794 	.byte	112,110,14,10
+000001fc 67292914       1795 	.byte	103,41,41,20
+00000200 fc2fd246       1796 	.byte	252,47,210,70
+00000204 850ab727       1797 	.byte	133,10,183,39
+00000208 26c9265c       1798 	.byte	38,201,38,92
+
+                                                                      Page 31
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+0000020c 38211b2e       1799 	.byte	56,33,27,46
+00000210 ed2ac45a       1800 	.byte	237,42,196,90
+00000214 fc6d2c4d       1801 	.byte	252,109,44,77
+00000218 dfb3959d       1802 	.byte	223,179,149,157
+0000021c 130d3853       1803 	.byte	19,13,56,83
+00000220 de63af8b       1804 	.byte	222,99,175,139
+00000224 54730a65       1805 	.byte	84,115,10,101
+00000228 a8b2773c       1806 	.byte	168,178,119,60
+0000022c bb0a6a76       1807 	.byte	187,10,106,118
+00000230 e6aeed47       1808 	.byte	230,174,237,71
+00000234 2ec9c281       1809 	.byte	46,201,194,129
+00000238 3b358214       1810 	.byte	59,53,130,20
+0000023c 852c7292       1811 	.byte	133,44,114,146
+00000240 6403f14c       1812 	.byte	100,3,241,76
+00000244 a1e8bfa2       1813 	.byte	161,232,191,162
+00000248 013042bc       1814 	.byte	1,48,66,188
+0000024c 4b661aa8       1815 	.byte	75,102,26,168
+00000250 9197f8d0       1816 	.byte	145,151,248,208
+00000254 708b4bc2       1817 	.byte	112,139,75,194
+00000258 30be5406       1818 	.byte	48,190,84,6
+0000025c a3516cc7       1819 	.byte	163,81,108,199
+00000260 1852efd6       1820 	.byte	24,82,239,214
+00000264 19e892d1       1821 	.byte	25,232,146,209
+00000268 10a96555       1822 	.byte	16,169,101,85
+0000026c 240699d6       1823 	.byte	36,6,153,214
+00000270 2a207157       1824 	.byte	42,32,113,87
+00000274 85350ef4       1825 	.byte	133,53,14,244
+00000278 b8d1bb32       1826 	.byte	184,209,187,50
+0000027c 70a06a10       1827 	.byte	112,160,106,16
+00000280 c8d0d2b8       1828 	.byte	200,208,210,184
+00000284 16c1a419       1829 	.byte	22,193,164,25
+00000288 53ab4151       1830 	.byte	83,171,65,81
+0000028c 086c371e       1831 	.byte	8,108,55,30
+00000290 99eb8edf       1832 	.byte	153,235,142,223
+00000294 4c774827       1833 	.byte	76,119,72,39
+00000298 a8489be1       1834 	.byte	168,72,155,225
+0000029c b5bcb034       1835 	.byte	181,188,176,52
+000002a0 635ac9c5       1836 	.byte	99,90,201,197
+000002a4 b30c1c39       1837 	.byte	179,12,28,57
+000002a8 cb8a41e3       1838 	.byte	203,138,65,227
+000002ac 4aaad84e       1839 	.byte	74,170,216,78
+000002b0 73e36377       1840 	.byte	115,227,99,119
+000002b4 4fca9c5b       1841 	.byte	79,202,156,91
+000002b8 a3b8b2d6       1842 	.byte	163,184,178,214
+000002bc f36f2e68       1843 	.byte	243,111,46,104
+000002c0 fcb2ef5d       1844 	.byte	252,178,239,93
+000002c4 ee828f74       1845 	.byte	238,130,143,116
+000002c8 602f1743       1846 	.byte	96,47,23,67
+000002cc 6f63a578       1847 	.byte	111,99,165,120
+000002d0 72abf0a1       1848 	.byte	114,171,240,161
+000002d4 1478c884       1849 	.byte	20,120,200,132
+000002d8 ec39641a       1850 	.byte	236,57,100,26
+000002dc 0802c78c       1851 	.byte	8,2,199,140
+000002e0 281e6323       1852 	.byte	40,30,99,35
+000002e4 faffbe90       1853 	.byte	250,255,190,144
+000002e8 e9bd82de       1854 	.byte	233,189,130,222
+000002ec eb6c50a4       1855 	.byte	235,108,80,164
+000002f0 1579c6b2       1856 	.byte	21,121,198,178
+000002f4 f7a3f9be       1857 	.byte	247,163,249,190
+000002f8 2b5372e3       1858 	.byte	43,83,114,227
+000002fc f27871c6       1859 	.byte	242,120,113,198
+
+                                                                      Page 32
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000300 9c6126ea       1860 	.byte	156,97,38,234
+00000304 ce3e27ca       1861 	.byte	206,62,39,202
+00000308 07c2c021       1862 	.byte	7,194,192,33
+0000030c c7b886d1       1863 	.byte	199,184,134,209
+00000310 1eebe0cd       1864 	.byte	30,235,224,205
+00000314 d67ddaea       1865 	.byte	214,125,218,234
+00000318 78d16eee       1866 	.byte	120,209,110,238
+0000031c 7f4f7df5       1867 	.byte	127,79,125,245
+00000320 ba6f1772       1868 	.byte	186,111,23,114
+00000324 aa67f006       1869 	.byte	170,103,240,6
+00000328 a698c8a2       1870 	.byte	166,152,200,162
+0000032c c57d630a       1871 	.byte	197,125,99,10
+00000330 ae0df9be       1872 	.byte	174,13,249,190
+00000334 04983f11       1873 	.byte	4,152,63,17
+00000338 1b471c13       1874 	.byte	27,71,28,19
+0000033c 350b711b       1875 	.byte	53,11,113,27
+00000340 847d0423       1876 	.byte	132,125,4,35
+00000344 f577db28       1877 	.byte	245,119,219,40
+00000348 9324c740       1878 	.byte	147,36,199,64
+0000034c 7babca32       1879 	.byte	123,171,202,50
+00000350 bcbec915       1880 	.byte	188,190,201,21
+00000354 0abe9e3c       1881 	.byte	10,190,158,60
+00000358 4c0d109c       1882 	.byte	76,13,16,156
+0000035c c4671d43       1883 	.byte	196,103,29,67
+00000360 b6423ecb       1884 	.byte	182,66,62,203
+00000364 bed4c54c       1885 	.byte	190,212,197,76
+00000368 2a7e65fc       1886 	.byte	42,126,101,252
+0000036c 9c297f59       1887 	.byte	156,41,127,89
+00000370 ecfad63a       1888 	.byte	236,250,214,58
+00000374 ab6fcb5f       1889 	.byte	171,111,203,95
+00000378 1758474a       1890 	.byte	23,88,71,74
+0000037c 8c19446c       1891 	.byte	140,25,68,108
+                        1892 	.type	_sha512_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@object
+                        1893 	.size	_sha512_k..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,640
+                        1894 	.type	_sha512_k,@object
+                        1895 	.size	_sha512_k,640
+                        1896 	.section ".ghcalltbl",""
+00000018 00000000*      1897 .L1293:	.word	.L1292
+                        1898 	.type	.L1293,@object
+                        1899 	.size	.L1293,4
+                        1900 	.section ".ghrettbl",""
+00000018 00000000*      1901 .L1295:	.word	.L1294
+                        1902 	.type	.L1295,@object
+                        1903 	.size	.L1295,4
+                        1904 	.data
+                        1905 	.text
+                        1906 
+                        1907 
+                        1908 --162: unsigned long icum_hash_digest_size(icum_hash_algorithm algorithm)
+                        1909 	.align	2
+                        1910 	.align	2
+                        1911 	.align	2
+                        1912 ..gh.f.a.2.e.7:
+                        1913 	.type	..gh.f.a.2.e.7,@object
+                        1914 	.size	..gh.f.a.2.e.7,0
+                        1915 	.global	_icum_hash_digest_size
+                        1916 _icum_hash_digest_size:
+00000c08 0608           1917 	mov	r6,r1
+                        1918 --	    .bf
+                        1919 .LDW42:
+                        1920 --163: {
+
+                                                                      Page 33
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        1921 --164:     switch (algorithm) {
+00000c0a 610a           1922 	cmp	1,r1
+00000c0c c115*          1923 	bl	.L1303
+00000c0e f205*          1924 	be	.L1299
+00000c10 630a           1925 	cmp	3,r1
+00000c12 810d*          1926 	bl	.L1300
+00000c14 a20d*          1927 	be	.L1301
+00000c16 640a           1928 	cmp	4,r1
+00000c18 b20d*          1929 	be	.L1302
+00000c1a d50d*          1930 	br	.L1303
+                        1931 .L1299:
+                        1932 --165:     case ICUM_HASH_SHA1: return 20ul;
+                        1933 --line165
+                        1934 ..lin.68620a30..198f434e.0_63::
+                        1935 .LDWlin63:
+00000c1c 20561400       1936 	movea	20,zero,r10
+00000c20 b50d*          1937 	br	.L1296
+                        1938 .L1300:
+                        1939 --166:     case ICUM_HASH_SHA256: return 32ul;
+                        1940 --line166
+                        1941 ..lin.68620a30..198f434e.0_64::
+                        1942 .LDWlin64:
+00000c22 20562000       1943 	movea	32,zero,r10
+00000c26 850d*          1944 	br	.L1296
+                        1945 .L1301:
+                        1946 --167:     case ICUM_HASH_SHA384: return 48ul;
+                        1947 --line167
+                        1948 ..lin.68620a30..198f434e.0_65::
+                        1949 .LDWlin65:
+00000c28 20563000       1950 	movea	48,zero,r10
+00000c2c d505*          1951 	br	.L1296
+                        1952 .L1302:
+                        1953 --168:     case ICUM_HASH_SHA512: return 64ul;
+                        1954 --line168
+                        1955 ..lin.68620a30..198f434e.0_66::
+                        1956 .LDWlin66:
+00000c2e 20564000       1957 	movea	64,zero,r10
+00000c32 a505*          1958 	br	.L1296
+                        1959 .L1303:
+                        1960 --169:     default: return 0ul;
+                        1961 --line169
+                        1962 ..lin.68620a30..198f434e.0_67::
+                        1963 .LDWlin67:
+00000c34 0052           1964 	mov	0,r10
+                        1965 .L1296:
+                        1966 --	    .ef
+                        1967 .LDW52:
+                        1968 .L1385:
+                        1969 	.jumptype return
+00000c36 7f00           1970 	jmp	[lp]
+                        1971 --line169
+                        1972 ..lin.68620a30..198f434e.0_68::
+                        1973 	.type	_icum_hash_digest_size,@function
+                        1974 	.size	_icum_hash_digest_size,.-_icum_hash_digest_size
+                        1975 	.align	2
+                        1976 
+                        1977 --_algorithm	r1	param
+                        1978 
+                        1979 	.section ".bss","awb"
+                        1980 .L1346:
+                        1981 	.type	.L1346,@object
+
+                                                                      Page 34
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        1982 	.size	.L1346,0
+                        1983 	.section ".ghrettbl",""
+0000001c 00000000*      1984 .L1386:	.word	.L1385
+                        1985 	.type	.L1386,@object
+                        1986 	.size	.L1386,4
+                        1987 	.data
+                        1988 	.text
+                        1989 
+                        1990 --170:     }
+                        1991 --171: }
+                        1992 
+                        1993 --173: int icum_hash_compute(icum_hash_algorithm algorithm,
+                        1994 	.align	2
+                        1995 	.align	2
+                        1996 	.align	2
+                        1997 ..gh.f.a.2.e.8:
+                        1998 	.type	..gh.f.a.2.e.8,@object
+                        1999 	.size	..gh.f.a.2.e.8,0
+                        2000 	.global	_icum_hash_compute
+                        2001 _icum_hash_compute:
+00000c38 031e6cfe       2002 	addi	-404,sp,sp
+00000c3c 63ff9101       2003 	st.w	lp,400[sp]
+00000c40 63a78d01       2004 	st.w	r20,396[sp]
+00000c44 63af8901       2005 	st.w	r21,392[sp]
+00000c48 63bf8101       2006 	st.w	r23,384[sp]
+00000c4c 63d77501       2007 	st.w	r26,372[sp]
+00000c50 63b78501       2008 	st.w	r22,388[sp]
+00000c54 63c77d01       2009 	st.w	r24,380[sp]
+00000c58 63cf7901       2010 	st.w	r25,376[sp]
+00000c5c 63df7101       2011 	st.w	r27,368[sp]
+00000c60 63e76d01       2012 	st.w	r28,364[sp]
+00000c64 63ef6901       2013 	st.w	r29,360[sp]
+00000c68 06d0           2014 	mov	r6,r26
+00000c6a 07a8           2015 	mov	r7,r21
+00000c6c 08b8           2016 	mov	r8,r23
+00000c6e 09a0           2017 	mov	r9,r20
+                        2018 --	    .bf
+                        2019 .LDW62:
+                        2020 --174:                       const unsigned char *message,
+                        2021 --175:                       unsigned long message_length,
+                        2022 --176:                       unsigned char *digest)
+                        2023 --177: {
+                        2024 --178:     unsigned long offset;
+                        2025 --179:     unsigned int remain, i, out_words;
+                        2026 --180:     unsigned char final_block[256];
+                        2027 --181:     uint32 s32[8];
+                        2028 --182:     icum_u64 s64[8];
+                        2029 --183:     unsigned long long bit_length;
+                        2030 --184:     unsigned long digest_size;
+                        2031 --186:     digest_size = icum_hash_digest_size(algorithm);
+00000c70 1a30           2032 	mov	r26,r6
+                        2033 .L2405:
+                        2034 	jarl	_icum_hash_digest_size,lp
+                        2034 <EXPANSION BEGIN>
+                        2034 jarl22 _icum_hash_digest_size , lp 
+00000c72 bfff96ff*      2034 <EXPANSION END>
+00000c76 63570100       2035 	st.w	r10,0[sp]
+                        2036 --187:     if ((digest_size == 0ul) || (digest == (unsigned char *)0)
+                        2037 --line187
+                        2038 ..lin.68620a30..56b3e31.0_69::
+                        2039 .LDWlin69:
+
+                                                                      Page 35
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000c7a 235f0100       2040 	ld.w	0[sp],r11
+00000c7e e059           2041 	cmp	zero,r11
+00000c80 f205*          2042 	be	.L1390
+00000c82 e0a1           2043 	cmp	zero,r20
+00000c84 d205*          2044 	be	.L1390
+                        2045 --line188
+                        2046 ..lin.68620a30..56b3e31.0_70::
+                        2047 .LDWlin70:
+00000c86 e0a9           2048 	cmp	zero,r21
+00000c88 ea05*          2049 	bne	.L1389
+00000c8a e0b9           2050 	cmp	zero,r23
+00000c8c c205*          2051 	be	.L1389
+                        2052 .L1390:
+                        2053 --188:         || ((message == (const unsigned char *)0) && (message_length != 0ul))) {
+                        2054 --189:         return 0;
+                        2055 --line189
+                        2056 ..lin.68620a30..56b3e31.0_71::
+                        2057 .LDWlin71:
+00000c8e 0052           2058 	mov	0,r10
+00000c90 8007e803*      2059 	br	.L1387
+                        2060 .L1389:
+                        2061 --190:     }
+                        2062 --191:     offset = 0ul;
+                        2063 --line191
+                        2064 ..lin.68620a30..56b3e31.0_72::
+                        2065 .LDWlin72:
+00000c94 00da           2066 	mov	0,r27
+                        2067 --192:     if ((algorithm == ICUM_HASH_SHA1) || (algorithm == ICUM_HASH_SHA256)) {
+00000c96 61d2           2068 	cmp	1,r26
+00000c98 c205*          2069 	be	.L1396
+00000c9a 62d2           2070 	cmp	2,r26
+00000c9c ea07b301*      2071 	bne	.L1395
+                        2072 .L1396:
+                        2073 --193:         if (algorithm == ICUM_HASH_SHA1) {
+                        2074 --line193
+                        2075 ..lin.68620a30..56b3e31.0_73::
+                        2076 .LDWlin73:
+00000ca0 61d2           2077 	cmp	1,r26
+00000ca2 ca1d*          2078 	bne	.L1398
+                        2079 --194:             s32[0]=0x67452301ul; s32[1]=0xefcdab89ul; s32[2]=0x98badcfeul;
+                        2080 --line194
+                        2081 ..lin.68620a30..56b3e31.0_74::
+                        2082 .LDWlin74:
+00000ca4 210601234567   2083 	mov	1732584193,r1
+00000caa 630f4900       2084 	st.w	r1,72[sp]
+                        2085 --line194
+                        2086 ..lin.68620a30..56b3e31.0_75::
+                        2087 .LDWlin75:
+00000cae 210689abcdef   2088 	mov	-271733879,r1
+00000cb4 630f4d00       2089 	st.w	r1,76[sp]
+                        2090 --line194
+                        2091 ..lin.68620a30..56b3e31.0_76::
+                        2092 .LDWlin76:
+00000cb8 2106fedcba98   2093 	mov	-1732584194,r1
+00000cbe 630f5100       2094 	st.w	r1,80[sp]
+                        2095 --195:             s32[3]=0x10325476ul; s32[4]=0xc3d2e1f0ul; out_words=5u;
+                        2096 --line195
+                        2097 ..lin.68620a30..56b3e31.0_77::
+                        2098 .LDWlin77:
+00000cc2 210676543210   2099 	mov	271733878,r1
+00000cc8 630f5500       2100 	st.w	r1,84[sp]
+
+                                                                      Page 36
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2101 --line195
+                        2102 ..lin.68620a30..56b3e31.0_78::
+                        2103 .LDWlin78:
+00000ccc 2106f0e1d2c3   2104 	mov	-1009589776,r1
+00000cd2 630f5900       2105 	st.w	r1,88[sp]
+                        2106 --line195
+                        2107 ..lin.68620a30..56b3e31.0_79::
+                        2108 .LDWlin79:
+00000cd6 05b2           2109 	mov	5,r22
+00000cd8 a52d*          2110 	br	.L1400
+                        2111 .L1398:
+                        2112 --196:         } else {
+                        2113 --197:             s32[0]=0x6a09e667ul; s32[1]=0xbb67ae85ul; s32[2]=0x3c6ef372ul; s32[3]=0xa54ff53aul;
+                        2114 --line197
+                        2115 ..lin.68620a30..56b3e31.0_80::
+                        2116 .LDWlin80:
+00000cda 210667e6096a   2117 	mov	1779033703,r1
+00000ce0 630f4900       2118 	st.w	r1,72[sp]
+                        2119 --line197
+                        2120 ..lin.68620a30..56b3e31.0_81::
+                        2121 .LDWlin81:
+00000ce4 210685ae67bb   2122 	mov	-1150833019,r1
+00000cea 630f4d00       2123 	st.w	r1,76[sp]
+                        2124 --line197
+                        2125 ..lin.68620a30..56b3e31.0_82::
+                        2126 .LDWlin82:
+00000cee 210672f36e3c   2127 	mov	1013904242,r1
+00000cf4 630f5100       2128 	st.w	r1,80[sp]
+                        2129 --line197
+                        2130 ..lin.68620a30..56b3e31.0_83::
+                        2131 .LDWlin83:
+00000cf8 21063af54fa5   2132 	mov	-1521486534,r1
+00000cfe 630f5500       2133 	st.w	r1,84[sp]
+                        2134 --198:             s32[4]=0x510e527ful; s32[5]=0x9b05688cul; s32[6]=0x1f83d9abul; s32[7]=0x5be0cd19ul; out_words=8u;
+                        2135 --line198
+                        2136 ..lin.68620a30..56b3e31.0_84::
+                        2137 .LDWlin84:
+00000d02 21067f520e51   2138 	mov	1359893119,r1
+00000d08 630f5900       2139 	st.w	r1,88[sp]
+                        2140 --line198
+                        2141 ..lin.68620a30..56b3e31.0_85::
+                        2142 .LDWlin85:
+00000d0c 21068c68059b   2143 	mov	-1694144372,r1
+00000d12 630f5d00       2144 	st.w	r1,92[sp]
+                        2145 --line198
+                        2146 ..lin.68620a30..56b3e31.0_86::
+                        2147 .LDWlin86:
+00000d16 2106abd9831f   2148 	mov	528734635,r1
+00000d1c 630f6100       2149 	st.w	r1,96[sp]
+                        2150 --line198
+                        2151 ..lin.68620a30..56b3e31.0_87::
+                        2152 .LDWlin87:
+00000d20 210619cde05b   2153 	mov	1541459225,r1
+00000d26 630f6500       2154 	st.w	r1,100[sp]
+                        2155 --line198
+                        2156 ..lin.68620a30..56b3e31.0_88::
+                        2157 .LDWlin88:
+00000d2a 08b2           2158 	mov	8,r22
+                        2159 .L1400:
+                        2160 --199:         }
+                        2161 --200:         while (message_length - offset >= 64ul) {
+
+                                                                      Page 37
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000d2c a515*          2162 	br	.L1401
+                        2163 .L1403:
+                        2164 --201:             if (algorithm == ICUM_HASH_SHA1) sha1_block(s32, message + offset);
+                        2165 --line201
+                        2166 ..lin.68620a30..56b3e31.0_89::
+                        2167 .LDWlin89:
+00000d2e 61d2           2168 	cmp	1,r26
+00000d30 8a0d*          2169 	bne	.L1404
+                        2170 --line201
+                        2171 ..lin.68620a30..56b3e31.0_90::
+                        2172 .LDWlin90:
+00000d32 1538           2173 	mov	r21,r7
+00000d34 db39           2174 	add	r27,r7
+00000d36 23364800       2175 	movea	72,sp,r6
+                        2176 .L2407:
+                        2177 	jarl	_sha1_block,lp
+                        2177 <EXPANSION BEGIN>
+                        2177 jarl22 _sha1_block , lp 
+00000d3a bfff7cf3*      2177 <EXPANSION END>
+00000d3e f505*          2178 	br	.L1406
+                        2179 .L1404:
+                        2180 --202:             else sha256_block(s32, message + offset);
+                        2181 --line202
+                        2182 ..lin.68620a30..56b3e31.0_91::
+                        2183 .LDWlin91:
+00000d40 1538           2184 	mov	r21,r7
+00000d42 db39           2185 	add	r27,r7
+00000d44 23364800       2186 	movea	72,sp,r6
+                        2187 .L2409:
+                        2188 	jarl	_sha256_block,lp
+                        2188 <EXPANSION BEGIN>
+                        2188 jarl22 _sha256_block , lp 
+00000d48 bfff06f5*      2188 <EXPANSION END>
+                        2189 .L1406:
+                        2190 --203:             offset += 64ul;
+                        2191 --line203
+                        2192 ..lin.68620a30..56b3e31.0_92::
+                        2193 .LDWlin92:
+00000d4c 1bde4000       2194 	addi	64,r27,r27
+                        2195 .L1401:
+00000d50 1708           2196 	mov	r23,r1
+00000d52 bb09           2197 	sub	r27,r1
+00000d54 0106c0ff       2198 	addi	-64,r1,zero
+00000d58 b1ed*          2199 	bl	.L1403
+                        2200 --204:         }
+                        2201 --205:         remain = (unsigned int)(message_length - offset);
+                        2202 --line205
+                        2203 ..lin.68620a30..56b3e31.0_93::
+                        2204 .LDWlin93:
+00000d5a 17e0           2205 	mov	r23,r28
+00000d5c bbe1           2206 	sub	r27,r28
+                        2207 --206:         for (i=0u;i<remain;++i) final_block[i]=message[offset+i];
+00000d5e 00ea           2208 	mov	0,r29
+00000d60 b50d*          2209 	br	.L1410
+                        2210 .L1409:
+                        2211 --line206
+                        2212 ..lin.68620a30..56b3e31.0_94::
+                        2213 .LDWlin94:
+00000d62 1d08           2214 	mov	r29,r1
+00000d64 db09           2215 	add	r27,r1
+00000d66 d509           2216 	add	r21,r1
+
+                                                                      Page 38
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000d68 810f0100       2217 	ld.bu	0[r1],r1
+00000d6c 23f66800       2218 	movea	104,sp,ep
+00000d70 ddf1           2219 	add	r29,ep
+00000d72 800b           2220 	sst.b	r1,0[ep]
+00000d74 41ea           2221 	add	1,r29
+                        2222 .L1410:
+00000d76 fce9           2223 	cmp	r28,r29
+00000d78 d1f5*          2224 	bl	.L1409
+                        2225 --207:         final_block[remain]=0x80u;
+                        2226 --line207
+                        2227 ..lin.68620a30..56b3e31.0_95::
+                        2228 .LDWlin95:
+00000d7a 23f66800       2229 	movea	104,sp,ep
+00000d7e dcf1           2230 	add	r28,ep
+00000d80 200e8000       2231 	movea	128,zero,r1
+00000d84 800b           2232 	sst.b	r1,0[ep]
+                        2233 --208:         if (remain >= 56u) {
+00000d86 1c06c8ff       2234 	addi	-56,r28,zero
+00000d8a c91d*          2235 	bnl	.L1411
+                        2236 --209:             for (i=remain+1u;i<128u;++i) final_block[i]=0u;
+                        2237 --line209
+                        2238 ..lin.68620a30..56b3e31.0_96::
+                        2239 .LDWlin96:
+00000d8c 1cee0100       2240 	addi	1,r28,r29
+00000d90 e505*          2241 	br	.L1416
+                        2242 .L1415:
+                        2243 --line209
+                        2244 ..lin.68620a30..56b3e31.0_97::
+                        2245 .LDWlin97:
+00000d92 23f66800       2246 	movea	104,sp,ep
+00000d96 ddf1           2247 	add	r29,ep
+00000d98 8003           2248 	sst.b	zero,0[ep]
+00000d9a 41ea           2249 	add	1,r29
+                        2250 .L1416:
+00000d9c 1d0680ff       2251 	addi	-128,r29,zero
+00000da0 99fd*          2252 	bnl	.L1415
+                        2253 --210:             if (algorithm == ICUM_HASH_SHA1) sha1_block(s32, final_block);
+                        2254 --line210
+                        2255 ..lin.68620a30..56b3e31.0_98::
+                        2256 .LDWlin98:
+00000da2 61d2           2257 	cmp	1,r26
+00000da4 8a0d*          2258 	bne	.L1417
+                        2259 --line210
+                        2260 ..lin.68620a30..56b3e31.0_99::
+                        2261 .LDWlin99:
+00000da6 23364800       2262 	movea	72,sp,r6
+00000daa 233e6800       2263 	movea	104,sp,r7
+                        2264 .L2411:
+                        2265 	jarl	_sha1_block,lp
+                        2265 <EXPANSION BEGIN>
+                        2265 jarl22 _sha1_block , lp 
+00000dae bfff08f3*      2265 <EXPANSION END>
+00000db2 f505*          2266 	br	.L1419
+                        2267 .L1417:
+                        2268 --211:             else sha256_block(s32, final_block);
+                        2269 --line211
+                        2270 ..lin.68620a30..56b3e31.0_100::
+                        2271 .LDWlin100:
+00000db4 23364800       2272 	movea	72,sp,r6
+00000db8 233e6800       2273 	movea	104,sp,r7
+                        2274 .L2413:
+
+                                                                      Page 39
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2275 	jarl	_sha256_block,lp
+                        2275 <EXPANSION BEGIN>
+                        2275 jarl22 _sha256_block , lp 
+00000dbc bfff92f4*      2275 <EXPANSION END>
+                        2276 .L1419:
+                        2277 --212:             remain=0u;
+                        2278 --line212
+                        2279 ..lin.68620a30..56b3e31.0_101::
+                        2280 .LDWlin101:
+00000dc0 00e2           2281 	mov	0,r28
+                        2282 .L1411:
+                        2283 --213:         }
+                        2284 --214:         for (i=remain+1u;i<56u;++i) final_block[i]=0u;
+00000dc2 1cee0100       2285 	addi	1,r28,r29
+00000dc6 e505*          2286 	br	.L1423
+                        2287 .L1422:
+                        2288 --line214
+                        2289 ..lin.68620a30..56b3e31.0_102::
+                        2290 .LDWlin102:
+00000dc8 23f66800       2291 	movea	104,sp,ep
+00000dcc ddf1           2292 	add	r29,ep
+00000dce 8003           2293 	sst.b	zero,0[ep]
+00000dd0 41ea           2294 	add	1,r29
+                        2295 .L1423:
+00000dd2 1d06c8ff       2296 	addi	-56,r29,zero
+00000dd6 99fd*          2297 	bnl	.L1422
+                        2298 --215:         bit_length = (unsigned long long)message_length * 8ull;
+                        2299 --line215
+                        2300 ..lin.68620a30..56b3e31.0_103::
+                        2301 .LDWlin103:
+00000dd8 1708           2302 	mov	r23,r1
+00000dda 9d0a           2303 	shr	29,r1
+00000ddc 01c8           2304 	mov	r1,r25
+00000dde 1708           2305 	mov	r23,r1
+00000de0 c30a           2306 	shl	3,r1
+00000de2 01c0           2307 	mov	r1,r24
+                        2308 --216:         for (i=0u;i<8u;++i) final_block[63u-i]=(unsigned char)(bit_length>>(8u*i));
+00000de4 00ea           2309 	mov	0,r29
+00000de6 a515*          2310 	br	.L1427
+                        2311 .L1426:
+                        2312 --line216
+                        2313 ..lin.68620a30..56b3e31.0_104::
+                        2314 .LDWlin104:
+00000de8 235ea700       2315 	movea	167,sp,r11
+00000dec bd59           2316 	sub	r29,r11
+00000dee 635f0500       2317 	st.w	r11,4[sp]
+00000df2 1d40           2318 	mov	r29,r8
+00000df4 c342           2319 	shl	3,r8
+00000df6 1830           2320 	mov	r24,r6
+00000df8 1938           2321 	mov	r25,r7
+                        2322 .L2415:
+                        2323 	jarl	___gh_shrl_64_32,lp
+                        2323 <EXPANSION BEGIN>
+                        2323 jarl22 ___gh_shrl_64_32 , lp 
+00000dfa 80ff0000*      2323 <EXPANSION END>
+00000dfe 23670500       2324 	ld.w	4[sp],r12
+00000e02 0a08           2325 	mov	r10,r1
+00000e04 4c0f0000       2326 	st.b	r1,0[r12]
+                        2327 --line216
+                        2328 ..lin.68620a30..56b3e31.0_105::
+                        2329 .LDWlin105:
+
+                                                                      Page 40
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000e08 41ea           2330 	add	1,r29
+                        2331 .L1427:
+00000e0a 68ea           2332 	cmp	8,r29
+00000e0c e1ed*          2333 	bl	.L1426
+                        2334 --217:         if (algorithm == ICUM_HASH_SHA1) sha1_block(s32, final_block);
+                        2335 --line217
+                        2336 ..lin.68620a30..56b3e31.0_106::
+                        2337 .LDWlin106:
+00000e0e 61d2           2338 	cmp	1,r26
+00000e10 8a0d*          2339 	bne	.L1428
+                        2340 --line217
+                        2341 ..lin.68620a30..56b3e31.0_107::
+                        2342 .LDWlin107:
+00000e12 23364800       2343 	movea	72,sp,r6
+00000e16 233e6800       2344 	movea	104,sp,r7
+                        2345 .L2417:
+                        2346 	jarl	_sha1_block,lp
+                        2346 <EXPANSION BEGIN>
+                        2346 jarl22 _sha1_block , lp 
+00000e1a bfff9cf2*      2346 <EXPANSION END>
+00000e1e f505*          2347 	br	.L1430
+                        2348 .L1428:
+                        2349 --218:         else sha256_block(s32, final_block);
+                        2350 --line218
+                        2351 ..lin.68620a30..56b3e31.0_108::
+                        2352 .LDWlin108:
+00000e20 23364800       2353 	movea	72,sp,r6
+00000e24 233e6800       2354 	movea	104,sp,r7
+                        2355 .L2419:
+                        2356 	jarl	_sha256_block,lp
+                        2356 <EXPANSION BEGIN>
+                        2356 jarl22 _sha256_block , lp 
+00000e28 bfff26f4*      2356 <EXPANSION END>
+                        2357 .L1430:
+                        2358 --219:         for (i=0u;i<out_words;++i) put_be32(digest+4u*i,s32[i]);
+                        2359 --line219
+                        2360 ..lin.68620a30..56b3e31.0_109::
+                        2361 .LDWlin109:
+00000e2c 00ea           2362 	mov	0,r29
+00000e2e c50d*          2363 	br	.L1434
+                        2364 .L1433:
+                        2365 --line219
+                        2366 ..lin.68620a30..56b3e31.0_110::
+                        2367 .LDWlin110:
+00000e30 1d08           2368 	mov	r29,r1
+00000e32 c20a           2369 	shl	2,r1
+00000e34 23f64800       2370 	movea	72,sp,ep
+00000e38 c1f1           2371 	add	r1,ep
+00000e3a 003d           2372 	sld.w	0[ep],r7
+00000e3c 1430           2373 	mov	r20,r6
+00000e3e c131           2374 	add	r1,r6
+                        2375 .L2421:
+                        2376 	jarl	_put_be32,lp
+                        2376 <EXPANSION BEGIN>
+                        2376 jarl22 _put_be32 , lp 
+00000e40 bfffdaf1*      2376 <EXPANSION END>
+                        2377 --line219
+                        2378 ..lin.68620a30..56b3e31.0_111::
+                        2379 .LDWlin111:
+00000e44 41ea           2380 	add	1,r29
+                        2381 .L1434:
+
+                                                                      Page 41
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000e46 f6e9           2382 	cmp	r22,r29
+00000e48 c1f5*          2383 	bl	.L1433
+00000e4a 80072c02*      2384 	br	.L1435
+                        2385 .L1395:
+                        2386 --220:     } else {
+                        2387 --221:         if (algorithm == ICUM_HASH_SHA384) {
+                        2388 --line221
+                        2389 ..lin.68620a30..56b3e31.0_112::
+                        2390 .LDWlin112:
+00000e4e 63d2           2391 	cmp	3,r26
+00000e50 aa4d*          2392 	bne	.L1436
+                        2393 --222:             s64[0]=0xcbbb9d5dc1059ed8ull; s64[1]=0x629a292a367cd507ull;
+                        2394 --line222
+                        2395 ..lin.68620a30..56b3e31.0_113::
+                        2396 .LDWlin113:
+00000e52 3206d89e05c1   2397 	mov	-1056596264,r18
+00000e58 33065d9dbbcb   2398 	mov	-876896931,r19
+00000e5e a3078f900000   2399 	st.dw	r18,8[sp]
+                        2400 --line222
+                        2401 ..lin.68620a30..56b3e31.0_114::
+                        2402 .LDWlin114:
+00000e64 320607d57c36   2403 	mov	914150663,r18
+00000e6a 33062a299a62   2404 	mov	1654270250,r19
+00000e70 a3070f910000   2405 	st.dw	r18,16[sp]
+                        2406 --223:             s64[2]=0x9159015a3070dd17ull; s64[3]=0x152fecd8f70e5939ull;
+                        2407 --line223
+                        2408 ..lin.68620a30..56b3e31.0_115::
+                        2409 .LDWlin115:
+00000e76 320617dd7030   2410 	mov	812702999,r18
+00000e7c 33065a015991   2411 	mov	-1856437926,r19
+00000e82 a3078f910000   2412 	st.dw	r18,24[sp]
+                        2413 --line223
+                        2414 ..lin.68620a30..56b3e31.0_116::
+                        2415 .LDWlin116:
+00000e88 320639590ef7   2416 	mov	-150054599,r18
+00000e8e 3306d8ec2f15   2417 	mov	355462360,r19
+00000e94 a3070f920000   2418 	st.dw	r18,32[sp]
+                        2419 --224:             s64[4]=0x67332667ffc00b31ull; s64[5]=0x8eb44a8768581511ull;
+                        2420 --line224
+                        2421 ..lin.68620a30..56b3e31.0_117::
+                        2422 .LDWlin117:
+00000e9a 3206310bc0ff   2423 	mov	-4191439,r18
+00000ea0 330667263367   2424 	mov	1731405415,r19
+00000ea6 a3078f920000   2425 	st.dw	r18,40[sp]
+                        2426 --line224
+                        2427 ..lin.68620a30..56b3e31.0_118::
+                        2428 .LDWlin118:
+00000eac 320611155868   2429 	mov	1750603025,r18
+00000eb2 3306874ab48e   2430 	mov	-1900787065,r19
+00000eb8 a3070f930000   2431 	st.dw	r18,48[sp]
+                        2432 --225:             s64[6]=0xdb0c2e0d64f98fa7ull; s64[7]=0x47b5481dbefa4fa4ull;
+                        2433 --line225
+                        2434 ..lin.68620a30..56b3e31.0_119::
+                        2435 .LDWlin119:
+00000ebe 3206a78ff964   2436 	mov	1694076839,r18
+00000ec4 33060d2e0cdb   2437 	mov	-619958771,r19
+00000eca a3078f930000   2438 	st.dw	r18,56[sp]
+                        2439 --line225
+                        2440 ..lin.68620a30..56b3e31.0_120::
+                        2441 .LDWlin120:
+00000ed0 3206a44ffabe   2442 	mov	-1090891868,r18
+
+                                                                      Page 42
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000ed6 33061d48b547   2443 	mov	1203062813,r19
+00000edc a3070f940000   2444 	st.dw	r18,64[sp]
+00000ee2 954d*          2445 	br	.L1438
+                        2446 .L1436:
+                        2447 --226:         } else {
+                        2448 --227:             s64[0]=0x6a09e667f3bcc908ull; s64[1]=0xbb67ae8584caa73bull;
+                        2449 --line227
+                        2450 ..lin.68620a30..56b3e31.0_121::
+                        2451 .LDWlin121:
+00000ee4 320608c9bcf3   2452 	mov	-205731576,r18
+00000eea 330667e6096a   2453 	mov	1779033703,r19
+00000ef0 a3078f900000   2454 	st.dw	r18,8[sp]
+                        2455 --line227
+                        2456 ..lin.68620a30..56b3e31.0_122::
+                        2457 .LDWlin122:
+00000ef6 32063ba7ca84   2458 	mov	-2067093701,r18
+00000efc 330685ae67bb   2459 	mov	-1150833019,r19
+00000f02 a3070f910000   2460 	st.dw	r18,16[sp]
+                        2461 --228:             s64[2]=0x3c6ef372fe94f82bull; s64[3]=0xa54ff53a5f1d36f1ull;
+                        2462 --line228
+                        2463 ..lin.68620a30..56b3e31.0_123::
+                        2464 .LDWlin123:
+00000f08 32062bf894fe   2465 	mov	-23791573,r18
+00000f0e 330672f36e3c   2466 	mov	1013904242,r19
+00000f14 a3078f910000   2467 	st.dw	r18,24[sp]
+                        2468 --line228
+                        2469 ..lin.68620a30..56b3e31.0_124::
+                        2470 .LDWlin124:
+00000f1a 3206f1361d5f   2471 	mov	1595750129,r18
+00000f20 33063af54fa5   2472 	mov	-1521486534,r19
+00000f26 a3070f920000   2473 	st.dw	r18,32[sp]
+                        2474 --229:             s64[4]=0x510e527fade682d1ull; s64[5]=0x9b05688c2b3e6c1full;
+                        2475 --line229
+                        2476 ..lin.68620a30..56b3e31.0_125::
+                        2477 .LDWlin125:
+00000f2c 3206d182e6ad   2478 	mov	-1377402159,r18
+00000f32 33067f520e51   2479 	mov	1359893119,r19
+00000f38 a3078f920000   2480 	st.dw	r18,40[sp]
+                        2481 --line229
+                        2482 ..lin.68620a30..56b3e31.0_126::
+                        2483 .LDWlin126:
+00000f3e 32061f6c3e2b   2484 	mov	725511199,r18
+00000f44 33068c68059b   2485 	mov	-1694144372,r19
+00000f4a a3070f930000   2486 	st.dw	r18,48[sp]
+                        2487 --230:             s64[6]=0x1f83d9abfb41bd6bull; s64[7]=0x5be0cd19137e2179ull;
+                        2488 --line230
+                        2489 ..lin.68620a30..56b3e31.0_127::
+                        2490 .LDWlin127:
+00000f50 32066bbd41fb   2491 	mov	-79577749,r18
+00000f56 3306abd9831f   2492 	mov	528734635,r19
+00000f5c a3078f930000   2493 	st.dw	r18,56[sp]
+                        2494 --line230
+                        2495 ..lin.68620a30..56b3e31.0_128::
+                        2496 .LDWlin128:
+00000f62 320679217e13   2497 	mov	327033209,r18
+00000f68 330619cde05b   2498 	mov	1541459225,r19
+00000f6e a3070f940000   2499 	st.dw	r18,64[sp]
+                        2500 .L1438:
+                        2501 --231:         }
+                        2502 --232:         while (message_length - offset >= 128ul) {
+                        2503 --line232
+
+                                                                      Page 43
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2504 ..lin.68620a30..56b3e31.0_129::
+                        2505 .LDWlin129:
+00000f74 950d*          2506 	br	.L1439
+                        2507 .L1441:
+                        2508 --233:             sha512_block(s64,message+offset);
+                        2509 --line233
+                        2510 ..lin.68620a30..56b3e31.0_130::
+                        2511 .LDWlin130:
+00000f76 1538           2512 	mov	r21,r7
+00000f78 db39           2513 	add	r27,r7
+00000f7a 23360800       2514 	movea	8,sp,r6
+                        2515 .L2423:
+                        2516 	jarl	_sha512_block,lp
+                        2516 <EXPANSION BEGIN>
+                        2516 jarl22 _sha512_block , lp 
+00000f7e bfffd8f4*      2516 <EXPANSION END>
+                        2517 --234:             offset+=128ul;
+                        2518 --line234
+                        2519 ..lin.68620a30..56b3e31.0_131::
+                        2520 .LDWlin131:
+00000f82 1bde8000       2521 	addi	128,r27,r27
+                        2522 .L1439:
+00000f86 1708           2523 	mov	r23,r1
+00000f88 bb09           2524 	sub	r27,r1
+00000f8a 010680ff       2525 	addi	-128,r1,zero
+00000f8e c1f5*          2526 	bl	.L1441
+                        2527 --235:         }
+                        2528 --236:         remain=(unsigned int)(message_length-offset);
+                        2529 --line236
+                        2530 ..lin.68620a30..56b3e31.0_132::
+                        2531 .LDWlin132:
+00000f90 17e0           2532 	mov	r23,r28
+00000f92 bbe1           2533 	sub	r27,r28
+                        2534 --237:         for(i=0u;i<remain;++i) final_block[i]=message[offset+i];
+00000f94 00ea           2535 	mov	0,r29
+00000f96 b50d*          2536 	br	.L1445
+                        2537 .L1444:
+                        2538 --line237
+                        2539 ..lin.68620a30..56b3e31.0_133::
+                        2540 .LDWlin133:
+00000f98 1d08           2541 	mov	r29,r1
+00000f9a db09           2542 	add	r27,r1
+00000f9c d509           2543 	add	r21,r1
+00000f9e 810f0100       2544 	ld.bu	0[r1],r1
+00000fa2 23f66800       2545 	movea	104,sp,ep
+00000fa6 ddf1           2546 	add	r29,ep
+00000fa8 800b           2547 	sst.b	r1,0[ep]
+00000faa 41ea           2548 	add	1,r29
+                        2549 .L1445:
+00000fac fce9           2550 	cmp	r28,r29
+00000fae d1f5*          2551 	bl	.L1444
+                        2552 --238:         final_block[remain]=0x80u;
+                        2553 --line238
+                        2554 ..lin.68620a30..56b3e31.0_134::
+                        2555 .LDWlin134:
+00000fb0 23f66800       2556 	movea	104,sp,ep
+00000fb4 dcf1           2557 	add	r28,ep
+00000fb6 200e8000       2558 	movea	128,zero,r1
+00000fba 800b           2559 	sst.b	r1,0[ep]
+                        2560 --239:         if(remain>=112u) {
+00000fbc 1c0690ff       2561 	addi	-112,r28,zero
+
+                                                                      Page 44
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00000fc0 b915*          2562 	bnl	.L1446
+                        2563 --240:             for(i=remain+1u;i<256u;++i) final_block[i]=0u;
+                        2564 --line240
+                        2565 ..lin.68620a30..56b3e31.0_135::
+                        2566 .LDWlin135:
+00000fc2 1cee0100       2567 	addi	1,r28,r29
+00000fc6 e505*          2568 	br	.L1451
+                        2569 .L1450:
+                        2570 --line240
+                        2571 ..lin.68620a30..56b3e31.0_136::
+                        2572 .LDWlin136:
+00000fc8 23f66800       2573 	movea	104,sp,ep
+00000fcc ddf1           2574 	add	r29,ep
+00000fce 8003           2575 	sst.b	zero,0[ep]
+00000fd0 41ea           2576 	add	1,r29
+                        2577 .L1451:
+00000fd2 1d0600ff       2578 	addi	-256,r29,zero
+00000fd6 99fd*          2579 	bnl	.L1450
+                        2580 --241:             sha512_block(s64,final_block);
+                        2581 --line241
+                        2582 ..lin.68620a30..56b3e31.0_137::
+                        2583 .LDWlin137:
+00000fd8 23360800       2584 	movea	8,sp,r6
+00000fdc 233e6800       2585 	movea	104,sp,r7
+                        2586 .L2425:
+                        2587 	jarl	_sha512_block,lp
+                        2587 <EXPANSION BEGIN>
+                        2587 jarl22 _sha512_block , lp 
+00000fe0 bfff76f4*      2587 <EXPANSION END>
+                        2588 --242:             remain=0u;
+                        2589 --line242
+                        2590 ..lin.68620a30..56b3e31.0_138::
+                        2591 .LDWlin138:
+00000fe4 00e2           2592 	mov	0,r28
+                        2593 .L1446:
+                        2594 --243:         }
+                        2595 --244:         for(i=remain+1u;i<120u;++i) final_block[i]=0u;
+00000fe6 1cee0100       2596 	addi	1,r28,r29
+00000fea e505*          2597 	br	.L1455
+                        2598 .L1454:
+                        2599 --line244
+                        2600 ..lin.68620a30..56b3e31.0_139::
+                        2601 .LDWlin139:
+00000fec 23f66800       2602 	movea	104,sp,ep
+00000ff0 ddf1           2603 	add	r29,ep
+00000ff2 8003           2604 	sst.b	zero,0[ep]
+00000ff4 41ea           2605 	add	1,r29
+                        2606 .L1455:
+00000ff6 1d0688ff       2607 	addi	-120,r29,zero
+00000ffa 99fd*          2608 	bnl	.L1454
+                        2609 --245:         bit_length=(unsigned long long)message_length*8ull;
+                        2610 --line245
+                        2611 ..lin.68620a30..56b3e31.0_140::
+                        2612 .LDWlin140:
+00000ffc 1708           2613 	mov	r23,r1
+00000ffe 9d0a           2614 	shr	29,r1
+00001000 01c8           2615 	mov	r1,r25
+00001002 1708           2616 	mov	r23,r1
+00001004 c30a           2617 	shl	3,r1
+00001006 01c0           2618 	mov	r1,r24
+                        2619 --246:         for(i=0u;i<8u;++i) final_block[127u-i]=(unsigned char)(bit_length>>(8u*i));
+
+                                                                      Page 45
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00001008 00ea           2620 	mov	0,r29
+0000100a e50d*          2621 	br	.L1459
+                        2622 .L1458:
+                        2623 --line246
+                        2624 ..lin.68620a30..56b3e31.0_141::
+                        2625 .LDWlin141:
+0000100c 23b6e700       2626 	movea	231,sp,r22
+00001010 bdb1           2627 	sub	r29,r22
+00001012 1d40           2628 	mov	r29,r8
+00001014 c342           2629 	shl	3,r8
+00001016 1830           2630 	mov	r24,r6
+00001018 1938           2631 	mov	r25,r7
+                        2632 .L2427:
+                        2633 	jarl	___gh_shrl_64_32,lp
+                        2633 <EXPANSION BEGIN>
+                        2633 jarl22 ___gh_shrl_64_32 , lp 
+0000101a 80ff0000*      2633 <EXPANSION END>
+0000101e 0a08           2634 	mov	r10,r1
+00001020 560f0000       2635 	st.b	r1,0[r22]
+                        2636 --line246
+                        2637 ..lin.68620a30..56b3e31.0_142::
+                        2638 .LDWlin142:
+00001024 41ea           2639 	add	1,r29
+                        2640 .L1459:
+00001026 68ea           2641 	cmp	8,r29
+00001028 a1f5*          2642 	bl	.L1458
+                        2643 --247:         for(i=120u;i<127u;++i) final_block[i]=0u;
+                        2644 --line247
+                        2645 ..lin.68620a30..56b3e31.0_143::
+                        2646 .LDWlin143:
+0000102a 20ee7800       2647 	movea	120,zero,r29
+0000102e e505*          2648 	br	.L1463
+                        2649 .L1462:
+                        2650 --line247
+                        2651 ..lin.68620a30..56b3e31.0_144::
+                        2652 .LDWlin144:
+00001030 23f66800       2653 	movea	104,sp,ep
+00001034 ddf1           2654 	add	r29,ep
+00001036 8003           2655 	sst.b	zero,0[ep]
+00001038 41ea           2656 	add	1,r29
+                        2657 .L1463:
+0000103a 1d0681ff       2658 	addi	-127,r29,zero
+0000103e 99fd*          2659 	bnl	.L1462
+                        2660 --248:         sha512_block(s64,final_block);
+                        2661 --line248
+                        2662 ..lin.68620a30..56b3e31.0_145::
+                        2663 .LDWlin145:
+00001040 23360800       2664 	movea	8,sp,r6
+00001044 233e6800       2665 	movea	104,sp,r7
+                        2666 .L2429:
+                        2667 	jarl	_sha512_block,lp
+                        2667 <EXPANSION BEGIN>
+                        2667 jarl22 _sha512_block , lp 
+00001048 bfff0ef4*      2667 <EXPANSION END>
+                        2668 --249:         out_words=(algorithm==ICUM_HASH_SHA384)?6u:8u;
+                        2669 --line249
+                        2670 ..lin.68620a30..56b3e31.0_146::
+                        2671 .LDWlin146:
+0000104c 060a           2672 	mov	6,r1
+0000104e 63d2           2673 	cmp	3,r26
+00001050 e80f14b3       2674 	cmovne	8,r1,r22
+
+                                                                      Page 46
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2675 --250:         for(i=0u;i<out_words;++i) put_be64(digest+8u*i,s64[i]);
+00001054 00ea           2676 	mov	0,r29
+00001056 e50d*          2677 	br	.L1470
+                        2678 .L1469:
+                        2679 --line250
+                        2680 ..lin.68620a30..56b3e31.0_147::
+                        2681 .LDWlin147:
+00001058 1d08           2682 	mov	r29,r1
+0000105a c30a           2683 	shl	3,r1
+0000105c 1430           2684 	mov	r20,r6
+0000105e c131           2685 	add	r1,r6
+00001060 23160800       2686 	movea	8,sp,r2
+00001064 c209           2687 	add	r2,r1
+00001066 a10709400000   2688 	ld.dw	0[r1],r8
+                        2689 .L2431:
+                        2690 	jarl	_put_be64,lp
+                        2690 <EXPANSION BEGIN>
+                        2690 jarl22 _put_be64 , lp 
+0000106c bfff0af0*      2690 <EXPANSION END>
+                        2691 --line250
+                        2692 ..lin.68620a30..56b3e31.0_148::
+                        2693 .LDWlin148:
+00001070 41ea           2694 	add	1,r29
+                        2695 .L1470:
+00001072 f6e9           2696 	cmp	r22,r29
+00001074 a1f5*          2697 	bl	.L1469
+                        2698 .L1435:
+                        2699 --251:     }
+                        2700 --252:     return 1;
+                        2701 --line252
+                        2702 ..lin.68620a30..56b3e31.0_149::
+                        2703 .LDWlin149:
+00001076 0152           2704 	mov	1,r10
+                        2705 .L1387:
+                        2706 --	    .ef
+                        2707 .LDW72:
+00001078 23ff9101       2708 	ld.w	400[sp],lp
+0000107c 23ef6901       2709 	ld.w	360[sp],r29
+00001080 23e76d01       2710 	ld.w	364[sp],r28
+00001084 23df7101       2711 	ld.w	368[sp],r27
+00001088 23d77501       2712 	ld.w	372[sp],r26
+0000108c 23cf7901       2713 	ld.w	376[sp],r25
+00001090 23c77d01       2714 	ld.w	380[sp],r24
+00001094 23bf8101       2715 	ld.w	384[sp],r23
+00001098 23b78501       2716 	ld.w	388[sp],r22
+0000109c 23af8901       2717 	ld.w	392[sp],r21
+000010a0 23a78d01       2718 	ld.w	396[sp],r20
+000010a4 031e9401       2719 	addi	404,sp,sp
+                        2720 .L2433:
+                        2721 	.jumptype return
+000010a8 7f00           2722 	jmp	[lp]
+                        2723 --line252
+                        2724 ..lin.68620a30..56b3e31.0_150::
+                        2725 	.type	_icum_hash_compute,@function
+                        2726 	.size	_icum_hash_compute,.-_icum_hash_compute
+                        2727 	.align	2
+                        2728 --_offset	r27	local
+                        2729 --_remain	r28	local
+                        2730 --_i	r29	local
+                        2731 --_out_words	r22	local
+                        2732 --_final_block	104[sp]	local
+
+                                                                      Page 47
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2733 --_s32	72[sp]	local
+                        2734 --_s64	8[sp]	local
+                        2735 --_bit_length	r24	local
+                        2736 --_digest_size	0[sp]	local
+                        2737 
+                        2738 --_algorithm	r26	param
+                        2739 --_message	r21	param
+                        2740 --_message_length	r23	param
+                        2741 --_digest	r20	param
+                        2742 
+                        2743 	.section ".bss","awb"
+                        2744 .L2006:
+                        2745 	.type	.L2006,@object
+                        2746 	.size	.L2006,0
+                        2747 	.section ".ghcalltbl",""
+0000001c 00000000*      2748 .L2406:	.word	.L2405
+                        2749 	.type	.L2406,@object
+                        2750 	.size	.L2406,4
+00000020 00000000*      2751 .L2408:	.word	.L2407
+                        2752 	.type	.L2408,@object
+                        2753 	.size	.L2408,4
+00000024 00000000*      2754 .L2410:	.word	.L2409
+                        2755 	.type	.L2410,@object
+                        2756 	.size	.L2410,4
+00000028 00000000*      2757 .L2412:	.word	.L2411
+                        2758 	.type	.L2412,@object
+                        2759 	.size	.L2412,4
+0000002c 00000000*      2760 .L2414:	.word	.L2413
+                        2761 	.type	.L2414,@object
+                        2762 	.size	.L2414,4
+00000030 00000000*      2763 .L2416:	.word	.L2415
+                        2764 	.type	.L2416,@object
+                        2765 	.size	.L2416,4
+00000034 00000000*      2766 .L2418:	.word	.L2417
+                        2767 	.type	.L2418,@object
+                        2768 	.size	.L2418,4
+00000038 00000000*      2769 .L2420:	.word	.L2419
+                        2770 	.type	.L2420,@object
+                        2771 	.size	.L2420,4
+0000003c 00000000*      2772 .L2422:	.word	.L2421
+                        2773 	.type	.L2422,@object
+                        2774 	.size	.L2422,4
+00000040 00000000*      2775 .L2424:	.word	.L2423
+                        2776 	.type	.L2424,@object
+                        2777 	.size	.L2424,4
+00000044 00000000*      2778 .L2426:	.word	.L2425
+                        2779 	.type	.L2426,@object
+                        2780 	.size	.L2426,4
+00000048 00000000*      2781 .L2428:	.word	.L2427
+                        2782 	.type	.L2428,@object
+                        2783 	.size	.L2428,4
+0000004c 00000000*      2784 .L2430:	.word	.L2429
+                        2785 	.type	.L2430,@object
+                        2786 	.size	.L2430,4
+00000050 00000000*      2787 .L2432:	.word	.L2431
+                        2788 	.type	.L2432,@object
+                        2789 	.size	.L2432,4
+                        2790 	.section ".ghrettbl",""
+00000020 00000000*      2791 .L2434:	.word	.L2433
+                        2792 	.type	.L2434,@object
+                        2793 	.size	.L2434,4
+
+                                                                      Page 48
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2794 	.data
+                        2795 	.text
+                        2796 
+                        2797 --253: }
+                        2798 
+                        2799 --255: static int hash_matches(icum_hash_algorithm algorithm,
+                        2800 	.align	2
+                        2801 	.align	2
+                        2802 	.align	2
+                        2803 ..gh.f.a.2.e.9:
+                        2804 	.type	..gh.f.a.2.e.9,@object
+                        2805 	.size	..gh.f.a.2.e.9,0
+                        2806 	.global	_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                        2807 _hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.:
+                        2808 _hash_matches:
+000010aa 031ea8ff       2809 	addi	-88,sp,sp
+000010ae 63ff5500       2810 	st.w	lp,84[sp]
+000010b2 63cf5100       2811 	st.w	r25,80[sp]
+000010b6 63d74d00       2812 	st.w	r26,76[sp]
+000010ba 63df4900       2813 	st.w	r27,72[sp]
+000010be 63ef4100       2814 	st.w	r29,64[sp]
+000010c2 63e74500       2815 	st.w	r28,68[sp]
+000010c6 06e8           2816 	mov	r6,r29
+000010c8 07d8           2817 	mov	r7,r27
+000010ca 08d0           2818 	mov	r8,r26
+000010cc 09c8           2819 	mov	r9,r25
+                        2820 --	    .bf
+                        2821 .LDW82:
+                        2822 --256:                         const char *message,
+                        2823 --257:                         unsigned long message_length,
+                        2824 --258:                         const unsigned char *expected)
+                        2825 --259: {
+                        2826 --260:     unsigned char digest[64];
+                        2827 --261:     unsigned long i, size;
+                        2828 --263:     size=icum_hash_digest_size(algorithm);
+000010ce 1d30           2829 	mov	r29,r6
+                        2830 .L2537:
+                        2831 	jarl	_icum_hash_digest_size,lp
+                        2831 <EXPANSION BEGIN>
+                        2831 jarl22 _icum_hash_digest_size , lp 
+000010d0 bfff38fb*      2831 <EXPANSION END>
+000010d4 0ae0           2832 	mov	r10,r28
+                        2833 --264:     if (!icum_hash_compute(algorithm,(const unsigned char *)message,message_length,digest)) return 0;
+                        2834 --line264
+                        2835 ..lin.68620a30..cd3501cc.0_151::
+                        2836 .LDWlin151:
+000010d6 1d30           2837 	mov	r29,r6
+000010d8 1b38           2838 	mov	r27,r7
+000010da 1a40           2839 	mov	r26,r8
+000010dc 234e0000       2840 	movea	0,sp,r9
+                        2841 .L2539:
+                        2842 	jarl	_icum_hash_compute,lp
+                        2842 <EXPANSION BEGIN>
+                        2842 jarl22 _icum_hash_compute , lp 
+000010e0 bfff58fb*      2842 <EXPANSION END>
+000010e4 e051           2843 	cmp	zero,r10
+000010e6 ba05*          2844 	bne	.L2437
+                        2845 --line264
+                        2846 ..lin.68620a30..cd3501cc.0_152::
+                        2847 .LDWlin152:
+000010e8 0052           2848 	mov	0,r10
+
+                                                                      Page 49
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000010ea a515*          2849 	br	.L2435
+                        2850 .L2437:
+                        2851 --265:     for(i=0ul;i<size;++i) if(digest[i]!=expected[i]) return 0;
+                        2852 --line265
+                        2853 ..lin.68620a30..cd3501cc.0_153::
+                        2854 .LDWlin153:
+000010ec 000a           2855 	mov	0,r1
+000010ee d50d*          2856 	br	.L2443
+                        2857 .L2442:
+                        2858 --line265
+                        2859 ..lin.68620a30..cd3501cc.0_154::
+                        2860 .LDWlin154:
+000010f0 03f0           2861 	mov	sp,ep
+000010f2 c1f1           2862 	add	r1,ep
+000010f4 0110           2863 	mov	r1,r2
+000010f6 d911           2864 	add	r25,r2
+000010f8 82170100       2865 	ld.bu	0[r2],r2
+000010fc 6098           2866 	sld.bu	0[ep],r19
+000010fe e299           2867 	cmp	r2,r19
+00001100 b205*          2868 	be	.L2441
+                        2869 --line265
+                        2870 ..lin.68620a30..cd3501cc.0_155::
+                        2871 .LDWlin155:
+00001102 0052           2872 	mov	0,r10
+00001104 d505*          2873 	br	.L2435
+                        2874 .L2441:
+                        2875 --line265
+                        2876 ..lin.68620a30..cd3501cc.0_156::
+                        2877 .LDWlin156:
+00001106 410a           2878 	add	1,r1
+                        2879 .L2443:
+00001108 fc09           2880 	cmp	r28,r1
+0000110a b1f5*          2881 	bl	.L2442
+                        2882 --266:     return 1;
+                        2883 --line266
+                        2884 ..lin.68620a30..cd3501cc.0_157::
+                        2885 .LDWlin157:
+0000110c 0152           2886 	mov	1,r10
+                        2887 .L2435:
+                        2888 --	    .ef
+                        2889 .LDW92:
+0000110e 23ff5500       2890 	ld.w	84[sp],lp
+00001112 23ef4100       2891 	ld.w	64[sp],r29
+00001116 23e74500       2892 	ld.w	68[sp],r28
+0000111a 23df4900       2893 	ld.w	72[sp],r27
+0000111e 23d74d00       2894 	ld.w	76[sp],r26
+00001122 23cf5100       2895 	ld.w	80[sp],r25
+00001126 031e5800       2896 	addi	88,sp,sp
+                        2897 .L2541:
+                        2898 	.jumptype return
+0000112a 7f00           2899 	jmp	[lp]
+                        2900 --line266
+                        2901 ..lin.68620a30..cd3501cc.0_158::
+                        2902 	.type	_hash_matches,@function
+                        2903 	.size	_hash_matches,.-_hash_matches
+                        2904 	.type	_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,@function
+                        2905 	.size	_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.,.-_hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash.
+                        2906 	.align	2
+                        2907 --_digest	0[sp]	local
+                        2908 --_i	r1	local
+                        2909 --_size	r28	local
+
+                                                                      Page 50
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2910 
+                        2911 --_algorithm	r29	param
+                        2912 --_message	r27	param
+                        2913 --_message_length	r26	param
+                        2914 --_expected	r25	param
+                        2915 
+                        2916 	.section ".bss","awb"
+                        2917 .L2498:
+                        2918 	.type	.L2498,@object
+                        2919 	.size	.L2498,0
+                        2920 	.section ".ghcalltbl",""
+00000054 00000000*      2921 .L2538:	.word	.L2537
+                        2922 	.type	.L2538,@object
+                        2923 	.size	.L2538,4
+00000058 00000000*      2924 .L2540:	.word	.L2539
+                        2925 	.type	.L2540,@object
+                        2926 	.size	.L2540,4
+                        2927 	.section ".ghrettbl",""
+00000024 00000000*      2928 .L2542:	.word	.L2541
+                        2929 	.type	.L2542,@object
+                        2930 	.size	.L2542,4
+                        2931 	.data
+                        2932 	.text
+                        2933 
+                        2934 --267: }
+                        2935 
+                        2936 --269: int icum_hash_self_test(void)
+                        2937 	.align	2
+                        2938 	.align	2
+                        2939 	.align	2
+                        2940 ..gh.f.a.2.e.10:
+                        2941 	.type	..gh.f.a.2.e.10,@object
+                        2942 	.size	..gh.f.a.2.e.10,0
+                        2943 	.global	_icum_hash_self_test
+                        2944 _icum_hash_self_test:
+0000112c 581a           2945 	add	-8,sp
+0000112e 63ff0500       2946 	st.w	lp,4[sp]
+00001132 63ef0100       2947 	st.w	r29,0[sp]
+                        2948 --	    .bf
+                        2949 .LDW03:
+                        2950 --270: {
+                        2951 --271:     static const unsigned char sha1_empty[20]={
+                        2952 --272:         0xda,0x39,0xa3,0xee,0x5e,0x6b,0x4b,0x0d,0x32,0x55,0xbf,0xef,0x95,0x60,0x18,0x90,0xaf,0xd8,0x07,0x09};
+                        2953 --273:     static const unsigned char sha256_empty[32]={
+                        2954 --274:         0xe3,0xb0,0xc4,0x42,0x98,0xfc,0x1c,0x14,0x9a,0xfb,0xf4,0xc8,0x99,0x6f,0xb9,0x24,
+                        2955 --275:         0x27,0xae,0x41,0xe4,0x64,0x9b,0x93,0x4c,0xa4,0x95,0x99,0x1b,0x78,0x52,0xb8,0x55};
+                        2956 --276:     static const unsigned char sha384_empty[48]={
+                        2957 --277:         0x38,0xb0,0x60,0xa7,0x51,0xac,0x96,0x38,0x4c,0xd9,0x32,0x7e,0xb1,0xb1,0xe3,0x6a,
+                        2958 --278:         0x21,0xfd,0xb7,0x11,0x14,0xbe,0x07,0x43,0x4c,0x0c,0xc7,0xbf,0x63,0xf6,0xe1,0xda,
+                        2959 --279:         0x27,0x4e,0xde,0xbf,0xe7,0x6f,0x65,0xfb,0xd5,0x1a,0xd2,0xf1,0x48,0x98,0xb9,0x5b};
+                        2960 --280:     static const unsigned char sha512_empty[64]={
+                        2961 --281:         0xcf,0x83,0xe1,0x35,0x7e,0xef,0xb8,0xbd,0xf1,0x54,0x28,0x50,0xd6,0x6d,0x80,0x07,
+                        2962 --282:         0xd6,0x20,0xe4,0x05,0x0b,0x57,0x15,0xdc,0x83,0xf4,0xa9,0x21,0xd3,0x6c,0xe9,0xce,
+                        2963 --283:         0x47,0xd0,0xd1,0x3c,0x5d,0x85,0xf2,0xb0,0xff,0x83,0x18,0xd2,0x87,0x7e,0xec,0x2f,
+                        2964 --284:         0x63,0xb9,0x31,0xbd,0x47,0x41,0x7a,0x81,0xa5,0x38,0x32,0x7a,0xf9,0x27,0xda,0x3e};
+                        2965 --286:     return hash_matches(ICUM_HASH_SHA1,"",0ul,sha1_empty)
+00001136 00ea           2966 	mov	0,r29
+00001138 0132           2967 	mov	1,r6
+0000113a 253e0000*      2968 	movea	sdaoff2(.L2595),r5,r7
+0000113e 0042           2969 	mov	0,r8
+00001140 254e0000*      2970 	movea	sdaoff2(.L2617),r5,r9
+
+                                                                      Page 51
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        2971 .L2628:
+                        2972 	jarl	_hash_matches,lp
+                        2972 <EXPANSION BEGIN>
+                        2972 jarl22 _hash_matches , lp 
+00001144 bfff66ff*      2972 <EXPANSION END>
+00001148 e051           2973 	cmp	zero,r10
+0000114a 8225*          2974 	be	.L2543
+                        2975 --line287
+                        2976 ..lin.68620a30..b48c6edd.0_159::
+                        2977 .LDWlin159:
+0000114c 0232           2978 	mov	2,r6
+0000114e 253e0000*      2979 	movea	sdaoff2(.L2595),r5,r7
+00001152 0042           2980 	mov	0,r8
+00001154 254e0000*      2981 	movea	sdaoff2(.L2614),r5,r9
+                        2982 .L2630:
+                        2983 	jarl	_hash_matches,lp
+                        2983 <EXPANSION BEGIN>
+                        2983 jarl22 _hash_matches , lp 
+00001158 bfff52ff*      2983 <EXPANSION END>
+0000115c e051           2984 	cmp	zero,r10
+0000115e e215*          2985 	be	.L2543
+                        2986 --line288
+                        2987 ..lin.68620a30..b48c6edd.0_160::
+                        2988 .LDWlin160:
+00001160 0332           2989 	mov	3,r6
+00001162 253e0000*      2990 	movea	sdaoff2(.L2595),r5,r7
+00001166 0042           2991 	mov	0,r8
+00001168 254e0000*      2992 	movea	sdaoff2(.L2615),r5,r9
+                        2993 .L2632:
+                        2994 	jarl	_hash_matches,lp
+                        2994 <EXPANSION BEGIN>
+                        2994 jarl22 _hash_matches , lp 
+0000116c bfff3eff*      2994 <EXPANSION END>
+00001170 e051           2995 	cmp	zero,r10
+00001172 c20d*          2996 	be	.L2543
+                        2997 --line289
+                        2998 ..lin.68620a30..b48c6edd.0_161::
+                        2999 .LDWlin161:
+00001174 0432           3000 	mov	4,r6
+00001176 253e0000*      3001 	movea	sdaoff2(.L2595),r5,r7
+0000117a 0042           3002 	mov	0,r8
+0000117c 254e0000*      3003 	movea	sdaoff2(.L2616),r5,r9
+                        3004 .L2634:
+                        3005 	jarl	_hash_matches,lp
+                        3005 <EXPANSION BEGIN>
+                        3005 jarl22 _hash_matches , lp 
+00001180 bfff2aff*      3005 <EXPANSION END>
+00001184 e051           3006 	cmp	zero,r10
+00001186 e1ef14eb       3007 	cmovne	1,r29,r29
+                        3008 .L2543:
+                        3009 --	    .ef
+                        3010 .LDW13:
+                        3011 --line290
+                        3012 ..lin.68620a30..b48c6edd.0_162::
+                        3013 .LDWlin162:
+0000118a 1d50           3014 	mov	r29,r10
+0000118c 23ff0500       3015 	ld.w	4[sp],lp
+00001190 23ef0100       3016 	ld.w	0[sp],r29
+00001194 481a           3017 	add	8,sp
+                        3018 .L2636:
+                        3019 	.jumptype return
+
+                                                                      Page 52
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+00001196 7f00           3020 	jmp	[lp]
+                        3021 --line290
+                        3022 ..lin.68620a30..b48c6edd.0_163::
+                        3023 	.type	_icum_hash_self_test,@function
+                        3024 	.size	_icum_hash_self_test,.-_icum_hash_self_test
+                        3025 	.align	2
+                        3026 --_sha1_empty	sdaoff2(.L2617)	static
+                        3027 --_sha256_empty	sdaoff2(.L2614)	static
+                        3028 --_sha384_empty	sdaoff2(.L2615)	static
+                        3029 --_sha512_empty	sdaoff2(.L2616)	static
+                        3030 
+                        3031 	.section ".bss","awb"
+                        3032 .L2594:
+                        3033 	.type	.L2594,@object
+                        3034 	.size	.L2594,0
+                        3035 	.section ".rosdata","a"
+                        3036 .L2595:--	""
+00000380 00             3037 	.byte	0
+                        3038 	.type	.L2595,@object
+                        3039 	.size	.L2595,1
+                        3040 .L2614:
+                        3041 	.global	_sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..2
+                        3042 _sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..2:
+00000381 e3b0c442       3043 	.byte	227,176,196,66
+00000385 98fc1c14       3044 	.byte	152,252,28,20
+00000389 9afbf4c8       3045 	.byte	154,251,244,200
+0000038d 996fb924       3046 	.byte	153,111,185,36
+00000391 27ae41e4       3047 	.byte	39,174,65,228
+00000395 649b934c       3048 	.byte	100,155,147,76
+00000399 a495991b       3049 	.byte	164,149,153,27
+0000039d 7852b855       3050 	.byte	120,82,184,85
+                        3051 	.type	_sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..2,@object
+                        3052 	.size	_sha256_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..2,32
+                        3053 	.type	.L2614,@object
+                        3054 	.size	.L2614,32
+                        3055 .L2615:
+                        3056 	.global	_sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..3
+                        3057 _sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..3:
+000003a1 38b060a7       3058 	.byte	56,176,96,167
+000003a5 51ac9638       3059 	.byte	81,172,150,56
+000003a9 4cd9327e       3060 	.byte	76,217,50,126
+000003ad b1b1e36a       3061 	.byte	177,177,227,106
+000003b1 21fdb711       3062 	.byte	33,253,183,17
+000003b5 14be0743       3063 	.byte	20,190,7,67
+000003b9 4c0cc7bf       3064 	.byte	76,12,199,191
+000003bd 63f6e1da       3065 	.byte	99,246,225,218
+000003c1 274edebf       3066 	.byte	39,78,222,191
+000003c5 e76f65fb       3067 	.byte	231,111,101,251
+000003c9 d51ad2f1       3068 	.byte	213,26,210,241
+000003cd 4898b95b       3069 	.byte	72,152,185,91
+                        3070 	.type	_sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..3,@object
+                        3071 	.size	_sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..3,48
+                        3072 	.type	.L2615,@object
+                        3073 	.size	.L2615,48
+                        3074 .L2616:
+                        3075 	.global	_sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..4
+                        3076 _sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..4:
+000003d1 cf83e135       3077 	.byte	207,131,225,53
+000003d5 7eefb8bd       3078 	.byte	126,239,184,189
+000003d9 f1542850       3079 	.byte	241,84,40,80
+000003dd d66d8007       3080 	.byte	214,109,128,7
+
+                                                                      Page 53
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+000003e1 d620e405       3081 	.byte	214,32,228,5
+000003e5 0b5715dc       3082 	.byte	11,87,21,220
+000003e9 83f4a921       3083 	.byte	131,244,169,33
+000003ed d36ce9ce       3084 	.byte	211,108,233,206
+000003f1 47d0d13c       3085 	.byte	71,208,209,60
+000003f5 5d85f2b0       3086 	.byte	93,133,242,176
+000003f9 ff8318d2       3087 	.byte	255,131,24,210
+000003fd 877eec2f       3088 	.byte	135,126,236,47
+00000401 63b931bd       3089 	.byte	99,185,49,189
+00000405 47417a81       3090 	.byte	71,65,122,129
+00000409 a538327a       3091 	.byte	165,56,50,122
+0000040d f927da3e       3092 	.byte	249,39,218,62
+                        3093 	.type	_sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..4,@object
+                        3094 	.size	_sha512_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..4,64
+                        3095 	.type	.L2616,@object
+                        3096 	.size	.L2616,64
+                        3097 .L2617:
+                        3098 	.global	_sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..5
+                        3099 _sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..5:
+00000411 da39a3ee       3100 	.byte	218,57,163,238
+00000415 5e6b4b0d       3101 	.byte	94,107,75,13
+00000419 3255bfef       3102 	.byte	50,85,191,239
+0000041d 95601890       3103 	.byte	149,96,24,144
+00000421 afd80709       3104 	.byte	175,216,7,9
+                        3105 	.type	_sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..5,@object
+                        3106 	.size	_sha1_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash..5,20
+                        3107 	.type	.L2617,@object
+                        3108 	.size	.L2617,20
+                        3109 	.section ".ghcalltbl",""
+0000005c 00000000*      3110 .L2629:	.word	.L2628
+                        3111 	.type	.L2629,@object
+                        3112 	.size	.L2629,4
+00000060 00000000*      3113 .L2631:	.word	.L2630
+                        3114 	.type	.L2631,@object
+                        3115 	.size	.L2631,4
+00000064 00000000*      3116 .L2633:	.word	.L2632
+                        3117 	.type	.L2633,@object
+                        3118 	.size	.L2633,4
+00000068 00000000*      3119 .L2635:	.word	.L2634
+                        3120 	.type	.L2635,@object
+                        3121 	.size	.L2635,4
+                        3122 	.section ".ghrettbl",""
+00000028 00000000*      3123 .L2637:	.word	.L2636
+                        3124 	.type	.L2637,@object
+                        3125 	.size	.L2637,4
+                        3126 	.data
+                        3127 	.text
+                        3128 
+                        3129 --287:         && hash_matches(ICUM_HASH_SHA256,"",0ul,sha256_empty)
+                        3130 --288:         && hash_matches(ICUM_HASH_SHA384,"",0ul,sha384_empty)
+                        3131 --289:         && hash_matches(ICUM_HASH_SHA512,"",0ul,sha512_empty);
+                        3132 --290: }
+                        3133 	.align	2
+                        3134 --_sha256_k	sdaoff2(_sha256_k)	static
+                        3135 --_sha512_k	sdaoff2(_sha512_k)	static
+                        3136 
+                        3137 	.data
+                        3138 	.ghsnote version,30
+                        3139 	.ghsnote tools,3
+                        3140 	.ghsnote options,656
+                        3141 	.text
+
+                                                                      Page 54
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v8k1.s
+                        3142 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM.5Coutput.5Cobjects.5Cicum.5Cicum_hash...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Csource.5CICUM..6AD831D0..0::
+                        3143 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

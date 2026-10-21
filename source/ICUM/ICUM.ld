@@ -60,6 +60,7 @@ MEMORY
   iDFLASH        : ORIGIN = 0xFF218000,  LENGTH = 64k
   iRAM_0         : ORIGIN = 0xFEDF0000,  LENGTH = 64k
   iRAM_R         : ORIGIN = 0xFEF00000,  LENGTH = 64k
+  sharedRAM      : ORIGIN = 0xFEFF8000,  LENGTH = 32k
  }
 
 SECTIONS
@@ -114,7 +115,7 @@ SECTIONS
   .zbss      align(4)                   :>.         /* zero initialized data in ZDA area*/
 
   .tdata     align(4) MAX_SIZE(0x0100)  :>.         /* initialized and zero-initialized data in TDA area */
-  .stack     align(4) pad(0x1000)       :>.         /* definition of stack size */
+  .stack     align(4) pad(0x4000)       :>.         /* RSA up to 4096 bits needs additional stack */
   .heapbase  align(4)                   :>.
   .heap      align(4)
   	        pad(endaddr(iRAM_0)-addr(.heapbase))
@@ -126,6 +127,7 @@ SECTIONS
   .rdata    align(4)                    :>iRAM_R     /* user defined segment for for initialized data located in retention RAM  */
   .rbss     align(4)                    :>.          /* user defined segment for zero initialized data located in retention RAM */
   __top_of_iRAM_R = MEMENDADDR( iRAM_R);
+  .shared   align(4) pad(0x8000) NOCLEAR :>sharedRAM
 
 /*  Symbols for compiler references */
 

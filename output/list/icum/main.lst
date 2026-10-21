@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\main.dbo -source=main.c -comp -o output\objects\icum\gh_0000v141.o -list=output\list\icum\main.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\main.dbo -source=main.c -comp -o output\objects\icum\gh_0000hn81.o -list=output\list\icum\main.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
 Source File: main.c
 Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
 Host OS: Windows
@@ -13,14 +13,14 @@ Revision Date: Wed Sep 06 02:44:09 2023
 
 Release Date: Wed Sep 06 02:00:00 2023
 
-                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Idevice -G
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Idevice -G
                            2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
                            3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
                            4 --		-filetype.c source\ICUM\main.c -o output\objects\icum\main.o
                            5 --Source File:   source\ICUM\main.c
                            6 --Directory:     
                            7 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
-                           8 --Compile Date:  Wed Oct 21 10:03:28 2026
+                           8 --Compile Date:  Wed Oct 21 14:50:06 2026
                            9 --Host OS:       Win64
                           10 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           11 --Release:       Compiler v2023.5.4
@@ -65,7 +65,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           50 --35: // by third party vendors, developers or consultants identified or referred
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
                           51 --36: // to the User by Renesas in connection with the Product(s) and/or the
                           52 --37: // Application.
                           53 --38: //
@@ -84,532 +84,654 @@ Release Date: Wed Sep 06 02:00:00 2023
                           66 --53: //============================================================================
                           67 --54: #include "device.h"
                           68 --55: #include "icum_crypto.h"
-                          69 --56: #include "icum_comm.h"
-                          70 --57: #include "icum_ostm.h"
-                          71 --59: volatile icum_u32 g_icum_crypto_test_result;
-                          72 --62: void init_clocks(void)
-                          73 	.text
-                          74 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD81D70..0::
-                          75 	.align	2
-                          76 	.align	2
-                          77 ..gh.f.a.2.e.0:
-                          78 	.type	..gh.f.a.2.e.0,@object
-                          79 	.size	..gh.f.a.2.e.0,0
-                          80 	.global	_init_clocks
-                          81 _init_clocks:
-                          82 --	    .bf
-                          83 .LDW01:
-                          84 --63: { 
-                          85 --64:     /* Prepare 16MHz MainOsc */
-                          86 --65:   if((CLKCTLMOSCS&0x04u) != 0x4u)                                       /* Check if MainOsc needs to be started */
-00000000 8007490822f0     87 	ld.w	4294447364[zero],r1
-00000006 830a             88 	shr	3,r1
-00000008 d125*            89 	bl	.L4
-                          90 --66:   {
-                          91 --67:    CLKCTLMOSCC=0x06;                                                    /* Set MainOSC gain for 16MHz */
-                          92 --line67
-                          93 ..lin.bfb56b39..470e1876.0_1::
-                          94 .LDWlin1:
-0000000a 060a             95 	mov	6,r1
-0000000c 80078f0822f0     96 	st.w	r1,4294447368[zero]
-                          97 --68:    CLKCTLMOSCST=0x00003E80;                                             /* Set MainOSC stabilization time to 2ms */
-                          98 --line68
-                          99 ..lin.bfb56b39..470e1876.0_2::
-                         100 .LDWlin2:
-00000012 200e803e        101 	movea	16000,zero,r1
-00000016 8007cf0822f0    102 	st.w	r1,4294447372[zero]
-                         103 --69:    protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLMOSCE,0x01u);      /* Trigger Enable (protected write) */
-                         104 .L8:
-                         105 --line69
-                         106 ..lin.bfb56b39..470e1876.0_3::
-                         107 .LDWlin3:
-0000001c 200ea500        108 	movea	165,zero,r1
-00000020 80070f0800f0    109 	st.w	r1,4294443008[zero]
-                         110 --line69
-                         111 ..lin.bfb56b39..470e1876.0_4::
+                          69 --56: #include "aes_test.h"
+                          70 --57: #include "icum_hash.h"
+                          71 --58: #include "hash_test.h"
+                          72 --59: #include "icum_rsa.h"
+                          73 --60: #include "rsa_test.h"
+                          74 --61: #include "icum_comm.h"
+                          75 --62: #include "icum_ostm.h"
+                          76 --64: volatile icum_u32 g_icum_crypto_test_result;
+                          77 --65: volatile icum_u32 g_icum_hash_sha1_test_result;
+                          78 --66: volatile icum_u32 g_icum_hash_sha256_test_result;
+                          79 --67: volatile icum_u32 g_icum_hash_sha384_test_result;
+                          80 --68: volatile icum_u32 g_icum_hash_sha512_test_result;
+                          81 --69: volatile icum_u32 g_icum_rsa_test_result;
+                          82 --72: void init_clocks(void)
+                          83 	.text
+                          84 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609E..0::
+                          85 	.align	2
+                          86 	.align	2
+                          87 ..gh.f.a.2.e.0:
+                          88 	.type	..gh.f.a.2.e.0,@object
+                          89 	.size	..gh.f.a.2.e.0,0
+                          90 	.global	_init_clocks
+                          91 _init_clocks:
+                          92 --	    .bf
+                          93 .LDW01:
+                          94 --73: { 
+                          95 --74:     /* Prepare 16MHz MainOsc */
+                          96 --75:   if((CLKCTLMOSCS&0x04u) != 0x4u)                                       /* Check if MainOsc needs to be started */
+00000000 8007490822f0     97 	ld.w	4294447364[zero],r1
+00000006 830a             98 	shr	3,r1
+00000008 d125*            99 	bl	.L4
+                         100 --76:   {
+                         101 --77:    CLKCTLMOSCC=0x06;                                                    /* Set MainOSC gain for 16MHz */
+                         102 --line77
+                         103 ..lin.bfb56b39..470e1876.0_1::
+                         104 .LDWlin1:
+0000000a 060a            105 	mov	6,r1
+0000000c 80078f0822f0    106 	st.w	r1,4294447368[zero]
+                         107 --78:    CLKCTLMOSCST=0x00003E80;                                             /* Set MainOSC stabilization time to 2ms */
+                         108 --line78
+                         109 ..lin.bfb56b39..470e1876.0_2::
+                         110 .LDWlin2:
+00000012 200e803e        111 	movea	16000,zero,r1
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-                         112 .LDWlin4:
-00000026 010a            113 	mov	1,r1
-00000028 80070f0822f0    114 	st.w	r1,4294447360[zero]
-                         115 --line69
-                         116 ..lin.bfb56b39..470e1876.0_5::
-                         117 .LDWlin5:
-0000002e 1e0a            118 	mov	-2,r1
-00000030 80070f0822f0    119 	st.w	r1,4294447360[zero]
-                         120 --line69
-                         121 ..lin.bfb56b39..470e1876.0_6::
-                         122 .LDWlin6:
-00000036 010a            123 	mov	1,r1
-00000038 80070f0822f0    124 	st.w	r1,4294447360[zero]
-                         125 --line69
-                         126 ..lin.bfb56b39..470e1876.0_7::
-                         127 .LDWlin7:
-0000003e 8007490800f0    128 	ld.w	4294443012[zero],r1
-00000044 610a            129 	cmp	1,r1
-00000046 b2ed*           130 	be	.L8
-                         131 .L9:
-                         132 --70:    while ((CLKCTLMOSCS&0x04u) != 0x04u);                                /* Wait for active MainOSC */
-                         133 --line70
-                         134 ..lin.bfb56b39..470e1876.0_8::
-                         135 .LDWlin8:
-00000048 8007490822f0    136 	ld.w	4294447364[zero],r1
-0000004e 830a            137 	shr	3,r1
-00000050 c9fd*           138 	bnl	.L9
-                         139 .L4:
-                         140 --71:   }
-                         141 --73:   if((CLKCTLPLL0S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
-                         142 --line73
-                         143 ..lin.bfb56b39..470e1876.0_9::
-                         144 .LDWlin9:
-00000052 8007490820f1    145 	ld.w	4294479876[zero],r1
-00000058 830a            146 	shr	3,r1
-0000005a b13d*           147 	bl	.L12
-                         148 --74:   {
-                         149 --75:     /* Prepare PLL0 */
-                         150 --76:     CLKCTLPLL0C=0x6340483B;                                             /* 16 MHz MainOSC -> 480MHz VCOUT */
-                         151 --line76
-                         152 ..lin.bfb56b39..470e1876.0_10::
-                         153 .LDWlin10:
-0000005c 21063b484063    154 	mov	1665157179,r1
-00000062 80078f0820f1    155 	st.w	r1,4294479880[zero]
-                         156 --77:                                                                         /* 5% @ 100kHz SSCG */
-                         157 --78:                                                                         
-                         158 --79:     protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLPLL0ST,0x1B80);   /* Set stabilization time to recommended value */
-                         159 .L16:
-                         160 --line79
-                         161 ..lin.bfb56b39..470e1876.0_11::
-                         162 .LDWlin11:
-00000068 200ea500        163 	movea	165,zero,r1
-0000006c 80070f0800f0    164 	st.w	r1,4294443008[zero]
-                         165 --line79
-                         166 ..lin.bfb56b39..470e1876.0_12::
-                         167 .LDWlin12:
-00000072 200e801b        168 	movea	7040,zero,r1
-00000076 8007cf0820f1    169 	st.w	r1,4294479884[zero]
-                         170 --line79
-                         171 ..lin.bfb56b39..470e1876.0_13::
-                         172 .LDWlin13:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+00000016 8007cf0822f0    112 	st.w	r1,4294447372[zero]
+                         113 --79:    protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLMOSCE,0x01u);      /* Trigger Enable (protected write) */
+                         114 .L8:
+                         115 --line79
+                         116 ..lin.bfb56b39..470e1876.0_3::
+                         117 .LDWlin3:
+0000001c 200ea500        118 	movea	165,zero,r1
+00000020 80070f0800f0    119 	st.w	r1,4294443008[zero]
+                         120 --line79
+                         121 ..lin.bfb56b39..470e1876.0_4::
+                         122 .LDWlin4:
+00000026 010a            123 	mov	1,r1
+00000028 80070f0822f0    124 	st.w	r1,4294447360[zero]
+                         125 --line79
+                         126 ..lin.bfb56b39..470e1876.0_5::
+                         127 .LDWlin5:
+0000002e 1e0a            128 	mov	-2,r1
+00000030 80070f0822f0    129 	st.w	r1,4294447360[zero]
+                         130 --line79
+                         131 ..lin.bfb56b39..470e1876.0_6::
+                         132 .LDWlin6:
+00000036 010a            133 	mov	1,r1
+00000038 80070f0822f0    134 	st.w	r1,4294447360[zero]
+                         135 --line79
+                         136 ..lin.bfb56b39..470e1876.0_7::
+                         137 .LDWlin7:
+0000003e 8007490800f0    138 	ld.w	4294443012[zero],r1
+00000044 610a            139 	cmp	1,r1
+00000046 b2ed*           140 	be	.L8
+                         141 .L9:
+                         142 --80:    while ((CLKCTLMOSCS&0x04u) != 0x04u);                                /* Wait for active MainOSC */
+                         143 --line80
+                         144 ..lin.bfb56b39..470e1876.0_8::
+                         145 .LDWlin8:
+00000048 8007490822f0    146 	ld.w	4294447364[zero],r1
+0000004e 830a            147 	shr	3,r1
+00000050 c9fd*           148 	bnl	.L9
+                         149 .L4:
+                         150 --81:   }
+                         151 --83:   if((CLKCTLPLL0S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
+                         152 --line83
+                         153 ..lin.bfb56b39..470e1876.0_9::
+                         154 .LDWlin9:
+00000052 8007490820f1    155 	ld.w	4294479876[zero],r1
+00000058 830a            156 	shr	3,r1
+0000005a b13d*           157 	bl	.L12
+                         158 --84:   {
+                         159 --85:     /* Prepare PLL0 */
+                         160 --86:     CLKCTLPLL0C=0x6340483B;                                             /* 16 MHz MainOSC -> 480MHz VCOUT */
+                         161 --line86
+                         162 ..lin.bfb56b39..470e1876.0_10::
+                         163 .LDWlin10:
+0000005c 21063b484063    164 	mov	1665157179,r1
+00000062 80078f0820f1    165 	st.w	r1,4294479880[zero]
+                         166 --87:                                                                         /* 5% @ 100kHz SSCG */
+                         167 --88:                                                                         
+                         168 --89:     protected_write(WPROTRPROTCMD0,WPROTRPROTS0,CLKCTLPLL0ST,0x1B80);   /* Set stabilization time to recommended value */
+                         169 .L16:
+                         170 --line89
+                         171 ..lin.bfb56b39..470e1876.0_11::
+                         172 .LDWlin11:
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-0000007c 200e7fe4        173 	movea	-7041,zero,r1
-00000080 8007cf0820f1    174 	st.w	r1,4294479884[zero]
-                         175 --line79
-                         176 ..lin.bfb56b39..470e1876.0_14::
-                         177 .LDWlin14:
-00000086 200e801b        178 	movea	7040,zero,r1
-0000008a 8007cf0820f1    179 	st.w	r1,4294479884[zero]
-                         180 --line79
-                         181 ..lin.bfb56b39..470e1876.0_15::
-                         182 .LDWlin15:
-00000090 8007490800f0    183 	ld.w	4294443012[zero],r1
-00000096 610a            184 	cmp	1,r1
-00000098 82ed*           185 	be	.L16
-                         186 .L19:
-                         187 --80:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL0E,0x01u);     /* Enable PLL */
-                         188 --line80
-                         189 ..lin.bfb56b39..470e1876.0_16::
-                         190 .LDWlin16:
-0000009a 200ea500        191 	movea	165,zero,r1
-0000009e 80070f0800f1    192 	st.w	r1,4294475776[zero]
-                         193 --line80
-                         194 ..lin.bfb56b39..470e1876.0_17::
-                         195 .LDWlin17:
-000000a4 010a            196 	mov	1,r1
-000000a6 80070f0820f1    197 	st.w	r1,4294479872[zero]
-                         198 --line80
-                         199 ..lin.bfb56b39..470e1876.0_18::
-                         200 .LDWlin18:
-000000ac 1e0a            201 	mov	-2,r1
-000000ae 80070f0820f1    202 	st.w	r1,4294479872[zero]
-                         203 --line80
-                         204 ..lin.bfb56b39..470e1876.0_19::
-                         205 .LDWlin19:
-000000b4 010a            206 	mov	1,r1
-000000b6 80070f0820f1    207 	st.w	r1,4294479872[zero]
-                         208 --line80
-                         209 ..lin.bfb56b39..470e1876.0_20::
-                         210 .LDWlin20:
-000000bc 8007490800f1    211 	ld.w	4294475780[zero],r1
-000000c2 610a            212 	cmp	1,r1
-000000c4 b2ed*           213 	be	.L19
-                         214 .L20:
-                         215 --81:     while((CLKCTLPLL0S&0x04u) != 0x04u){}                               /* Wait for active PLL */
-                         216 --line81
-                         217 ..lin.bfb56b39..470e1876.0_21::
-                         218 .LDWlin21:
-000000c6 8007490820f1    219 	ld.w	4294479876[zero],r1
-000000cc 830a            220 	shr	3,r1
-000000ce c9fd*           221 	bnl	.L20
-                         222 .L12:
-                         223 --82:   }
-                         224 --83:   
-                         225 --84:   if((CLKCTLPLL1S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
-                         226 --line84
-                         227 ..lin.bfb56b39..470e1876.0_22::
-                         228 .LDWlin22:
-000000d0 8007490822f1    229 	ld.w	4294480132[zero],r1
-000000d6 830a            230 	shr	3,r1
-000000d8 a125*           231 	bl	.L33
-                         232 --85:   {
-                         233 --86:     /* Prepare PLL1 */
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+00000068 200ea500        173 	movea	165,zero,r1
+0000006c 80070f0800f0    174 	st.w	r1,4294443008[zero]
+                         175 --line89
+                         176 ..lin.bfb56b39..470e1876.0_12::
+                         177 .LDWlin12:
+00000072 200e801b        178 	movea	7040,zero,r1
+00000076 8007cf0820f1    179 	st.w	r1,4294479884[zero]
+                         180 --line89
+                         181 ..lin.bfb56b39..470e1876.0_13::
+                         182 .LDWlin13:
+0000007c 200e7fe4        183 	movea	-7041,zero,r1
+00000080 8007cf0820f1    184 	st.w	r1,4294479884[zero]
+                         185 --line89
+                         186 ..lin.bfb56b39..470e1876.0_14::
+                         187 .LDWlin14:
+00000086 200e801b        188 	movea	7040,zero,r1
+0000008a 8007cf0820f1    189 	st.w	r1,4294479884[zero]
+                         190 --line89
+                         191 ..lin.bfb56b39..470e1876.0_15::
+                         192 .LDWlin15:
+00000090 8007490800f0    193 	ld.w	4294443012[zero],r1
+00000096 610a            194 	cmp	1,r1
+00000098 82ed*           195 	be	.L16
+                         196 .L19:
+                         197 --90:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL0E,0x01u);     /* Enable PLL */
+                         198 --line90
+                         199 ..lin.bfb56b39..470e1876.0_16::
+                         200 .LDWlin16:
+0000009a 200ea500        201 	movea	165,zero,r1
+0000009e 80070f0800f1    202 	st.w	r1,4294475776[zero]
+                         203 --line90
+                         204 ..lin.bfb56b39..470e1876.0_17::
+                         205 .LDWlin17:
+000000a4 010a            206 	mov	1,r1
+000000a6 80070f0820f1    207 	st.w	r1,4294479872[zero]
+                         208 --line90
+                         209 ..lin.bfb56b39..470e1876.0_18::
+                         210 .LDWlin18:
+000000ac 1e0a            211 	mov	-2,r1
+000000ae 80070f0820f1    212 	st.w	r1,4294479872[zero]
+                         213 --line90
+                         214 ..lin.bfb56b39..470e1876.0_19::
+                         215 .LDWlin19:
+000000b4 010a            216 	mov	1,r1
+000000b6 80070f0820f1    217 	st.w	r1,4294479872[zero]
+                         218 --line90
+                         219 ..lin.bfb56b39..470e1876.0_20::
+                         220 .LDWlin20:
+000000bc 8007490800f1    221 	ld.w	4294475780[zero],r1
+000000c2 610a            222 	cmp	1,r1
+000000c4 b2ed*           223 	be	.L19
+                         224 .L20:
+                         225 --91:     while((CLKCTLPLL0S&0x04u) != 0x04u){}                               /* Wait for active PLL */
+                         226 --line91
+                         227 ..lin.bfb56b39..470e1876.0_21::
+                         228 .LDWlin21:
+000000c6 8007490820f1    229 	ld.w	4294479876[zero],r1
+000000cc 830a            230 	shr	3,r1
+000000ce c9fd*           231 	bnl	.L20
+                         232 .L12:
+                         233 --92:   }
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-                         234 --87:     CLKCTLPLL1C=0x10B3B;                                                /* 16 MHz MainOSC -> 480MHz VCOUT, 80MHz PPLLOUT */
-                         235 --line87
-                         236 ..lin.bfb56b39..470e1876.0_23::
-                         237 .LDWlin23:
-000000da 21063b0b0100    238 	mov	68411,r1
-000000e0 80078f0822f1    239 	st.w	r1,4294480136[zero]
-                         240 --88:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL1E,0x01u);     /* Enable PLL */
-                         241 .L27:
-                         242 --line88
-                         243 ..lin.bfb56b39..470e1876.0_24::
-                         244 .LDWlin24:
-000000e6 200ea500        245 	movea	165,zero,r1
-000000ea 80070f0800f1    246 	st.w	r1,4294475776[zero]
-                         247 --line88
-                         248 ..lin.bfb56b39..470e1876.0_25::
-                         249 .LDWlin25:
-000000f0 010a            250 	mov	1,r1
-000000f2 80070f0822f1    251 	st.w	r1,4294480128[zero]
-                         252 --line88
-                         253 ..lin.bfb56b39..470e1876.0_26::
-                         254 .LDWlin26:
-000000f8 1e0a            255 	mov	-2,r1
-000000fa 80070f0822f1    256 	st.w	r1,4294480128[zero]
-                         257 --line88
-                         258 ..lin.bfb56b39..470e1876.0_27::
-                         259 .LDWlin27:
-00000100 010a            260 	mov	1,r1
-00000102 80070f0822f1    261 	st.w	r1,4294480128[zero]
-                         262 --line88
-                         263 ..lin.bfb56b39..470e1876.0_28::
-                         264 .LDWlin28:
-00000108 8007490800f1    265 	ld.w	4294475780[zero],r1
-0000010e 610a            266 	cmp	1,r1
-00000110 b2ed*           267 	be	.L27
-                         268 .L28:
-                         269 --89:     while((CLKCTLPLL1S&0x04u) != 0x04u){}                               /* Wait for active PLL */
-                         270 --line89
-                         271 ..lin.bfb56b39..470e1876.0_29::
-                         272 .LDWlin29:
-00000112 8007490822f1    273 	ld.w	4294480132[zero],r1
-00000118 830a            274 	shr	3,r1
-0000011a c9fd*           275 	bnl	.L28
-                         276 .L33:
-                         277 --90:   }
-                         278 --91:   
-                         279 --92:   /* CPLLOUT = VCOOUT � 1/2 = 240 MHz */
-                         280 --93:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKD_CTL,0x29);
-                         281 --line93
-                         282 ..lin.bfb56b39..470e1876.0_30::
-                         283 .LDWlin30:
-0000011c 200ea500        284 	movea	165,zero,r1
-00000120 80070f0800f1    285 	st.w	r1,4294475776[zero]
-                         286 --line93
-                         287 ..lin.bfb56b39..470e1876.0_31::
-                         288 .LDWlin31:
-00000126 200e2900        289 	movea	41,zero,r1
-0000012a 80070f0842f1    290 	st.w	r1,4294484224[zero]
-                         291 --line93
-                         292 ..lin.bfb56b39..470e1876.0_32::
-                         293 .LDWlin32:
-00000130 200ed6ff        294 	movea	-42,zero,r1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+                         234 --93:   
+                         235 --94:   if((CLKCTLPLL1S&0x04u) != 0x04u)                                      /* Check if PLL needs to be started */
+                         236 --line94
+                         237 ..lin.bfb56b39..470e1876.0_22::
+                         238 .LDWlin22:
+000000d0 8007490822f1    239 	ld.w	4294480132[zero],r1
+000000d6 830a            240 	shr	3,r1
+000000d8 a125*           241 	bl	.L33
+                         242 --95:   {
+                         243 --96:     /* Prepare PLL1 */
+                         244 --97:     CLKCTLPLL1C=0x10B3B;                                                /* 16 MHz MainOSC -> 480MHz VCOUT, 80MHz PPLLOUT */
+                         245 --line97
+                         246 ..lin.bfb56b39..470e1876.0_23::
+                         247 .LDWlin23:
+000000da 21063b0b0100    248 	mov	68411,r1
+000000e0 80078f0822f1    249 	st.w	r1,4294480136[zero]
+                         250 --98:     protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLPLL1E,0x01u);     /* Enable PLL */
+                         251 .L27:
+                         252 --line98
+                         253 ..lin.bfb56b39..470e1876.0_24::
+                         254 .LDWlin24:
+000000e6 200ea500        255 	movea	165,zero,r1
+000000ea 80070f0800f1    256 	st.w	r1,4294475776[zero]
+                         257 --line98
+                         258 ..lin.bfb56b39..470e1876.0_25::
+                         259 .LDWlin25:
+000000f0 010a            260 	mov	1,r1
+000000f2 80070f0822f1    261 	st.w	r1,4294480128[zero]
+                         262 --line98
+                         263 ..lin.bfb56b39..470e1876.0_26::
+                         264 .LDWlin26:
+000000f8 1e0a            265 	mov	-2,r1
+000000fa 80070f0822f1    266 	st.w	r1,4294480128[zero]
+                         267 --line98
+                         268 ..lin.bfb56b39..470e1876.0_27::
+                         269 .LDWlin27:
+00000100 010a            270 	mov	1,r1
+00000102 80070f0822f1    271 	st.w	r1,4294480128[zero]
+                         272 --line98
+                         273 ..lin.bfb56b39..470e1876.0_28::
+                         274 .LDWlin28:
+00000108 8007490800f1    275 	ld.w	4294475780[zero],r1
+0000010e 610a            276 	cmp	1,r1
+00000110 b2ed*           277 	be	.L27
+                         278 .L28:
+                         279 --99:     while((CLKCTLPLL1S&0x04u) != 0x04u){}                               /* Wait for active PLL */
+                         280 --line99
+                         281 ..lin.bfb56b39..470e1876.0_29::
+                         282 .LDWlin29:
+00000112 8007490822f1    283 	ld.w	4294480132[zero],r1
+00000118 830a            284 	shr	3,r1
+0000011a c9fd*           285 	bnl	.L28
+                         286 .L33:
+                         287 --100:   }
+                         288 --101:   
+                         289 --102:   /* CPLLOUT = VCOOUT � 1/2 = 240 MHz */
+                         290 --103:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKD_CTL,0x29);
+                         291 --line103
+                         292 ..lin.bfb56b39..470e1876.0_30::
+                         293 .LDWlin30:
+0000011c 200ea500        294 	movea	165,zero,r1
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-00000134 80070f0842f1    295 	st.w	r1,4294484224[zero]
-                         296 --line93
-                         297 ..lin.bfb56b39..470e1876.0_33::
-                         298 .LDWlin33:
-0000013a 200e2900        299 	movea	41,zero,r1
-0000013e 80070f0842f1    300 	st.w	r1,4294484224[zero]
-                         301 --line93
-                         302 ..lin.bfb56b39..470e1876.0_34::
-                         303 .LDWlin34:
-00000144 8007490800f1    304 	ld.w	4294475780[zero],r1
-0000014a 610a            305 	cmp	1,r1
-0000014c 82ed*           306 	be	.L33
-                         307 .L34:
-                         308 --94:   while(CLKCTLCKSC_CPUCLKD_ACT!=0x29);  
-                         309 --line94
-                         310 ..lin.bfb56b39..470e1876.0_35::
-                         311 .LDWlin35:
-0000014e 8007890842f1    312 	ld.w	4294484232[zero],r1
-00000154 0106d7ff        313 	addi	-41,r1,zero
-00000158 bafd*           314 	bne	.L34
-                         315 .L39:
-                         316 --95:   
-                         317 --96:   /* CPLLOUT -> CPU Clock */ 
-                         318 --97:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKS_CTL,0x00u);
-                         319 --line97
-                         320 ..lin.bfb56b39..470e1876.0_36::
-                         321 .LDWlin36:
-0000015a 200ea500        322 	movea	165,zero,r1
-0000015e 80070f0800f1    323 	st.w	r1,4294475776[zero]
-                         324 --line97
-                         325 ..lin.bfb56b39..470e1876.0_37::
-                         326 .LDWlin37:
-00000164 80070f0040f1    327 	st.w	zero,4294483968[zero]
-                         328 --line97
-                         329 ..lin.bfb56b39..470e1876.0_38::
-                         330 .LDWlin38:
-0000016a 1f0a            331 	mov	-1,r1
-0000016c 80070f0840f1    332 	st.w	r1,4294483968[zero]
-                         333 --line97
-                         334 ..lin.bfb56b39..470e1876.0_39::
-                         335 .LDWlin39:
-00000172 80070f0040f1    336 	st.w	zero,4294483968[zero]
-                         337 --line97
-                         338 ..lin.bfb56b39..470e1876.0_40::
-                         339 .LDWlin40:
-00000178 8007490800f1    340 	ld.w	4294475780[zero],r1
-0000017e 610a            341 	cmp	1,r1
-00000180 d2ed*           342 	be	.L39
-                         343 .L40:
-                         344 --98:   while(CLKCTLCKSC_CPUCLKS_ACT!=0x00u);
-                         345 --line98
-                         346 ..lin.bfb56b39..470e1876.0_41::
-                         347 .LDWlin41:
-00000182 8007890840f1    348 	ld.w	4294483976[zero],r1
-00000188 e009            349 	cmp	zero,r1
-0000018a cafd*           350 	bne	.L40
-                         351 .L45:
-                         352 --99:   
-                         353 --100:   /* PPLLOUT -> PPLLCLK = 80MHz */
-                         354 --101:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_PPLLCLKS_CTL,0x3);
-                         355 --line101
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+00000120 80070f0800f1    295 	st.w	r1,4294475776[zero]
+                         296 --line103
+                         297 ..lin.bfb56b39..470e1876.0_31::
+                         298 .LDWlin31:
+00000126 200e2900        299 	movea	41,zero,r1
+0000012a 80070f0842f1    300 	st.w	r1,4294484224[zero]
+                         301 --line103
+                         302 ..lin.bfb56b39..470e1876.0_32::
+                         303 .LDWlin32:
+00000130 200ed6ff        304 	movea	-42,zero,r1
+00000134 80070f0842f1    305 	st.w	r1,4294484224[zero]
+                         306 --line103
+                         307 ..lin.bfb56b39..470e1876.0_33::
+                         308 .LDWlin33:
+0000013a 200e2900        309 	movea	41,zero,r1
+0000013e 80070f0842f1    310 	st.w	r1,4294484224[zero]
+                         311 --line103
+                         312 ..lin.bfb56b39..470e1876.0_34::
+                         313 .LDWlin34:
+00000144 8007490800f1    314 	ld.w	4294475780[zero],r1
+0000014a 610a            315 	cmp	1,r1
+0000014c 82ed*           316 	be	.L33
+                         317 .L34:
+                         318 --104:   while(CLKCTLCKSC_CPUCLKD_ACT!=0x29);  
+                         319 --line104
+                         320 ..lin.bfb56b39..470e1876.0_35::
+                         321 .LDWlin35:
+0000014e 8007890842f1    322 	ld.w	4294484232[zero],r1
+00000154 0106d7ff        323 	addi	-41,r1,zero
+00000158 bafd*           324 	bne	.L34
+                         325 .L39:
+                         326 --105:   
+                         327 --106:   /* CPLLOUT -> CPU Clock */ 
+                         328 --107:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_CPUCLKS_CTL,0x00u);
+                         329 --line107
+                         330 ..lin.bfb56b39..470e1876.0_36::
+                         331 .LDWlin36:
+0000015a 200ea500        332 	movea	165,zero,r1
+0000015e 80070f0800f1    333 	st.w	r1,4294475776[zero]
+                         334 --line107
+                         335 ..lin.bfb56b39..470e1876.0_37::
+                         336 .LDWlin37:
+00000164 80070f0040f1    337 	st.w	zero,4294483968[zero]
+                         338 --line107
+                         339 ..lin.bfb56b39..470e1876.0_38::
+                         340 .LDWlin38:
+0000016a 1f0a            341 	mov	-1,r1
+0000016c 80070f0840f1    342 	st.w	r1,4294483968[zero]
+                         343 --line107
+                         344 ..lin.bfb56b39..470e1876.0_39::
+                         345 .LDWlin39:
+00000172 80070f0040f1    346 	st.w	zero,4294483968[zero]
+                         347 --line107
+                         348 ..lin.bfb56b39..470e1876.0_40::
+                         349 .LDWlin40:
+00000178 8007490800f1    350 	ld.w	4294475780[zero],r1
+0000017e 610a            351 	cmp	1,r1
+00000180 d2ed*           352 	be	.L39
+                         353 .L40:
+                         354 --108:   while(CLKCTLCKSC_CPUCLKS_ACT!=0x00u);
+                         355 --line108
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-                         356 ..lin.bfb56b39..470e1876.0_42::
-                         357 .LDWlin42:
-0000018c 200ea500        358 	movea	165,zero,r1
-00000190 80070f0800f1    359 	st.w	r1,4294475776[zero]
-                         360 --line101
-                         361 ..lin.bfb56b39..470e1876.0_43::
-                         362 .LDWlin43:
-00000196 030a            363 	mov	3,r1
-00000198 80070f0940f1    364 	st.w	r1,4294483984[zero]
-                         365 --line101
-                         366 ..lin.bfb56b39..470e1876.0_44::
-                         367 .LDWlin44:
-0000019e 1c0a            368 	mov	-4,r1
-000001a0 80070f0940f1    369 	st.w	r1,4294483984[zero]
-                         370 --line101
-                         371 ..lin.bfb56b39..470e1876.0_45::
-                         372 .LDWlin45:
-000001a6 030a            373 	mov	3,r1
-000001a8 80070f0940f1    374 	st.w	r1,4294483984[zero]
-                         375 --line101
-                         376 ..lin.bfb56b39..470e1876.0_46::
-                         377 .LDWlin46:
-000001ae 8007490800f1    378 	ld.w	4294475780[zero],r1
-000001b4 610a            379 	cmp	1,r1
-000001b6 b2ed*           380 	be	.L45
-                         381 .L46:
-                         382 --102:   while(CLKCTLCKSC_PPLLCLKS_ACT!=0x3);  
-                         383 --line102
-                         384 ..lin.bfb56b39..470e1876.0_47::
-                         385 .LDWlin47:
-000001b8 8007890940f1    386 	ld.w	4294483992[zero],r1
-000001be 630a            387 	cmp	3,r1
-000001c0 cafd*           388 	bne	.L46
-                         389 --103: }
-                         390 --	    .ef
-                         391 .LDW11:
-                         392 .L659:
-                         393 --line103
-                         394 ..lin.bfb56b39..470e1876.0_48::
-                         395 .LDWlin48:
-                         396 	.jumptype return
-000001c2 7f00            397 	jmp	[lp]
-                         398 --line103
-                         399 ..lin.bfb56b39..470e1876.0_49::
-                         400 	.type	_init_clocks,@function
-                         401 	.size	_init_clocks,.-_init_clocks
-                         402 	.align	2
-                         403 
-                         404 	.section ".bss","awb"
-                         405 .L473:
-                         406 	.type	.L473,@object
-                         407 	.size	.L473,0
-                         408 	.section ".ghrettbl",""
-                         409 	.align	4
-00000000 00000000*       410 .L660:	.word	.L659
-                         411 	.type	.L660,@object
-                         412 	.size	.L660,4
-                         413 	.data
-                         414 	.text
-                         415 
-                         416 
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+                         356 ..lin.bfb56b39..470e1876.0_41::
+                         357 .LDWlin41:
+00000182 8007890840f1    358 	ld.w	4294483976[zero],r1
+00000188 e009            359 	cmp	zero,r1
+0000018a cafd*           360 	bne	.L40
+                         361 .L45:
+                         362 --109:   
+                         363 --110:   /* PPLLOUT -> PPLLCLK = 80MHz */
+                         364 --111:   protected_write(WPROTRPROTCMD1,WPROTRPROTS1,CLKCTLCKSC_PPLLCLKS_CTL,0x3);
+                         365 --line111
+                         366 ..lin.bfb56b39..470e1876.0_42::
+                         367 .LDWlin42:
+0000018c 200ea500        368 	movea	165,zero,r1
+00000190 80070f0800f1    369 	st.w	r1,4294475776[zero]
+                         370 --line111
+                         371 ..lin.bfb56b39..470e1876.0_43::
+                         372 .LDWlin43:
+00000196 030a            373 	mov	3,r1
+00000198 80070f0940f1    374 	st.w	r1,4294483984[zero]
+                         375 --line111
+                         376 ..lin.bfb56b39..470e1876.0_44::
+                         377 .LDWlin44:
+0000019e 1c0a            378 	mov	-4,r1
+000001a0 80070f0940f1    379 	st.w	r1,4294483984[zero]
+                         380 --line111
+                         381 ..lin.bfb56b39..470e1876.0_45::
+                         382 .LDWlin45:
+000001a6 030a            383 	mov	3,r1
+000001a8 80070f0940f1    384 	st.w	r1,4294483984[zero]
+                         385 --line111
+                         386 ..lin.bfb56b39..470e1876.0_46::
+                         387 .LDWlin46:
+000001ae 8007490800f1    388 	ld.w	4294475780[zero],r1
+000001b4 610a            389 	cmp	1,r1
+000001b6 b2ed*           390 	be	.L45
+                         391 .L46:
+                         392 --112:   while(CLKCTLCKSC_PPLLCLKS_ACT!=0x3);  
+                         393 --line112
+                         394 ..lin.bfb56b39..470e1876.0_47::
+                         395 .LDWlin47:
+000001b8 8007890940f1    396 	ld.w	4294483992[zero],r1
+000001be 630a            397 	cmp	3,r1
+000001c0 cafd*           398 	bne	.L46
+                         399 --113: }
+                         400 --	    .ef
+                         401 .LDW11:
+                         402 .L659:
+                         403 --line113
+                         404 ..lin.bfb56b39..470e1876.0_48::
+                         405 .LDWlin48:
+                         406 	.jumptype return
+000001c2 7f00            407 	jmp	[lp]
+                         408 --line113
+                         409 ..lin.bfb56b39..470e1876.0_49::
+                         410 	.type	_init_clocks,@function
+                         411 	.size	_init_clocks,.-_init_clocks
+                         412 	.align	2
+                         413 
+                         414 	.section ".bss","awb"
+                         415 .L473:
+                         416 	.type	.L473,@object
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-                         417 --105: void main_icum(void)
-                         418 	.align	2
-                         419 	.align	2
-                         420 	.align	2
-                         421 ..gh.f.a.2.e.1:
-                         422 	.type	..gh.f.a.2.e.1,@object
-                         423 	.size	..gh.f.a.2.e.1,0
-                         424 	.global	_main_icum
-                         425 _main_icum:
-000001c4 5c1a            426 	add	-4,sp
-000001c6 63ff0100        427 	st.w	lp,0[sp]
-                         428 --	    .bf
-                         429 .LDW21:
-                         430 --106: {
-                         431 --107:     init_clocks();
-                         432 .L737:
-                         433 	jarl	_init_clocks,lp
-                         433 <EXPANSION BEGIN>
-                         433 jarl22 _init_clocks , lp 
-000001ca bfff36fe*       433 <EXPANSION END>
-                         434 --108:     icum_comm_init();
-                         435 .L739:
-                         436 --line108
-                         437 ..lin.bfb56b39..6db441d6.0_50::
-                         438 .LDWlin50:
-                         439 	jarl	_icum_comm_init,lp
-                         439 <EXPANSION BEGIN>
-                         439 jarl22 _icum_comm_init , lp 
-000001ce 80ff0000*       439 <EXPANSION END>
-                         440 --109:     icum_ostm_init();
-                         441 .L741:
-                         442 --line109
-                         443 ..lin.bfb56b39..6db441d6.0_51::
-                         444 .LDWlin51:
-                         445 	jarl	_icum_ostm_init,lp
-                         445 <EXPANSION BEGIN>
-                         445 jarl22 _icum_ostm_init , lp 
-000001d2 80ff0000*       445 <EXPANSION END>
-                         446 --110:     g_icum_crypto_test_result = icum_crypto_self_test(0x01000000ul);
-                         447 --line110
-                         448 ..lin.bfb56b39..6db441d6.0_52::
-                         449 .LDWlin52:
-000001d6 40360001        450 	movhi	hi(16777216),zero,r6
-                         451 .L743:
-                         452 	jarl	_icum_crypto_self_test,lp
-                         452 <EXPANSION BEGIN>
-                         452 jarl22 _icum_crypto_self_test , lp 
-000001da 80ff0000*       452 <EXPANSION END>
-000001de 64570100*       453 	st.w	r10,sdaoff(_g_icum_crypto_test_result)[gp]
-                         454 --111:     while(1)
-                         455 .L663:
-                         456 --112:     {
-                         457 --line111
-                         458 ..lin.bfb56b39..6db441d6.0_53::
-                         459 .LDWlin53:
-000001e2 8505*           460 	br	.L663
-                         461 --	    .ef
-                         462 .LDW31:
-                         463 --line115
-                         464 ..lin.bfb56b39..6db441d6.0_54::
-                         465 	.type	_main_icum,@function
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+                         417 	.size	.L473,0
+                         418 	.section ".ghrettbl",""
+                         419 	.align	4
+00000000 00000000*       420 .L660:	.word	.L659
+                         421 	.type	.L660,@object
+                         422 	.size	.L660,4
+                         423 	.data
+                         424 	.text
+                         425 
+                         426 
+                         427 --115: void main_icum(void)
+                         428 	.align	2
+                         429 	.align	2
+                         430 	.align	2
+                         431 ..gh.f.a.2.e.1:
+                         432 	.type	..gh.f.a.2.e.1,@object
+                         433 	.size	..gh.f.a.2.e.1,0
+                         434 	.global	_main_icum
+                         435 _main_icum:
+000001c4 5c1a            436 	add	-4,sp
+000001c6 63ff0100        437 	st.w	lp,0[sp]
+                         438 --	    .bf
+                         439 .LDW21:
+                         440 --116: {
+                         441 --117:     init_clocks();
+                         442 .L777:
+                         443 	jarl	_init_clocks,lp
+                         443 <EXPANSION BEGIN>
+                         443 jarl22 _init_clocks , lp 
+000001ca bfff36fe*       443 <EXPANSION END>
+                         444 --118:     icum_comm_init();
+                         445 .L779:
+                         446 --line118
+                         447 ..lin.bfb56b39..6db441d6.0_50::
+                         448 .LDWlin50:
+                         449 	jarl	_icum_comm_init,lp
+                         449 <EXPANSION BEGIN>
+                         449 jarl22 _icum_comm_init , lp 
+000001ce 80ff0000*       449 <EXPANSION END>
+                         450 --119:     icum_ostm_init();
+                         451 .L781:
+                         452 --line119
+                         453 ..lin.bfb56b39..6db441d6.0_51::
+                         454 .LDWlin51:
+                         455 	jarl	_icum_ostm_init,lp
+                         455 <EXPANSION BEGIN>
+                         455 jarl22 _icum_ostm_init , lp 
+000001d2 80ff0000*       455 <EXPANSION END>
+                         456 --120:     g_icum_crypto_test_result = icum_crypto_self_test(0x01000000ul);
+                         457 --line120
+                         458 ..lin.bfb56b39..6db441d6.0_52::
+                         459 .LDWlin52:
+000001d6 40360001        460 	movhi	hi(16777216),zero,r6
+                         461 .L783:
+                         462 	jarl	_icum_crypto_self_test,lp
+                         462 <EXPANSION BEGIN>
+                         462 jarl22 _icum_crypto_self_test , lp 
+000001da 80ff0000*       462 <EXPANSION END>
+000001de 64570100*       463 	st.w	r10,sdaoff(_g_icum_crypto_test_result)[gp]
+                         464 --121:     g_icum_hash_sha1_test_result = (icum_hash_self_test(ICUM_HASH_SHA1) != 0) ? 1ul : 0ul;
+                         465 --line121
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-                         466 	.size	_main_icum,.-_main_icum
-                         467 	.align	2
-                         468 
-                         469 	.section ".bss","awb"
-                         470 .L713:
-                         471 	.type	.L713,@object
-                         472 	.size	.L713,0
-                         473 	.section ".ghcalltbl",""
-                         474 	.align	4
-00000000 00000000*       475 .L738:	.word	.L737
-                         476 	.type	.L738,@object
-                         477 	.size	.L738,4
-00000004 00000000*       478 .L740:	.word	.L739
-                         479 	.type	.L740,@object
-                         480 	.size	.L740,4
-00000008 00000000*       481 .L742:	.word	.L741
-                         482 	.type	.L742,@object
-                         483 	.size	.L742,4
-0000000c 00000000*       484 .L744:	.word	.L743
-                         485 	.type	.L744,@object
-                         486 	.size	.L744,4
-                         487 	.data
-                         488 	.text
-                         489 
-                         490 --113:         // Main loop
-                         491 --114:     }
-                         492 --115: }
-                         493 
-                         494 --117: void main()
-                         495 	.align	2
-                         496 	.align	2
-                         497 	.align	2
-                         498 ..gh.f.a.2.e.2:
-                         499 	.type	..gh.f.a.2.e.2,@object
-                         500 	.size	..gh.f.a.2.e.2,0
-                         501 	.global	_main
-                         502 _main:
-000001e4 5c1a            503 	add	-4,sp
-000001e6 63ff0100        504 	st.w	lp,0[sp]
-                         505 --	    .bf
-                         506 .LDW41:
-                         507 --118: {
-                         508 --119:     main_icum();
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+                         466 ..lin.bfb56b39..6db441d6.0_53::
+                         467 .LDWlin53:
+000001e2 0132            468 	mov	1,r6
+                         469 .L785:
+                         470 	jarl	_icum_hash_self_test,lp
+                         470 <EXPANSION BEGIN>
+                         470 jarl22 _icum_hash_self_test , lp 
+000001e4 80ff0000*       470 <EXPANSION END>
+000001e8 e051            471 	cmp	zero,r10
+000001ea ea0f0000        472 	setfne	r1
+000001ee 640f0100*       473 	st.w	r1,sdaoff(_g_icum_hash_sha1_test_result)[gp]
+                         474 --122:     g_icum_hash_sha256_test_result = (icum_hash_self_test(ICUM_HASH_SHA256) != 0) ? 1ul : 0ul;
+                         475 --line122
+                         476 ..lin.bfb56b39..6db441d6.0_54::
+                         477 .LDWlin54:
+000001f2 0232            478 	mov	2,r6
+                         479 .L787:
+                         480 	jarl	_icum_hash_self_test,lp
+                         480 <EXPANSION BEGIN>
+                         480 jarl22 _icum_hash_self_test , lp 
+000001f4 80ff0000*       480 <EXPANSION END>
+000001f8 e051            481 	cmp	zero,r10
+000001fa ea0f0000        482 	setfne	r1
+000001fe 640f0100*       483 	st.w	r1,sdaoff(_g_icum_hash_sha256_test_result)[gp]
+                         484 --123:     g_icum_hash_sha384_test_result = (icum_hash_self_test(ICUM_HASH_SHA384) != 0) ? 1ul : 0ul;
+                         485 --line123
+                         486 ..lin.bfb56b39..6db441d6.0_55::
+                         487 .LDWlin55:
+00000202 0332            488 	mov	3,r6
+                         489 .L789:
+                         490 	jarl	_icum_hash_self_test,lp
+                         490 <EXPANSION BEGIN>
+                         490 jarl22 _icum_hash_self_test , lp 
+00000204 80ff0000*       490 <EXPANSION END>
+00000208 e051            491 	cmp	zero,r10
+0000020a ea0f0000        492 	setfne	r1
+0000020e 640f0100*       493 	st.w	r1,sdaoff(_g_icum_hash_sha384_test_result)[gp]
+                         494 --124:     g_icum_hash_sha512_test_result = (icum_hash_self_test(ICUM_HASH_SHA512) != 0) ? 1ul : 0ul;
+                         495 --line124
+                         496 ..lin.bfb56b39..6db441d6.0_56::
+                         497 .LDWlin56:
+00000212 0432            498 	mov	4,r6
+                         499 .L791:
+                         500 	jarl	_icum_hash_self_test,lp
+                         500 <EXPANSION BEGIN>
+                         500 jarl22 _icum_hash_self_test , lp 
+00000214 80ff0000*       500 <EXPANSION END>
+00000218 e051            501 	cmp	zero,r10
+0000021a ea0f0000        502 	setfne	r1
+0000021e 640f0100*       503 	st.w	r1,sdaoff(_g_icum_hash_sha512_test_result)[gp]
+                         504 --125:     g_icum_rsa_test_result =
+                         505 --line125
+                         506 ..lin.bfb56b39..6db441d6.0_57::
+                         507 .LDWlin57:
+00000222 40360001        508 	movhi	hi(16777216),zero,r6
                          509 .L793:
-                         510 	jarl	_main_icum,lp
+                         510 	jarl	_icum_rsa_self_test,lp
                          510 <EXPANSION BEGIN>
-                         510 jarl22 _main_icum , lp 
-000001ea bfffdaff*       510 <EXPANSION END>
-                         511 --120:     while(1)
-                         512 .L747:
-                         513 --121:     {
-                         514 --line120
-                         515 ..lin.bfb56b39..ef387e9.0_55::
-                         516 .LDWlin55:
-000001ee 8505*           517 	br	.L747
-                         518 --	    .ef
-                         519 .LDW51:
-                         520 --line124
-                         521 ..lin.bfb56b39..ef387e9.0_56::
-                         522 	.type	_main,@function
-                         523 	.size	_main,.-_main
+                         510 jarl22 _icum_rsa_self_test , lp 
+00000226 80ff0000*       510 <EXPANSION END>
+0000022a e051            511 	cmp	zero,r10
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000v141.s
-                         524 	.align	2
-                         525 
-                         526 	.section ".bss","awb"
-                         527 .L778:
-                         528 	.type	.L778,@object
-                         529 	.size	.L778,0
-                         530 	.section ".ghcalltbl",""
-00000010 00000000*       531 .L794:	.word	.L793
-                         532 	.type	.L794,@object
-                         533 	.size	.L794,4
-                         534 	.data
-                         535 	.text
-                         536 
-                         537 --122:         // Main loop
-                         538 --123:     }
-                         539 --124: }
-                         540 	.align	2
-                         541 --_WPROTR	4294443008	import
-                         542 --_CLKCTL	4294447104	import
-                         543 
-                         544 	.data
-                         545 	.section ".sbss","awb"
-                         546 	.align	4
-                         547 	.align	4
-                         548 	.global	_g_icum_crypto_test_result
-00000000 00000000        549 _g_icum_crypto_test_result:	.space	4
-                         550 	.type	_g_icum_crypto_test_result,@object
-                         551 	.size	_g_icum_crypto_test_result,4
-                         552 	.data
-                         553 	.ghsnote version,30
-                         554 	.ghsnote tools,3
-                         555 	.ghsnote options,656
-                         556 	.text
-                         557 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD81D70..0::
-                         558 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+0000022c ea0f0000        512 	setfne	r1
+00000230 640f0100*       513 	st.w	r1,sdaoff(_g_icum_rsa_test_result)[gp]
+                         514 --126:         (icum_rsa_self_test(0x01000000ul) != 0) ? 1ul : 0ul;
+                         515 --127:     while(1)
+                         516 .L663:
+                         517 --128:     {
+                         518 --line127
+                         519 ..lin.bfb56b39..6db441d6.0_58::
+                         520 .LDWlin58:
+00000234 8505*           521 	br	.L663
+                         522 --	    .ef
+                         523 .LDW31:
+                         524 --line131
+                         525 ..lin.bfb56b39..6db441d6.0_59::
+                         526 	.type	_main_icum,@function
+                         527 	.size	_main_icum,.-_main_icum
+                         528 	.align	2
+                         529 
+                         530 	.section ".bss","awb"
+                         531 .L738:
+                         532 	.type	.L738,@object
+                         533 	.size	.L738,0
+                         534 	.section ".ghcalltbl",""
+                         535 	.align	4
+00000000 00000000*       536 .L778:	.word	.L777
+                         537 	.type	.L778,@object
+                         538 	.size	.L778,4
+00000004 00000000*       539 .L780:	.word	.L779
+                         540 	.type	.L780,@object
+                         541 	.size	.L780,4
+00000008 00000000*       542 .L782:	.word	.L781
+                         543 	.type	.L782,@object
+                         544 	.size	.L782,4
+0000000c 00000000*       545 .L784:	.word	.L783
+                         546 	.type	.L784,@object
+                         547 	.size	.L784,4
+00000010 00000000*       548 .L786:	.word	.L785
+                         549 	.type	.L786,@object
+                         550 	.size	.L786,4
+00000014 00000000*       551 .L788:	.word	.L787
+                         552 	.type	.L788,@object
+                         553 	.size	.L788,4
+00000018 00000000*       554 .L790:	.word	.L789
+                         555 	.type	.L790,@object
+                         556 	.size	.L790,4
+0000001c 00000000*       557 .L792:	.word	.L791
+                         558 	.type	.L792,@object
+                         559 	.size	.L792,4
+00000020 00000000*       560 .L794:	.word	.L793
+                         561 	.type	.L794,@object
+                         562 	.size	.L794,4
+                         563 	.data
+                         564 	.text
+                         565 
+                         566 --129:         // Main loop
+                         567 --130:     }
+                         568 --131: }
+                         569 
+                         570 --133: void main()
+                         571 	.align	2
+                         572 	.align	2
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+                         573 	.align	2
+                         574 ..gh.f.a.2.e.2:
+                         575 	.type	..gh.f.a.2.e.2,@object
+                         576 	.size	..gh.f.a.2.e.2,0
+                         577 	.global	_main
+                         578 _main:
+00000236 5c1a            579 	add	-4,sp
+00000238 63ff0100        580 	st.w	lp,0[sp]
+                         581 --	    .bf
+                         582 .LDW41:
+                         583 --134: {
+                         584 --135:     main_icum();
+                         585 .L841:
+                         586 	jarl	_main_icum,lp
+                         586 <EXPANSION BEGIN>
+                         586 jarl22 _main_icum , lp 
+0000023c bfff88ff*       586 <EXPANSION END>
+                         587 --136:     while(1)
+                         588 .L797:
+                         589 --137:     {
+                         590 --line136
+                         591 ..lin.bfb56b39..ef387e9.0_60::
+                         592 .LDWlin60:
+00000240 8505*           593 	br	.L797
+                         594 --	    .ef
+                         595 .LDW51:
+                         596 --line140
+                         597 ..lin.bfb56b39..ef387e9.0_61::
+                         598 	.type	_main,@function
+                         599 	.size	_main,.-_main
+                         600 	.align	2
+                         601 
+                         602 	.section ".bss","awb"
+                         603 .L826:
+                         604 	.type	.L826,@object
+                         605 	.size	.L826,0
+                         606 	.section ".ghcalltbl",""
+00000024 00000000*       607 .L842:	.word	.L841
+                         608 	.type	.L842,@object
+                         609 	.size	.L842,4
+                         610 	.data
+                         611 	.text
+                         612 
+                         613 --138:         // Main loop
+                         614 --139:     }
+                         615 --140: }
+                         616 	.align	2
+                         617 --_WPROTR	4294443008	import
+                         618 --_CLKCTL	4294447104	import
+                         619 
+                         620 	.data
+                         621 	.section ".sbss","awb"
+                         622 	.align	4
+                         623 	.align	4
+                         624 	.global	_g_icum_crypto_test_result
+00000000 00000000        625 _g_icum_crypto_test_result:	.space	4
+                         626 	.type	_g_icum_crypto_test_result,@object
+                         627 	.size	_g_icum_crypto_test_result,4
+                         628 	.align	4
+                         629 	.global	_g_icum_hash_sha1_test_result
+00000004 00000000        630 _g_icum_hash_sha1_test_result:	.space	4
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000hn81.s
+                         631 	.type	_g_icum_hash_sha1_test_result,@object
+                         632 	.size	_g_icum_hash_sha1_test_result,4
+                         633 	.align	4
+                         634 	.global	_g_icum_hash_sha256_test_result
+00000008 00000000        635 _g_icum_hash_sha256_test_result:	.space	4
+                         636 	.type	_g_icum_hash_sha256_test_result,@object
+                         637 	.size	_g_icum_hash_sha256_test_result,4
+                         638 	.align	4
+                         639 	.global	_g_icum_hash_sha384_test_result
+0000000c 00000000        640 _g_icum_hash_sha384_test_result:	.space	4
+                         641 	.type	_g_icum_hash_sha384_test_result,@object
+                         642 	.size	_g_icum_hash_sha384_test_result,4
+                         643 	.align	4
+                         644 	.global	_g_icum_hash_sha512_test_result
+00000010 00000000        645 _g_icum_hash_sha512_test_result:	.space	4
+                         646 	.type	_g_icum_hash_sha512_test_result,@object
+                         647 	.size	_g_icum_hash_sha512_test_result,4
+                         648 	.align	4
+                         649 	.global	_g_icum_rsa_test_result
+00000014 00000000        650 _g_icum_rsa_test_result:	.space	4
+                         651 	.type	_g_icum_rsa_test_result,@object
+                         652 	.size	_g_icum_rsa_test_result,4
+                         653 	.data
+                         654 	.ghsnote version,30
+                         655 	.ghsnote tools,3
+                         656 	.ghsnote options,656
+                         657 	.text
+                         658 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cmain...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609E..0::
+                         659 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0
