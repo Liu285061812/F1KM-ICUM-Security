@@ -52,6 +52,8 @@
 // Includes
 //============================================================================
 #include "device.h"
+#include "icum_flash_handoff.h"
+#include "icum_flash_handoff_protocol.h"
 #include "shared_memory.h"
 
 __IOREG(PE_OSTM0_ICUM_PE2ICUFS, 0xFF1F0044, __WRITE, uint32);
@@ -333,7 +335,7 @@ void INTOSTM0(void)
         g_shared_buffer[index] = value;
     }
 #if defined _SharedMemoryTest_
-    PE_OSTM0_ICUM_PE2ICUFS = 1u;
+    PE_OSTM0_ICUM_PE2ICUFS = ICUM_SHARED_MEMORY_FLAG;
     PE_OSTM0_ICUM_PE2ICUSFS = 1u;
 #endif
 }
@@ -390,6 +392,7 @@ void main(void) {
 	csih0_initPorts();
 	for(i=0;i<10000000;i++);
 	pe_icum_comm_timer_init();
+	pe_icum_flash_handoff_init();
 	__EI();
 	
 	csih0_start();
@@ -397,4 +400,3 @@ void main(void) {
   while(1);
 
 }
-

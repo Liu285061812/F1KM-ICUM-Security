@@ -1,0 +1,392 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Isource\FDL -Isource\FDL\lib -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\icum_flash_handoff.dbo -source=icum_flash_handoff.c -comp -o output\objects\icum\gh_0000thg1.o -list=output\list\icum\icum_flash_handoff.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+Source File: icum_flash_handoff.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Isource\FDL
+                           2 --		-Isource\FDL\lib -Idevice -G -object_dir=output\objects\icum
+                           3 --		-list -list_dir=output/list/icum -passsource -bsp generic
+                           4 --		-sda=all -fsoft -cpu=rh850 -ansi -filetype.c
+                           5 --		source\ICUM\icum_flash_handoff.c -o
+                           6 --		output\objects\icum\icum_flash_handoff.o
+                           7 --Source File:   source\ICUM\icum_flash_handoff.c
+                           8 --Directory:     
+                           9 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                          10 --Compile Date:  Fri Oct 23 15:21:33 2026
+                          11 --Host OS:       Win64
+                          12 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          13 --Release:       Compiler v2023.5.4
+                          14 --Revision Date: Wed Sep 06 02:44:56 2023
+                          15 --Release Date:  Wed Sep 06 02:00:00 2023
+                          16 -- ecom  -g -w
+                          17 
+                          18 --1: #include "icum_flash_handoff.h"
+                          19 --2: #include "icum_flash_handoff_protocol.h"
+                          20 --4: __IOREG(ICUM_FLASH_ICU2PEFS, 0xFF1F0054, __WRITE, uint32);
+                          21 --6: static volatile uint32 g_flash_handoff_response;
+                          22 --8: static int icum_flash_handoff_wait(void)
+                          23 	.text
+                          24 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB0AFD..0::
+                          25 	.align	2
+                          26 	.align	2
+                          27 ..gh.f.a.2.e.0:
+                          28 	.type	..gh.f.a.2.e.0,@object
+                          29 	.size	..gh.f.a.2.e.0,0
+                          30 	.global	_icum_flash_handoff_wait..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.
+                          31 _icum_flash_handoff_wait..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.:
+                          32 _icum_flash_handoff_wait:
+                          33 --	    .bf
+                          34 .LDW01:
+                          35 --9: {
+                          36 --10:     uint32 timeout;
+                          37 --12:     timeout = ICUM_FLASH_HANDOFF_TIMEOUT_LOOPS;
+00000000 2106000e2707     38 	mov	120000000,r1
+                          39 --13:     while ((g_flash_handoff_response == 0u) && (timeout != 0u))
+                          40 --line13
+                          41 ..lin.f5f45e24..3cd356e8.0_1::
+                          42 .LDWlin1:
+00000006 a505*            43 	br	.L4
+                          44 .L6:
+                          45 --14:     {
+                          46 --15:         --timeout;
+                          47 --line15
+                          48 ..lin.f5f45e24..3cd356e8.0_2::
+                          49 .LDWlin2:
+00000008 5f0a             50 	add	-1,r1
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+                          51 .L4:
+0000000a 24170100*        52 	ld.w	sdaoff(_g_flash_handoff_response)[gp],r2
+0000000e e011             53 	cmp	zero,r2
+00000010 ba05*            54 	bne	.L5
+00000012 e009             55 	cmp	zero,r1
+00000014 aafd*            56 	bne	.L6
+                          57 .L5:
+                          58 --16:     }
+                          59 --18:     if (g_flash_handoff_response == 0u)
+                          60 --line18
+                          61 ..lin.f5f45e24..3cd356e8.0_3::
+                          62 .LDWlin3:
+00000016 24170100*        63 	ld.w	sdaoff(_g_flash_handoff_response)[gp],r2
+0000001a e011             64 	cmp	zero,r2
+0000001c ba05*            65 	bne	.L8
+                          66 --19:     {
+                          67 --20:         return 0;
+                          68 --line20
+                          69 ..lin.f5f45e24..3cd356e8.0_4::
+                          70 .LDWlin4:
+0000001e 0052             71 	mov	0,r10
+00000020 c505*            72 	br	.L2
+                          73 .L8:
+                          74 --21:     }
+                          75 --23:     g_flash_handoff_response = 0u;
+                          76 --line23
+                          77 ..lin.f5f45e24..3cd356e8.0_5::
+                          78 .LDWlin5:
+00000022 64070100*        79 	st.w	zero,sdaoff(_g_flash_handoff_response)[gp]
+                          80 --24:     return 1;
+00000026 0152             81 	mov	1,r10
+                          82 .L2:
+                          83 --	    .ef
+                          84 .LDW11:
+                          85 .L105:
+                          86 	.jumptype return
+00000028 7f00             87 	jmp	[lp]
+                          88 --line23
+                          89 ..lin.f5f45e24..3cd356e8.0_6::
+                          90 	.type	_icum_flash_handoff_wait,@function
+                          91 	.size	_icum_flash_handoff_wait,.-_icum_flash_handoff_wait
+                          92 	.type	_icum_flash_handoff_wait..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.,@function
+                          93 	.size	_icum_flash_handoff_wait..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.,.-_icum_flash_handoff_wait..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.
+                          94 	.align	2
+                          95 --_timeout	r1	local
+                          96 
+                          97 	.section ".bss","awb"
+                          98 .L66:
+                          99 	.type	.L66,@object
+                         100 	.size	.L66,0
+                         101 	.section ".sbss","awb"
+                         102 	.align	4
+                         103 	.global	_g_flash_handoff_response..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.
+                         104 _g_flash_handoff_response..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.:
+00000000 00000000        105 _g_flash_handoff_response:	.space	4
+                         106 	.type	_g_flash_handoff_response..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.,@object
+                         107 	.size	_g_flash_handoff_response..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.,4
+                         108 	.type	_g_flash_handoff_response,@object
+                         109 	.size	_g_flash_handoff_response,4
+                         110 	.section ".ghrettbl",""
+                         111 	.align	4
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+00000000 00000000*       112 .L106:	.word	.L105
+                         113 	.type	.L106,@object
+                         114 	.size	.L106,4
+                         115 	.data
+                         116 	.text
+                         117 
+                         118 --25: }
+                         119 
+                         120 --27: void icum_flash_handoff_init(void)
+                         121 	.align	2
+                         122 	.align	2
+                         123 	.align	2
+                         124 ..gh.f.a.2.e.1:
+                         125 	.type	..gh.f.a.2.e.1,@object
+                         126 	.size	..gh.f.a.2.e.1,0
+                         127 	.global	_icum_flash_handoff_init
+                         128 _icum_flash_handoff_init:
+                         129 --	    .bf
+                         130 .LDW21:
+                         131 --28: {
+                         132 --29:     g_flash_handoff_response = 0u;
+0000002a 64070100*       133 	st.w	zero,sdaoff(_g_flash_handoff_response)[gp]
+                         134 --30: }
+                         135 --	    .ef
+                         136 .LDW31:
+                         137 .L145:
+                         138 	.jumptype return
+0000002e 7f00            139 	jmp	[lp]
+                         140 --line28
+                         141 ..lin.f5f45e24..3ccbe0e7.0_7::
+                         142 	.type	_icum_flash_handoff_init,@function
+                         143 	.size	_icum_flash_handoff_init,.-_icum_flash_handoff_init
+                         144 	.align	2
+                         145 
+                         146 	.section ".bss","awb"
+                         147 .L130:
+                         148 	.type	.L130,@object
+                         149 	.size	.L130,0
+                         150 	.section ".ghrettbl",""
+00000004 00000000*       151 .L146:	.word	.L145
+                         152 	.type	.L146,@object
+                         153 	.size	.L146,4
+                         154 	.data
+                         155 	.text
+                         156 
+                         157 
+                         158 --32: int icum_flash_handoff_begin(void)
+                         159 	.align	2
+                         160 	.align	2
+                         161 	.align	2
+                         162 ..gh.f.a.2.e.2:
+                         163 	.type	..gh.f.a.2.e.2,@object
+                         164 	.size	..gh.f.a.2.e.2,0
+                         165 	.global	_icum_flash_handoff_begin
+                         166 _icum_flash_handoff_begin:
+00000030 5c1a            167 	add	-4,sp
+00000032 63ff0100        168 	st.w	lp,0[sp]
+                         169 --	    .bf
+                         170 .LDW41:
+                         171 --33: {
+                         172 --34:     g_flash_handoff_response = 0u;
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+00000036 64070100*       173 	st.w	zero,sdaoff(_g_flash_handoff_response)[gp]
+                         174 --35:     ICUM_CMDREGICUM_ICU2PES = ICUM_FLASH_HANDOFF_START_COMMAND;
+0000003a 210651524644    175 	mov	1145459281,r1
+00000040 2b0610001fff    176 	mov	-14745584,r11
+00000046 6b0f0100        177 	st.w	r1,0[r11]
+                         178 --36:     ICUM_FLASH_ICU2PEFS = ICUM_FLASH_HANDOFF_FLAG;
+                         179 --line36
+                         180 ..lin.f5f45e24..d5c45958.0_8::
+                         181 .LDWlin8:
+0000004a 400e0080        182 	movhi	hi(-2147483648),zero,r1
+0000004e 2b0654001fff    183 	mov	-14745516,r11
+00000054 6b0f0100        184 	st.w	r1,0[r11]
+                         185 --38:     return icum_flash_handoff_wait();
+                         186 .L207:
+                         187 --line38
+                         188 ..lin.f5f45e24..d5c45958.0_9::
+                         189 .LDWlin9:
+                         190 	jarl	_icum_flash_handoff_wait,lp
+                         190 <EXPANSION BEGIN>
+                         190 jarl22 _icum_flash_handoff_wait , lp 
+00000058 bfffa8ff*       190 <EXPANSION END>
+                         191 --	    .ef
+                         192 .LDW51:
+                         193 --line39
+                         194 ..lin.f5f45e24..d5c45958.0_10::
+                         195 .LDWlin10:
+0000005c 23ff0100        196 	ld.w	0[sp],lp
+00000060 441a            197 	add	4,sp
+                         198 .L209:
+                         199 	.jumptype return
+00000062 7f00            200 	jmp	[lp]
+                         201 --line39
+                         202 ..lin.f5f45e24..d5c45958.0_11::
+                         203 	.type	_icum_flash_handoff_begin,@function
+                         204 	.size	_icum_flash_handoff_begin,.-_icum_flash_handoff_begin
+                         205 	.align	2
+                         206 
+                         207 	.section ".bss","awb"
+                         208 .L186:
+                         209 	.type	.L186,@object
+                         210 	.size	.L186,0
+                         211 	.section ".ghcalltbl",""
+                         212 	.align	4
+00000000 00000000*       213 .L208:	.word	.L207
+                         214 	.type	.L208,@object
+                         215 	.size	.L208,4
+                         216 	.section ".ghrettbl",""
+00000008 00000000*       217 .L210:	.word	.L209
+                         218 	.type	.L210,@object
+                         219 	.size	.L210,4
+                         220 	.data
+                         221 	.text
+                         222 
+                         223 --39: }
+                         224 
+                         225 --41: int icum_flash_handoff_end(void)
+                         226 	.align	2
+                         227 	.align	2
+                         228 	.align	2
+                         229 ..gh.f.a.2.e.3:
+                         230 	.type	..gh.f.a.2.e.3,@object
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+                         231 	.size	..gh.f.a.2.e.3,0
+                         232 	.global	_icum_flash_handoff_end
+                         233 _icum_flash_handoff_end:
+00000064 5c1a            234 	add	-4,sp
+00000066 63ff0100        235 	st.w	lp,0[sp]
+                         236 --	    .bf
+                         237 .LDW61:
+                         238 --42: {
+                         239 --43:     g_flash_handoff_response = 0u;
+0000006a 64070100*       240 	st.w	zero,sdaoff(_g_flash_handoff_response)[gp]
+                         241 --44:     ICUM_CMDREGICUM_ICU2PES = ICUM_FLASH_HANDOFF_STOP_COMMAND;
+0000006e 210644524644    242 	mov	1145459268,r1
+00000074 2b0610001fff    243 	mov	-14745584,r11
+0000007a 6b0f0100        244 	st.w	r1,0[r11]
+                         245 --45:     ICUM_FLASH_ICU2PEFS = ICUM_FLASH_HANDOFF_FLAG;
+                         246 --line45
+                         247 ..lin.f5f45e24..c3c80d0a.0_12::
+                         248 .LDWlin12:
+0000007e 400e0080        249 	movhi	hi(-2147483648),zero,r1
+00000082 2b0654001fff    250 	mov	-14745516,r11
+00000088 6b0f0100        251 	st.w	r1,0[r11]
+                         252 --47:     return icum_flash_handoff_wait();
+                         253 .L271:
+                         254 --line47
+                         255 ..lin.f5f45e24..c3c80d0a.0_13::
+                         256 .LDWlin13:
+                         257 	jarl	_icum_flash_handoff_wait,lp
+                         257 <EXPANSION BEGIN>
+                         257 jarl22 _icum_flash_handoff_wait , lp 
+0000008c bfff74ff*       257 <EXPANSION END>
+                         258 --	    .ef
+                         259 .LDW71:
+                         260 --line48
+                         261 ..lin.f5f45e24..c3c80d0a.0_14::
+                         262 .LDWlin14:
+00000090 23ff0100        263 	ld.w	0[sp],lp
+00000094 441a            264 	add	4,sp
+                         265 .L273:
+                         266 	.jumptype return
+00000096 7f00            267 	jmp	[lp]
+                         268 --line48
+                         269 ..lin.f5f45e24..c3c80d0a.0_15::
+                         270 	.type	_icum_flash_handoff_end,@function
+                         271 	.size	_icum_flash_handoff_end,.-_icum_flash_handoff_end
+                         272 	.align	2
+                         273 
+                         274 	.section ".bss","awb"
+                         275 .L250:
+                         276 	.type	.L250,@object
+                         277 	.size	.L250,0
+                         278 	.section ".ghcalltbl",""
+00000004 00000000*       279 .L272:	.word	.L271
+                         280 	.type	.L272,@object
+                         281 	.size	.L272,4
+                         282 	.section ".ghrettbl",""
+0000000c 00000000*       283 .L274:	.word	.L273
+                         284 	.type	.L274,@object
+                         285 	.size	.L274,4
+                         286 	.data
+                         287 	.text
+                         288 
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+                         289 --48: }
+                         290 
+                         291 --50: void icum_flash_handoff_on_pe_event(uint32 events)
+                         292 	.align	2
+                         293 	.align	2
+                         294 	.align	2
+                         295 ..gh.f.a.2.e.4:
+                         296 	.type	..gh.f.a.2.e.4,@object
+                         297 	.size	..gh.f.a.2.e.4,0
+                         298 	.global	_icum_flash_handoff_on_pe_event
+                         299 _icum_flash_handoff_on_pe_event:
+00000098 0608            300 	mov	r6,r1
+                         301 --	    .bf
+                         302 .LDW81:
+                         303 --51: {
+                         304 --52:     if ((events & ICUM_FLASH_HANDOFF_FLAG) != 0u)
+0000009a 0110            305 	mov	r1,r2
+0000009c c112            306 	shl	1,r2
+0000009e c905*           307 	bnl	.L275
+                         308 --53:     {
+                         309 --54:         g_flash_handoff_response = 1u;
+                         310 --line54
+                         311 ..lin.f5f45e24..7a19a0c5.0_16::
+                         312 .LDWlin16:
+000000a0 0112            313 	mov	1,r2
+000000a2 64170100*       314 	st.w	r2,sdaoff(_g_flash_handoff_response)[gp]
+                         315 .L275:
+                         316 --55:     }
+                         317 --56: }
+                         318 --	    .ef
+                         319 .LDW91:
+                         320 .L321:
+                         321 	.jumptype return
+000000a6 7f00            322 	jmp	[lp]
+                         323 --line54
+                         324 ..lin.f5f45e24..7a19a0c5.0_17::
+                         325 	.type	_icum_flash_handoff_on_pe_event,@function
+                         326 	.size	_icum_flash_handoff_on_pe_event,.-_icum_flash_handoff_on_pe_event
+                         327 	.align	2
+                         328 
+                         329 --_events	r1	param
+                         330 
+                         331 	.section ".bss","awb"
+                         332 .L306:
+                         333 	.type	.L306,@object
+                         334 	.size	.L306,0
+                         335 	.section ".ghrettbl",""
+00000010 00000000*       336 .L322:	.word	.L321
+                         337 	.type	.L322,@object
+                         338 	.size	.L322,4
+                         339 	.data
+                         340 	.text
+                         341 
+                         342 	.align	2
+                         343 --_ICUM_CMDREG	4280221696	import
+                         344 --_ICUM_FLASH_ICU2PEFS	4280221780	import
+                         345 --_g_flash_handoff_response	sdaoff(_g_flash_handoff_response)	static
+                         346 
+                         347 	.data
+                         348 	.ghsnote version,30
+                         349 	.ghsnote tools,3
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000thg1.s
+                         350 	.ghsnote options,656
+                         351 	.text
+                         352 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB0AFD..0::
+                         353 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

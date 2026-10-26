@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000dsk1.s
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\icum_comm.dbo -source=icum_comm.c -comp -o output\objects\icum\gh_0000dsk1.o -list=output\list\icum\icum_comm.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000dsk1.s 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000dsk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Isource\FDL -Isource\FDL\lib -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\icum_comm.dbo -source=icum_comm.c -comp -o output\objects\icum\gh_00011e41.o -list=output\list\icum\icum_comm.lst C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
 Source File: icum_comm.c
 Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
 Host OS: Windows
@@ -13,15 +13,15 @@ Revision Date: Wed Sep 06 02:44:09 2023
 
 Release Date: Wed Sep 06 02:00:00 2023
 
-                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Idevice -G
-                           2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
-                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
-                           4 --		-filetype.c source\ICUM\icum_comm.c -o
-                           5 --		output\objects\icum\icum_comm.o
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Isource\FDL
+                           2 --		-Isource\FDL\lib -Idevice -G -object_dir=output\objects\icum
+                           3 --		-list -list_dir=output/list/icum -passsource -bsp generic
+                           4 --		-sda=all -fsoft -cpu=rh850 -ansi -filetype.c
+                           5 --		source\ICUM\icum_comm.c -o output\objects\icum\icum_comm.o
                            6 --Source File:   source\ICUM\icum_comm.c
                            7 --Directory:     
                            8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
-                           9 --Compile Date:  Wed Oct 21 11:47:48 2026
+                           9 --Compile Date:  Fri Oct 23 15:21:33 2026
                           10 --Host OS:       Win64
                           11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           12 --Release:       Compiler v2023.5.4
@@ -30,271 +30,378 @@ Release Date: Wed Sep 06 02:00:00 2023
                           15 -- ecom  -g -w
                           16 
                           17 --1: #include "icum_comm.h"
-                          18 --2: #include "shared_memory.h"
-                          19 --4: __IOREG(ICUM_ICPE, 0xFFFEEA02, __READ_WRITE, uint16);
-                          20 --5: __IOREG(ICUM_ICPES, 0xFFFEEA00, __READ_WRITE, uint16);
-                          21 --6: __IOREG(ICUM_PE2ICUFC, 0xFF1F0048, __WRITE, uint32);
-                          22 --7: __IOREG(ICUM_PE2ICUIE, 0xFF1F004C, __READ_WRITE, uint32);
-                          23 --8: __IOREG(ICUM_PE2ICUSFC, 0xFF1F0078, __WRITE, uint32);
-                          24 --9: __IOREG(ICUM_PE2ICUSIE, 0xFF1F007C, __READ_WRITE, uint32);
-                          25 --11: volatile uint32 g_icum_comm_status;
-                          26 --13: void icum_comm_init(void)
-                          27 	.text
-                          28 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_comm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD835E4..0::
-                          29 	.align	2
-                          30 	.align	2
-                          31 ..gh.f.a.2.e.0:
-                          32 	.type	..gh.f.a.2.e.0,@object
-                          33 	.size	..gh.f.a.2.e.0,0
-                          34 	.global	_icum_comm_init
-                          35 _icum_comm_init:
-                          36 --	    .bf
-                          37 .LDW01:
-                          38 --14: {
-                          39 --15:     g_icum_comm_status = 0u;
-00000000 64070100*        40 	st.w	zero,sdaoff(_g_icum_comm_status)[gp]
-                          41 --16:     ICUM_PE2ICUFC = 1u;
-00000004 010a             42 	mov	1,r1
-00000006 2b0648001fff     43 	mov	-14745528,r11
-0000000c 6b0f0100         44 	st.w	r1,0[r11]
-                          45 --17:     ICUM_PE2ICUSFC = 1u;
-                          46 --line17
-                          47 ..lin.9cad350d..1fc9ab70.0_1::
-                          48 .LDWlin1:
-00000010 010a             49 	mov	1,r1
-00000012 2b0678001fff     50 	mov	-14745480,r11
+                          18 --2: #include "icum_flash_handoff.h"
+                          19 --3: #include "icum_flash_handoff_protocol.h"
+                          20 --4: #include "shared_memory.h"
+                          21 --6: __IOREG(ICUM_ICPE, 0xFFFEEA02, __READ_WRITE, uint16);
+                          22 --7: __IOREG(ICUM_ICPES, 0xFFFEEA00, __READ_WRITE, uint16);
+                          23 --8: __IOREG(ICUM_PE2ICUFC, 0xFF1F0048, __WRITE, uint32);
+                          24 --9: __IOREG(ICUM_PE2ICUIE, 0xFF1F004C, __READ_WRITE, uint32);
+                          25 --10: __IOREG(ICUM_PE2ICUSFC, 0xFF1F0078, __WRITE, uint32);
+                          26 --11: __IOREG(ICUM_PE2ICUSIE, 0xFF1F007C, __READ_WRITE, uint32);
+                          27 --13: volatile uint32 g_icum_comm_status;
+                          28 --15: void icum_comm_init(void)
+                          29 	.text
+                          30 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_comm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB0AFD..0::
+                          31 	.align	2
+                          32 	.align	2
+                          33 ..gh.f.a.2.e.0:
+                          34 	.type	..gh.f.a.2.e.0,@object
+                          35 	.size	..gh.f.a.2.e.0,0
+                          36 	.global	_icum_comm_init
+                          37 _icum_comm_init:
+00000000 5c1a             38 	add	-4,sp
+00000002 63ff0100         39 	st.w	lp,0[sp]
+                          40 --	    .bf
+                          41 .LDW01:
+                          42 --16: {
+                          43 --17:     g_icum_comm_status = 0u;
+00000006 64070100*        44 	st.w	zero,sdaoff(_g_icum_comm_status)[gp]
+                          45 --18:     icum_flash_handoff_init();
+                          46 .L98:
+                          47 	jarl	_icum_flash_handoff_init,lp
+                          47 <EXPANSION BEGIN>
+                          47 jarl22 _icum_flash_handoff_init , lp 
+0000000a 80ff0000*        47 <EXPANSION END>
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000dsk1.s
-00000018 6b0f0100         51 	st.w	r1,0[r11]
-                          52 --18:     ICUM_ICPE = 0x0040u;
-                          53 --line18
-                          54 ..lin.9cad350d..1fc9ab70.0_2::
-                          55 .LDWlin2:
-0000001c 200e4000         56 	movea	64,zero,r1
-00000020 a0072d08d4fd     57 	st.h	r1,4294896130[zero]
-                          58 --19:     ICUM_ICPES = 0x0040u;
-                          59 --line19
-                          60 ..lin.9cad350d..1fc9ab70.0_3::
-                          61 .LDWlin3:
-00000026 200e4000         62 	movea	64,zero,r1
-0000002a a0070d08d4fd     63 	st.h	r1,4294896128[zero]
-                          64 --20:     ICUM_PE2ICUIE = 1u;
-                          65 --line20
-                          66 ..lin.9cad350d..1fc9ab70.0_4::
-                          67 .LDWlin4:
-00000030 010a             68 	mov	1,r1
-00000032 2b064c001fff     69 	mov	-14745524,r11
-00000038 6b0f0100         70 	st.w	r1,0[r11]
-                          71 --21:     ICUM_PE2ICUSIE = 1u;
-                          72 --line21
-                          73 ..lin.9cad350d..1fc9ab70.0_5::
-                          74 .LDWlin5:
-0000003c 010a             75 	mov	1,r1
-0000003e 2b067c001fff     76 	mov	-14745476,r11
-00000044 6b0f0100         77 	st.w	r1,0[r11]
-                          78 --22: }
-                          79 --	    .ef
-                          80 .LDW11:
-                          81 .L91:
-                          82 --line22
-                          83 ..lin.9cad350d..1fc9ab70.0_6::
-                          84 .LDWlin6:
-                          85 	.jumptype return
-00000048 7f00             86 	jmp	[lp]
-                          87 --line22
-                          88 ..lin.9cad350d..1fc9ab70.0_7::
-                          89 	.type	_icum_comm_init,@function
-                          90 	.size	_icum_comm_init,.-_icum_comm_init
-                          91 	.align	2
-                          92 
-                          93 	.section ".bss","awb"
-                          94 .L58:
-                          95 	.type	.L58,@object
-                          96 	.size	.L58,0
-                          97 	.section ".ghrettbl",""
-                          98 	.align	4
-00000000 00000000*        99 .L92:	.word	.L91
-                         100 	.type	.L92,@object
-                         101 	.size	.L92,4
-                         102 	.data
-                         103 	.text
-                         104 
-                         105 
-                         106 --24: #pragma ghs interrupt
-                         107 --25: void INTPE(void)
-                         108 	.align	2
-                         109 	.align	2
-                         110 	.align	2
-                         111 ..gh.f.a.2.e.1:
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
+                          48 --19:     ICUM_PE2ICUFC =
+                          49 --line19
+                          50 ..lin.9cad350d..1fc9ab70.0_1::
+                          51 .LDWlin1:
+0000000e 400e00c0         52 	movhi	hi(-1073741824),zero,r1
+00000012 2b0648001fff     53 	mov	-14745528,r11
+00000018 6b0f0100         54 	st.w	r1,0[r11]
+                          55 --20:         ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG;
+                          56 --21:     ICUM_PE2ICUSFC = 1u;
+                          57 --line21
+                          58 ..lin.9cad350d..1fc9ab70.0_2::
+                          59 .LDWlin2:
+0000001c 010a             60 	mov	1,r1
+0000001e 2b0678001fff     61 	mov	-14745480,r11
+00000024 6b0f0100         62 	st.w	r1,0[r11]
+                          63 --22:     ICUM_ICPE = 0x0040u;
+                          64 --line22
+                          65 ..lin.9cad350d..1fc9ab70.0_3::
+                          66 .LDWlin3:
+00000028 200e4000         67 	movea	64,zero,r1
+0000002c a0072d08d4fd     68 	st.h	r1,4294896130[zero]
+                          69 --23:     ICUM_ICPES = 0x0040u;
+                          70 --line23
+                          71 ..lin.9cad350d..1fc9ab70.0_4::
+                          72 .LDWlin4:
+00000032 200e4000         73 	movea	64,zero,r1
+00000036 a0070d08d4fd     74 	st.h	r1,4294896128[zero]
+                          75 --24:     ICUM_PE2ICUIE =
+                          76 --line24
+                          77 ..lin.9cad350d..1fc9ab70.0_5::
+                          78 .LDWlin5:
+0000003c 400e00c0         79 	movhi	hi(-1073741824),zero,r1
+00000040 2b064c001fff     80 	mov	-14745524,r11
+00000046 6b0f0100         81 	st.w	r1,0[r11]
+                          82 --25:         ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG;
+                          83 --26:     ICUM_PE2ICUSIE = 1u;
+                          84 --line26
+                          85 ..lin.9cad350d..1fc9ab70.0_6::
+                          86 .LDWlin6:
+0000004a 010a             87 	mov	1,r1
+0000004c 2b067c001fff     88 	mov	-14745476,r11
+00000052 6b0f0100         89 	st.w	r1,0[r11]
+                          90 --27: }
+                          91 --	    .ef
+                          92 .LDW11:
+                          93 --line27
+                          94 ..lin.9cad350d..1fc9ab70.0_7::
+                          95 .LDWlin7:
+00000056 23ff0100         96 	ld.w	0[sp],lp
+0000005a 441a             97 	add	4,sp
+                          98 .L100:
+                          99 	.jumptype return
+0000005c 7f00            100 	jmp	[lp]
+                         101 --line27
+                         102 ..lin.9cad350d..1fc9ab70.0_8::
+                         103 	.type	_icum_comm_init,@function
+                         104 	.size	_icum_comm_init,.-_icum_comm_init
+                         105 	.align	2
+                         106 
+                         107 	.section ".bss","awb"
+                         108 .L62:
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000dsk1.s
-                         112 	.type	..gh.f.a.2.e.1,@object
-                         113 	.size	..gh.f.a.2.e.1,0
-                         114 	.global	_INTPE
-                         115 _INTPE:
-0000004a 231efcff        116 	movea	-4,sp,sp
-0000004e 630f0100        117 	st.w	r1,0[sp]
-00000052 f2476099        118 	pushsp	r18-r19
-00000056 231efcff        119 	movea	-4,sp,sp
-0000005a 63f70100        120 	st.w	ep,0[sp]
-                         121 --	    .bf
-                         122 .LDW21:
-                         123 --26: {
-                         124 --27:     uint32 index;
-                         125 --28:     unsigned char first_byte;
-                         126 --30:     ICUM_PE2ICUFC = 1u;
-0000005e 010a            127 	mov	1,r1
-00000060 320648001fff    128 	mov	-14745528,r18
-00000066 720f0100        129 	st.w	r1,0[r18]
-                         130 --31:     first_byte = g_shared_buffer[0];
-                         131 --line31
-                         132 ..lin.9cad350d..eace4ac4.0_8::
-                         133 .LDWlin8:
-0000006a 409e00ff        134 	movhi	65280,zero,r19
-0000006e 939f0180        135 	ld.bu	-32768[r19],r19
-                         136 --32:     for (index = 0u; index < SHARED_BUFFER_SIZE; index++)
-                         137 --line32
-                         138 ..lin.9cad350d..eace4ac4.0_9::
-                         139 .LDWlin9:
-00000072 000a            140 	mov	0,r1
-00000074 f505*           141 	br	.L98
-                         142 .L97:
-                         143 --33:     {
-                         144 --34:         *(g_shared_buffer+index) = 0;
-                         145 --line34
-                         146 ..lin.9cad350d..eace4ac4.0_10::
-                         147 .LDWlin10:
-00000076 3e060080fffe    148 	mov	-16809984,ep
-0000007c c1f1            149 	add	r1,ep
-0000007e 8003            150 	sst.b	zero,0[ep]
-                         151 --line32
-                         152 ..lin.9cad350d..eace4ac4.0_11::
-                         153 .LDWlin11:
-00000080 410a            154 	add	1,r1
-                         155 .L98:
-00000082 010680ff        156 	addi	-128,r1,zero
-00000086 89fd*           157 	bnl	.L97
-                         158 --35:     }
-                         159 --36:     if (first_byte == 0x55u)
-                         160 --line36
-                         161 ..lin.9cad350d..eace4ac4.0_12::
-                         162 .LDWlin12:
-00000088 1306abff        163 	addi	-85,r19,zero
-0000008c fa05*           164 	bne	.L93
-                         165 --37:     {
-                         166 --38:         g_icum_comm_status ^= 1u;
-                         167 --line38
-                         168 ..lin.9cad350d..eace4ac4.0_13::
-                         169 .LDWlin13:
-0000008e 24970100*       170 	ld.w	sdaoff(_g_icum_comm_status)[gp],r18
-00000092 b2960100        171 	xori	1,r18,r18
-00000096 64970100*       172 	st.w	r18,sdaoff(_g_icum_comm_status)[gp]
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
+                         109 	.type	.L62,@object
+                         110 	.size	.L62,0
+                         111 	.section ".ghcalltbl",""
+                         112 	.align	4
+00000000 00000000*       113 .L99:	.word	.L98
+                         114 	.type	.L99,@object
+                         115 	.size	.L99,4
+                         116 	.section ".ghrettbl",""
+                         117 	.align	4
+00000000 00000000*       118 .L101:	.word	.L100
+                         119 	.type	.L101,@object
+                         120 	.size	.L101,4
+                         121 	.data
+                         122 	.text
+                         123 
+                         124 
+                         125 --29: #pragma ghs interrupt
+                         126 --30: void INTPE(void)
+                         127 	.align	2
+                         128 	.align	2
+                         129 	.align	2
+                         130 ..gh.f.a.2.e.1:
+                         131 	.type	..gh.f.a.2.e.1,@object
+                         132 	.size	..gh.f.a.2.e.1,0
+                         133 	.global	_INTPE
+                         134 _INTPE:
+0000005e 231efcff        135 	movea	-4,sp,sp
+00000062 63ff0100        136 	st.w	lp,0[sp]
+00000066 e1476011        137 	pushsp	r1-r2
+0000006a e6476099        138 	pushsp	r6-r19
+0000006e fd4760f1        139 	pushsp	r29-ep
+                         140 	stsr	1,r6 -- EIPSW
+                         140 <EXPANSION BEGIN>
+                         140 stsr 1 , r6 , 0
+00000072 e1374000        140 <EXPANSION END>
+                         141 	stsr	0,r7 -- EIPC
+                         141 <EXPANSION BEGIN>
+                         141 stsr 0 , r7 , 0
+00000076 e03f4000        141 <EXPANSION END>
+                         142 	stsr	17,r8 -- CTPSW
+                         142 <EXPANSION BEGIN>
+                         142 stsr 17 , r8 , 0
+0000007a f1474000        142 <EXPANSION END>
+                         143 	stsr	16,r9 -- CTPC
+                         143 <EXPANSION BEGIN>
+                         143 stsr 16 , r9 , 0
+0000007e f04f4000        143 <EXPANSION END>
+00000082 e6476049        144 	pushsp	r6-r9
+                         145 --	    .bf
+                         146 .LDW21:
+                         147 --31: {
+                         148 --32:     uint32 index;
+                         149 --33:     uint32 events;
+                         150 --34:     unsigned char first_byte;
+                         151 --36:     events = ICUM_CMDREGICUM_PE2ICUF;
+00000086 40ee1fff        152 	movhi	65311,zero,r29
+0000008a 3def4100        153 	ld.w	64[r29],r29
+                         154 --37:     if ((events & (ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG)) != 0u)
+                         155 --line37
+                         156 ..lin.9cad350d..eace4ac4.0_9::
+                         157 .LDWlin9:
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000dsk1.s
-                         173 .L93:
-                         174 --39:     }
-                         175 --40: }
-                         176 --	    .ef
-                         177 .LDW31:
-0000009a 23f70100        178 	ld.w	0[sp],ep
-0000009e 231e0400        179 	movea	4,sp,sp
-000000a2 f2676099        180 	popsp	r18-r19
-000000a6 230f0100        181 	ld.w	0[sp],r1
-000000aa 231e0400        182 	movea	4,sp,sp
-                         183 .L194:
-000000ae e0074801        184 	eiret
-                         185 	.type	_INTPE,@function
-                         186 	.size	_INTPE,.-_INTPE
-                         187 	.align	2
-                         188 --_index	r1	local
-                         189 --_first_byte	r19	local
-                         190 
-                         191 	.section ".bss","awb"
-                         192 .L158:
-                         193 	.type	.L158,@object
-                         194 	.size	.L158,0
-                         195 	.section ".ghrettbl",""
-00000004 00000000*       196 .L195:	.word	.L194
-                         197 	.type	.L195,@object
-                         198 	.size	.L195,4
-                         199 	.data
-                         200 	.text
-                         201 
-                         202 
-                         203 --42: #pragma ghs interrupt
-                         204 --43: void INTPES(void)
-                         205 	.align	2
-                         206 	.align	2
-                         207 	.align	2
-                         208 ..gh.f.a.2.e.2:
-                         209 	.type	..gh.f.a.2.e.2,@object
-                         210 	.size	..gh.f.a.2.e.2,0
-                         211 	.global	_INTPES
-                         212 _INTPES:
-000000b2 231efcff        213 	movea	-4,sp,sp
-000000b6 630f0100        214 	st.w	r1,0[sp]
-                         215 --	    .bf
-                         216 .LDW41:
-                         217 --44: {
-                         218 --45:     ICUM_PE2ICUSFC = 1u;
-000000ba 231efcff        219 	movea	-4,sp,sp
-000000be 63f70100        220 	st.w	ep,0[sp]
-000000c2 010a            221 	mov	1,r1
-000000c4 3e0678001fff    222 	mov	-14745480,ep
-000000ca 010d            223 	sst.w	r1,0[ep]
-000000cc 23f70100        224 	ld.w	0[sp],ep
-000000d0 231e0400        225 	movea	4,sp,sp
-                         226 --46: }
-                         227 --	    .ef
-                         228 .LDW51:
-                         229 --line46
-                         230 ..lin.9cad350d..4497a397.0_14::
-                         231 .LDWlin14:
-000000d4 230f0100        232 	ld.w	0[sp],r1
-000000d8 231e0400        233 	movea	4,sp,sp
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
+0000008e 1d08            158 	mov	r29,r1
+00000090 9e0a            159 	shr	30,r1
+00000092 920d*           160 	be	.L104
+                         161 --38:     {
+                         162 --39:         ICUM_PE2ICUFC =
+                         163 --line39
+                         164 ..lin.9cad350d..eace4ac4.0_10::
+                         165 .LDWlin10:
+00000094 400e00c0        166 	movhi	hi(-1073741824),zero,r1
+00000098 5d09            167 	and	r29,r1
+0000009a 2b0648001fff    168 	mov	-14745528,r11
+000000a0 6b0f0100        169 	st.w	r1,0[r11]
+                         170 .L104:
+                         171 --40:             events & (ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG);
+                         172 --41:     }
+                         173 --42:     icum_flash_handoff_on_pe_event(events);
+                         174 --line42
+                         175 ..lin.9cad350d..eace4ac4.0_11::
+                         176 .LDWlin11:
+000000a4 1d30            177 	mov	r29,r6
+                         178 .L238:
+                         179 	jarl	_icum_flash_handoff_on_pe_event,lp
+                         179 <EXPANSION BEGIN>
+                         179 jarl22 _icum_flash_handoff_on_pe_event , lp 
+000000a6 80ff0000*       179 <EXPANSION END>
+                         180 --44:     if ((events & ICUM_SHARED_MEMORY_FLAG) != 0u)
+                         181 --line44
+                         182 ..lin.9cad350d..eace4ac4.0_12::
+                         183 .LDWlin12:
+000000aa 1d08            184 	mov	r29,r1
+000000ac 9f0a            185 	shr	31,r1
+000000ae 991d*           186 	bnl	.L102
+                         187 --45:     {
+                         188 --46:         first_byte = g_shared_buffer[0];
+                         189 --line46
+                         190 ..lin.9cad350d..eace4ac4.0_13::
+                         191 .LDWlin13:
+000000b0 409e00ff        192 	movhi	65280,zero,r19
+000000b4 939f0180        193 	ld.bu	-32768[r19],r19
+                         194 --47:         for (index = 0u; index < SHARED_BUFFER_SIZE; index++)
+                         195 --line47
+                         196 ..lin.9cad350d..eace4ac4.0_14::
+                         197 .LDWlin14:
+000000b8 000a            198 	mov	0,r1
+000000ba f505*           199 	br	.L111
+                         200 .L110:
+                         201 --48:         {
+                         202 --49:             *(g_shared_buffer+index) = 0;
+                         203 --line49
+                         204 ..lin.9cad350d..eace4ac4.0_15::
+                         205 .LDWlin15:
+000000bc 3e060080fffe    206 	mov	-16809984,ep
+000000c2 c1f1            207 	add	r1,ep
+000000c4 8003            208 	sst.b	zero,0[ep]
+                         209 --line47
+                         210 ..lin.9cad350d..eace4ac4.0_16::
+                         211 .LDWlin16:
+000000c6 410a            212 	add	1,r1
+                         213 .L111:
+000000c8 010680ff        214 	addi	-128,r1,zero
+000000cc 89fd*           215 	bnl	.L110
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000dsk1.s
-                         234 .L241:
-000000dc e0074801        235 	eiret
-                         236 	.type	_INTPES,@function
-                         237 	.size	_INTPES,.-_INTPES
-                         238 	.align	2
-                         239 
-                         240 	.section ".bss","awb"
-                         241 .L226:
-                         242 	.type	.L226,@object
-                         243 	.size	.L226,0
-                         244 	.section ".ghrettbl",""
-00000008 00000000*       245 .L242:	.word	.L241
-                         246 	.type	.L242,@object
-                         247 	.size	.L242,4
-                         248 	.data
-                         249 	.text
-                         250 
-                         251 	.align	2
-                         252 --_ICUM_ICPE	4294896130	import
-                         253 --_ICUM_ICPES	4294896128	import
-                         254 --_ICUM_PE2ICUFC	4280221768	import
-                         255 --_ICUM_PE2ICUIE	4280221772	import
-                         256 --_ICUM_PE2ICUSFC	4280221816	import
-                         257 --_ICUM_PE2ICUSIE	4280221820	import
-                         258 
-                         259 	.data
-                         260 	.section ".sbss","awb"
-                         261 	.align	4
-                         262 	.align	4
-                         263 	.global	_g_icum_comm_status
-00000000 00000000        264 _g_icum_comm_status:	.space	4
-                         265 	.type	_g_icum_comm_status,@object
-                         266 	.size	_g_icum_comm_status,4
-                         267 	.data
-                         268 	.ghsnote version,30
-                         269 	.ghsnote tools,3
-                         270 	.ghsnote options,656
-                         271 	.text
-                         272 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_comm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD835E4..0::
-                         273 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
+                         216 --50:         }
+                         217 --51:         if (first_byte == 0x55u)
+                         218 --line51
+                         219 ..lin.9cad350d..eace4ac4.0_17::
+                         220 .LDWlin17:
+000000ce 1306abff        221 	addi	-85,r19,zero
+000000d2 fa05*           222 	bne	.L102
+                         223 --52:         {
+                         224 --53:             g_icum_comm_status ^= 1u;
+                         225 --line53
+                         226 ..lin.9cad350d..eace4ac4.0_18::
+                         227 .LDWlin18:
+000000d4 24970100*       228 	ld.w	sdaoff(_g_icum_comm_status)[gp],r18
+000000d8 b2960100        229 	xori	1,r18,r18
+000000dc 64970100*       230 	st.w	r18,sdaoff(_g_icum_comm_status)[gp]
+                         231 .L102:
+                         232 --54:         }
+                         233 --55:     }
+                         234 --56: }
+                         235 --	    .ef
+                         236 .LDW31:
+000000e0 e6676049        237 	popsp	r6-r9
+                         238 	ldsr	r9,16 -- CTPC
+                         238 <EXPANSION BEGIN>
+                         238 ldsr r9 , 16 , 0
+000000e4 e9872000        238 <EXPANSION END>
+                         239 	ldsr	r8,17 -- CTPSW
+                         239 <EXPANSION BEGIN>
+                         239 ldsr r8 , 17 , 0
+000000e8 e88f2000        239 <EXPANSION END>
+000000ec e0076001        240 	di
+                         241 	ldsr	r7,0 -- EIPC
+                         241 <EXPANSION BEGIN>
+                         241 ldsr r7 , 0 , 0
+000000f0 e7072000        241 <EXPANSION END>
+                         242 	ldsr	r6,1 -- EIPSW
+                         242 <EXPANSION BEGIN>
+                         242 ldsr r6 , 1 , 0
+000000f4 e60f2000        242 <EXPANSION END>
+000000f8 fd6760f1        243 	popsp	r29-ep
+000000fc e6676099        244 	popsp	r6-r19
+00000100 e1676011        245 	popsp	r1-r2
+00000104 23ff0100        246 	ld.w	0[sp],lp
+00000108 231e0400        247 	movea	4,sp,sp
+                         248 .L240:
+0000010c e0074801        249 	eiret
+                         250 	.type	_INTPE,@function
+                         251 	.size	_INTPE,.-_INTPE
+                         252 	.align	2
+                         253 --_index	r1	local
+                         254 --_events	r29	local
+                         255 --_first_byte	r19	local
+                         256 
+                         257 	.section ".bss","awb"
+                         258 .L190:
+                         259 	.type	.L190,@object
+                         260 	.size	.L190,0
+                         261 	.section ".ghcalltbl",""
+00000004 00000000*       262 .L239:	.word	.L238
+                         263 	.type	.L239,@object
+                         264 	.size	.L239,4
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
+                         265 	.section ".ghrettbl",""
+00000004 00000000*       266 .L241:	.word	.L240
+                         267 	.type	.L241,@object
+                         268 	.size	.L241,4
+                         269 	.data
+                         270 	.text
+                         271 
+                         272 
+                         273 --58: #pragma ghs interrupt
+                         274 --59: void INTPES(void)
+                         275 	.align	2
+                         276 	.align	2
+                         277 	.align	2
+                         278 ..gh.f.a.2.e.2:
+                         279 	.type	..gh.f.a.2.e.2,@object
+                         280 	.size	..gh.f.a.2.e.2,0
+                         281 	.global	_INTPES
+                         282 _INTPES:
+00000110 231efcff        283 	movea	-4,sp,sp
+00000114 630f0100        284 	st.w	r1,0[sp]
+                         285 --	    .bf
+                         286 .LDW41:
+                         287 --60: {
+                         288 --61:     ICUM_PE2ICUSFC = 1u;
+00000118 231efcff        289 	movea	-4,sp,sp
+0000011c 63f70100        290 	st.w	ep,0[sp]
+00000120 010a            291 	mov	1,r1
+00000122 3e0678001fff    292 	mov	-14745480,ep
+00000128 010d            293 	sst.w	r1,0[ep]
+0000012a 23f70100        294 	ld.w	0[sp],ep
+0000012e 231e0400        295 	movea	4,sp,sp
+                         296 --62: }
+                         297 --	    .ef
+                         298 .LDW51:
+                         299 --line62
+                         300 ..lin.9cad350d..4497a397.0_19::
+                         301 .LDWlin19:
+00000132 230f0100        302 	ld.w	0[sp],r1
+00000136 231e0400        303 	movea	4,sp,sp
+                         304 .L289:
+0000013a e0074801        305 	eiret
+                         306 	.type	_INTPES,@function
+                         307 	.size	_INTPES,.-_INTPES
+                         308 	.align	2
+                         309 
+                         310 	.section ".bss","awb"
+                         311 .L274:
+                         312 	.type	.L274,@object
+                         313 	.size	.L274,0
+                         314 	.section ".ghrettbl",""
+00000008 00000000*       315 .L290:	.word	.L289
+                         316 	.type	.L290,@object
+                         317 	.size	.L290,4
+                         318 	.data
+                         319 	.text
+                         320 
+                         321 	.align	2
+                         322 --_ICUM_CMDREG	4280221696	import
+                         323 --_ICUM_ICPE	4294896130	import
+                         324 --_ICUM_ICPES	4294896128	import
+                         325 --_ICUM_PE2ICUFC	4280221768	import
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00011e41.s
+                         326 --_ICUM_PE2ICUIE	4280221772	import
+                         327 --_ICUM_PE2ICUSFC	4280221816	import
+                         328 --_ICUM_PE2ICUSIE	4280221820	import
+                         329 
+                         330 	.data
+                         331 	.section ".sbss","awb"
+                         332 	.align	4
+                         333 	.align	4
+                         334 	.global	_g_icum_comm_status
+00000000 00000000        335 _g_icum_comm_status:	.space	4
+                         336 	.type	_g_icum_comm_status,@object
+                         337 	.size	_g_icum_comm_status,4
+                         338 	.data
+                         339 	.ghsnote version,30
+                         340 	.ghsnote tools,3
+                         341 	.ghsnote options,656
+                         342 	.text
+                         343 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_comm...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB0AFD..0::
+                         344 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

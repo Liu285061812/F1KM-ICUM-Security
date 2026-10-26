@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\rsa_test.dbo -source=rsa_test.c -comp -o output\objects\icum\gh_0000ljk1.o -list=output\list\icum\rsa_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Isource\FDL -Isource\FDL\lib -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\rsa_test.dbo -source=rsa_test.c -comp -o output\objects\icum\gh_0000rjg1.o -list=output\list\icum\rsa_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 Source File: rsa_test.c
 Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
 Host OS: Windows
@@ -13,15 +13,15 @@ Revision Date: Wed Sep 06 02:44:09 2023
 
 Release Date: Wed Sep 06 02:00:00 2023
 
-                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Idevice -G
-                           2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
-                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
-                           4 --		-filetype.c source\ICUM\rsa_test.c -o
-                           5 --		output\objects\icum\rsa_test.o
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Isource\FDL
+                           2 --		-Isource\FDL\lib -Idevice -G -object_dir=output\objects\icum
+                           3 --		-list -list_dir=output/list/icum -passsource -bsp generic
+                           4 --		-sda=all -fsoft -cpu=rh850 -ansi -filetype.c
+                           5 --		source\ICUM\rsa_test.c -o output\objects\icum\rsa_test.o
                            6 --Source File:   source\ICUM\rsa_test.c
                            7 --Directory:     
                            8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
-                           9 --Compile Date:  Wed Oct 21 14:56:32 2026
+                           9 --Compile Date:  Wed Oct 21 17:20:35 2026
                           10 --Host OS:       Win64
                           11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           12 --Release:       Compiler v2023.5.4
@@ -33,7 +33,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           18 --2: #include "icum_rsa.h"
                           19 --4: static int rsa_hex_decode(const char *hex,
                           20 	.text
-                          21 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD86220..0::
+                          21 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD883E3..0::
                           22 	.align	2
                           23 	.align	2
                           24 ..gh.f.a.2.e.0:
@@ -65,7 +65,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000000c c1f2             50 	shl	1,ep
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 0000000e d1f1             51 	add	r17,ep
 00000010 000b             52 	sld.b	0[ep],r1
                           53 --14:         high = (c >= '0' && c <= '9') ? (unsigned int)(c - '0')
@@ -129,7 +129,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          111 .L24:
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                          112 --line20
                          113 ..lin.19e471f9..1e4b1931.0_6::
                          114 .LDWlin6:
@@ -193,7 +193,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          172 	.jumptype return
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 000000bc 7f00            173 	jmp	[lp]
                          174 --line26
                          175 ..lin.19e471f9..1e4b1931.0_11::
@@ -257,7 +257,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000000ca 01f0            233 	mov	r1,ep
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 000000cc d3f1            234 	add	r19,ep
 000000ce 0180            235 	mov	r1,r16
 000000d0 d281            236 	add	r18,r16
@@ -321,7 +321,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000000f2 63efa903        294 	st.w	r29,936[sp]
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 000000f6 06e8            295 	mov	r6,r29
                          296 --	    .bf
                          297 .LDW41:
@@ -385,7 +385,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          352 	jarl	_rsa_hex_decode,lp
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                          352 <EXPANSION BEGIN>
                          352 jarl22 _rsa_hex_decode , lp 
 0000011e bfffe2fe*       352 <EXPANSION END>
@@ -449,7 +449,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          404 .LDWlin22:
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 00000160 230e2803        405 	movea	808,sp,r1
 00000164 630f1d00        406 	st.w	r1,28[sp]
                          407 --86:     public_key.modulus_length = sizeof(modulus);
@@ -513,7 +513,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000001d2 c205*           459 	be	.L423
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                          460 --98:                                   changed_message, sizeof(changed_message) - 1ul,
                          461 --99:                                   pkcs_signature)) {
                          462 --100:         return 0;
@@ -577,7 +577,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          514 --line110
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                          515 ..lin.19e471f9..b2875c1f.0_31::
                          516 .LDWlin31:
 00000218 200e2000        517 	movea	32,zero,r1
@@ -641,7 +641,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000026c 200e2000        569 	movea	32,zero,r1
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 00000270 630f0100        570 	st.w	r1,0[sp]
 00000274 230e2801        571 	movea	296,sp,r1
 00000278 630f0500        572 	st.w	r1,4[sp]
@@ -705,7 +705,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000002cc 253e0000*       624 	movea	sdaoff2(.L715),r5,r7
 
                                                                       Page 12
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 000002d0 20461200        625 	movea	18,zero,r8
 000002d4 234ea800        626 	movea	168,sp,r9
                          627 .L786:
@@ -769,7 +769,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000031c e50d*           679 	br	.L406
 
                                                                       Page 13
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                          680 .L450:
                          681 --142:     }
                          682 --143:     if (!rsa_bytes_equal(plaintext, test_message, plaintext_length)) {
@@ -833,7 +833,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          737 --_timeout	r29	param
 
                                                                       Page 14
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                          738 
                          739 	.section ".bss","awb"
                          740 .L630:
@@ -897,7 +897,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000007e 31653062        798 	.byte	49,101,48,98
 
                                                                       Page 15
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 00000082 62343361        799 	.byte	98,52,51,97
 00000086 38336137        800 	.byte	56,51,97,55
 0000008a 36303966        801 	.byte	54,48,57,102
@@ -961,7 +961,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 0000014f 36626366        859 	.byte	54,98,99,102
 
                                                                       Page 16
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 00000153 31616363        860 	.byte	49,97,99,99
 00000157 63346338        861 	.byte	99,52,99,56
 0000015b 36353130        862 	.byte	54,53,49,48
@@ -1025,7 +1025,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          920 _pkcs_signature_hex.icum_rsa_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test..4:
 
                                                                       Page 17
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                          921 --	"5159ae0d610d501ac8ef42fde6868fa966a563d959dbaadeb03dee7ac90319ff07aab..."
 00000228 35313539        922 	.byte	53,49,53,57
 0000022c 61653064        923 	.byte	97,101,48,100
@@ -1089,7 +1089,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000314 31643464        981 	.byte	49,100,52,100
 
                                                                       Page 18
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 00000318 33616436        982 	.byte	51,97,100,54
 0000031c 33363137        983 	.byte	51,54,49,55
 00000320 63313163        984 	.byte	99,49,49,99
@@ -1153,7 +1153,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000003e5 33333634       1042 	.byte	51,51,54,52
 
                                                                       Page 19
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
 000003e9 36303763       1043 	.byte	54,48,55,99
 000003ed 34613333       1044 	.byte	52,97,51,51
 000003f1 63613739       1045 	.byte	99,97,55,57
@@ -1217,7 +1217,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1103 	.type	.L787,@object
 
                                                                       Page 20
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000ljk1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000rjg1.s
                         1104 	.size	.L787,4
 00000034 00000000*      1105 .L789:	.word	.L788
                         1106 	.type	.L789,@object
@@ -1240,5 +1240,5 @@ Release Date: Wed Sep 06 02:00:00 2023
                         1123 	.ghsnote tools,3
                         1124 	.ghsnote options,656
                         1125 	.text
-                        1126 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD86220..0::
+                        1126 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD883E3..0::
                         1127 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

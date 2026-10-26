@@ -1,6 +1,8 @@
 output\icum      .intvect            2020
-output\icum      .rosdata            2707
-output\icum      .text              18386
+output\icum      .rosdata            2715
+output\icum      .R_FDL_Text         6576
+output\icum      .R_FDL_Const          19
+output\icum      .text              19730
 output\icum      .secinfo             120
 output\icum      .syscall               6
 output\icum      .romdata               5

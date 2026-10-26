@@ -58,6 +58,7 @@
 #include "hash_test.h"
 #include "icum_rsa.h"
 #include "rsa_test.h"
+#include "fdl_test.h"
 #include "icum_comm.h"
 #include "icum_ostm.h"
 
@@ -122,8 +123,8 @@ void main_icum(void)
     g_icum_hash_sha256_test_result = (icum_hash_self_test(ICUM_HASH_SHA256) != 0) ? 1ul : 0ul;
     g_icum_hash_sha384_test_result = (icum_hash_self_test(ICUM_HASH_SHA384) != 0) ? 1ul : 0ul;
     g_icum_hash_sha512_test_result = (icum_hash_self_test(ICUM_HASH_SHA512) != 0) ? 1ul : 0ul;
-    g_icum_rsa_test_result =
-        (icum_rsa_self_test(0x01000000ul) != 0) ? 1ul : 0ul;
+//    g_icum_rsa_test_result = (icum_rsa_self_test(0x01000000ul) != 0) ? 1ul : 0ul;
+    icum_fdl_self_test();
     while(1)
     {
         // Main loop

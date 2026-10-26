@@ -57,7 +57,8 @@ MEMORY
  {
   iROM_0         : ORIGIN = 0x003A0000,  LENGTH = 384k
   iROM_1         : ORIGIN = 0x01000000,  LENGTH = 32k
-  iDFLASH        : ORIGIN = 0xFF218000,  LENGTH = 64k
+  iDFLASH_TEST   : ORIGIN = 0xFF218000,  LENGTH = 0x40
+  iDFLASH        : ORIGIN = 0xFF218040,  LENGTH = 0xFFC0
   iRAM_0         : ORIGIN = 0xFEDF0000,  LENGTH = 64k
   iRAM_R         : ORIGIN = 0xFEF00000,  LENGTH = 64k
   sharedRAM      : ORIGIN = 0xFEFF8000,  LENGTH = 32k
@@ -74,6 +75,8 @@ SECTIONS
   .robase   align(4)                    :>.      /* initialize textpointer TP for SDA addressing */
   .rosdata  align(4)                    :>.      /* constant datas in SDA area */
   .rodata   align(4)                    :>.      /* constant datas in normal area */
+  .R_FDL_Text align(4)                  :>.      /* FDL library code */
+  .R_FDL_Const align(4)                 :>.      /* FDL library constants */
 
   .text     align(4)                    :>.      /* program code area */
 
@@ -106,6 +109,8 @@ SECTIONS
   .sldata    align(4)                   :>.         /* user defined segment for initialized data */
   .slbss     align(4)                   :>.         /* user defined segment for initialized data */
   .bss       align(4)                   :>.         /* zero initialized data*/
+  .R_FDL_Data align(4) NOCLEAR          :>.         /* FDL state is initialized by R_FDL_Init */
+  .R_FDL_CodeRam align(4) NOCLEAR       :>.         /* FCU code buffer is initialized by FDL */
 
   .sda_start align(4)                   :>.         /* initialize globalpointer GP for SDA addressing */
   .sdata     align(4)                   :>.         /* initialized data in SDA area*/

@@ -20,6 +20,8 @@ primaryTarget=v800_standalone.tgt
 	--no_additional_output
 	-I.
 	-I..
+	-I..\FDL
+	-I..\FDL\lib
 	-I..\..\device
 	-fsoft
 	-cpu=rh850
@@ -36,6 +38,20 @@ dr7f701649i.dvf.h
 ..\..\device\cpu.h
 dr7f701649_irq_icum.h
 ..\shared_memory.h
+..\FDL\fdl_cfg.h
+..\FDL\r_fdl.h
+..\FDL\r_fdl_types.h
+..\FDL\lib\r_fdl_env.h
+..\FDL\lib\r_fdl_global.h
+..\FDL\lib\r_fdl_hw_access.c
+..\FDL\lib\r_fdl_mem_map.h
+..\FDL\lib\r_fdl_user_if.c
+..\FDL\lib\r_fdl_user_if_init.c
+..\FDL\lib\r_typedefs.h
+icum_fdl.c
+icum_fdl.h
+fdl_test.c
+fdl_test.h
 icum_crypto.c
 icum_crypto.h
 aes_test.c
@@ -50,6 +66,9 @@ rsa_test.c
 rsa_test.h
 icum_comm.c
 icum_comm.h
+icum_flash_handoff.c
+icum_flash_handoff.h
+..\icum_flash_handoff_protocol.h
 icum_ostm.c
 icum_ostm.h
 main.c

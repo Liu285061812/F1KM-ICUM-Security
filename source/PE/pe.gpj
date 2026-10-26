@@ -35,6 +35,9 @@ dr7f701649_startup.850
 ..\..\device\cpu.h
 sound.h
 sound.c
+icum_flash_handoff.c
+icum_flash_handoff.h
+..\icum_flash_handoff_protocol.h
 ..\shared_memory.h
 main.c
 ..\..\debug\debug.gpj [Subproject]

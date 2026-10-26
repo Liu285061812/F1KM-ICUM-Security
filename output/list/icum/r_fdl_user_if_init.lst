@@ -1,0 +1,244 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010ls1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Isource\FDL -Isource\FDL\lib -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\r_fdl_user_if_init.dbo -source=r_fdl_user_if_init.c -comp -o output\objects\icum\gh_00010ls1.o -list=output\list\icum\r_fdl_user_if_init.lst C:\Users\a5152492\AppData\Local\Temp\gh_00010ls1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00010ls1.s
+Source File: r_fdl_user_if_init.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Isource\FDL
+                           2 --		-Isource\FDL\lib -Idevice -G -object_dir=output\objects\icum
+                           3 --		-list -list_dir=output/list/icum -passsource -bsp generic
+                           4 --		-sda=all -fsoft -cpu=rh850 -ansi -filetype.c
+                           5 --		source\FDL\lib\r_fdl_user_if_init.c -o
+                           6 --		output\objects\icum\r_fdl_user_if_init.o
+                           7 --Source File:   source\FDL\lib\r_fdl_user_if_init.c
+                           8 --Directory:     
+                           9 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                          10 --Compile Date:  Thu Oct 22 15:17:56 2026
+                          11 --Host OS:       Win64
+                          12 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          13 --Release:       Compiler v2023.5.4
+                          14 --Revision Date: Wed Sep 06 02:44:56 2023
+                          15 --Release Date:  Wed Sep 06 02:00:00 2023
+                          16 -- ecom  -g -w
+                          17 	.section ".R_FDL_Text","ax"
+                          18 
+                          19 --1: #ifdef ENABLE_QAC_TEST
+                          20 --2:     #pragma PRQA_MESSAGES_OFF 0292
+                          21 --3: #endif
+                          22 --4: /*********************************************************************************************************************
+                          23 --5:  * Library       : Data Flash Access Library for Renesas RH850 devices
+                          24 --6:  *
+                          25 --7:  * File Name     : $Source: r_fdl_user_if_init.c $
+                          26 --8:  * Lib. Version  : $RH850_FDL_LIB_VERSION_T01: V2.12 $
+                          27 --9:  * Mod. Revision : $Revision: 1.8 $
+                          28 --10:  * Mod. Date     : $Date: 2017/06/06 19:36:57JST $
+                          29 --11:  * Device(s)     : RV40 Flash based RH850 microcontroller
+                          30 --12:  * Description   : Source code for FDL initialization
+                          31 --13:  *********************************************************************************************************************/
+                          32 --15: /*********************************************************************************************************************
+                          33 --16:  * DISCLAIMER
+                          34 --17:  * This software is supplied by Renesas Electronics Corporation and is only  intended for use with Renesas products.
+                          35 --18:  * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
+                          36 --19:  * applicable laws, including copyright laws.
+                          37 --20:  * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED
+                          38 --21:  * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+                          39 --22:  * NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+                          40 --23:  * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS
+                          41 --24:  * AFFILIATED COMPANIES SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY
+                          42 --25:  * REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH
+                          43 --26:  * DAMAGES.
+                          44 --27:  * Renesas reserves the right, without notice, to make changes to this software and to discontinue the availability of
+                          45 --28:  * this software. By using this software, you agree to the additional terms and conditions found by accessing the
+                          46 --29:  * following link:
+                          47 --30:  * http://www.renesas.com/disclaimer
+                          48 --31:  *
+                          49 --32:  * Copyright (C) 2015-2017 Renesas Electronics Corporation. All rights reserved.
+                          50 --33:  *********************************************************************************************************************/
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010ls1.s
+                          51 --35: #ifdef ENABLE_QAC_TEST
+                          52 --36:     #pragma PRQA_MESSAGES_ON 0292
+                          53 --37: #endif
+                          54 --39: /*********************************************************************************************************************
+                          55 --40:  * MISRA Rule:   MISRA-C 2004 rule 3.1 (QAC message 0292)
+                          56 --41:  * Reason:       To support automatic insertion of revision, module name etc. by the source revision control system
+                          57 --42:  *               it is necessary to violate the rule, because the system uses non basic characters as placeholders.
+                          58 --43:  * Verification: The placeholders are used in commentaries only. Therefore rule violation cannot influence code
+                          59 --44:  *               compilation.
+                          60 --45:  *********************************************************************************************************************/
+                          61 --47: /*********************************************************************************************************************
+                          62 --48:  * MISRA Rule:   MISRA-C 2004 rule 19.1 (QAC message 5087)
+                          63 --49:  * Reason:       The section mapping concept (Mapping code, constants and data to specific linker sections) bases on
+                          64 --50:  *               a central include file containing all section mapping  defines and pragmas. This need to be included
+                          65 --51:  *               multiple times within the code. The file itself only contains those defines and pragmas.
+                          66 --52:  * Verification: This is the standard concept defined for AUTOSAR implementations
+                          67 --53:  *********************************************************************************************************************/
+                          68 --56: /*********************************************************************************************************************
+                          69 --57:  * FDL header files include
+                          70 --58:  *********************************************************************************************************************/
+                          71 --59: #include "r_typedefs.h"
+                          72 --60: #include "r_fdl.h"
+                          73 --63: /*********************************************************************************************************************
+                          74 --64:  * Global function prototypes
+                          75 --65:  *********************************************************************************************************************/
+                          76 --66: /*********************************************************************************************************************
+                          77 --67:  * MISRA Rule:   MISRA-C 2004 rule 8.8 (QAC message 3447)
+                          78 --68:  * Reason:       Library is delivered as source code and as a precompiled object.
+                          79 --69:  *               The file r_fdl_user_if_init.c is not included on generation of the precompiled object.
+                          80 --70:  *               It is delivered as a separate file and cannot include any other header files, except the
+                          81 --71:  *               defined interface header files. The function is a library internal function and its declaration
+                          82 --72:  *               is not part of the interface header files.
+                          83 --73:  * Verification: -
+                          84 --74:  *********************************************************************************************************************/
+                          85 --75: extern r_fdl_status_t R_FDL_InitVariables (const r_fdl_descriptor_t * descriptor_pstr);            /* PRQA S 3447 */
+                          86 --78: /*********************************************************************************************************************
+                          87 --79:  * FDL internal section mapping definitions
+                          88 --80:  *********************************************************************************************************************/
+                          89 --81: #define R_FDL_START_SEC_PUBLIC_CODE
+                          90 --82: #include "r_fdl_mem_map.h"                                                                         /* PRQA S 5087 */
+                          91 --85: /*********************************************************************************************************************
+                          92 --86:  * Function name:  R_FDL_Init
+                          93 --87:  *********************************************************************************************************************/
+                          94 --88: /**
+                          95 --89:  * User interface function:
+                          96 --90:  * This function initializes the FDL. It must be called before any execution of a FDL function.
+                          97 --91:  * Sequence:
+                          98 --92:  * - Call the function to initialize the library RAM and do parameter checks
+                          99 --93:  * If compatibility mode is used then:
+                         100 --94:  * - Call the function to initialize the FCU RAM
+                         101 --95:  * - Call the function to set the frequency information with frequency check
+                         102 --96:  *   - Frequency is within reasonable range between R_FCU_FMIN and R_FCU_FMAX
+                         103 --97:  *
+                         104 --98:  * In error case the library is set to not initialized (R_FDL_ISTAT_NOINIT)
+                         105 --99:  *
+                         106 --100:  * @param[in]  descriptor_pstr - Pointer to the FDL descriptor structure
+                         107 --101:  * @return     Initialization status when returned from function call:
+                         108 --102:  *             - R_FDL_OK                - Initialization was successful
+                         109 --103:  *             - R_FDL_ERR_CONFIGURATION - FDL configuration parameter error
+                         110 --104:  *             If compatibility mode is used then following error codes may be returned:
+                         111 --105:  *             - R_FDL_ERR_PROTECTION    - Programming hardware reset was prohibited
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010ls1.s
+                         112 --106:  *             - R_FDL_ERR_INTERNAL      - Internal (HW) error during HW initialization
+                         113 --107:  */
+                         114 --108: /*********************************************************************************************************************/
+                         115 --109: /*********************************************************************************************************************
+                         116 --110:  * MISRA Rule:   MISRA-C 2004 rule 14.1 (QAC message 1503)
+                         117 --111:  * Reason:       This function is not used within the library, it is only used by the user
+                         118 --112:  *               application.
+                         119 --113:  * Verification: This function is part of the library API and therefore essential on the one hand.
+                         120 --114:  *               On the other hand the QAC warning is correct, because this function is never
+                         121 --115:  *               called within the library. To solve this dilemma it is necessary and suitable
+                         122 --116:  *               to disable the message.
+                         123 --117:  *********************************************************************************************************************/
+                         124 --118: #ifdef R_FDL_LIB_V1_COMPATIBILITY
+                         125 --119:     r_fdl_status_t R_FDL_Init (const r_fdl_descriptor_t * descriptor_pstr)                         /* PRQA S 1503 */
+                         126 --120:     {
+                         127 --121:         r_fdl_status_t  ret;
+                         128 --122:         r_fdl_request_t request;
+                         129 --124:         ret = R_FDL_InitVariables (descriptor_pstr);
+                         130 --126:         /* Init_Variables already does some configuration checks */
+                         131 --127:         if (R_FDL_OK == ret)
+                         132 --128:         {
+                         133 --129:             request.command_enu = R_FDL_CMD_PREPARE_ENV;
+                         134 --130:             R_FDL_Execute (&request);
+                         135 --132:             while (R_FDL_BUSY == request.status_enu)
+                         136 --133:             {
+                         137 --134:                 R_FDL_Handler ();
+                         138 --135:             }
+                         139 --137:             ret = request.status_enu;
+                         140 --138:         }
+                         141 --140:         return (ret);
+                         142 --141:     } /* R_FDL_Init */
+                         143 --142: #else
+                         144 --143:     r_fdl_status_t R_FDL_Init (const r_fdl_descriptor_t * descriptor_pstr)                         /* PRQA S 1503 */
+                         145 	.align	2
+                         146 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if_init...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD9B8A4..0::
+                         147 	.align	2
+                         148 	.align	2
+                         149 ..gh.f.a.2.e.0:
+                         150 	.type	..gh.f.a.2.e.0,@object
+                         151 	.size	..gh.f.a.2.e.0,0
+                         152 	.global	_R_FDL_Init
+                         153 _R_FDL_Init:
+00000000 541a            154 	add	-12,sp
+00000002 63ff0900        155 	st.w	lp,8[sp]
+00000006 63e70500        156 	st.w	r28,4[sp]
+0000000a 63ef0100        157 	st.w	r29,0[sp]
+0000000e 06e0            158 	mov	r6,r28
+                         159 --	    .bf
+                         160 .LDW01:
+                         161 --144:     {
+                         162 --145:         r_fdl_status_t ret;
+                         163 --147:         ret = R_FDL_InitVariables (descriptor_pstr);
+00000010 1c30            164 	mov	r28,r6
+                         165 .L49:
+                         166 	jarl	_R_FDL_InitVariables,lp
+                         166 <EXPANSION BEGIN>
+                         166 jarl22 _R_FDL_InitVariables , lp 
+00000012 80ff0000*       166 <EXPANSION END>
+00000016 0ae8            167 	mov	r10,r29
+                         168 --149:         return (ret);
+                         169 --line149
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00010ls1.s
+                         170 ..lin.3050739a..b302e0fe.0_1::
+                         171 .LDWlin1:
+00000018 1d50            172 	mov	r29,r10
+                         173 --	    .ef
+                         174 .LDW11:
+0000001a 23ff0900        175 	ld.w	8[sp],lp
+0000001e 23ef0100        176 	ld.w	0[sp],r29
+00000022 23e70500        177 	ld.w	4[sp],r28
+00000026 4c1a            178 	add	12,sp
+                         179 .L51:
+                         180 	.jumptype return
+00000028 7f00            181 	jmp	[lp]
+                         182 --line149
+                         183 ..lin.3050739a..b302e0fe.0_2::
+                         184 	.type	_R_FDL_Init,@function
+                         185 	.size	_R_FDL_Init,.-_R_FDL_Init
+                         186 	.align	2
+                         187 --_ret	r29	local
+                         188 
+                         189 --_descriptor_pstr	r28	param
+                         190 
+                         191 	.section ".bss","awb"
+                         192 .L34:
+                         193 	.type	.L34,@object
+                         194 	.size	.L34,0
+                         195 	.section ".ghcalltbl",""
+                         196 	.align	4
+00000000 00000000*       197 .L50:	.word	.L49
+                         198 	.type	.L50,@object
+                         199 	.size	.L50,4
+                         200 	.section ".ghrettbl",""
+                         201 	.align	4
+00000000 00000000*       202 .L52:	.word	.L51
+                         203 	.type	.L52,@object
+                         204 	.size	.L52,4
+                         205 	.data
+                         206 	.section ".R_FDL_Text","ax"
+                         207 
+                         208 --150:     } /* R_FDL_Init */
+                         209 	.align	2
+                         210 
+                         211 	.data
+                         212 	.ghsnote version,30
+                         213 	.ghsnote tools,3
+                         214 	.ghsnote options,656
+                         215 	.section ".R_FDL_Text","ax"
+                         216 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if_init...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD9B8A4..0::
+                         217 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

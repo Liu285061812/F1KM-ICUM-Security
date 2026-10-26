@@ -80,6 +80,8 @@
   #define RIEX_ENABLE                     0x00000000u
 #endif
 
+#define INTICUP_ENABLE                   (IRQ_TABLE_START + 0x0000001Cu)
+
 // #define UCPOP_ENABLE                    0x00000080u
 #ifndef UCPOP_ENABLE                   
   #define UCPOP_ENABLE                    0x00000000u
@@ -1646,6 +1648,8 @@
 #ifndef INTAPE_ENABLE                  
   #define INTAPE_ENABLE                   0x00000000u
 #endif
+
+#define INTFICUIF0DFRQPE_ENABLE          (IRQ_TABLE_START + 0x0000059Cu)
 
 // #define INTRLIN36_ENABLE                (IRQ_TABLE_START + 0x000005A0u)
 #ifndef INTRLIN36_ENABLE               

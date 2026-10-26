@@ -16,6 +16,292 @@ ___ghs_multicore_init_done	out	0	in	0
 .intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cdr7f701649_startup_icum.	out	0	in	0
 	out	0	100%
 	in	0	100%
+_R_FDL_IFct_ReadMemoryU32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_hw_access.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_IFct_ReadMemoryU08..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_hw_access.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_IFct_ReadMemoryU16..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_hw_access.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_IFct_WriteMemoryU08	out	0	in	6
+	out	0	100%
+	in	12	100%
+	_R_FDL_FCUFct_ClearStatus	2	16%	0	567	18
+	_R_FDL_FCUFct_ForcedStop	1	8%	0	397	18
+	_R_FDL_FCUFct_Switch_FAEINT	2	16%	0	635	18
+	_R_FDL_FCUFct_StartBCEraseOperation	2	16%	0	2223	18
+	_R_FDL_FCUFct_ReadOperation	4	33%	0	2501	18
+	_R_FDL_InitVariables	1	8%	0	53	0
+_R_FDL_IFct_WriteMemoryU16..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_hw_access.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_IFct_WriteMemoryU32..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_hw_access.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_IFct_CalcFOpUnitCnt_BC	out	0	in	2
+	out	0	100%
+	in	2	100%
+	.static000003aa	1	50%	0	1535	0
+	.static00000420	1	50%	0	3141	0
+_R_FDL_IFct_ChkAccessBoundaries	out	0	in	2
+	out	0	100%
+	in	2	100%
+	.static0000010c	1	50%	0	303	78
+	.static00000420	1	50%	0	3225	0
+_R_FDL_IFct_ChkAccessRight..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_hw_access.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_FCUFct_ChkReg_Asm	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_R_FDL_FCUFct_ForcedStop	1	100%	0	453	346
+_R_FDL_FCUFct_ForcedStop	out	2	in	4
+	out	2	100%
+	_R_FDL_FCUFct_ChkReg_Asm	1	50%	0	453	346
+	_R_FDL_IFct_WriteMemoryU08	1	50%	0	397	18
+	in	5	100%
+	_R_FDL_FCUFct_StartBCEraseOperation	1	20%	0	2229	382
+	_R_FDL_FCUFct_StartWriteOperation	1	20%	0	2049	382
+	.static00000378	1	20%	0	539	0
+	.static000003b8	2	40%	0	1939	0
+_R_FDL_FCUFct_ClearStatus	out	1	in	4
+	out	2	100%
+	_R_FDL_IFct_WriteMemoryU08	2	100%	0	567	18
+	in	4	100%
+	_R_FDL_FCUFct_SwitchMode_Start	1	25%	0	1441	480
+	.static00000395	1	25%	0	1069	0
+	.static0000039f	1	25%	0	1191	0
+	.static000003b8	1	25%	0	1945	0
+_R_FDL_FCUFct_Switch_FAEINT	out	1	in	1
+	out	2	100%
+	_R_FDL_IFct_WriteMemoryU08	2	100%	0	635	18
+	in	3	100%
+	.static000003b8	3	100%	0	1957	0
+_R_FDL_IFct_GetFWParam..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_hw_access.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_FCUFct_GetDFSize	out	0	in	1
+	out	0	100%
+	in	1	100%
+	.static000003b8	1	100%	0	2015	0
+_R_FDL_FCUFct_SetFrequency	out	0	in	1
+	out	0	100%
+	in	1	100%
+	.static000003b8	1	100%	0	2047	0
+_R_FDL_FCUFct_VerifyChecksum	out	0	in	1
+	out	0	100%
+	in	1	100%
+	.static000003b8	1	100%	0	1995	0
+_R_FDL_FCUFct_InitRAM	out	0	in	1
+	out	0	100%
+	in	1	100%
+	.static000003b8	1	100%	0	1873	0
+_R_FDL_FCUFct_SwitchMode_Start	out	1	in	10
+	out	1	100%
+	_R_FDL_FCUFct_ClearStatus	1	100%	0	1441	480
+	in	14	100%
+	.static00000389	2	14%	0	875	0
+	.static00000395	1	7%	0	1075	0
+	.static00000378	1	7%	0	561	0
+	.static0000039f	1	7%	0	1229	0
+	.static000003b8	3	21%	0	1951	0
+	.static000003aa	1	7%	0	1591	0
+	.static00000420	2	14%	0	3447	0
+	_R_FDL_Execute	1	7%	0	273	0
+	_R_FDL_Handler	1	7%	0	2359	0
+	_R_FDL_CancelRequest	1	7%	0	2923	0
+_R_FDL_FCUFct_SwitchMode_Check	out	0	in	7
+	out	0	100%
+	in	7	100%
+	.static00000395	1	14%	0	1079	0
+	.static00000378	1	14%	0	521	0
+	.static0000039f	1	14%	0	1233	0
+	.static000003b8	1	14%	0	1717	0
+	.static000003aa	1	14%	0	1595	0
+	.static00000420	1	14%	0	3317	0
+	_R_FDL_Handler	1	14%	0	2363	0
+_R_FDL_FCUFct_GetStat	out	0	in	1
+	out	0	100%
+	in	1	100%
+	.static0000039f	1	100%	0	1183	0
+_R_FDL_FCUFct_StartWriteOperation	out	1	in	2
+	out	1	100%
+	_R_FDL_FCUFct_ForcedStop	1	100%	0	2049	382
+	in	2	100%
+	.static000003aa	1	50%	0	1431	0
+	.static00000420	1	50%	0	3387	0
+_R_FDL_FCUFct_StartBCEraseOperation	out	2	in	2
+	out	3	100%
+	_R_FDL_FCUFct_ForcedStop	1	33%	0	2229	382
+	_R_FDL_IFct_WriteMemoryU08	2	66%	0	2223	18
+	in	3	100%
+	.static000003aa	2	66%	0	1559	0
+	.static00000420	1	33%	0	3365	0
+_R_FDL_FCUFct_ReadOperation	out	1	in	1
+	out	4	100%
+	_R_FDL_IFct_WriteMemoryU08	4	100%	0	2501	18
+	in	1	100%
+	.static00000420	1	100%	0	3263	0
+_R_FDL_FCUFct_ChkStartable	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_R_FDL_Execute	1	100%	0	373	0
+_R_FDL_FCUFct_ChkSuspendable	out	0	in	2
+	out	0	100%
+	in	2	100%
+	.static00000383	1	50%	0	697	0
+	_R_FDL_StandBy	1	50%	0	2713	0
+_R_FDL_FCUFct_Suspend	out	0	in	2
+	out	0	100%
+	in	2	100%
+	.static00000383	1	50%	0	705	0
+	_R_FDL_StandBy	1	50%	0	2721	0
+_R_FDL_FCUFct_ResumeChkNeed	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_R_FDL_WakeUp	1	100%	0	2809	0
+_R_FDL_FCUFct_Resume	out	0	in	2
+	out	0	100%
+	in	2	100%
+	.static000003b8	1	50%	0	2079	0
+	_R_FDL_WakeUp	1	50%	0	2817	0
+_R_FDL_FCUFct_ChkReady	out	0	in	2
+	out	0	100%
+	in	2	100%
+	_R_FDL_Handler	1	50%	0	2305	0
+	_R_FDL_StandBy	1	50%	0	2703	0
+_R_FDL_FCUFct_CheckFatalError	out	0	in	1
+	out	0	100%
+	in	1	100%
+	.static00000395	1	100%	0	1059	0
+_R_FDL_InitVariables	out	1	in	1
+	out	1	100%
+	_R_FDL_IFct_WriteMemoryU08	1	100%	0	53	0
+	in	1	100%
+	_R_FDL_Init	1	100%	0	19	0
+_R_FDL_Execute	out	2	in	1
+	out	2	100%
+	_R_FDL_FCUFct_ChkStartable	1	50%	0	373	0
+	_R_FDL_FCUFct_SwitchMode_Start	1	50%	0	273	0
+	in	1	100%
+	.static00000600	1	100%	0	15	0
+_R_FDL_Handler_CancelReq..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Handler_BusyAndSuspendPossible..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Handler_ChkResume..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Handler_ReactOnFatalErrors..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Handler_StatusCheckAndSuspendOnReady..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Handler_MultiOperation..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Handler_OperationStates..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Handler	out	3	in	1
+	out	3	100%
+	_R_FDL_FCUFct_SwitchMode_Start	1	33%	0	2359	0
+	_R_FDL_FCUFct_SwitchMode_Check	1	33%	0	2363	0
+	_R_FDL_FCUFct_ChkReady	1	33%	0	2305	0
+	in	1	100%
+	.static00000600	1	100%	0	21	0
+_R_FDL_GetVersionString	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_SuspendRequest	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_ResumeRequest	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_StandBy	out	3	in	0
+	out	3	100%
+	_R_FDL_FCUFct_ChkSuspendable	1	33%	0	2713	0
+	_R_FDL_FCUFct_Suspend	1	33%	0	2721	0
+	_R_FDL_FCUFct_ChkReady	1	33%	0	2703	0
+	in	0	100%
+_R_FDL_WakeUp	out	2	in	0
+	out	2	100%
+	_R_FDL_FCUFct_Resume	1	50%	0	2817	0
+	_R_FDL_FCUFct_ResumeChkNeed	1	50%	0	2809	0
+	in	0	100%
+_R_FDL_CancelRequest	out	1	in	0
+	out	1	100%
+	_R_FDL_FCUFct_SwitchMode_Start	1	100%	0	2923	0
+	in	0	100%
+_R_FDL_UFct_FlashOpStart..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_UFct_EndCurrentOperation..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_UFct_StateNotStandBy..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cr_fdl_user_if.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_R_FDL_Init	out	1	in	1
+	out	1	100%
+	_R_FDL_InitVariables	1	100%	0	19	0
+	in	1	100%
+	_icum_fdl_init	1	100%	0	161	0
+_icum_fdl_execute..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_fdl_data_range_valid..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_FDL_User_CriticalSetionBegin	out	0	in	0
+	out	0	100%
+	in	0	100%
+_FDL_User_CriticalSetionEnd	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_fdl_init	out	1	in	1
+	out	1	100%
+	_R_FDL_Init	1	100%	0	161	0
+	in	1	100%
+	_icum_fdl_self_test	1	100%	0	151	0
+_icum_fdl_prepare	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_fdl_self_test	1	100%	0	169	0
+_icum_fdl_erase	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_fdl_self_test	1	100%	0	193	0
+_icum_fdl_blank_check	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_fdl_self_test	1	100%	0	221	0
+_icum_fdl_write	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_fdl_self_test	1	100%	0	297	0
+_icum_fdl_read	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_fdl_self_test	1	100%	0	329	0
+_icum_fdl_self_test	out	8	in	1
+	out	9	100%
+	_icum_fdl_blank_check	1	11%	0	221	0
+	_icum_fdl_init	1	11%	0	151	0
+	_icum_fdl_prepare	1	11%	0	169	0
+	_icum_fdl_erase	1	11%	0	193	0
+	_icum_fdl_read	1	11%	0	329	0
+	_icum_fdl_write	1	11%	0	297	0
+	_icum_flash_handoff_end	2	22%	0	447	0
+	_icum_flash_handoff_begin	1	11%	0	73	0
+	in	1	100%
+	_main_icum	1	100%	0	547	0
 _aes_gf_multiply..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_crypto.	out	0	in	0
 	out	0	100%
 	in	0	100%
@@ -67,16 +353,16 @@ _icum_trng_read_words	out	0	in	3
 	out	0	100%
 	in	3	100%
 	_icum_crypto_self_test	1	33%	0	637	0
-	.static000005cf	1	33%	0	2521	0
-	.static000005c4	1	33%	0	2361	0
+	.static00000c2a	1	33%	0	2521	0
+	.static00000c1f	1	33%	0	2361	0
 _bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Caes_test.	out	0	in	0
 	out	0	100%
 	in	0	100%
 _icum_crypto_self_test	out	4	in	1
 	out	10	100%
-	_icum_aes128_cbc_crypt	2	20%	0	359	0
-	_icum_aes128_cmac	4	40%	0	591	0
 	_icum_aes128_ecb_crypt	3	30%	0	213	0
+	_icum_aes128_cmac	4	40%	0	591	0
+	_icum_aes128_cbc_crypt	2	20%	0	359	0
 	_icum_trng_read_words	1	10%	0	637	0
 	in	1	100%
 	_main_icum	1	100%	0	475	0
@@ -105,20 +391,20 @@ _icum_hash_digest_size	out	0	in	6
 	out	0	100%
 	in	6	100%
 	_icum_hash_compute	1	16%	0	3187	3080
-	.static000004c1	1	16%	0	39	0
-	.static000005fb	1	16%	0	3247	0
-	.static0000062b	1	16%	0	4053	0
-	.static0000063b	1	16%	0	4363	0
+	.static00000b1c	1	16%	0	39	0
+	.static00000c56	1	16%	0	3247	0
+	.static00000c96	1	16%	0	4363	0
+	.static00000c86	1	16%	0	4053	0
 	_icum_rsa_verify_pss	1	16%	0	5269	0
 _icum_hash_compute	out	2	in	5
 	out	3	100%
 	_icum_hash_digest_size	1	33%	0	3187	3080
 	___gh_shrl_64_32	2	66%	0	4131	0
 	in	7	100%
-	.static000004c1	1	14%	0	55	0
-	.static000005fb	1	14%	0	3267	0
-	.static0000062b	1	14%	0	4185	0
-	.static0000063b	2	28%	0	4545	0
+	.static00000b1c	1	14%	0	55	0
+	.static00000c56	1	14%	0	3267	0
+	.static00000c96	2	28%	0	4545	0
+	.static00000c86	1	14%	0	4185	0
 	_icum_rsa_verify_pss	2	28%	0	5783	0
 _hash_matches..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test.	out	0	in	0
 	out	0	100%
@@ -216,26 +502,46 @@ _rsa_hex_decode..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr
 _rsa_bytes_equal..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Crsa_test.	out	0	in	0
 	out	0	100%
 	in	0	100%
-_icum_rsa_self_test	out	6	in	1
+_icum_rsa_self_test	out	6	in	0
 	out	9	100%
-	_icum_rsa_verify_pkcs1_v15	2	22%	0	461	0
-	_icum_rsa_sign_pkcs1_v15	1	11%	0	497	0
 	_icum_rsa_encrypt_pkcs1_v15	1	11%	0	729	0
 	_icum_rsa_decrypt_pkcs1_v15	1	11%	0	773	0
+	_icum_rsa_sign_pkcs1_v15	1	11%	0	497	0
 	_icum_rsa_sign_pss	1	11%	0	655	0
+	_icum_rsa_verify_pkcs1_v15	2	22%	0	461	0
 	_icum_rsa_verify_pss	3	33%	0	697	0
-	in	1	100%
-	_main_icum	1	100%	0	551	0
-_icum_comm_init	out	0	in	1
-	out	0	100%
+	in	0	100%
+_icum_comm_init	out	1	in	1
+	out	1	100%
+	_icum_flash_handoff_init	1	100%	0	11	0
 	in	1	100%
 	_main_icum	1	100%	0	463	0
-_INTPE	out	0	in	0
-	out	0	100%
+_INTPE	out	1	in	0
+	out	1	100%
+	_icum_flash_handoff_on_pe_event	1	100%	0	167	0
 	in	0	100%
 _INTPES	out	0	in	0
 	out	0	100%
 	in	0	100%
+_icum_flash_handoff_wait..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_flash_handoff.	out	0	in	0
+	out	0	100%
+	in	0	100%
+_icum_flash_handoff_init	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_comm_init	1	100%	0	11	0
+_icum_flash_handoff_begin	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_icum_fdl_self_test	1	100%	0	73	0
+_icum_flash_handoff_end	out	0	in	1
+	out	0	100%
+	in	2	100%
+	_icum_fdl_self_test	2	100%	0	447	0
+_icum_flash_handoff_on_pe_event	out	0	in	1
+	out	0	100%
+	in	1	100%
+	_INTPE	1	100%	0	167	0
 _icum_ostm_init	out	0	in	1
 	out	0	100%
 	in	1	100%
@@ -249,17 +555,17 @@ _init_clocks	out	0	in	1
 	_main_icum	1	100%	0	459	0
 _main_icum	out	6	in	1
 	out	9	100%
+	_icum_fdl_self_test	1	11%	0	547	0
 	_icum_crypto_self_test	1	11%	0	475	0
 	_icum_hash_self_test	4	44%	0	533	0
-	_icum_rsa_self_test	1	11%	0	551	0
 	_icum_comm_init	1	11%	0	463	0
 	_icum_ostm_init	1	11%	0	467	0
 	_init_clocks	1	11%	0	459	0
 	in	1	100%
-	_main	1	100%	0	573	452
+	_main	1	100%	0	559	452
 _main	out	1	in	1
 	out	1	100%
-	_main_icum	1	100%	0	573	452
+	_main_icum	1	100%	0	559	452
 	in	1	100%
 	___ghs_ind_crt1	1	100%	0	237	0
 __multiend	out	1	in	0
@@ -337,13 +643,13 @@ ___ghs_ind_crt1	out	3	in	1
 ___ghsLock	out	0	in	2
 	out	0	100%
 	in	2	100%
-	__Exit	1	50%	0	35	0
 	___ghs_at_exit	1	50%	0	131	0
+	__Exit	1	50%	0	35	0
 ___ghsUnlock	out	0	in	2
 	out	0	100%
 	in	2	100%
-	__Exit	1	50%	0	89	0
 	___ghs_at_exit	1	50%	0	147	0
+	__Exit	1	50%	0	89	0
 ___gh_lock_init	out	0	in	1
 	out	0	100%
 	in	3	100%
@@ -367,32 +673,101 @@ ___gh_shrl_64_64	out	1	in	0
 	out	1	100%
 	___gh_shrl_64_32	1	100%	0	59	0
 	in	0	100%
-.static000004c1	out	2	in	0
+.static0000010c	out	1	in	0
+	out	1	100%
+	_R_FDL_IFct_ChkAccessBoundaries	1	100%	0	303	78
+	in	0	100%
+.static00000389	out	1	in	0
+	out	2	100%
+	_R_FDL_FCUFct_SwitchMode_Start	2	100%	0	875	0
+	in	0	100%
+.static00000383	out	2	in	0
+	out	2	100%
+	_R_FDL_FCUFct_ChkSuspendable	1	50%	0	697	0
+	_R_FDL_FCUFct_Suspend	1	50%	0	705	0
+	in	0	100%
+.static00000395	out	4	in	0
+	out	4	100%
+	_R_FDL_FCUFct_ClearStatus	1	25%	0	1069	0
+	_R_FDL_FCUFct_SwitchMode_Start	1	25%	0	1075	0
+	_R_FDL_FCUFct_SwitchMode_Check	1	25%	0	1079	0
+	_R_FDL_FCUFct_CheckFatalError	1	25%	0	1059	0
+	in	0	100%
+.static00000378	out	3	in	0
+	out	3	100%
+	_R_FDL_FCUFct_ForcedStop	1	33%	0	539	0
+	_R_FDL_FCUFct_SwitchMode_Start	1	33%	0	561	0
+	_R_FDL_FCUFct_SwitchMode_Check	1	33%	0	521	0
+	in	0	100%
+.static0000039f	out	4	in	0
+	out	4	100%
+	_R_FDL_FCUFct_ClearStatus	1	25%	0	1191	0
+	_R_FDL_FCUFct_SwitchMode_Start	1	25%	0	1229	0
+	_R_FDL_FCUFct_SwitchMode_Check	1	25%	0	1233	0
+	_R_FDL_FCUFct_GetStat	1	25%	0	1183	0
+	in	0	100%
+.static000003b8	out	10	in	0
+	out	15	100%
+	_R_FDL_FCUFct_ClearStatus	1	6%	0	1945	0
+	_R_FDL_FCUFct_ForcedStop	2	13%	0	1939	0
+	_R_FDL_FCUFct_Switch_FAEINT	3	20%	0	1957	0
+	_R_FDL_FCUFct_GetDFSize	1	6%	0	2015	0
+	_R_FDL_FCUFct_SetFrequency	1	6%	0	2047	0
+	_R_FDL_FCUFct_SwitchMode_Start	3	20%	0	1951	0
+	_R_FDL_FCUFct_VerifyChecksum	1	6%	0	1995	0
+	_R_FDL_FCUFct_InitRAM	1	6%	0	1873	0
+	_R_FDL_FCUFct_SwitchMode_Check	1	6%	0	1717	0
+	_R_FDL_FCUFct_Resume	1	6%	0	2079	0
+	in	0	100%
+.static000003aa	out	5	in	0
+	out	6	100%
+	_R_FDL_IFct_CalcFOpUnitCnt_BC	1	16%	0	1535	0
+	_R_FDL_FCUFct_StartBCEraseOperation	2	33%	0	1559	0
+	_R_FDL_FCUFct_SwitchMode_Start	1	16%	0	1591	0
+	_R_FDL_FCUFct_StartWriteOperation	1	16%	0	1431	0
+	_R_FDL_FCUFct_SwitchMode_Check	1	16%	0	1595	0
+	in	0	100%
+.static00000420	out	7	in	0
+	out	8	100%
+	_R_FDL_IFct_CalcFOpUnitCnt_BC	1	12%	0	3141	0
+	_R_FDL_IFct_ChkAccessBoundaries	1	12%	0	3225	0
+	_R_FDL_FCUFct_StartBCEraseOperation	1	12%	0	3365	0
+	_R_FDL_FCUFct_ReadOperation	1	12%	0	3263	0
+	_R_FDL_FCUFct_SwitchMode_Start	2	25%	0	3447	0
+	_R_FDL_FCUFct_StartWriteOperation	1	12%	0	3387	0
+	_R_FDL_FCUFct_SwitchMode_Check	1	12%	0	3317	0
+	in	0	100%
+.static00000600	out	2	in	0
+	out	2	100%
+	_R_FDL_Execute	1	50%	0	15	0
+	_R_FDL_Handler	1	50%	0	21	0
+	in	0	100%
+.static00000b1c	out	2	in	0
 	out	2	100%
 	_icum_hash_compute	1	50%	0	55	0
 	_icum_hash_digest_size	1	50%	0	39	0
 	in	0	100%
-.static000005cf	out	1	in	0
+.static00000c2a	out	1	in	0
 	out	1	100%
 	_icum_trng_read_words	1	100%	0	2521	0
 	in	0	100%
-.static000005fb	out	2	in	0
+.static00000c1f	out	1	in	0
+	out	1	100%
+	_icum_trng_read_words	1	100%	0	2361	0
+	in	0	100%
+.static00000c56	out	2	in	0
 	out	2	100%
 	_icum_hash_compute	1	50%	0	3267	0
 	_icum_hash_digest_size	1	50%	0	3247	0
 	in	0	100%
-.static000005c4	out	1	in	0
-	out	1	100%
-	_icum_trng_read_words	1	100%	0	2361	0
-	in	0	100%
-.static0000062b	out	2	in	0
-	out	2	100%
-	_icum_hash_compute	1	50%	0	4185	0
-	_icum_hash_digest_size	1	50%	0	4053	0
-	in	0	100%
-.static0000063b	out	2	in	0
+.static00000c96	out	2	in	0
 	out	3	100%
 	_icum_hash_compute	2	66%	0	4545	0
 	_icum_hash_digest_size	1	33%	0	4363	0
+	in	0	100%
+.static00000c86	out	2	in	0
+	out	2	100%
+	_icum_hash_compute	1	50%	0	4185	0
+	_icum_hash_digest_size	1	50%	0	4053	0
 	in	0	100%
 #% END STATIC GRAPH

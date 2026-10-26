@@ -1,0 +1,621 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\PE -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\pe\icum_flash_handoff.dbo -source=icum_flash_handoff.c -comp -o output\objects\pe\gh_0000pqs1.o -list=output\list\pe\icum_flash_handoff.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+Source File: icum_flash_handoff.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\PE -Isource -Idevice -G
+                           2 --		-object_dir=output\objects\pe -list -list_dir=output/list/pe
+                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
+                           4 --		-filetype.c source\PE\icum_flash_handoff.c -o
+                           5 --		output\objects\pe\icum_flash_handoff.o
+                           6 --Source File:   source\PE\icum_flash_handoff.c
+                           7 --Directory:     
+                           8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                           9 --Compile Date:  Fri Oct 23 15:30:41 2026
+                          10 --Host OS:       Win64
+                          11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          12 --Release:       Compiler v2023.5.4
+                          13 --Revision Date: Wed Sep 06 02:44:56 2023
+                          14 --Release Date:  Wed Sep 06 02:00:00 2023
+                          15 -- ecom  -g -w
+                          16 
+                          17 --1: #include "device.h"
+                          18 --2: #include "icum_flash_handoff.h"
+                          19 --3: #include "icum_flash_handoff_protocol.h"
+                          20 --5: /* INTC2.ICFICUIF0DFRQPE: MK is bit 7 and RF is bit 12. */
+                          21 --6: __IOREG(PE_ICUM_DFRQPE_ICR, 0xFFFFB2CE, __READ_WRITE, uint16);
+                          22 --8: #define PE_ICUM_DFRQPE_MASK       0x0080u
+                          23 --9: #define PE_ICUM_DFRQPE_REQ_FLAG   0x1000u
+                          24 --11: __IOREG(PE_INTC1_ICICUP, 0xFFFEEA0E, __READ_WRITE, uint16);
+                          25 --13: static volatile unsigned int g_dfrqpe_masked;
+                          26 --14: static volatile unsigned int g_dfrqpe_was_masked;
+                          27 --16: static void pe_icum_flash_handoff_clear_dfrqpe(void)
+                          28 	.text
+                          29 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB0D21..0::
+                          30 	.align	2
+                          31 	.align	2
+                          32 ..gh.f.a.2.e.0:
+                          33 	.type	..gh.f.a.2.e.0,@object
+                          34 	.size	..gh.f.a.2.e.0,0
+                          35 	.global	_pe_icum_flash_handoff_clear_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+                          36 _pe_icum_flash_handoff_clear_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.:
+                          37 _pe_icum_flash_handoff_clear_dfrqpe:
+                          38 --	    .bf
+                          39 .LDW01:
+                          40 --17: {
+                          41 --18:     PE_ICUM_DFRQPE_ICR &= (uint16)~PE_ICUM_DFRQPE_REQ_FLAG;
+00000000 e00fcfb2         42 	ld.hu	lo(4294947534)[zero],r1
+00000004 c10effef         43 	andi	61439,r1,r1
+00000008 600fceb2         44 	st.h	r1,lo(4294947534)[zero]
+                          45 --19: }
+                          46 --	    .ef
+                          47 .LDW11:
+                          48 .L49:
+                          49 	.jumptype return
+0000000c 7f00             50 	jmp	[lp]
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                          51 --line17
+                          52 ..lin.3d9c32eb..6bf932f.0_1::
+                          53 	.type	_pe_icum_flash_handoff_clear_dfrqpe,@function
+                          54 	.size	_pe_icum_flash_handoff_clear_dfrqpe,.-_pe_icum_flash_handoff_clear_dfrqpe
+                          55 	.type	_pe_icum_flash_handoff_clear_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,@function
+                          56 	.size	_pe_icum_flash_handoff_clear_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,.-_pe_icum_flash_handoff_clear_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+                          57 	.align	2
+                          58 
+                          59 	.section ".bss","awb"
+                          60 .L34:
+                          61 	.type	.L34,@object
+                          62 	.size	.L34,0
+                          63 	.section ".sbss","awb"
+                          64 	.align	4
+                          65 	.global	_g_dfrqpe_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+                          66 _g_dfrqpe_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.:
+00000000 00000000         67 _g_dfrqpe_masked:	.space	4
+                          68 	.type	_g_dfrqpe_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,@object
+                          69 	.size	_g_dfrqpe_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,4
+                          70 	.type	_g_dfrqpe_masked,@object
+                          71 	.size	_g_dfrqpe_masked,4
+                          72 	.global	_g_dfrqpe_was_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+                          73 _g_dfrqpe_was_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.:
+00000004 00000000         74 _g_dfrqpe_was_masked:	.space	4
+                          75 	.type	_g_dfrqpe_was_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,@object
+                          76 	.size	_g_dfrqpe_was_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,4
+                          77 	.type	_g_dfrqpe_was_masked,@object
+                          78 	.size	_g_dfrqpe_was_masked,4
+                          79 	.section ".ghrettbl",""
+                          80 	.align	4
+00000000 00000000*        81 .L50:	.word	.L49
+                          82 	.type	.L50,@object
+                          83 	.size	.L50,4
+                          84 	.data
+                          85 	.text
+                          86 
+                          87 
+                          88 --21: static void pe_icum_flash_handoff_release_dfrqpe(void)
+                          89 	.align	2
+                          90 	.align	2
+                          91 	.align	2
+                          92 ..gh.f.a.2.e.1:
+                          93 	.type	..gh.f.a.2.e.1,@object
+                          94 	.size	..gh.f.a.2.e.1,0
+                          95 	.global	_pe_icum_flash_handoff_release_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+                          96 _pe_icum_flash_handoff_release_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.:
+                          97 _pe_icum_flash_handoff_release_dfrqpe:
+0000000e 5c1a             98 	add	-4,sp
+00000010 63ff0100         99 	st.w	lp,0[sp]
+                         100 --	    .bf
+                         101 .LDW21:
+                         102 --22: {
+                         103 --23:     if ((PE_ICUM_DFRQPE_ICR & PE_ICUM_DFRQPE_REQ_FLAG) != 0u)
+00000014 e00fcfb2        104 	ld.hu	lo(4294947534)[zero],r1
+00000018 8d0a            105 	shr	13,r1
+0000001a b905*           106 	bnl	.L53
+                         107 --24:     {
+                         108 --25:         pe_icum_flash_handoff_clear_dfrqpe();
+                         109 .L125:
+                         110 --line25
+                         111 ..lin.3d9c32eb..f3370c49.0_2::
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                         112 .LDWlin2:
+                         113 	jarl	_pe_icum_flash_handoff_clear_dfrqpe,lp
+                         113 <EXPANSION BEGIN>
+                         113 jarl22 _pe_icum_flash_handoff_clear_dfrqpe , lp 
+0000001c bfffe4ff*       113 <EXPANSION END>
+                         114 .L53:
+                         115 --26:     }
+                         116 --27:     if (g_dfrqpe_was_masked == 0u)
+                         117 --line27
+                         118 ..lin.3d9c32eb..f3370c49.0_3::
+                         119 .LDWlin3:
+00000020 240f0100*       120 	ld.w	sdaoff(_g_dfrqpe_was_masked)[gp],r1
+00000024 e009            121 	cmp	zero,r1
+00000026 fa05*           122 	bne	.L55
+                         123 --28:     {
+                         124 --29:         PE_ICUM_DFRQPE_ICR &= (uint16)~PE_ICUM_DFRQPE_MASK;
+                         125 --line29
+                         126 ..lin.3d9c32eb..f3370c49.0_4::
+                         127 .LDWlin4:
+00000028 e00fcfb2        128 	ld.hu	lo(4294947534)[zero],r1
+0000002c c10e7fff        129 	andi	65407,r1,r1
+00000030 600fceb2        130 	st.h	r1,lo(4294947534)[zero]
+                         131 .L55:
+                         132 --30:     }
+                         133 --31:     g_dfrqpe_masked = 0u;
+00000034 64070100*       134 	st.w	zero,sdaoff(_g_dfrqpe_masked)[gp]
+                         135 --32: }
+                         136 --	    .ef
+                         137 .LDW31:
+00000038 23ff0100        138 	ld.w	0[sp],lp
+0000003c 441a            139 	add	4,sp
+                         140 .L127:
+                         141 	.jumptype return
+0000003e 7f00            142 	jmp	[lp]
+                         143 --line29
+                         144 ..lin.3d9c32eb..f3370c49.0_5::
+                         145 	.type	_pe_icum_flash_handoff_release_dfrqpe,@function
+                         146 	.size	_pe_icum_flash_handoff_release_dfrqpe,.-_pe_icum_flash_handoff_release_dfrqpe
+                         147 	.type	_pe_icum_flash_handoff_release_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,@function
+                         148 	.size	_pe_icum_flash_handoff_release_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.,.-_pe_icum_flash_handoff_release_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+                         149 	.align	2
+                         150 
+                         151 	.section ".bss","awb"
+                         152 .L98:
+                         153 	.type	.L98,@object
+                         154 	.size	.L98,0
+                         155 	.section ".ghcalltbl",""
+                         156 	.align	4
+00000000 00000000*       157 .L126:	.word	.L125
+                         158 	.type	.L126,@object
+                         159 	.size	.L126,4
+                         160 	.section ".ghrettbl",""
+00000004 00000000*       161 .L128:	.word	.L127
+                         162 	.type	.L128,@object
+                         163 	.size	.L128,4
+                         164 	.data
+                         165 	.text
+                         166 
+                         167 
+                         168 --34: void pe_icum_flash_handoff_init(void)
+                         169 	.align	2
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                         170 	.align	2
+                         171 	.align	2
+                         172 ..gh.f.a.2.e.2:
+                         173 	.type	..gh.f.a.2.e.2,@object
+                         174 	.size	..gh.f.a.2.e.2,0
+                         175 	.global	_pe_icum_flash_handoff_init
+                         176 _pe_icum_flash_handoff_init:
+00000040 5c1a            177 	add	-4,sp
+00000042 63ff0100        178 	st.w	lp,0[sp]
+                         179 --	    .bf
+                         180 .LDW41:
+                         181 --35: {
+                         182 --36:     g_dfrqpe_masked = 0u;
+00000046 64070100*       183 	st.w	zero,sdaoff(_g_dfrqpe_masked)[gp]
+                         184 --37:     g_dfrqpe_was_masked = 0u;
+0000004a 64070100*       185 	st.w	zero,sdaoff(_g_dfrqpe_was_masked)[gp]
+                         186 --38:     pe_icum_flash_handoff_clear_dfrqpe();
+                         187 .L212:
+                         188 	jarl	_pe_icum_flash_handoff_clear_dfrqpe,lp
+                         188 <EXPANSION BEGIN>
+                         188 jarl22 _pe_icum_flash_handoff_clear_dfrqpe , lp 
+0000004e bfffb2ff*       188 <EXPANSION END>
+                         189 --39:     PE_ICUM_DFRQPE_ICR = 0x0040u;
+                         190 --line39
+                         191 ..lin.3d9c32eb..f938ddbb.0_6::
+                         192 .LDWlin6:
+00000052 200e4000        193 	movea	64,zero,r1
+00000056 600fceb2        194 	st.h	r1,lo(4294947534)[zero]
+                         195 --40:     PE_INTC1_ICICUP = 0x0045u;
+0000005a 200e4500        196 	movea	69,zero,r1
+0000005e a007ed08d4fd    197 	st.h	r1,4294896142[zero]
+                         198 --41:     ICUM_CMDREGICUM_ICU2PEIE |=
+                         199 --line41
+                         200 ..lin.3d9c32eb..f938ddbb.0_7::
+                         201 .LDWlin7:
+00000064 400e1fff        202 	movhi	65311,zero,r1
+00000068 210f5d00        203 	ld.w	92[r1],r1
+0000006c 401600c0        204 	movhi	hi(-1073741824),zero,r2
+00000070 2c065c001fff    205 	mov	-14745508,r12
+00000076 0209            206 	or	r2,r1
+00000078 6c0f0100        207 	st.w	r1,0[r12]
+                         208 --42:         ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG;
+                         209 --43: }
+                         210 --	    .ef
+                         211 .LDW51:
+                         212 --line43
+                         213 ..lin.3d9c32eb..f938ddbb.0_8::
+                         214 .LDWlin8:
+0000007c 23ff0100        215 	ld.w	0[sp],lp
+00000080 441a            216 	add	4,sp
+                         217 .L214:
+                         218 	.jumptype return
+00000082 7f00            219 	jmp	[lp]
+                         220 --line43
+                         221 ..lin.3d9c32eb..f938ddbb.0_9::
+                         222 	.type	_pe_icum_flash_handoff_init,@function
+                         223 	.size	_pe_icum_flash_handoff_init,.-_pe_icum_flash_handoff_init
+                         224 	.align	2
+                         225 
+                         226 	.section ".bss","awb"
+                         227 .L182:
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                         228 	.type	.L182,@object
+                         229 	.size	.L182,0
+                         230 	.section ".ghcalltbl",""
+00000004 00000000*       231 .L213:	.word	.L212
+                         232 	.type	.L213,@object
+                         233 	.size	.L213,4
+                         234 	.section ".ghrettbl",""
+00000008 00000000*       235 .L215:	.word	.L214
+                         236 	.type	.L215,@object
+                         237 	.size	.L215,4
+                         238 	.data
+                         239 	.text
+                         240 
+                         241 
+                         242 --45: #pragma ghs reference INTICUP
+                         243 --46: #pragma ghs interrupt
+                         244 --47: void INTICUP(void)
+                         245 	.align	2
+                         246 	.align	2
+                         247 	.align	2
+                         248 ..gh.f.a.2.e.3:
+                         249 	.type	..gh.f.a.2.e.3,@object
+                         250 	.size	..gh.f.a.2.e.3,0
+                         251 	.global	_INTICUP
+                         252 _INTICUP:
+00000084 231efcff        253 	movea	-4,sp,sp
+00000088 63ff0100        254 	st.w	lp,0[sp]
+0000008c e1476011        255 	pushsp	r1-r2
+00000090 e6476099        256 	pushsp	r6-r19
+00000094 fb4760f1        257 	pushsp	r27-ep
+                         258 	stsr	1,r6 -- EIPSW
+                         258 <EXPANSION BEGIN>
+                         258 stsr 1 , r6 , 0
+00000098 e1374000        258 <EXPANSION END>
+                         259 	stsr	0,r7 -- EIPC
+                         259 <EXPANSION BEGIN>
+                         259 stsr 0 , r7 , 0
+0000009c e03f4000        259 <EXPANSION END>
+                         260 	stsr	17,r8 -- CTPSW
+                         260 <EXPANSION BEGIN>
+                         260 stsr 17 , r8 , 0
+000000a0 f1474000        260 <EXPANSION END>
+                         261 	stsr	16,r9 -- CTPC
+                         261 <EXPANSION BEGIN>
+                         261 stsr 16 , r9 , 0
+000000a4 f04f4000        261 <EXPANSION END>
+000000a8 e6476049        262 	pushsp	r6-r9
+000000ac 40de0080        263 	movhi	hi(-2147483648),zero,r27
+                         264 --	    .bf
+                         265 .LDW61:
+                         266 --48: {
+                         267 --49:     uint32 events;
+                         268 --50:     uint32 reply;
+                         269 --52:     events = ICUM_CMDREGICUM_ICU2PEF
+                         270 --line52
+                         271 ..lin.3d9c32eb..d78837e0.0_10::
+                         272 .LDWlin10:
+000000b0 40ee1fff        273 	movhi	65311,zero,r29
+000000b4 3def5100        274 	ld.w	80[r29],r29
+000000b8 400e00c0        275 	movhi	hi(-1073741824),zero,r1
+000000bc 41e9            276 	and	r1,r29
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                         277 --53:         & (ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG);
+                         278 --54:     if (events == 0u)
+                         279 --line54
+                         280 ..lin.3d9c32eb..d78837e0.0_11::
+                         281 .LDWlin11:
+000000be e0e9            282 	cmp	zero,r29
+000000c0 aa05*           283 	bne	.L218
+                         284 --55:     {
+                         285 --56:         return;
+                         286 --line56
+                         287 ..lin.3d9c32eb..d78837e0.0_12::
+                         288 .LDWlin12:
+000000c2 f53d*           289 	br	.L216
+                         290 .L218:
+                         291 --57:     }
+                         292 --59:     if ((events & ICUM_FLASH_HANDOFF_FLAG) != 0u)
+                         293 --line59
+                         294 ..lin.3d9c32eb..d78837e0.0_13::
+                         295 .LDWlin13:
+000000c4 1d08            296 	mov	r29,r1
+000000c6 5b09            297 	and	r27,r1
+000000c8 a235*           298 	be	.L221
+                         299 --60:     {
+                         300 --61:         reply = 0u;
+                         301 --line61
+                         302 ..lin.3d9c32eb..d78837e0.0_14::
+                         303 .LDWlin14:
+000000ca 00e2            304 	mov	0,r28
+                         305 --62:         if (ICUM_CMDREGICUM_ICU2PES == ICUM_FLASH_HANDOFF_START_COMMAND)
+000000cc 409e1fff        306 	movhi	65311,zero,r19
+000000d0 339f1100        307 	ld.w	16[r19],r19
+000000d4 210651524644    308 	mov	1145459281,r1
+000000da e199            309 	cmp	r1,r19
+000000dc ca0d*           310 	bne	.L223
+                         311 --63:         {
+                         312 --64:             g_dfrqpe_was_masked =
+                         313 --line64
+                         314 ..lin.3d9c32eb..d78837e0.0_15::
+                         315 .LDWlin15:
+000000de e00fcfb2        316 	ld.hu	lo(4294947534)[zero],r1
+000000e2 870a            317 	shr	7,r1
+000000e4 c10e0100        318 	andi	1,r1,r1
+000000e8 640f0100*       319 	st.w	r1,sdaoff(_g_dfrqpe_was_masked)[gp]
+                         320 --65:                 ((PE_ICUM_DFRQPE_ICR & PE_ICUM_DFRQPE_MASK) != 0u)
+                         321 --66:                 ? 1u : 0u;
+                         322 --67:             g_dfrqpe_masked = 0u;
+000000ec 64070100*       323 	st.w	zero,sdaoff(_g_dfrqpe_masked)[gp]
+                         324 --68:             reply = 1u;
+000000f0 01e2            325 	mov	1,r28
+000000f2 9515*           326 	br	.L225
+                         327 .L223:
+                         328 --69:         }
+                         329 --70:         else if (ICUM_CMDREGICUM_ICU2PES
+                         330 --line70
+                         331 ..lin.3d9c32eb..d78837e0.0_16::
+                         332 .LDWlin16:
+000000f4 409e1fff        333 	movhi	65311,zero,r19
+000000f8 339f1100        334 	ld.w	16[r19],r19
+000000fc 210644524644    335 	mov	1145459268,r1
+00000102 e199            336 	cmp	r1,r19
+00000104 8a0d*           337 	bne	.L225
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                         338 --71:                  == ICUM_FLASH_HANDOFF_STOP_COMMAND)
+                         339 --72:         {
+                         340 --73:             if (g_dfrqpe_masked != 0u)
+                         341 --line73
+                         342 ..lin.3d9c32eb..d78837e0.0_17::
+                         343 .LDWlin17:
+00000106 240f0100*       344 	ld.w	sdaoff(_g_dfrqpe_masked)[gp],r1
+0000010a e009            345 	cmp	zero,r1
+0000010c b205*           346 	be	.L228
+                         347 --74:             {
+                         348 --75:                 pe_icum_flash_handoff_release_dfrqpe();
+                         349 .L385:
+                         350 --line75
+                         351 ..lin.3d9c32eb..d78837e0.0_18::
+                         352 .LDWlin18:
+                         353 	jarl	_pe_icum_flash_handoff_release_dfrqpe,lp
+                         353 <EXPANSION BEGIN>
+                         353 jarl22 _pe_icum_flash_handoff_release_dfrqpe , lp 
+0000010e bfff00ff*       353 <EXPANSION END>
+                         354 .L228:
+                         355 --76:             }
+                         356 --77:             reply = 1u;
+                         357 --line77
+                         358 ..lin.3d9c32eb..d78837e0.0_19::
+                         359 .LDWlin19:
+00000112 01e2            360 	mov	1,r28
+                         361 .L225:
+                         362 --78:         }
+                         363 --80:         ICUM_CMDREGICUM_ICU2PEFC = ICUM_FLASH_HANDOFF_FLAG;
+00000114 2b0658001fff    364 	mov	-14745512,r11
+0000011a 6bdf0100        365 	st.w	r27,0[r11]
+                         366 --81:         if (reply != 0u)
+                         367 --line81
+                         368 ..lin.3d9c32eb..d78837e0.0_20::
+                         369 .LDWlin20:
+0000011e e0e1            370 	cmp	zero,r28
+00000120 e205*           371 	be	.L221
+                         372 --82:         {
+                         373 --83:             ICUM_CMDREGICUM_PE2ICUFS = ICUM_FLASH_HANDOFF_FLAG;
+                         374 --line83
+                         375 ..lin.3d9c32eb..d78837e0.0_21::
+                         376 .LDWlin21:
+00000122 2b0644001fff    377 	mov	-14745532,r11
+00000128 6bdf0100        378 	st.w	r27,0[r11]
+                         379 .L221:
+                         380 --84:         }
+                         381 --85:     }
+                         382 --86:     if ((events & ICUM_SHARED_MEMORY_FLAG) != 0u)
+                         383 --line86
+                         384 ..lin.3d9c32eb..d78837e0.0_22::
+                         385 .LDWlin22:
+0000012c 1d08            386 	mov	r29,r1
+0000012e 9f0a            387 	shr	31,r1
+00000130 890d*           388 	bnl	.L216
+                         389 --87:     {
+                         390 --88:         ICUM_CMDREGICUM_ICU2PEFC = ICUM_SHARED_MEMORY_FLAG;
+                         391 --line88
+                         392 ..lin.3d9c32eb..d78837e0.0_23::
+                         393 .LDWlin23:
+00000132 400e0040        394 	movhi	hi(1073741824),zero,r1
+00000136 2b0658001fff    395 	mov	-14745512,r11
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+0000013c 6b0f0100        396 	st.w	r1,0[r11]
+                         397 .L216:
+                         398 --89:     }
+                         399 --90: }
+                         400 --	    .ef
+                         401 .LDW71:
+                         402 --line90
+                         403 ..lin.3d9c32eb..d78837e0.0_24::
+                         404 .LDWlin24:
+00000140 e6676049        405 	popsp	r6-r9
+                         406 	ldsr	r9,16 -- CTPC
+                         406 <EXPANSION BEGIN>
+                         406 ldsr r9 , 16 , 0
+00000144 e9872000        406 <EXPANSION END>
+                         407 	ldsr	r8,17 -- CTPSW
+                         407 <EXPANSION BEGIN>
+                         407 ldsr r8 , 17 , 0
+00000148 e88f2000        407 <EXPANSION END>
+0000014c e0076001        408 	di
+                         409 	ldsr	r7,0 -- EIPC
+                         409 <EXPANSION BEGIN>
+                         409 ldsr r7 , 0 , 0
+00000150 e7072000        409 <EXPANSION END>
+                         410 	ldsr	r6,1 -- EIPSW
+                         410 <EXPANSION BEGIN>
+                         410 ldsr r6 , 1 , 0
+00000154 e60f2000        410 <EXPANSION END>
+00000158 fb6760f1        411 	popsp	r27-ep
+0000015c e6676099        412 	popsp	r6-r19
+00000160 e1676011        413 	popsp	r1-r2
+00000164 23ff0100        414 	ld.w	0[sp],lp
+00000168 231e0400        415 	movea	4,sp,sp
+                         416 .L387:
+0000016c e0074801        417 	eiret
+                         418 	.type	_INTICUP,@function
+                         419 	.size	_INTICUP,.-_INTICUP
+                         420 	.align	2
+                         421 --_events	r29	local
+                         422 --_reply	r28	local
+                         423 
+                         424 	.section ".bss","awb"
+                         425 .L322:
+                         426 	.type	.L322,@object
+                         427 	.size	.L322,0
+                         428 	.section ".ghcalltbl",""
+00000008 00000000*       429 .L386:	.word	.L385
+                         430 	.type	.L386,@object
+                         431 	.size	.L386,4
+                         432 	.section ".ghrettbl",""
+0000000c 00000000*       433 .L388:	.word	.L387
+                         434 	.type	.L388,@object
+                         435 	.size	.L388,4
+                         436 	.data
+                         437 	.text
+                         438 
+                         439 
+                         440 --92: #pragma ghs interrupt
+                         441 --93: void INTFICUIF0DFRQPE(void)
+                         442 	.align	2
+                         443 	.align	2
+                         444 	.align	2
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                         445 ..gh.f.a.2.e.4:
+                         446 	.type	..gh.f.a.2.e.4,@object
+                         447 	.size	..gh.f.a.2.e.4,0
+                         448 	.global	_INTFICUIF0DFRQPE
+                         449 _INTFICUIF0DFRQPE:
+00000170 231efcff        450 	movea	-4,sp,sp
+00000174 630f0100        451 	st.w	r1,0[sp]
+00000178 f2476099        452 	pushsp	r18-r19
+                         453 --	    .bf
+                         454 .LDW81:
+                         455 --94: {
+                         456 --95:     uint32 request;
+                         457 --96:     uint32 acknowledgement;
+                         458 --98:     PE_ICUM_DFRQPE_ICR |= PE_ICUM_DFRQPE_MASK;
+0000017c e00fcfb2        459 	ld.hu	lo(4294947534)[zero],r1
+00000180 810e8000        460 	ori	128,r1,r1
+00000184 600fceb2        461 	st.h	r1,lo(4294947534)[zero]
+                         462 --99:     g_dfrqpe_masked = 1u;
+00000188 010a            463 	mov	1,r1
+0000018a 640f0100*       464 	st.w	r1,sdaoff(_g_dfrqpe_masked)[gp]
+                         465 --100:     request = ICUM_CMDREGICUM_PEFLPRG0REQ;
+0000018e 400e1fff        466 	movhi	65311,zero,r1
+00000192 210f2100        467 	ld.w	32[r1],r1
+                         468 --101:     acknowledgement = ICUM_CMDREGICUM_PEFLPRG0ACK;
+                         469 --line101
+                         470 ..lin.3d9c32eb..6e63e9f7.0_25::
+                         471 .LDWlin25:
+00000196 409e1fff        472 	movhi	65311,zero,r19
+0000019a 339f2900        473 	ld.w	40[r19],r19
+                         474 --103:     if (((request & ICUM_FLASH_HANDOFF_PE_REQ) != 0u)
+                         475 --line103
+                         476 ..lin.3d9c32eb..6e63e9f7.0_26::
+                         477 .LDWlin26:
+0000019e 0190            478 	mov	r1,r18
+000001a0 8292            479 	shr	2,r18
+000001a2 9915*           480 	bnl	.L389
+                         481 --line105
+                         482 ..lin.3d9c32eb..6e63e9f7.0_27::
+                         483 .LDWlin27:
+000001a4 1390            484 	mov	r19,r18
+000001a6 8392            485 	shr	3,r18
+000001a8 e10d*           486 	bl	.L389
+                         487 --104:         && ((acknowledgement
+                         488 --105:              & ICUM_FLASH_HANDOFF_PE_ACK_ACTIVE) == 0u))
+                         489 --106:     {
+                         490 --107:         ICUM_CMDREGICUM_PEFLPRG0ACK =
+                         491 --line107
+                         492 ..lin.3d9c32eb..6e63e9f7.0_28::
+                         493 .LDWlin28:
+000001aa 231efcff        494 	movea	-4,sp,sp
+000001ae 63f70100        495 	st.w	ep,0[sp]
+000001b2 0292            496 	mov	2,r18
+000001b4 3e0628001fff    497 	mov	-14745560,ep
+000001ba 0195            498 	sst.w	r18,0[ep]
+000001bc 23f70100        499 	ld.w	0[sp],ep
+000001c0 231e0400        500 	movea	4,sp,sp
+                         501 .L389:
+                         502 --108:             ICUM_FLASH_HANDOFF_PE_ACK;
+                         503 --109:     }
+                         504 --110: }
+                         505 --	    .ef
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000pqs1.s
+                         506 .LDW91:
+                         507 --line110
+                         508 ..lin.3d9c32eb..6e63e9f7.0_29::
+                         509 .LDWlin29:
+000001c4 f2676099        510 	popsp	r18-r19
+000001c8 230f0100        511 	ld.w	0[sp],r1
+000001cc 231e0400        512 	movea	4,sp,sp
+                         513 .L468:
+000001d0 e0074801        514 	eiret
+                         515 	.type	_INTFICUIF0DFRQPE,@function
+                         516 	.size	_INTFICUIF0DFRQPE,.-_INTFICUIF0DFRQPE
+                         517 	.align	2
+                         518 --_request	r1	local
+                         519 --_acknowledgement	r19	local
+                         520 
+                         521 	.section ".bss","awb"
+                         522 .L438:
+                         523 	.type	.L438,@object
+                         524 	.size	.L438,0
+                         525 	.section ".ghrettbl",""
+00000010 00000000*       526 .L469:	.word	.L468
+                         527 	.type	.L469,@object
+                         528 	.size	.L469,4
+                         529 	.data
+                         530 	.text
+                         531 
+                         532 	.align	2
+                         533 --_ICUM_CMDREG	4280221696	import
+                         534 --_PE_ICUM_DFRQPE_ICR	4294947534	import
+                         535 --_PE_INTC1_ICICUP	4294896142	import
+                         536 --_g_dfrqpe_masked	sdaoff(_g_dfrqpe_masked)	static
+                         537 --_g_dfrqpe_was_masked	sdaoff(_g_dfrqpe_was_masked)	static
+                         538 
+                         539 	.data
+                         540 	.need	_INTICUP
+                         541 	.ghsnote version,30
+                         542 	.ghsnote tools,3
+                         543 	.ghsnote options,656
+                         544 	.text
+                         545 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB0D21..0::
+                         546 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

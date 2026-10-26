@@ -1,0 +1,1099 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Isource\FDL -Isource\FDL\lib -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\icum_fdl.dbo -source=icum_fdl.c -comp -o output\objects\icum\gh_00012641.o -list=output\list\icum\icum_fdl.lst C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+Source File: icum_fdl.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Isource\FDL
+                           2 --		-Isource\FDL\lib -Idevice -G -object_dir=output\objects\icum
+                           3 --		-list -list_dir=output/list/icum -passsource -bsp generic
+                           4 --		-sda=all -fsoft -cpu=rh850 -ansi -filetype.c
+                           5 --		source\ICUM\icum_fdl.c -o output\objects\icum\icum_fdl.o
+                           6 --Source File:   source\ICUM\icum_fdl.c
+                           7 --Directory:     
+                           8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                           9 --Compile Date:  Fri Oct 23 17:46:53 2026
+                          10 --Host OS:       Win64
+                          11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          12 --Release:       Compiler v2023.5.4
+                          13 --Revision Date: Wed Sep 06 02:44:56 2023
+                          14 --Release Date:  Wed Sep 06 02:00:00 2023
+                          15 -- ecom  -g -w
+                          16 
+                          17 --1: #include "icum_fdl.h"
+                          18 --2: #include "r_fdl_global.h"
+                          19 --4: #define ICUM_FDL_CPU_FREQUENCY_MHZ 240u
+                          20 --6: static const r_fdl_descriptor_t icum_fdl_descriptor =
+                          21 --7: {
+                          22 --8:     ICUM_FDL_CPU_FREQUENCY_MHZ,
+                          23 --9:     ICUM_FDL_POOL_BLOCK_COUNT,
+                          24 --10:     0u,
+                          25 --11:     0u
+                          26 --12: };
+                          27 --14: uint32_t PSWSafe;
+                          28 --16: static r_fdl_status_t icum_fdl_execute(r_fdl_request_t *request)
+                          29 	.text
+                          30 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB2D0D..0::
+                          31 	.align	2
+                          32 	.align	2
+                          33 ..gh.f.a.2.e.0:
+                          34 	.type	..gh.f.a.2.e.0,@object
+                          35 	.size	..gh.f.a.2.e.0,0
+                          36 	.global	_icum_fdl_execute..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.
+                          37 _icum_fdl_execute..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.:
+                          38 _icum_fdl_execute:
+00000000 581a             39 	add	-8,sp
+00000002 63ff0500         40 	st.w	lp,4[sp]
+00000006 63ef0100         41 	st.w	r29,0[sp]
+0000000a 06e8             42 	mov	r6,r29
+                          43 --	    .bf
+                          44 .LDW01:
+                          45 --17: {
+                          46 --18:     R_FDL_Execute(request);
+0000000c 1d30             47 	mov	r29,r6
+                          48 .L77:
+                          49 	jarl	_R_FDL_Execute,lp
+                          49 <EXPANSION BEGIN>
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                          49 jarl22 _R_FDL_Execute , lp 
+0000000e 80ff0000*        49 <EXPANSION END>
+                          50 --19:     while (R_FDL_BUSY == request->status_enu) {
+                          51 --line19
+                          52 ..lin.2b892bf7..2ca2d039.0_1::
+                          53 .LDWlin1:
+00000012 b505*            54 	br	.L4
+                          55 .L6:
+                          56 --20:         R_FDL_Handler();
+                          57 .L79:
+                          58 --line20
+                          59 ..lin.2b892bf7..2ca2d039.0_2::
+                          60 .LDWlin2:
+                          61 	jarl	_R_FDL_Handler,lp
+                          61 <EXPANSION BEGIN>
+                          61 jarl22 _R_FDL_Handler , lp 
+00000014 80ff0000*        61 <EXPANSION END>
+                          62 .L4:
+                          63 --line19
+                          64 ..lin.2b892bf7..2ca2d039.0_3::
+                          65 .LDWlin3:
+00000018 3d0f1500         66 	ld.w	20[r29],r1
+0000001c 610a             67 	cmp	1,r1
+0000001e b2fd*            68 	be	.L6
+                          69 --21:     }
+                          70 --22:     return request->status_enu;
+                          71 --line22
+                          72 ..lin.2b892bf7..2ca2d039.0_4::
+                          73 .LDWlin4:
+00000020 3d571500         74 	ld.w	20[r29],r10
+                          75 --	    .ef
+                          76 .LDW11:
+00000024 23ff0500         77 	ld.w	4[sp],lp
+00000028 23ef0100         78 	ld.w	0[sp],r29
+0000002c 481a             79 	add	8,sp
+                          80 .L81:
+                          81 	.jumptype return
+0000002e 7f00             82 	jmp	[lp]
+                          83 --line22
+                          84 ..lin.2b892bf7..2ca2d039.0_5::
+                          85 	.type	_icum_fdl_execute,@function
+                          86 	.size	_icum_fdl_execute,.-_icum_fdl_execute
+                          87 	.type	_icum_fdl_execute..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.,@function
+                          88 	.size	_icum_fdl_execute..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.,.-_icum_fdl_execute..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.
+                          89 	.align	2
+                          90 
+                          91 --_request	r29	param
+                          92 
+                          93 	.section ".bss","awb"
+                          94 .L50:
+                          95 	.type	.L50,@object
+                          96 	.size	.L50,0
+                          97 	.section ".ghcalltbl",""
+                          98 	.align	4
+00000000 00000000*        99 .L78:	.word	.L77
+                         100 	.type	.L78,@object
+                         101 	.size	.L78,4
+00000004 00000000*       102 .L80:	.word	.L79
+                         103 	.type	.L80,@object
+                         104 	.size	.L80,4
+                         105 	.section ".ghrettbl",""
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         106 	.align	4
+00000000 00000000*       107 .L82:	.word	.L81
+                         108 	.type	.L82,@object
+                         109 	.size	.L82,4
+                         110 	.data
+                         111 	.text
+                         112 
+                         113 --23: }
+                         114 
+                         115 --25: static int icum_fdl_data_range_valid(unsigned long byte_index,
+                         116 	.align	2
+                         117 	.align	2
+                         118 	.align	2
+                         119 ..gh.f.a.2.e.1:
+                         120 	.type	..gh.f.a.2.e.1,@object
+                         121 	.size	..gh.f.a.2.e.1,0
+                         122 	.global	_icum_fdl_data_range_valid..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.
+                         123 _icum_fdl_data_range_valid..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.:
+                         124 _icum_fdl_data_range_valid:
+00000030 0608            125 	mov	r6,r1
+00000032 0710            126 	mov	r7,r2
+                         127 --	    .bf
+                         128 .LDW21:
+                         129 --26:                                      unsigned int word_count)
+                         130 --27: {
+                         131 --28:     unsigned long byte_count;
+                         132 --30:     byte_count = (unsigned long)word_count * 4ul;
+00000034 0298            133 	mov	r2,r19
+00000036 c29a            134 	shl	2,r19
+                         135 --31:     return (word_count != 0u)
+00000038 0052            136 	mov	0,r10
+0000003a e011            137 	cmp	zero,r2
+0000003c b215*           138 	be	.L83
+                         139 --line32
+                         140 ..lin.2b892bf7..32964c9b.0_6::
+                         141 .LDWlin6:
+0000003e c1060300        142 	andi	3,r1,zero
+00000042 8a15*           143 	bne	.L83
+                         144 --line33
+                         145 ..lin.2b892bf7..32964c9b.0_7::
+                         146 .LDWlin7:
+00000044 320600800100    147 	mov	98304,r18
+0000004a f209            148 	cmp	r18,r1
+0000004c b10d*           149 	bl	.L83
+                         150 --line34
+                         151 ..lin.2b892bf7..32964c9b.0_8::
+                         152 .LDWlin8:
+0000004e 40960200        153 	movhi	hi(131072),zero,r18
+00000052 f209            154 	cmp	r18,r1
+00000054 fb05*           155 	bh	.L83
+                         156 --line35
+                         157 ..lin.2b892bf7..32964c9b.0_9::
+                         158 .LDWlin9:
+00000056 40960200        159 	movhi	hi(131072),zero,r18
+0000005a a191            160 	sub	r1,r18
+0000005c f299            161 	cmp	r18,r19
+0000005e e1570653        162 	cmovnh	1,r10,r10
+                         163 .L83:
+                         164 --	    .ef
+                         165 .LDW31:
+                         166 .L174:
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         167 --line36
+                         168 ..lin.2b892bf7..32964c9b.0_10::
+                         169 .LDWlin10:
+                         170 	.jumptype return
+00000062 7f00            171 	jmp	[lp]
+                         172 --line36
+                         173 ..lin.2b892bf7..32964c9b.0_11::
+                         174 	.type	_icum_fdl_data_range_valid,@function
+                         175 	.size	_icum_fdl_data_range_valid,.-_icum_fdl_data_range_valid
+                         176 	.type	_icum_fdl_data_range_valid..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.,@function
+                         177 	.size	_icum_fdl_data_range_valid..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.,.-_icum_fdl_data_range_valid..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.
+                         178 	.align	2
+                         179 --_byte_count	r19	local
+                         180 
+                         181 --_byte_index	r1	param
+                         182 --_word_count	r2	param
+                         183 
+                         184 	.section ".bss","awb"
+                         185 .L138:
+                         186 	.type	.L138,@object
+                         187 	.size	.L138,0
+                         188 	.section ".ghrettbl",""
+00000004 00000000*       189 .L175:	.word	.L174
+                         190 	.type	.L175,@object
+                         191 	.size	.L175,4
+                         192 	.data
+                         193 	.text
+                         194 
+                         195 --32:         && ((byte_index & 3ul) == 0ul)
+                         196 --33:         && (byte_index >= ICUM_FDL_REGION_OFFSET)
+                         197 --34:         && (byte_index <= ICUM_FDL_END_OFFSET)
+                         198 --35:         && (byte_count <= (ICUM_FDL_END_OFFSET - byte_index));
+                         199 --36: }
+                         200 
+                         201 --38: static r_fdl_status_t icum_fdl_recover_if_not_ready(void)
+                         202 --39: {
+                         203 --40:     if (R_FDL_TRUE == R_FDL_FCUFct_ChkReady()) {
+                         204 --41:         return R_FDL_OK;
+                         205 --42:     }
+                         206 --44:     return R_FDL_FCUFct_ForcedStop();
+                         207 --45: }
+                         208 --47: void FDL_User_CriticalSetionBegin(void)
+                         209 	.align	2
+                         210 	.align	2
+                         211 	.align	2
+                         212 ..gh.f.a.2.e.2:
+                         213 	.type	..gh.f.a.2.e.2,@object
+                         214 	.size	..gh.f.a.2.e.2,0
+                         215 	.global	_FDL_User_CriticalSetionBegin
+                         216 _FDL_User_CriticalSetionBegin:
+                         217 --	    .bf
+                         218 .LDW41:
+                         219 --48: {
+                         220 --49:     asm("ldsr    r0, 31");
+                         221 ..gh.beginasm.3:
+                         222 	.type	..gh.beginasm.3,@object
+                         223 	.size	..gh.beginasm.3,0
+                         224 ldsr    r0, 31
+                         224 <EXPANSION BEGIN>
+                         224 ldsr r0 , 31 , 0
+00000064 e0ff2000        224 <EXPANSION END>
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         225 
+                         226 ..gh.endasm.4:
+                         227 	.type	..gh.endasm.4,@object
+                         228 	.size	..gh.endasm.4,0
+                         229 --50:     asm("stsr    0x05, r7");
+                         230 --line50
+                         231 ..lin.2b892bf7..1bcb4cf9.0_12::
+                         232 .LDWlin12:
+                         233 ..gh.beginasm.5:
+                         234 	.type	..gh.beginasm.5,@object
+                         235 	.size	..gh.beginasm.5,0
+                         236 stsr    0x05, r7
+                         236 <EXPANSION BEGIN>
+                         236 stsr 0x05 , r7 , 0
+00000068 e53f4000        236 <EXPANSION END>
+                         237 
+                         238 ..gh.endasm.6:
+                         239 	.type	..gh.endasm.6,@object
+                         240 	.size	..gh.endasm.6,0
+                         241 --51:     asm("mov     _PSWSafe, r6");
+                         242 --line51
+                         243 ..lin.2b892bf7..1bcb4cf9.0_13::
+                         244 .LDWlin13:
+                         245 ..gh.beginasm.7:
+                         246 	.type	..gh.beginasm.7,@object
+                         247 	.size	..gh.beginasm.7,0
+0000006c 260600000000*   248 mov     _PSWSafe, r6
+                         249 
+                         250 ..gh.endasm.8:
+                         251 	.type	..gh.endasm.8,@object
+                         252 	.size	..gh.endasm.8,0
+                         253 --52:     asm("st.w    r7, 0[r6]");
+                         254 --line52
+                         255 ..lin.2b892bf7..1bcb4cf9.0_14::
+                         256 .LDWlin14:
+                         257 ..gh.beginasm.9:
+                         258 	.type	..gh.beginasm.9,@object
+                         259 	.size	..gh.beginasm.9,0
+00000072 663f0100        260 st.w    r7, 0[r6]
+                         261 
+                         262 ..gh.endasm.10:
+                         263 	.type	..gh.endasm.10,@object
+                         264 	.size	..gh.endasm.10,0
+                         265 --53:     asm("movea   0x00A0, r0, r6");
+                         266 --line53
+                         267 ..lin.2b892bf7..1bcb4cf9.0_15::
+                         268 .LDWlin15:
+                         269 ..gh.beginasm.11:
+                         270 	.type	..gh.beginasm.11,@object
+                         271 	.size	..gh.beginasm.11,0
+00000076 2036a000        272 movea   0x00A0, r0, r6
+                         273 
+                         274 ..gh.endasm.12:
+                         275 	.type	..gh.endasm.12,@object
+                         276 	.size	..gh.endasm.12,0
+                         277 --54:     asm("or      r7, r6");
+                         278 --line54
+                         279 ..lin.2b892bf7..1bcb4cf9.0_16::
+                         280 .LDWlin16:
+                         281 ..gh.beginasm.13:
+                         282 	.type	..gh.beginasm.13,@object
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         283 	.size	..gh.beginasm.13,0
+0000007a 0731            284 or      r7, r6
+                         285 
+                         286 ..gh.endasm.14:
+                         287 	.type	..gh.endasm.14,@object
+                         288 	.size	..gh.endasm.14,0
+                         289 --55:     asm("ldsr    r6, 5");
+                         290 --line55
+                         291 ..lin.2b892bf7..1bcb4cf9.0_17::
+                         292 .LDWlin17:
+                         293 ..gh.beginasm.15:
+                         294 	.type	..gh.beginasm.15,@object
+                         295 	.size	..gh.beginasm.15,0
+                         296 ldsr    r6, 5
+                         296 <EXPANSION BEGIN>
+                         296 ldsr r6 , 5 , 0
+0000007c e62f2000        296 <EXPANSION END>
+                         297 
+                         298 ..gh.endasm.16:
+                         299 	.type	..gh.endasm.16,@object
+                         300 	.size	..gh.endasm.16,0
+                         301 --56: }
+                         302 --	    .ef
+                         303 .LDW51:
+                         304 .L267:
+                         305 --line56
+                         306 ..lin.2b892bf7..1bcb4cf9.0_18::
+                         307 .LDWlin18:
+                         308 	.jumptype return
+00000080 7f00            309 	jmp	[lp]
+                         310 --line56
+                         311 ..lin.2b892bf7..1bcb4cf9.0_19::
+                         312 	.type	_FDL_User_CriticalSetionBegin,@function
+                         313 	.size	_FDL_User_CriticalSetionBegin,.-_FDL_User_CriticalSetionBegin
+                         314 	.align	2
+                         315 
+                         316 	.section ".bss","awb"
+                         317 .L234:
+                         318 	.type	.L234,@object
+                         319 	.size	.L234,0
+                         320 	.section ".ghrettbl",""
+00000008 00000000*       321 .L268:	.word	.L267
+                         322 	.type	.L268,@object
+                         323 	.size	.L268,4
+                         324 	.data
+                         325 	.text
+                         326 
+                         327 
+                         328 --58: void FDL_User_CriticalSetionEnd(void)
+                         329 	.align	2
+                         330 	.align	2
+                         331 	.align	2
+                         332 ..gh.f.a.2.e.17:
+                         333 	.type	..gh.f.a.2.e.17,@object
+                         334 	.size	..gh.f.a.2.e.17,0
+                         335 	.global	_FDL_User_CriticalSetionEnd
+                         336 _FDL_User_CriticalSetionEnd:
+                         337 --	    .bf
+                         338 .LDW61:
+                         339 --59: {
+                         340 --60:     asm("ldsr    r0, 31");
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         341 ..gh.beginasm.18:
+                         342 	.type	..gh.beginasm.18,@object
+                         343 	.size	..gh.beginasm.18,0
+                         344 ldsr    r0, 31
+                         344 <EXPANSION BEGIN>
+                         344 ldsr r0 , 31 , 0
+00000082 e0ff2000        344 <EXPANSION END>
+                         345 
+                         346 ..gh.endasm.19:
+                         347 	.type	..gh.endasm.19,@object
+                         348 	.size	..gh.endasm.19,0
+                         349 --61:     asm("mov     _PSWSafe, r6");
+                         350 --line61
+                         351 ..lin.2b892bf7..4a8ba46b.0_20::
+                         352 .LDWlin20:
+                         353 ..gh.beginasm.20:
+                         354 	.type	..gh.beginasm.20,@object
+                         355 	.size	..gh.beginasm.20,0
+00000086 260600000000*   356 mov     _PSWSafe, r6
+                         357 
+                         358 ..gh.endasm.21:
+                         359 	.type	..gh.endasm.21,@object
+                         360 	.size	..gh.endasm.21,0
+                         361 --62:     asm("ld.w    0[r6], r7");
+                         362 --line62
+                         363 ..lin.2b892bf7..4a8ba46b.0_21::
+                         364 .LDWlin21:
+                         365 ..gh.beginasm.22:
+                         366 	.type	..gh.beginasm.22,@object
+                         367 	.size	..gh.beginasm.22,0
+0000008c 263f0100        368 ld.w    0[r6], r7
+                         369 
+                         370 ..gh.endasm.23:
+                         371 	.type	..gh.endasm.23,@object
+                         372 	.size	..gh.endasm.23,0
+                         373 --63:     asm("ldsr    r7, 5");
+                         374 --line63
+                         375 ..lin.2b892bf7..4a8ba46b.0_22::
+                         376 .LDWlin22:
+                         377 ..gh.beginasm.24:
+                         378 	.type	..gh.beginasm.24,@object
+                         379 	.size	..gh.beginasm.24,0
+                         380 ldsr    r7, 5
+                         380 <EXPANSION BEGIN>
+                         380 ldsr r7 , 5 , 0
+00000090 e72f2000        380 <EXPANSION END>
+                         381 
+                         382 ..gh.endasm.25:
+                         383 	.type	..gh.endasm.25,@object
+                         384 	.size	..gh.endasm.25,0
+                         385 --64: }
+                         386 --	    .ef
+                         387 .LDW71:
+                         388 .L326:
+                         389 --line64
+                         390 ..lin.2b892bf7..4a8ba46b.0_23::
+                         391 .LDWlin23:
+                         392 	.jumptype return
+00000094 7f00            393 	jmp	[lp]
+                         394 --line64
+                         395 ..lin.2b892bf7..4a8ba46b.0_24::
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         396 	.type	_FDL_User_CriticalSetionEnd,@function
+                         397 	.size	_FDL_User_CriticalSetionEnd,.-_FDL_User_CriticalSetionEnd
+                         398 	.align	2
+                         399 
+                         400 	.section ".bss","awb"
+                         401 .L302:
+                         402 	.type	.L302,@object
+                         403 	.size	.L302,0
+                         404 	.section ".ghrettbl",""
+0000000c 00000000*       405 .L327:	.word	.L326
+                         406 	.type	.L327,@object
+                         407 	.size	.L327,4
+                         408 	.data
+                         409 	.text
+                         410 
+                         411 
+                         412 --66: r_fdl_status_t icum_fdl_init(void)
+                         413 	.align	2
+                         414 	.align	2
+                         415 	.align	2
+                         416 	.align	2
+                         417 ..gh.f.a.2.e.26:
+                         418 	.type	..gh.f.a.2.e.26,@object
+                         419 	.size	..gh.f.a.2.e.26,0
+                         420 	.global	_icum_fdl_init
+                         421 _icum_fdl_init:
+00000096 5c1a            422 	add	-4,sp
+00000098 63ff0100        423 	st.w	lp,0[sp]
+                         424 --	    .bf
+                         425 .LDW81:
+                         426 --67: {
+                         427 --68:     return R_FDL_Init(&icum_fdl_descriptor);
+0000009c 25360000*       428 	movea	sdaoff2(_icum_fdl_descriptor),r5,r6
+                         429 .L362:
+                         430 	jarl	_R_FDL_Init,lp
+                         430 <EXPANSION BEGIN>
+                         430 jarl22 _R_FDL_Init , lp 
+000000a0 80ff0000*       430 <EXPANSION END>
+                         431 --	    .ef
+                         432 .LDW91:
+                         433 --line69
+                         434 ..lin.2b892bf7..a23a2e9a.0_25::
+                         435 .LDWlin25:
+000000a4 23ff0100        436 	ld.w	0[sp],lp
+000000a8 441a            437 	add	4,sp
+                         438 .L364:
+                         439 	.jumptype return
+000000aa 7f00            440 	jmp	[lp]
+                         441 --line69
+                         442 ..lin.2b892bf7..a23a2e9a.0_26::
+                         443 	.type	_icum_fdl_init,@function
+                         444 	.size	_icum_fdl_init,.-_icum_fdl_init
+                         445 	.align	2
+                         446 
+                         447 	.section ".bss","awb"
+                         448 .L350:
+                         449 	.type	.L350,@object
+                         450 	.size	.L350,0
+                         451 	.section ".rosdata","a"
+                         452 	.align	2
+                         453 	.global	_icum_fdl_descriptor..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         454 _icum_fdl_descriptor..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.:
+00000000 f0000008        455 _icum_fdl_descriptor:	.byte	240,0,0,8
+00000004 00000000        456 	.space	4
+                         457 	.type	_icum_fdl_descriptor..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.,@object
+                         458 	.size	_icum_fdl_descriptor..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl.,8
+                         459 	.type	_icum_fdl_descriptor,@object
+                         460 	.size	_icum_fdl_descriptor,8
+                         461 	.section ".ghcalltbl",""
+00000008 00000000*       462 .L363:	.word	.L362
+                         463 	.type	.L363,@object
+                         464 	.size	.L363,4
+                         465 	.section ".ghrettbl",""
+00000010 00000000*       466 .L365:	.word	.L364
+                         467 	.type	.L365,@object
+                         468 	.size	.L365,4
+                         469 	.data
+                         470 	.text
+                         471 
+                         472 --69: }
+                         473 
+                         474 --71: r_fdl_status_t icum_fdl_prepare(void)
+                         475 	.align	2
+                         476 	.align	2
+                         477 	.align	2
+                         478 ..gh.f.a.2.e.27:
+                         479 	.type	..gh.f.a.2.e.27,@object
+                         480 	.size	..gh.f.a.2.e.27,0
+                         481 	.global	_icum_fdl_prepare
+                         482 _icum_fdl_prepare:
+000000ac 031ee4ff        483 	addi	-28,sp,sp
+000000b0 63ff1900        484 	st.w	lp,24[sp]
+                         485 --	    .bf
+                         486 .LDW02:
+                         487 --72: {
+                         488 --73:     r_fdl_request_t request;
+                         489 --74: //    r_fdl_status_t status;
+                         490 --76: //    status = icum_fdl_recover_if_not_ready();
+                         491 --77: //    if (R_FDL_OK != status) {
+                         492 --78: //        return status;
+                         493 --79: //    }
+                         494 --81:     request.command_enu = R_FDL_CMD_PREPARE_ENV;
+000000b4 050a            495 	mov	5,r1
+000000b6 630f0100        496 	st.w	r1,0[sp]
+                         497 --82:     request.idx_u32 = 0u;
+000000ba 63070900        498 	st.w	zero,8[sp]
+                         499 --83:     request.cnt_u16 = 0u;
+000000be 63070c00        500 	st.h	zero,12[sp]
+                         501 --84:     request.bufAddr_u32 = 0u;
+000000c2 63070500        502 	st.w	zero,4[sp]
+                         503 --85:     request.accessType_enu = R_FDL_ACCESS_NONE;
+000000c6 63071100        504 	st.w	zero,16[sp]
+                         505 --86:     return icum_fdl_execute(&request);
+000000ca 23360000        506 	movea	0,sp,r6
+                         507 .L429:
+                         508 	jarl	_icum_fdl_execute,lp
+                         508 <EXPANSION BEGIN>
+                         508 jarl22 _icum_fdl_execute , lp 
+000000ce bfff32ff*       508 <EXPANSION END>
+                         509 --	    .ef
+                         510 .LDW12:
+                         511 --line87
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         512 ..lin.2b892bf7..6d6b4455.0_27::
+                         513 .LDWlin27:
+000000d2 23ff1900        514 	ld.w	24[sp],lp
+000000d6 031e1c00        515 	addi	28,sp,sp
+                         516 .L431:
+                         517 	.jumptype return
+000000da 7f00            518 	jmp	[lp]
+                         519 --line87
+                         520 ..lin.2b892bf7..6d6b4455.0_28::
+                         521 	.type	_icum_fdl_prepare,@function
+                         522 	.size	_icum_fdl_prepare,.-_icum_fdl_prepare
+                         523 	.align	2
+                         524 --_request	0[sp]	local
+                         525 
+                         526 	.section ".bss","awb"
+                         527 .L402:
+                         528 	.type	.L402,@object
+                         529 	.size	.L402,0
+                         530 	.section ".ghcalltbl",""
+0000000c 00000000*       531 .L430:	.word	.L429
+                         532 	.type	.L430,@object
+                         533 	.size	.L430,4
+                         534 	.section ".ghrettbl",""
+00000014 00000000*       535 .L432:	.word	.L431
+                         536 	.type	.L432,@object
+                         537 	.size	.L432,4
+                         538 	.data
+                         539 	.text
+                         540 
+                         541 --87: }
+                         542 
+                         543 --89: r_fdl_status_t icum_fdl_erase(unsigned long first_block,
+                         544 	.align	2
+                         545 	.align	2
+                         546 	.align	2
+                         547 ..gh.f.a.2.e.28:
+                         548 	.type	..gh.f.a.2.e.28,@object
+                         549 	.size	..gh.f.a.2.e.28,0
+                         550 	.global	_icum_fdl_erase
+                         551 _icum_fdl_erase:
+000000dc 031edcff        552 	addi	-36,sp,sp
+000000e0 63ff2100        553 	st.w	lp,32[sp]
+000000e4 63e71d00        554 	st.w	r28,28[sp]
+000000e8 63ef1900        555 	st.w	r29,24[sp]
+000000ec 06e8            556 	mov	r6,r29
+000000ee 07e0            557 	mov	r7,r28
+                         558 --	    .bf
+                         559 .LDW22:
+                         560 --90:                               unsigned int block_count)
+                         561 --91: {
+                         562 --92:     r_fdl_request_t request;
+                         563 --94:     if ((block_count == 0u)
+000000f0 e0e1            564 	cmp	zero,r28
+000000f2 c20d*           565 	be	.L436
+                         566 --line95
+                         567 ..lin.2b892bf7..e939af96.0_29::
+                         568 .LDWlin29:
+000000f4 1d0600fa        569 	addi	-1536,r29,zero
+000000f8 990d*           570 	bnl	.L436
+                         571 --line96
+                         572 ..lin.2b892bf7..e939af96.0_30::
+
+                                                                      Page 11
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         573 .LDWlin30:
+000000fa 1d0600f8        574 	addi	-2048,r29,zero
+000000fe e105*           575 	bl	.L436
+                         576 --line98
+                         577 ..lin.2b892bf7..e939af96.0_31::
+                         578 .LDWlin31:
+00000100 200e0008        579 	movea	2048,zero,r1
+00000104 bd09            580 	sub	r29,r1
+00000106 e1e1            581 	cmp	r1,r28
+00000108 b305*           582 	bnh	.L435
+                         583 .L436:
+                         584 --95:         || (first_block < ICUM_FDL_FIRST_BLOCK)
+                         585 --96:         || (first_block >= ICUM_FDL_POOL_BLOCK_COUNT)
+                         586 --97:         || ((unsigned long)block_count
+                         587 --98:             > (ICUM_FDL_POOL_BLOCK_COUNT - first_block))) {
+                         588 --99:         return R_FDL_ERR_PARAMETER;
+                         589 --line99
+                         590 ..lin.2b892bf7..e939af96.0_32::
+                         591 .LDWlin32:
+0000010a 0452            592 	mov	4,r10
+0000010c 8515*           593 	br	.L433
+                         594 .L435:
+                         595 --100:     }
+                         596 --102:     request.command_enu = R_FDL_CMD_ERASE;
+                         597 --line102
+                         598 ..lin.2b892bf7..e939af96.0_33::
+                         599 .LDWlin33:
+0000010e 63070100        600 	st.w	zero,0[sp]
+                         601 --103:     request.idx_u32 = (uint32_t)first_block;
+00000112 63ef0900        602 	st.w	r29,8[sp]
+                         603 --104:     request.cnt_u16 = (uint16_t)block_count;
+00000116 63e70c00        604 	st.h	r28,12[sp]
+                         605 --105:     request.bufAddr_u32 = 0u;
+0000011a 63070500        606 	st.w	zero,4[sp]
+                         607 --106:     request.accessType_enu = R_FDL_ACCESS_USER;
+0000011e 010a            608 	mov	1,r1
+00000120 630f1100        609 	st.w	r1,16[sp]
+                         610 --107:     return icum_fdl_execute(&request);
+00000124 23360000        611 	movea	0,sp,r6
+                         612 .L544:
+                         613 	jarl	_icum_fdl_execute,lp
+                         613 <EXPANSION BEGIN>
+                         613 jarl22 _icum_fdl_execute , lp 
+00000128 bfffd8fe*       613 <EXPANSION END>
+                         614 .L433:
+                         615 --	    .ef
+                         616 .LDW32:
+                         617 --line108
+                         618 ..lin.2b892bf7..e939af96.0_34::
+                         619 .LDWlin34:
+0000012c 23ff2100        620 	ld.w	32[sp],lp
+00000130 23ef1900        621 	ld.w	24[sp],r29
+00000134 23e71d00        622 	ld.w	28[sp],r28
+00000138 031e2400        623 	addi	36,sp,sp
+                         624 .L546:
+                         625 	.jumptype return
+0000013c 7f00            626 	jmp	[lp]
+                         627 --line108
+                         628 ..lin.2b892bf7..e939af96.0_35::
+                         629 	.type	_icum_fdl_erase,@function
+                         630 	.size	_icum_fdl_erase,.-_icum_fdl_erase
+
+                                                                      Page 12
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         631 	.align	2
+                         632 --_request	0[sp]	local
+                         633 
+                         634 --_first_block	r29	param
+                         635 --_block_count	r28	param
+                         636 
+                         637 	.section ".bss","awb"
+                         638 .L502:
+                         639 	.type	.L502,@object
+                         640 	.size	.L502,0
+                         641 	.section ".ghcalltbl",""
+00000010 00000000*       642 .L545:	.word	.L544
+                         643 	.type	.L545,@object
+                         644 	.size	.L545,4
+                         645 	.section ".ghrettbl",""
+00000018 00000000*       646 .L547:	.word	.L546
+                         647 	.type	.L547,@object
+                         648 	.size	.L547,4
+                         649 	.data
+                         650 	.text
+                         651 
+                         652 --108: }
+                         653 
+                         654 --110: r_fdl_status_t icum_fdl_blank_check(unsigned long byte_index,
+                         655 	.align	2
+                         656 	.align	2
+                         657 	.align	2
+                         658 ..gh.f.a.2.e.29:
+                         659 	.type	..gh.f.a.2.e.29,@object
+                         660 	.size	..gh.f.a.2.e.29,0
+                         661 	.global	_icum_fdl_blank_check
+                         662 _icum_fdl_blank_check:
+0000013e 031edcff        663 	addi	-36,sp,sp
+00000142 63ff2100        664 	st.w	lp,32[sp]
+00000146 63e71d00        665 	st.w	r28,28[sp]
+0000014a 63ef1900        666 	st.w	r29,24[sp]
+0000014e 06e8            667 	mov	r6,r29
+00000150 07e0            668 	mov	r7,r28
+                         669 --	    .bf
+                         670 .LDW42:
+                         671 --111:                                     unsigned int word_count)
+                         672 --112: {
+                         673 --113:     r_fdl_request_t request;
+                         674 --115:     if (!icum_fdl_data_range_valid(byte_index, word_count)) {
+00000152 1d30            675 	mov	r29,r6
+00000154 1c38            676 	mov	r28,r7
+                         677 .L635:
+                         678 	jarl	_icum_fdl_data_range_valid,lp
+                         678 <EXPANSION BEGIN>
+                         678 jarl22 _icum_fdl_data_range_valid , lp 
+00000156 bfffdafe*       678 <EXPANSION END>
+0000015a e051            679 	cmp	zero,r10
+0000015c ba05*           680 	bne	.L550
+                         681 --116:         return R_FDL_ERR_PARAMETER;
+                         682 --line116
+                         683 ..lin.2b892bf7..c733958b.0_36::
+                         684 .LDWlin36:
+0000015e 0452            685 	mov	4,r10
+00000160 9515*           686 	br	.L548
+                         687 .L550:
+                         688 --117:     }
+
+                                                                      Page 13
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         689 --119:     request.command_enu = R_FDL_CMD_BLANKCHECK;
+                         690 --line119
+                         691 ..lin.2b892bf7..c733958b.0_37::
+                         692 .LDWlin37:
+00000162 020a            693 	mov	2,r1
+00000164 630f0100        694 	st.w	r1,0[sp]
+                         695 --120:     request.idx_u32 = (uint32_t)byte_index;
+00000168 63ef0900        696 	st.w	r29,8[sp]
+                         697 --121:     request.cnt_u16 = (uint16_t)word_count;
+0000016c 63e70c00        698 	st.h	r28,12[sp]
+                         699 --122:     request.bufAddr_u32 = 0u;
+00000170 63070500        700 	st.w	zero,4[sp]
+                         701 --123:     request.accessType_enu = R_FDL_ACCESS_USER;
+00000174 010a            702 	mov	1,r1
+00000176 630f1100        703 	st.w	r1,16[sp]
+                         704 --124:     return icum_fdl_execute(&request);
+0000017a 23360000        705 	movea	0,sp,r6
+                         706 .L637:
+                         707 	jarl	_icum_fdl_execute,lp
+                         707 <EXPANSION BEGIN>
+                         707 jarl22 _icum_fdl_execute , lp 
+0000017e bfff82fe*       707 <EXPANSION END>
+                         708 .L548:
+                         709 --	    .ef
+                         710 .LDW52:
+                         711 --line125
+                         712 ..lin.2b892bf7..c733958b.0_38::
+                         713 .LDWlin38:
+00000182 23ff2100        714 	ld.w	32[sp],lp
+00000186 23ef1900        715 	ld.w	24[sp],r29
+0000018a 23e71d00        716 	ld.w	28[sp],r28
+0000018e 031e2400        717 	addi	36,sp,sp
+                         718 .L639:
+                         719 	.jumptype return
+00000192 7f00            720 	jmp	[lp]
+                         721 --line125
+                         722 ..lin.2b892bf7..c733958b.0_39::
+                         723 	.type	_icum_fdl_blank_check,@function
+                         724 	.size	_icum_fdl_blank_check,.-_icum_fdl_blank_check
+                         725 	.align	2
+                         726 --_request	0[sp]	local
+                         727 
+                         728 --_byte_index	r29	param
+                         729 --_word_count	r28	param
+                         730 
+                         731 	.section ".bss","awb"
+                         732 .L602:
+                         733 	.type	.L602,@object
+                         734 	.size	.L602,0
+                         735 	.section ".ghcalltbl",""
+00000014 00000000*       736 .L636:	.word	.L635
+                         737 	.type	.L636,@object
+                         738 	.size	.L636,4
+00000018 00000000*       739 .L638:	.word	.L637
+                         740 	.type	.L638,@object
+                         741 	.size	.L638,4
+                         742 	.section ".ghrettbl",""
+0000001c 00000000*       743 .L640:	.word	.L639
+                         744 	.type	.L640,@object
+                         745 	.size	.L640,4
+                         746 	.data
+
+                                                                      Page 14
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         747 	.text
+                         748 
+                         749 --125: }
+                         750 
+                         751 --127: r_fdl_status_t icum_fdl_write(unsigned long byte_index,
+                         752 	.align	2
+                         753 	.align	2
+                         754 	.align	2
+                         755 ..gh.f.a.2.e.30:
+                         756 	.type	..gh.f.a.2.e.30,@object
+                         757 	.size	..gh.f.a.2.e.30,0
+                         758 	.global	_icum_fdl_write
+                         759 _icum_fdl_write:
+00000194 031ed8ff        760 	addi	-40,sp,sp
+00000198 63ff2500        761 	st.w	lp,36[sp]
+0000019c 63df2100        762 	st.w	r27,32[sp]
+000001a0 63e71d00        763 	st.w	r28,28[sp]
+000001a4 63ef1900        764 	st.w	r29,24[sp]
+000001a8 06e8            765 	mov	r6,r29
+000001aa 07e0            766 	mov	r7,r28
+000001ac 08d8            767 	mov	r8,r27
+                         768 --	    .bf
+                         769 .LDW62:
+                         770 --128:                               const unsigned int *data,
+                         771 --129:                               unsigned int word_count)
+                         772 --130: {
+                         773 --131:     r_fdl_request_t request;
+                         774 --133:     if ((data == (const unsigned int *)0)
+000001ae e0e1            775 	cmp	zero,r28
+000001b0 f205*           776 	be	.L644
+                         777 --line134
+                         778 ..lin.2b892bf7..ea7f8ad1.0_40::
+                         779 .LDWlin40:
+000001b2 1d30            780 	mov	r29,r6
+000001b4 1b38            781 	mov	r27,r7
+                         782 .L738:
+                         783 	jarl	_icum_fdl_data_range_valid,lp
+                         783 <EXPANSION BEGIN>
+                         783 jarl22 _icum_fdl_data_range_valid , lp 
+000001b6 bfff7afe*       783 <EXPANSION END>
+000001ba e051            784 	cmp	zero,r10
+000001bc ba05*           785 	bne	.L643
+                         786 .L644:
+                         787 --134:         || !icum_fdl_data_range_valid(byte_index, word_count)) {
+                         788 --135:         return R_FDL_ERR_PARAMETER;
+                         789 --line135
+                         790 ..lin.2b892bf7..ea7f8ad1.0_41::
+                         791 .LDWlin41:
+000001be 0452            792 	mov	4,r10
+000001c0 9515*           793 	br	.L641
+                         794 .L643:
+                         795 --136:     }
+                         796 --138:     request.command_enu = R_FDL_CMD_WRITE;
+                         797 --line138
+                         798 ..lin.2b892bf7..ea7f8ad1.0_42::
+                         799 .LDWlin42:
+000001c2 010a            800 	mov	1,r1
+000001c4 630f0100        801 	st.w	r1,0[sp]
+                         802 --139:     request.idx_u32 = (uint32_t)byte_index;
+000001c8 63ef0900        803 	st.w	r29,8[sp]
+                         804 --140:     request.cnt_u16 = (uint16_t)word_count;
+
+                                                                      Page 15
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+000001cc 63df0c00        805 	st.h	r27,12[sp]
+                         806 --141:     request.bufAddr_u32 = (uint32_t)data;
+000001d0 63e70500        807 	st.w	r28,4[sp]
+                         808 --142:     request.accessType_enu = R_FDL_ACCESS_USER;
+000001d4 010a            809 	mov	1,r1
+000001d6 630f1100        810 	st.w	r1,16[sp]
+                         811 --143:     return icum_fdl_execute(&request);
+000001da 23360000        812 	movea	0,sp,r6
+                         813 .L740:
+                         814 	jarl	_icum_fdl_execute,lp
+                         814 <EXPANSION BEGIN>
+                         814 jarl22 _icum_fdl_execute , lp 
+000001de bfff22fe*       814 <EXPANSION END>
+                         815 .L641:
+                         816 --	    .ef
+                         817 .LDW72:
+                         818 --line144
+                         819 ..lin.2b892bf7..ea7f8ad1.0_43::
+                         820 .LDWlin43:
+000001e2 23ff2500        821 	ld.w	36[sp],lp
+000001e6 23ef1900        822 	ld.w	24[sp],r29
+000001ea 23e71d00        823 	ld.w	28[sp],r28
+000001ee 23df2100        824 	ld.w	32[sp],r27
+000001f2 031e2800        825 	addi	40,sp,sp
+                         826 .L742:
+                         827 	.jumptype return
+000001f6 7f00            828 	jmp	[lp]
+                         829 --line144
+                         830 ..lin.2b892bf7..ea7f8ad1.0_44::
+                         831 	.type	_icum_fdl_write,@function
+                         832 	.size	_icum_fdl_write,.-_icum_fdl_write
+                         833 	.align	2
+                         834 --_request	0[sp]	local
+                         835 
+                         836 --_byte_index	r29	param
+                         837 --_data	r28	param
+                         838 --_word_count	r27	param
+                         839 
+                         840 	.section ".bss","awb"
+                         841 .L702:
+                         842 	.type	.L702,@object
+                         843 	.size	.L702,0
+                         844 	.section ".ghcalltbl",""
+0000001c 00000000*       845 .L739:	.word	.L738
+                         846 	.type	.L739,@object
+                         847 	.size	.L739,4
+00000020 00000000*       848 .L741:	.word	.L740
+                         849 	.type	.L741,@object
+                         850 	.size	.L741,4
+                         851 	.section ".ghrettbl",""
+00000020 00000000*       852 .L743:	.word	.L742
+                         853 	.type	.L743,@object
+                         854 	.size	.L743,4
+                         855 	.data
+                         856 	.text
+                         857 
+                         858 --144: }
+                         859 
+                         860 --146: r_fdl_status_t icum_fdl_read(unsigned long byte_index,
+                         861 	.align	2
+                         862 	.align	2
+
+                                                                      Page 16
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         863 	.align	2
+                         864 ..gh.f.a.2.e.31:
+                         865 	.type	..gh.f.a.2.e.31,@object
+                         866 	.size	..gh.f.a.2.e.31,0
+                         867 	.global	_icum_fdl_read
+                         868 _icum_fdl_read:
+000001f8 031ed8ff        869 	addi	-40,sp,sp
+000001fc 63ff2500        870 	st.w	lp,36[sp]
+00000200 63df2100        871 	st.w	r27,32[sp]
+00000204 63e71d00        872 	st.w	r28,28[sp]
+00000208 63ef1900        873 	st.w	r29,24[sp]
+0000020c 06e8            874 	mov	r6,r29
+0000020e 07e0            875 	mov	r7,r28
+00000210 08d8            876 	mov	r8,r27
+                         877 --	    .bf
+                         878 .LDW82:
+                         879 --147:                              unsigned int *data,
+                         880 --148:                              unsigned int word_count)
+                         881 --149: {
+                         882 --150:     r_fdl_request_t request;
+                         883 --152:     if ((data == (unsigned int *)0)
+00000212 e0e1            884 	cmp	zero,r28
+00000214 f205*           885 	be	.L747
+                         886 --line153
+                         887 ..lin.2b892bf7..a23ef6a2.0_45::
+                         888 .LDWlin45:
+00000216 1d30            889 	mov	r29,r6
+00000218 1b38            890 	mov	r27,r7
+                         891 .L834:
+                         892 	jarl	_icum_fdl_data_range_valid,lp
+                         892 <EXPANSION BEGIN>
+                         892 jarl22 _icum_fdl_data_range_valid , lp 
+0000021a bfff16fe*       892 <EXPANSION END>
+0000021e e051            893 	cmp	zero,r10
+00000220 ba05*           894 	bne	.L746
+                         895 .L747:
+                         896 --153:         || !icum_fdl_data_range_valid(byte_index, word_count)) {
+                         897 --154:         return R_FDL_ERR_PARAMETER;
+                         898 --line154
+                         899 ..lin.2b892bf7..a23ef6a2.0_46::
+                         900 .LDWlin46:
+00000222 0452            901 	mov	4,r10
+00000224 9515*           902 	br	.L744
+                         903 .L746:
+                         904 --155:     }
+                         905 --157:     request.command_enu = R_FDL_CMD_READ;
+                         906 --line157
+                         907 ..lin.2b892bf7..a23ef6a2.0_47::
+                         908 .LDWlin47:
+00000226 030a            909 	mov	3,r1
+00000228 630f0100        910 	st.w	r1,0[sp]
+                         911 --158:     request.idx_u32 = (uint32_t)byte_index;
+0000022c 63ef0900        912 	st.w	r29,8[sp]
+                         913 --159:     request.cnt_u16 = (uint16_t)word_count;
+00000230 63df0c00        914 	st.h	r27,12[sp]
+                         915 --160:     request.bufAddr_u32 = (uint32_t)data;
+00000234 63e70500        916 	st.w	r28,4[sp]
+                         917 --161:     request.accessType_enu = R_FDL_ACCESS_USER;
+00000238 010a            918 	mov	1,r1
+0000023a 630f1100        919 	st.w	r1,16[sp]
+                         920 --162:     return icum_fdl_execute(&request);
+
+                                                                      Page 17
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+0000023e 23360000        921 	movea	0,sp,r6
+                         922 .L836:
+                         923 	jarl	_icum_fdl_execute,lp
+                         923 <EXPANSION BEGIN>
+                         923 jarl22 _icum_fdl_execute , lp 
+00000242 bfffbefd*       923 <EXPANSION END>
+                         924 .L744:
+                         925 --	    .ef
+                         926 .LDW92:
+                         927 --line163
+                         928 ..lin.2b892bf7..a23ef6a2.0_48::
+                         929 .LDWlin48:
+00000246 23ff2500        930 	ld.w	36[sp],lp
+0000024a 23ef1900        931 	ld.w	24[sp],r29
+0000024e 23e71d00        932 	ld.w	28[sp],r28
+00000252 23df2100        933 	ld.w	32[sp],r27
+00000256 031e2800        934 	addi	40,sp,sp
+                         935 .L838:
+                         936 	.jumptype return
+0000025a 7f00            937 	jmp	[lp]
+                         938 --line163
+                         939 ..lin.2b892bf7..a23ef6a2.0_49::
+                         940 	.type	_icum_fdl_read,@function
+                         941 	.size	_icum_fdl_read,.-_icum_fdl_read
+                         942 	.align	2
+                         943 --_request	0[sp]	local
+                         944 
+                         945 --_byte_index	r29	param
+                         946 --_data	r28	param
+                         947 --_word_count	r27	param
+                         948 
+                         949 	.section ".bss","awb"
+                         950 .L798:
+                         951 	.type	.L798,@object
+                         952 	.size	.L798,0
+                         953 	.section ".ghcalltbl",""
+00000024 00000000*       954 .L835:	.word	.L834
+                         955 	.type	.L835,@object
+                         956 	.size	.L835,4
+00000028 00000000*       957 .L837:	.word	.L836
+                         958 	.type	.L837,@object
+                         959 	.size	.L837,4
+                         960 	.section ".ghrettbl",""
+00000024 00000000*       961 .L839:	.word	.L838
+                         962 	.type	.L839,@object
+                         963 	.size	.L839,4
+                         964 	.data
+                         965 	.text
+                         966 
+                         967 --163: }
+                         968 	.align	2
+                         969 --_icum_fdl_descriptor	sdaoff2(_icum_fdl_descriptor)	static
+                         970 
+                         971 	.data
+                         972 	.section ".sbss","awb"
+                         973 	.align	4
+                         974 	.align	4
+                         975 	.global	_PSWSafe
+00000000 00000000        976 _PSWSafe:	.space	4
+                         977 	.type	_PSWSafe,@object
+                         978 	.size	_PSWSafe,4
+
+                                                                      Page 18
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_00012641.s
+                         979 	.data
+                         980 	.ghsnote version,30
+                         981 	.ghsnote tools,8195
+                         982 	.ghsnote options,656
+                         983 	.text
+                         984 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cicum_fdl...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADB2D0D..0::
+                         985 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

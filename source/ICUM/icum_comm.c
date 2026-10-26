@@ -1,4 +1,6 @@
 #include "icum_comm.h"
+#include "icum_flash_handoff.h"
+#include "icum_flash_handoff_protocol.h"
 #include "shared_memory.h"
 
 __IOREG(ICUM_ICPE, 0xFFFEEA02, __READ_WRITE, uint16);
@@ -13,11 +15,14 @@ volatile uint32 g_icum_comm_status;
 void icum_comm_init(void)
 {
     g_icum_comm_status = 0u;
-    ICUM_PE2ICUFC = 1u;
+    icum_flash_handoff_init();
+    ICUM_PE2ICUFC =
+        ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG;
     ICUM_PE2ICUSFC = 1u;
     ICUM_ICPE = 0x0040u;
     ICUM_ICPES = 0x0040u;
-    ICUM_PE2ICUIE = 1u;
+    ICUM_PE2ICUIE =
+        ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG;
     ICUM_PE2ICUSIE = 1u;
 }
 
@@ -25,17 +30,28 @@ void icum_comm_init(void)
 void INTPE(void)
 {
     uint32 index;
+    uint32 events;
     unsigned char first_byte;
 
-    ICUM_PE2ICUFC = 1u;
-    first_byte = g_shared_buffer[0];
-    for (index = 0u; index < SHARED_BUFFER_SIZE; index++)
+    events = ICUM_CMDREGICUM_PE2ICUF;
+    if ((events & (ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG)) != 0u)
     {
-        *(g_shared_buffer+index) = 0;
+        ICUM_PE2ICUFC =
+            events & (ICUM_FLASH_HANDOFF_FLAG | ICUM_SHARED_MEMORY_FLAG);
     }
-    if (first_byte == 0x55u)
+    icum_flash_handoff_on_pe_event(events);
+
+    if ((events & ICUM_SHARED_MEMORY_FLAG) != 0u)
     {
-        g_icum_comm_status ^= 1u;
+        first_byte = g_shared_buffer[0];
+        for (index = 0u; index < SHARED_BUFFER_SIZE; index++)
+        {
+            *(g_shared_buffer+index) = 0;
+        }
+        if (first_byte == 0x55u)
+        {
+            g_icum_comm_status ^= 1u;
+        }
     }
 }
 

@@ -10,50 +10,50 @@ Release Date: Wed Sep 06 02:00:00 2023
 
 
 
-Load Map Wed Oct 21 11:42:32 2026
+Load Map Fri Oct 23 15:30:41 2026
 Image Summary
 
   Section              Base      Size(hex)    Size(dec)  SecOffs
-  .intvect             00000000  000007e4         2020   00001e0
+  .intvect             00000000  000007e4         2020   0000200
   .intvect_end         000007e4  00000000            0   0000000
   .rozdata             000007e4  00000000            0   0000000
   .robase              000007e4  00000000            0   0000000
-  .rosdata             000007e4  00080004       524292   00009c4
+  .rosdata             000007e4  00080004       524292   00009e4
   .rodata              000807e8  00000000            0   0000000
-  .text                000807f0  00000e84         3716   00809d0
-  .fixaddr             00081674  00000000            0   0000000
-  .fixtype             00081674  00000000            0   0000000
-  .secinfo             00081674  00000078          120   0081854
-  .syscall             000816ec  00000006            6   00818cc
-  .romdata             000816f4  00000005            5   00818d4
-  .ROM.tls.cond.data   000816f9  00000000            0   0000000
-  .romzdata            000816fc  00000000            0   0000000
-  .romsdata            000816fc  00000008            8   00818dc
-  .romtdata            00081704  00000000            0   0000000
-  .romsldata           00081704  00000000            0   0000000
+  .text                000807f0  00001064         4196   00809f0
+  .fixaddr             00081854  00000000            0   0000000
+  .fixtype             00081854  00000000            0   0000000
+  .secinfo             00081854  00000078          120   0081a54
+  .syscall             000818cc  00000006            6   0081acc
+  .romdata             000818d4  00000005            5   0081ad4
+  .ROM.tls.cond.data   000818d9  00000000            0   0000000
+  .romzdata            000818dc  00000000            0   0000000
+  .romsdata            000818dc  00000008            8   0081adc
+  .romtdata            000818e4  00000000            0   0000000
+  .romsldata           000818e4  00000000            0   0000000
   .bcode               01000000  00000000            0   0000000
   .bconst              01000000  00000000            0   0000000
-  .data                febc0000  00000005            5   00818d4
+  .data                febc0000  00000005            5   0081ad4
   .tls.cond.data       febc0005  00000000            0   0000000
   .sldata              febc0008  00000000            0   0000000
   .slbss               febc0008  00000000            0   0000000
   .bss                 febc0008  00000424         1060   0000000
   .tls.cond.bss        febc042c  00000000            0   0000000
   .sda_start           febc042c  00000000            0   0000000
-  .sdata               febc042c  00000008            8   00818dc
-  .sbss                febc0434  00000000            0   0000000
-  .sda_end             febc0434  00000000            0   0000000
-  .zdata               febc0434  00000000            0   0000000
-  .zbss                febc0434  00000000            0   0000000
-  .tdata               febc0434  00000000            0   0000000
-  .stack               febc0434  00001000         4096   0000000
-  .heapbase            febc1434  00000000            0   0000000
-  .heap                febc1434  0003ebcc       256972   0000000
+  .sdata               febc042c  00000008            8   0081adc
+  .sbss                febc0434  00000008            8   0000000
+  .sda_end             febc043c  00000000            0   0000000
+  .zdata               febc043c  00000000            0   0000000
+  .zbss                febc043c  00000000            0   0000000
+  .tdata               febc043c  00000000            0   0000000
+  .stack               febc043c  00001000         4096   0000000
+  .heapbase            febc143c  00000000            0   0000000
+  .heap                febc143c  0003ebc4       256964   0000000
   .rdata               fef00000  00000000            0   0000000
   .rbss                fef00000  00000000            0   0000000
   .shared              feff8000  00008000        32768   0000000
 
-Load Map Wed Oct 21 11:42:32 2026
+Load Map Fri Oct 23 15:30:41 2026
 Module Summary
 
   Origin+Size    Section          Module
@@ -61,59 +61,63 @@ Module Summary
 00080924+00006c  .text            dr7f701649_startup.o
 00000000+0007e4  .intvect         dr7f701649_startup.o
 000007e4+080004  .rosdata         sound.o
-00080990+0005b8  .text            main.o
+00080990+0001d4  .text            icum_flash_handoff.o
+febc0434+000008  .sbss            icum_flash_handoff.o
+00080b64+0005bc  .text            main.o
 febc042c+000008  .sdata           main.o
-00080f48+000006  .text            libmulti.a
+00081120+000006  .text            libmulti.a
 febc0000+000004  .data            libmulti.a
 febc0008+000418  .bss             libmulti.a
-00080f4e+000066  .text            libansi.a(ccexit.o)
-00080fb4+00036a  .text            libstartup.a(ind_crt0.o)
-00081320+000074  .text            libstartup.a(ind_mset.o)
-00081394+0000fc  .text            libstartup.a(ind_mcpy.o)
-00081490+0000aa  .text            libsys.a(ind_exit.o)
+00081126+000066  .text            libansi.a(ccexit.o)
+0008118c+00036a  .text            libstartup.a(ind_crt0.o)
+00081500+000074  .text            libstartup.a(ind_mset.o)
+00081574+0000fc  .text            libstartup.a(ind_mcpy.o)
+00081670+0000aa  .text            libsys.a(ind_exit.o)
 febc0420+000004  .bss             libsys.a(ind_exit.o)
-000816ec+000006  .syscall         libsys.a(ind_dots.o)
-0008153a+000022  .text            libsys.a(ind_call.o)
-0008155c+0000f6  .text            libsys.a(ind_crt1.o)
+000818cc+000006  .syscall         libsys.a(ind_dots.o)
+0008171a+000022  .text            libsys.a(ind_call.o)
+0008173c+0000f6  .text            libsys.a(ind_crt1.o)
 febc0424+000004  .bss             libsys.a(ind_crt1.o)
-00081652+000006  .text            libsys.a(ind_lock.o)
+00081832+000006  .text            libsys.a(ind_lock.o)
 febc0004+000001  .data            libsys.a(ind_lock.o)
-00081658+00001c  .text            libsys.a(ind_errn.o)
+00081838+00001c  .text            libsys.a(ind_errn.o)
 febc0428+000004  .bss             libsys.a(ind_errn.o)
-00081674+000078  .secinfo         <section info>
+00081854+000078  .secinfo         <section info>
 
-Load Map Wed Oct 21 11:42:32 2026
+Load Map Fri Oct 23 15:30:41 2026
 Global Symbols (sorted alphabetically)
 
  .intvect         00000000+000000 .intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cdr7f701649_startup.
- .text            00080d4a+000098 _DMA_init
- .text            00080de2+000012 _Debug_initPorts
- .text            00080e74+00001e _INTCSIH0IC
- .text            00080e92+00006c _INTDMA0
- .text            00080e20+000054 _INTOSTM0
+ .text            00080f1e+000098 _DMA_init
+ .text            00080fb6+000012 _Debug_initPorts
+ .text            00081048+00001e _INTCSIH0IC
+ .text            00081066+00006c _INTDMA0
+ .text            00080b00+000064 _INTFICUIF0DFRQPE
+ .text            00080a14+0000ec _INTICUP
+ .text            00080ff4+000054 _INTOSTM0
  .text            00080924+000000 _RESET
- .text            00080c36+000068 _TAUD0_init
- .text            00080bf6+000040 _TAUD0_initPorts
- .text            00080d14+00002a _TAUD0_start
- .text            00080d3e+00000c _TAUD0_stop
- .text            00081490+000068 __Exit
+ .text            00080e0a+000068 _TAUD0_init
+ .text            00080dca+000040 _TAUD0_initPorts
+ .text            00080ee8+00002a _TAUD0_start
+ .text            00080f12+00000c _TAUD0_stop
+ .text            00081670+000068 __Exit
                   00000000+000000 ___atexit_cleanup_func
                   00000000+000000 ___cpp_exception_cleanup
                   00000000+000000 ___cpp_exception_init
- .syscall         000816ec+000006 ___dotsyscall
- .text            00081662+000008 ___gh_errno_ptr
- .text            0008166a+00000a ___gh_get_errno
+ .syscall         000818cc+000006 ___dotsyscall
+ .text            00081842+000008 ___gh_errno_ptr
+ .text            0008184a+00000a ___gh_get_errno
                   00000000+000000 ___gh_iob_init
- .text            00081656+000002 ___gh_lock_init
- .text            00081658+00000a ___gh_set_errno
- .text            00081652+000002 ___ghsLock
- .text            00081654+000002 ___ghsUnlock
+ .text            00081836+000002 ___gh_lock_init
+ .text            00081838+00000a ___gh_set_errno
+ .text            00081832+000002 ___ghsLock
+ .text            00081834+000002 ___ghsUnlock
                   00000000+000000 ___ghs_GetCurrentThreadID
                   00000000+000000 ___ghs_GetCurrentThreadName
                   00000000+000000 ___ghs_InterruptLock
                   00000000+000000 ___ghs_InterruptUnlock
                   00000000+000000 ___ghs_RunTimeErrorDetected
- .text            000814f8+000042 ___ghs_at_exit
+ .text            000816d8+000042 ___ghs_at_exit
                   00000000+000000 ___ghs_board_cache_sync
                   00000000+000000 ___ghs_board_devices_init
                   00000000+000000 ___ghs_board_memory_init
@@ -126,9 +130,9 @@ Global Symbols (sorted alphabetically)
                   00000000+000000 ___ghs_decompress
                   64f7dead+000000 ___ghs_elxr_revision
                   00031672+000000 ___ghs_elxr_version
- .text            00080fb4+00036a ___ghs_ind_crt0
- .text            0008155c+0000f6 ___ghs_ind_crt1
- .syscall         000816ec+000006 ___ghs_initial_dotsyscall
+ .text            0008118c+00036a ___ghs_ind_crt0
+ .text            0008173c+0000f6 ___ghs_ind_crt1
+ .syscall         000818cc+000006 ___ghs_initial_dotsyscall
                   00000000+000000 ___ghs_lock_create
                   00000000+000000 ___ghs_lock_destroy
                   00000000+000000 ___ghs_lock_lock
@@ -150,38 +154,38 @@ Global Symbols (sorted alphabetically)
                   fef00000+000000 ___ghs_rramstart
                   00000000+000000 ___ghs_set_stack_chk_guard
  .data            febc0004+000001 ___ghs_single_threaded
- .text            0008153a+000022 ___ghs_syscall
+ .text            0008171a+000022 ___ghs_syscall
                   00000000+000000 ___ghs_undefined_func
- .fixaddr         00081674+000000 ___ghsbegin_fixaddr
- .fixtype         00081674+000000 ___ghsbegin_fixtype
+ .fixaddr         00081854+000000 ___ghsbegin_fixaddr
+ .fixtype         00081854+000000 ___ghsbegin_fixtype
                   00000000+000000 ___ghsbegin_picbase
                   00000000+000000 ___ghsbegin_pidbase
  .robase          000007e4+000000 ___ghsbegin_robase
- .sda_end         febc0434+000000 ___ghsbegin_sda_end
+ .sda_end         febc043c+000000 ___ghsbegin_sda_end
  .sda_start       febc042c+000000 ___ghsbegin_sda_start
                   00000000+000000 ___ghsbegin_sdabase
- .secinfo         00081674+000000 ___ghsbegin_secinfo
- .secinfo         000816a4+000000 ___ghsbinfo_aclear
- .secinfo         000816ec+000000 ___ghsbinfo_acopy
- .secinfo         000816ec+000000 ___ghsbinfo_bcopy
- .secinfo         00081674+000030 ___ghsbinfo_clear
- .secinfo         000816ec+000000 ___ghsbinfo_comacopy
- .secinfo         000816ec+000000 ___ghsbinfo_comcopy
- .secinfo         000816ec+000000 ___ghsbinfo_comtcopy
- .secinfo         000816a4+000048 ___ghsbinfo_copy
- .secinfo         000816ec+000000 ___ghsbinfo_tcopy
- .secinfo         000816ec+000000 ___ghseinfo_bcopy
- .secinfo         000816a4+000000 ___ghseinfo_clear
- .secinfo         000816ec+000000 ___ghseinfo_comcopy
- .secinfo         000816ec+000000 ___ghseinfo_copy
- .fixaddr         00081674+000000 ___ghsend_fixaddr
- .fixtype         00081674+000000 ___ghsend_fixtype
- .stack           febc1434+000000 ___ghsend_stack
+ .secinfo         00081854+000000 ___ghsbegin_secinfo
+ .secinfo         00081884+000000 ___ghsbinfo_aclear
+ .secinfo         000818cc+000000 ___ghsbinfo_acopy
+ .secinfo         000818cc+000000 ___ghsbinfo_bcopy
+ .secinfo         00081854+000030 ___ghsbinfo_clear
+ .secinfo         000818cc+000000 ___ghsbinfo_comacopy
+ .secinfo         000818cc+000000 ___ghsbinfo_comcopy
+ .secinfo         000818cc+000000 ___ghsbinfo_comtcopy
+ .secinfo         00081884+000048 ___ghsbinfo_copy
+ .secinfo         000818cc+000000 ___ghsbinfo_tcopy
+ .secinfo         000818cc+000000 ___ghseinfo_bcopy
+ .secinfo         00081884+000000 ___ghseinfo_clear
+ .secinfo         000818cc+000000 ___ghseinfo_comcopy
+ .secinfo         000818cc+000000 ___ghseinfo_copy
+ .fixaddr         00081854+000000 ___ghsend_fixaddr
+ .fixtype         00081854+000000 ___ghsend_fixtype
+ .stack           febc143c+000000 ___ghsend_stack
                   00000000+000000 ___lowinit
- .text            0008146c+000024 ___mcopy
+ .text            0008164c+000024 ___mcopy
                   00000000+000000 __cleanup
- .tdata           febc0434+000000 __ep
- .text            00081490+000068 __exit
+ .tdata           febc043c+000000 __ep
+ .text            00081670+000068 __exit
                   00000000+000000 __ghs_rh850_misalign
                   00000000+000000 __ghs_v800_r20_initializer
                   00000000+000000 __ghs_v800_r21_initializer
@@ -189,11 +193,11 @@ Global Symbols (sorted alphabetically)
                   00000000+000000 __ghs_v800_r23_initializer
                   00000000+000000 __ghs_v800_r24_initializer
                   00000001+000000 __ghs_v800_sda_model
- .sda_start       febc0430+000000 __gp
+ .sda_start       febc0434+000000 __gp
  .bss             febc03f0+000030 __multiArgs
  .data            febc0000+000004 __multibufSize
  .bss             febc0008+0003e8 __multibuffer
- .text            00080f48+000004 __multiend
+ .text            00081120+000004 __multiend
  .text            000807f0+0000f8 __start
                   fec00000+000000 __top_of_iRAM_0
                   fef10000+000000 __top_of_iRAM_R
@@ -201,82 +205,90 @@ Global Symbols (sorted alphabetically)
                   00400000+000000 __top_of_iROM_0
  .rosdata         000087e4+000000 __tp
  .text            0008098e+000000 __unused_isr
- .text            00080c9e+000056 _csih0_init
- .text            00080b54+0000a2 _csih0_initPorts
- .text            00080cf4+000018 _csih0_start
- .text            00080d0c+000008 _csih0_stop
+ .text            00080e72+000056 _csih0_init
+ .text            00080d28+0000a2 _csih0_initPorts
+ .text            00080ec8+000018 _csih0_start
+ .text            00080ee0+000008 _csih0_stop
  .rosdata         000007e8+080000 _ddf
  .rosdata         000007e4+000004 _ddf_size
  .sdata           febc042c+000004 _dma0_sample
  .sdata           febc0430+000004 _dma0_samples_count
  .bss             febc0424+000004 _environ
  .bss             febc0428+000004 _errno
- .text            00080f4e+000066 _exit
- .text            00080990+0001c4 _init_clocks
- .text            00080efe+00004a _main
- .text            00081394+0000d8 _memcpy
- .text            00081394+0000d8 _memcpy..trg.2Frh850.2Fobjs.2Flibs.2Flibstartup.2Find_mcpy.
- .text            00081394+000000 _memcpy_mcopy
- .text            00081320+000074 _memset
- .text            00080f4c+000002 _multiBreak
- .text            00080f48+000000 _multiCall
- .text            00080df4+00002c _pe_icum_comm_timer_init
+ .text            00081126+000066 _exit
+ .sbss            febc0434+000004 _g_dfrqpe_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+ .sbss            febc0438+000004 _g_dfrqpe_was_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+ .text            00080b64+0001c4 _init_clocks
+ .text            000810d2+00004e _main
+ .text            00081574+0000d8 _memcpy
+ .text            00081574+0000d8 _memcpy..trg.2Frh850.2Fobjs.2Flibs.2Flibstartup.2Find_mcpy.
+ .text            00081574+000000 _memcpy_mcopy
+ .text            00081500+000074 _memset
+ .text            00081124+000002 _multiBreak
+ .text            00081120+000000 _multiCall
+ .text            00080fc8+00002c _pe_icum_comm_timer_init
+ .text            00080990+00000e _pe_icum_flash_handoff_clear_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+ .text            000809d0+000044 _pe_icum_flash_handoff_init
+ .text            0008099e+000032 _pe_icum_flash_handoff_release_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
 
-Load Map Wed Oct 21 11:42:32 2026
+Load Map Fri Oct 23 15:30:41 2026
 Global Cross Reference
 
 .intvect..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cdr7f701649_startup.
-_DMA_init           main.o                  080f13
-_Debug_initPorts    main.o                  080f0f
+_DMA_init           main.o                  0810e7
+_Debug_initPorts    main.o                  0810e3
 _INTCSIH0IC         dr7f701649_startup.o    000274
 _INTDMA0            dr7f701649_startup.o    0002f0
+_INTFICUIF0DFRQPE   dr7f701649_startup.o    00079c
+_INTICUP            icum_flash_handoff.o    febc0000
+                    dr7f701649_startup.o    00021c
 _INTOSTM0           dr7f701649_startup.o    000350
 _RESET              dr7f701649_startup.o    000001
-_TAUD0_init         main.o                  080f17
-_TAUD0_initPorts    main.o                  080f1b
-_TAUD0_start        main.o                  080f43
+_TAUD0_init         main.o                  0810eb
+_TAUD0_initPorts    main.o                  0810ef
+_TAUD0_start        main.o                  08111b
 _TAUD0_stop        
-__Exit              libansi.a(ccexit.o)     080f9b
-___atexit_cleanup_func libansi.a(ccexit.o)     080f74 080f7c 080f85
-___cpp_exception_cleanup libsys.a(ind_exit.o)    0814d4 0814dc
+__Exit              libansi.a(ccexit.o)     081173
+___atexit_cleanup_func libansi.a(ccexit.o)     08114c 081154 08115d
+___cpp_exception_cleanup libsys.a(ind_exit.o)    0816b4 0816bc
 ___cpp_exception_init
 ___dotsyscall       crt0.o                  0807f0
-                    libsys.a(ind_call.o)    081546
+                    libsys.a(ind_call.o)    081726
 ___gh_errno_ptr    
 ___gh_get_errno    
-___gh_iob_init      libsys.a(ind_crt1.o)    0815c0 0815c4 0815cd
-___gh_lock_init     libsys.a(ind_crt1.o)    0815a0 0815a4 0815ad
-___gh_set_errno     libsys.a(ind_call.o)    08154f
-___ghsLock          libsys.a(ind_exit.o)    0814b3 081513
-___ghsUnlock        libsys.a(ind_exit.o)    0814e9 081523
+___gh_iob_init      libsys.a(ind_crt1.o)    0817a0 0817a4 0817ad
+___gh_lock_init     libsys.a(ind_crt1.o)    081780 081784 08178d
+___gh_set_errno     libsys.a(ind_call.o)    08172f
+___ghsLock          libsys.a(ind_exit.o)    081693 0816f3
+___ghsUnlock        libsys.a(ind_exit.o)    0816c9 081703
 ___ghs_GetCurrentThreadID
 ___ghs_GetCurrentThreadName
 ___ghs_InterruptLock
 ___ghs_InterruptUnlock
 ___ghs_RunTimeErrorDetected
 ___ghs_at_exit     
-___ghs_board_cache_sync libstartup.a(ind_crt0.o) 081006 081016
-___ghs_board_devices_init libsys.a(ind_crt1.o)    08158c 081594 08159d
+___ghs_board_cache_sync libstartup.a(ind_crt0.o) 0811de 0811ee
+___ghs_board_devices_init libsys.a(ind_crt1.o)    08176c 081774 08177d
 ___ghs_board_memory_init crt0.o                  08085a 08085e 080863
 ___ghs_call_table   crt0.o                  08087a
-___ghs_checksum     libstartup.a(ind_crt0.o) 081274
-___ghs_coverage_init libsys.a(ind_crt1.o)    0815f0 0815f4 0815fd
-___ghs_cpp_exception_cleanup libsys.a(ind_exit.o)    0814e5
-___ghs_cpp_exception_init libsys.a(ind_crt1.o)    0815d0 0815d4 0815dd
+___ghs_checksum     libstartup.a(ind_crt0.o) 08144c
+___ghs_coverage_init libsys.a(ind_crt1.o)    0817d0 0817d4 0817dd
+___ghs_cpp_exception_cleanup libsys.a(ind_exit.o)    0816c5
+___ghs_cpp_exception_init libsys.a(ind_crt1.o)    0817b0 0817b4 0817bd
 ___ghs_cxx_do_thread_safe_local_static_inits
-___ghs_decompress   libstartup.a(ind_crt0.o) 080fee 081002 081068 08106c 0811be
-                                            0811c2
+___ghs_decompress   libstartup.a(ind_crt0.o) 0811c6 0811da 081240 081244 081396
+                                            08139a
 ___ghs_elxr_revision
 ___ghs_elxr_version
 ___ghs_ind_crt0     crt0.o                  0808e1
-___ghs_ind_crt1     libstartup.a(ind_crt0.o) 080fe2 080ff6
+___ghs_ind_crt1     libstartup.a(ind_crt0.o) 0811ba 0811ce
 ___ghs_initial_dotsyscall crt0.o                  080807
 ___ghs_lock_create 
 ___ghs_lock_destroy
 ___ghs_lock_lock   
 ___ghs_lock_unlock 
-___ghs_malloc_init  libsys.a(ind_crt1.o)    0815b0 0815b4 0815bd
-___ghs_manprf_init  libsys.a(ind_crt1.o)    0815e0 0815e4 0815ed
+___ghs_malloc_init  libsys.a(ind_crt1.o)    081790 081794 08179d
+___ghs_manprf_init  libsys.a(ind_crt1.o)    0817c0 0817c4 0817cd
 ___ghs_multicore_init_done
 ___ghs_multicore_wait_for_init
 ___ghs_multicore_wait_for_init_weak crt0.o                  08084c 080850 080855
@@ -290,45 +302,45 @@ ___ghs_romend
 ___ghs_romstart    
 ___ghs_rramend     
 ___ghs_rramstart    dr7f701649_startup.o    08096c
-___ghs_set_stack_chk_guard libsys.a(ind_crt1.o)    081600 081604 08160d
+___ghs_set_stack_chk_guard libsys.a(ind_crt1.o)    0817e0 0817e4 0817ed
 ___ghs_single_threaded
-___ghs_syscall      libsys.a(ind_exit.o)    0814f1
-___ghs_undefined_func libansi.a(ccexit.o)     080f70 080f78
-                    libstartup.a(ind_crt0.o) 080ff2 08100a
-                    libsys.a(ind_exit.o)    0814d0 0814d8
-                    libsys.a(ind_crt1.o)    081588 081590
-___ghsbegin_fixaddr libstartup.a(ind_crt0.o) 081250 08125c
-___ghsbegin_fixtype libstartup.a(ind_crt0.o) 081258 081264
+___ghs_syscall      libsys.a(ind_exit.o)    0816d1
+___ghs_undefined_func libansi.a(ccexit.o)     081148 081150
+                    libstartup.a(ind_crt0.o) 0811ca 0811e2
+                    libsys.a(ind_exit.o)    0816b0 0816b8
+                    libsys.a(ind_crt1.o)    081768 081770
+___ghsbegin_fixaddr libstartup.a(ind_crt0.o) 081428 081434
+___ghsbegin_fixtype libstartup.a(ind_crt0.o) 081430 08143c
 ___ghsbegin_picbase crt0.o                  0808ec
-                    libstartup.a(ind_crt0.o) 0810a0 0810a4
+                    libstartup.a(ind_crt0.o) 081278 08127c
 ___ghsbegin_pidbase crt0.o                  0808f4
-                    libstartup.a(ind_crt0.o) 0810b0
+                    libstartup.a(ind_crt0.o) 081288
 ___ghsbegin_robase  crt0.o                  0808f0
-                    libstartup.a(ind_crt0.o) 0810aa
+                    libstartup.a(ind_crt0.o) 081282
 ___ghsbegin_sda_end
 ___ghsbegin_sda_start crt0.o                  080836
 ___ghsbegin_sdabase
-___ghsbegin_secinfo libstartup.a(ind_crt0.o) 081046 08104e
-___ghsbinfo_aclear  libstartup.a(ind_crt0.o) 0810d6 0810de
+___ghsbegin_secinfo libstartup.a(ind_crt0.o) 08121e 081226
+___ghsbinfo_aclear  libstartup.a(ind_crt0.o) 0812ae 0812b6
 ___ghsbinfo_acopy  
 ___ghsbinfo_bcopy  
-___ghsbinfo_clear   libstartup.a(ind_crt0.o) 0810c6 0810ce
+___ghsbinfo_clear   libstartup.a(ind_crt0.o) 08129e 0812a6
 ___ghsbinfo_comacopy
-___ghsbinfo_comcopy libstartup.a(ind_crt0.o) 0811ca 0811d2
-___ghsbinfo_comtcopy libstartup.a(ind_crt0.o) 0811ce 0811d6
-___ghsbinfo_copy    libstartup.a(ind_crt0.o) 081130 081138
-___ghsbinfo_tcopy   libstartup.a(ind_crt0.o) 081134 08113c
+___ghsbinfo_comcopy libstartup.a(ind_crt0.o) 0813a2 0813aa
+___ghsbinfo_comtcopy libstartup.a(ind_crt0.o) 0813a6 0813ae
+___ghsbinfo_copy    libstartup.a(ind_crt0.o) 081308 081310
+___ghsbinfo_tcopy   libstartup.a(ind_crt0.o) 08130c 081314
 ___ghseinfo_bcopy  
-___ghseinfo_clear   libstartup.a(ind_crt0.o) 0810ca 0810d2
-___ghseinfo_comcopy libstartup.a(ind_crt0.o) 0811da 0811e2
-___ghseinfo_copy    libstartup.a(ind_crt0.o) 081140 081148
-___ghsend_fixaddr   libstartup.a(ind_crt0.o) 081254 081260
+___ghseinfo_clear   libstartup.a(ind_crt0.o) 0812a2 0812aa
+___ghseinfo_comcopy libstartup.a(ind_crt0.o) 0813b2 0813ba
+___ghseinfo_copy    libstartup.a(ind_crt0.o) 081318 081320
+___ghsend_fixaddr   libstartup.a(ind_crt0.o) 08142c 081438
 ___ghsend_fixtype  
 ___ghsend_stack     crt0.o                  080812
                     dr7f701649_startup.o    080932 080936
 ___lowinit          dr7f701649_startup.o    080961
 ___mcopy           
-__cleanup           libansi.a(ccexit.o)     080f88 080f8c 080f95
+__cleanup           libansi.a(ccexit.o)     081160 081164 08116d
 __ep                crt0.o                  08086e 080872
 __exit             
 __ghs_rh850_misalign crt0.o                  0808c4
@@ -414,25 +426,30 @@ __unused_isr        dr7f701649_startup.o    08098e 000011 000031 000041 000051
                                             0007b0 0007b4 0007b8 0007bc 0007c0
                                             0007c4 0007c8 0007cc 0007d0 0007d4
                                             0007d8 0007dc 0007e0
-_csih0_init         main.o                  080f1f
-_csih0_initPorts    main.o                  080f23
-_csih0_start        main.o                  080f3f
+_csih0_init         main.o                  0810f3
+_csih0_initPorts    main.o                  0810f7
+_csih0_start        main.o                  081117
 _csih0_stop        
-_ddf                main.o                  080d64 080d98 080ed0
-_ddf_size           main.o                  080d88
-_dma0_sample        main.o                  080d60 080d7c 080d84 080da8 080db0
-                                            080ea8 080ec4 080ecc 080ee0 080ee8
-_dma0_samples_count main.o                  080d94 080ea4 080ec0
-_environ            libsys.a(ind_crt1.o)    08163e 081642
-_errno              libsys.a(ind_errn.o)    08165a 08165e 081664 08166c 081670
+_ddf                main.o                  080f38 080f6c 0810a4
+_ddf_size           main.o                  080f5c
+_dma0_sample        main.o                  080f34 080f50 080f58 080f7c 080f84
+                                            08107c 081098 0810a0 0810b4 0810bc
+_dma0_samples_count main.o                  080f68 081078 081094
+_environ            libsys.a(ind_crt1.o)    08181e 081822
+_errno              libsys.a(ind_errn.o)    08183a 08183e 081844 08184c 081850
 _exit               crt0.o                  0807f0
-                    libsys.a(ind_crt1.o)    08164f
-_init_clocks        main.o                  080f0b
-_main               libsys.a(ind_crt1.o)    081649
-_memcpy             libstartup.a(ind_crt0.o) 080fea 080ffe
+                    libsys.a(ind_crt1.o)    08182f
+_g_dfrqpe_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+_g_dfrqpe_was_masked..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+_init_clocks        main.o                  0810df
+_main               libsys.a(ind_crt1.o)    081829
+_memcpy             libstartup.a(ind_crt0.o) 0811c2 0811d6
 _memcpy..trg.2Frh850.2Fobjs.2Flibs.2Flibstartup.2Find_mcpy.
-_memcpy_mcopy       libstartup.a(ind_mcpy.o) 08147f
-_memset             libstartup.a(ind_crt0.o) 080fe6 080ffa
-_multiBreak         libmulti.a              080f48
+_memcpy_mcopy       libstartup.a(ind_mcpy.o) 08165f
+_memset             libstartup.a(ind_crt0.o) 0811be 0811d2
+_multiBreak         libmulti.a              081120
 _multiCall         
-_pe_icum_comm_timer_init main.o                  080f37
+_pe_icum_comm_timer_init main.o                  08110b
+_pe_icum_flash_handoff_clear_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.
+_pe_icum_flash_handoff_init main.o                  08110f
+_pe_icum_flash_handoff_release_dfrqpe..C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cpe.5Cicum_flash_handoff.

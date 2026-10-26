@@ -367,6 +367,14 @@ __ex_entry:
     jr __unused_isr
   #endif
 
+  .offset (IRQ_TABLE_START+0x001c)
+  #if (INTICUP_ENABLE > 0x00000000)
+    .extern _INTICUP
+    .word _INTICUP
+  #else
+    .word __unused_isr
+  #endif
+
   .offset (IRQ_TABLE_START+0x0020)
   #if (INTCSIH2IC_1_ENABLE > 0x00000000)
     .extern _INTCSIH2IC_1
@@ -2665,6 +2673,14 @@ __ex_entry:
     .word __unused_isr
   #endif
 
+  .offset (IRQ_TABLE_START+0x059c)
+  #if (INTFICUIF0DFRQPE_ENABLE > 0x00000000)
+    .extern _INTFICUIF0DFRQPE
+    .word _INTFICUIF0DFRQPE
+  #else
+    .word __unused_isr
+  #endif
+
   .offset (IRQ_TABLE_START+0x05a0)
   #if (INTRLIN36_ENABLE > 0x00000000)
     .extern _INTRLIN36
@@ -2803,4 +2819,3 @@ __ex_entry:
 
 
 #endif   /* __OS_HANDLES__ */  
-

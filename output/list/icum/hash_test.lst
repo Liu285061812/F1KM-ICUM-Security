@@ -1,7 +1,7 @@
                                                                       Page 1
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
-Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\hash_test.dbo -source=hash_test.c -comp -o output\objects\icum\gh_0000b0s1.o -list=output\list\icum\hash_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s 
-Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Isource\FDL -Isource\FDL\lib -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\hash_test.dbo -source=hash_test.c -comp -o output\objects\icum\gh_0000vdg1.o -list=output\list\icum\hash_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
 Source File: hash_test.c
 Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
 Host OS: Windows
@@ -13,15 +13,15 @@ Revision Date: Wed Sep 06 02:44:09 2023
 
 Release Date: Wed Sep 06 02:00:00 2023
 
-                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Idevice -G
-                           2 --		-object_dir=output\objects\icum -list -list_dir=output/list/icum
-                           3 --		-passsource -bsp generic -sda=all -fsoft -cpu=rh850 -ansi
-                           4 --		-filetype.c source\ICUM\hash_test.c -o
-                           5 --		output\objects\icum\hash_test.o
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Isource\FDL
+                           2 --		-Isource\FDL\lib -Idevice -G -object_dir=output\objects\icum
+                           3 --		-list -list_dir=output/list/icum -passsource -bsp generic
+                           4 --		-sda=all -fsoft -cpu=rh850 -ansi -filetype.c
+                           5 --		source\ICUM\hash_test.c -o output\objects\icum\hash_test.o
                            6 --Source File:   source\ICUM\hash_test.c
                            7 --Directory:     
                            8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
-                           9 --Compile Date:  Wed Oct 21 14:50:04 2026
+                           9 --Compile Date:  Wed Oct 21 17:20:33 2026
                           10 --Host OS:       Win64
                           11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
                           12 --Release:       Compiler v2023.5.4
@@ -32,7 +32,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           17 --1: #include "hash_test.h"
                           18 --3: static int hash_matches(icum_hash_algorithm algorithm,
                           19 	.text
-                          20 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609C..0::
+                          20 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD883E1..0::
                           21 	.align	2
                           22 	.align	2
                           23 ..gh.f.a.2.e.0:
@@ -65,7 +65,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                           50 .L105:
 
                                                                       Page 2
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                           51 	jarl	_icum_hash_digest_size,lp
                           51 <EXPANSION BEGIN>
                           51 jarl22 _icum_hash_digest_size , lp 
@@ -129,7 +129,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000060 b1f5*           105 	bl	.L9
 
                                                                       Page 3
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                          106 --18:     }
                          107 --19:     return 1;
                          108 --line19
@@ -193,7 +193,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          166 	.align	2
 
                                                                       Page 4
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                          167 	.align	2
                          168 ..gh.f.a.2.e.1:
                          169 	.type	..gh.f.a.2.e.1,@object
@@ -257,7 +257,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000000a0 64ea            227 	cmp	4,r29
 
                                                                       Page 5
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
 000000a2 b205*           228 	be	.L113
                          229 --56:         && (algorithm != ICUM_HASH_SHA256)
                          230 --57:         && (algorithm != ICUM_HASH_SHA384)
@@ -321,7 +321,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          285 ..lin.aa17fe57..b48c6edd.0_18::
 
                                                                       Page 6
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                          286 .LDWlin18:
 000000da 1d30            287 	mov	r29,r6
 000000dc 233e0000        288 	movea	0,sp,r7
@@ -385,7 +385,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 00000116 233e0000        340 	movea	0,sp,r7
 
                                                                       Page 7
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
 0000011a 20463800        341 	movea	56,zero,r8
 0000011e 254e0000*       342 	movea	sdaoff2(.L379),r5,r9
                          343 .L425:
@@ -449,7 +449,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          395 .L429:
 
                                                                       Page 8
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                          396 	jarl	_hash_matches,lp
                          396 <EXPANSION BEGIN>
                          396 jarl22 _hash_matches , lp 
@@ -513,7 +513,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          447 ..lin.aa17fe57..b48c6edd.0_36::
 
                                                                       Page 9
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                          448 .LDWlin36:
 0000019a 0052            449 	mov	0,r10
 0000019c a505*           450 	br	.L111
@@ -577,7 +577,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          508 	.size	.L376,32
 
                                                                       Page 10
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                          509 .L377:
                          510 	.global	_sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..1
                          511 _sha384_empty.icum_hash_self_test.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test..1:
@@ -641,7 +641,7 @@ Release Date: Wed Sep 06 02:00:00 2023
 000000b1 187d4e07        569 	.byte	24,125,78,7
 
                                                                       Page 11
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
 000000b5 cb306103        570 	.byte	203,48,97,3
 000000b9 c69967bf        571 	.byte	198,153,103,191
 000000bd 544d0dfb        572 	.byte	84,77,13,251
@@ -705,7 +705,7 @@ Release Date: Wed Sep 06 02:00:00 2023
                          630 	.type	.L383,@object
 
                                                                       Page 12
-                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000b0s1.s
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000vdg1.s
                          631 	.size	.L383,20
                          632 	.section ".ghcalltbl",""
 00000008 00000000*       633 .L420:	.word	.L419
@@ -747,5 +747,5 @@ Release Date: Wed Sep 06 02:00:00 2023
                          669 	.ghsnote tools,3
                          670 	.ghsnote options,656
                          671 	.text
-                         672 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD8609C..0::
+                         672 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Chash_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6AD883E1..0::
                          673 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0

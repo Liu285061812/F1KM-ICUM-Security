@@ -1,0 +1,607 @@
+                                                                      Page 1
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+Command Line: C:\ghs\comp_202354\ease850.exe -w -annotate_call_return -elf -b0 -Isource\ICUM -Isource -Isource\FDL -Isource\FDL\lib -Idevice -IC:\ghs\comp_202354\lib\rh850 -cg_underscore -cpu=rh850g3k -nofpu -no_v850_simd -nomacro -patch_dbo=C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp\output\objects\icum\fdl_test.dbo -source=fdl_test.c -comp -o output\objects\icum\gh_0000d481.o -list=output\list\icum\fdl_test.lst C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s 
+Original File: C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+Source File: fdl_test.c
+Directory: C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+Host OS: Windows
+EASE: Copyright (C) 1983-2023 Green Hills Software.  All Rights Reserved.
+Release: Compiler v2023.5.4
+Build Directory: [Directory] merry:/export/comp_autobuild/v2023.5_co_2023-09-05/win64-cross-linux86-comp
+Revision: [VCInfo] http://toolsvc/branches/release-branch-2023-5-comp/src@745006 (built by auto-compiler)
+Revision Date: Wed Sep 06 02:44:09 2023
+
+Release Date: Wed Sep 06 02:00:00 2023
+
+                           1 --Driver Command: ccrh850 -c -MD -Isource\ICUM -Isource -Isource\FDL
+                           2 --		-Isource\FDL\lib -Idevice -G -object_dir=output\objects\icum
+                           3 --		-list -list_dir=output/list/icum -passsource -bsp generic
+                           4 --		-sda=all -fsoft -cpu=rh850 -ansi -filetype.c
+                           5 --		source\ICUM\fdl_test.c -o output\objects\icum\fdl_test.o
+                           6 --Source File:   source\ICUM\fdl_test.c
+                           7 --Directory:     
+                           8 --		C:\work\SW\demo\Security\F1KM-ICUM\F1KM-S4_dr7f701649_GHS_StartUp
+                           9 --Compile Date:  Mon Oct 26 11:02:06 2026
+                          10 --Host OS:       Win64
+                          11 --Version:       C-RH850 2023.5.4 RELEASE VERSION
+                          12 --Release:       Compiler v2023.5.4
+                          13 --Revision Date: Wed Sep 06 02:44:56 2023
+                          14 --Release Date:  Wed Sep 06 02:00:00 2023
+                          15 -- ecom  -g -w
+                          16 
+                          17 --1: #include "fdl_test.h"
+                          18 --2: #include "device.h"
+                          19 --3: #include "icum_flash_handoff.h"
+                          20 --5: volatile r_fdl_status_t g_icum_fdl_init_status;
+                          21 --6: volatile r_fdl_status_t g_icum_fdl_prepare_status;
+                          22 --7: volatile r_fdl_status_t g_icum_fdl_erase_status;
+                          23 --8: volatile r_fdl_status_t g_icum_fdl_blank_status;
+                          24 --9: volatile r_fdl_status_t g_icum_fdl_write_status;
+                          25 --10: volatile r_fdl_status_t g_icum_fdl_read_status;
+                          26 --11: volatile unsigned long g_icum_fdl_mismatch_index;
+                          27 --12: volatile unsigned int g_icum_fdl_test_result;
+                          28 --14: unsigned int icum_fdl_self_test(void)
+                          29 	.text
+                          30 ..bof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cfdl_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADEC2AE..0::
+                          31 	.align	2
+                          32 	.align	2
+                          33 ..gh.f.a.2.e.0:
+                          34 	.type	..gh.f.a.2.e.0,@object
+                          35 	.size	..gh.f.a.2.e.0,0
+                          36 	.global	_icum_fdl_self_test
+                          37 _icum_fdl_self_test:
+00000000 031e6cff         38 	addi	-148,sp,sp
+00000004 63ff9100         39 	st.w	lp,144[sp]
+00000008 63d78d00         40 	st.w	r26,140[sp]
+0000000c 63df8900         41 	st.w	r27,136[sp]
+00000010 63e78500         42 	st.w	r28,132[sp]
+00000014 63ef8100         43 	st.w	r29,128[sp]
+                          44 --	    .bf
+                          45 .LDW01:
+                          46 --15: {
+                          47 --16:     unsigned int write_data[ICUM_FDL_TEST_WORD_COUNT];
+                          48 --17:     unsigned int read_data[ICUM_FDL_TEST_WORD_COUNT];
+                          49 --18:     unsigned int i;
+                          50 --19:     unsigned int result;
+
+                                                                      Page 2
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+                          51 --21:     result = 0u;
+00000018 00e2             52 	mov	0,r28
+                          53 --22:     g_icum_fdl_test_result = 0u;
+0000001a 64070100*        54 	st.w	zero,sdaoff(_g_icum_fdl_test_result)[gp]
+                          55 --23:     g_icum_fdl_mismatch_index = 0xFFFFFFFFul;
+0000001e 1f0a             56 	mov	-1,r1
+00000020 640f0100*        57 	st.w	r1,sdaoff(_g_icum_fdl_mismatch_index)[gp]
+                          58 --24:     g_icum_fdl_init_status = R_FDL_ERR_REJECTED;
+00000024 060a             59 	mov	6,r1
+00000026 640f0100*        60 	st.w	r1,sdaoff(_g_icum_fdl_init_status)[gp]
+                          61 --25:     g_icum_fdl_prepare_status = R_FDL_ERR_REJECTED;
+0000002a 060a             62 	mov	6,r1
+0000002c 640f0100*        63 	st.w	r1,sdaoff(_g_icum_fdl_prepare_status)[gp]
+                          64 --26:     g_icum_fdl_erase_status = R_FDL_ERR_REJECTED;
+00000030 060a             65 	mov	6,r1
+00000032 640f0100*        66 	st.w	r1,sdaoff(_g_icum_fdl_erase_status)[gp]
+                          67 --27:     g_icum_fdl_blank_status = R_FDL_ERR_REJECTED;
+00000036 060a             68 	mov	6,r1
+00000038 640f0100*        69 	st.w	r1,sdaoff(_g_icum_fdl_blank_status)[gp]
+                          70 --28:     g_icum_fdl_write_status = R_FDL_ERR_REJECTED;
+0000003c 060a             71 	mov	6,r1
+0000003e 640f0100*        72 	st.w	r1,sdaoff(_g_icum_fdl_write_status)[gp]
+                          73 --29:     g_icum_fdl_read_status = R_FDL_ERR_REJECTED;
+00000042 060a             74 	mov	6,r1
+00000044 640f0100*        75 	st.w	r1,sdaoff(_g_icum_fdl_read_status)[gp]
+                          76 --31:     if (icum_flash_handoff_begin() == 0)
+                          77 .L545:
+                          78 	jarl	_icum_flash_handoff_begin,lp
+                          78 <EXPANSION BEGIN>
+                          78 jarl22 _icum_flash_handoff_begin , lp 
+00000048 80ff0000*        78 <EXPANSION END>
+0000004c e051             79 	cmp	zero,r10
+0000004e ea05*            80 	bne	.L9
+                          81 --32:     {
+                          82 --33:         (void)icum_flash_handoff_end();
+                          83 .L547:
+                          84 --line33
+                          85 ..lin.9dcda709..d6cc3b2f.0_1::
+                          86 .LDWlin1:
+                          87 	jarl	_icum_flash_handoff_end,lp
+                          87 <EXPANSION BEGIN>
+                          87 jarl22 _icum_flash_handoff_end , lp 
+00000050 80ff0000*        87 <EXPANSION END>
+                          88 --34:         return 0u;
+                          89 --line34
+                          90 ..lin.9dcda709..d6cc3b2f.0_2::
+                          91 .LDWlin2:
+00000054 0052             92 	mov	0,r10
+00000056 80077801*        93 	br	.L2
+                          94 .L9:
+                          95 --35:     }
+                          96 --37:     INIT_FLASHACCESS;
+                          97 --	    .bs
+                          98 .LDW11:
+                          99 --line37
+                         100 ..lin.9dcda709..d6cc3b2f.0_3::
+                         101 .LDWlin3:
+0000005a 200ea500        102 	movea	165,zero,r1
+0000005e 2b060400a0ff    103 	mov	-6291452,r11
+00000064 6b0f0100        104 	st.w	r1,0[r11]
+                         105 --line37
+
+                                                                      Page 3
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+                         106 ..lin.9dcda709..d6cc3b2f.0_4::
+                         107 .LDWlin4:
+00000068 010a            108 	mov	1,r1
+0000006a 405ea0ff        109 	movhi	65440,zero,r11
+0000006e 6b0f0100        110 	st.w	r1,0[r11]
+                         111 --line37
+                         112 ..lin.9dcda709..d6cc3b2f.0_5::
+                         113 .LDWlin5:
+00000072 200efe00        114 	movea	254,zero,r1
+00000076 405ea0ff        115 	movhi	65440,zero,r11
+0000007a 6b0f0100        116 	st.w	r1,0[r11]
+                         117 --line37
+                         118 ..lin.9dcda709..d6cc3b2f.0_6::
+                         119 .LDWlin6:
+0000007e 010a            120 	mov	1,r1
+00000080 405ea0ff        121 	movhi	65440,zero,r11
+00000084 6b0f0100        122 	st.w	r1,0[r11]
+                         123 --line37
+                         124 ..lin.9dcda709..d6cc3b2f.0_7::
+                         125 .LDWlin7:
+00000088 00da            126 	mov	0,r27
+0000008a a505*           127 	br	.L13
+                         128 .L11:
+                         129 --line37
+                         130 ..lin.9dcda709..d6cc3b2f.0_8::
+                         131 .LDWlin8:
+0000008c 41da            132 	add	1,r27
+                         133 .L13:
+0000008e 1b06f0d8        134 	addi	-10000,r27,zero
+00000092 d9fd*           135 	bnl	.L11
+                         136 --	    .es
+                         137 .LDW21:
+                         138 --line37
+                         139 ..lin.9dcda709..d6cc3b2f.0_9::
+                         140 .LDWlin9:
+00000094 0000            141 	nop
+                         142 --39:     g_icum_fdl_init_status = icum_fdl_init();
+                         143 .L549:
+                         144 	jarl	_icum_fdl_init,lp
+                         144 <EXPANSION BEGIN>
+                         144 jarl22 _icum_fdl_init , lp 
+00000096 80ff0000*       144 <EXPANSION END>
+0000009a 64570100*       145 	st.w	r10,sdaoff(_g_icum_fdl_init_status)[gp]
+                         146 --40:     if (R_FDL_OK != g_icum_fdl_init_status) {
+                         147 --line40
+                         148 ..lin.9dcda709..d6cc3b2f.0_10::
+                         149 .LDWlin10:
+0000009e 240f0100*       150 	ld.w	sdaoff(_g_icum_fdl_init_status)[gp],r1
+000000a2 e009            151 	cmp	zero,r1
+000000a4 a205*           152 	be	.L14
+                         153 --41:         goto cleanup;
+                         154 --line41
+                         155 ..lin.9dcda709..d6cc3b2f.0_11::
+                         156 .LDWlin11:
+000000a6 8575*           157 	br	.L46
+                         158 .L14:
+                         159 --42:     }
+                         160 --44:     g_icum_fdl_prepare_status = icum_fdl_prepare();
+                         161 .L551:
+                         162 --line44
+                         163 ..lin.9dcda709..d6cc3b2f.0_12::
+
+                                                                      Page 4
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+                         164 .LDWlin12:
+                         165 	jarl	_icum_fdl_prepare,lp
+                         165 <EXPANSION BEGIN>
+                         165 jarl22 _icum_fdl_prepare , lp 
+000000a8 80ff0000*       165 <EXPANSION END>
+000000ac 64570100*       166 	st.w	r10,sdaoff(_g_icum_fdl_prepare_status)[gp]
+                         167 --45:     if (R_FDL_OK != g_icum_fdl_prepare_status) {
+                         168 --line45
+                         169 ..lin.9dcda709..d6cc3b2f.0_13::
+                         170 .LDWlin13:
+000000b0 240f0100*       171 	ld.w	sdaoff(_g_icum_fdl_prepare_status)[gp],r1
+000000b4 e009            172 	cmp	zero,r1
+000000b6 a205*           173 	be	.L18
+                         174 --46:         goto cleanup;
+                         175 --line46
+                         176 ..lin.9dcda709..d6cc3b2f.0_14::
+                         177 .LDWlin14:
+000000b8 f565*           178 	br	.L46
+                         179 .L18:
+                         180 --47:     }
+                         181 --49:     g_icum_fdl_erase_status =
+                         182 --line49
+                         183 ..lin.9dcda709..d6cc3b2f.0_15::
+                         184 .LDWlin15:
+000000ba 20360006        185 	movea	1536,zero,r6
+000000be 013a            186 	mov	1,r7
+                         187 .L553:
+                         188 	jarl	_icum_fdl_erase,lp
+                         188 <EXPANSION BEGIN>
+                         188 jarl22 _icum_fdl_erase , lp 
+000000c0 80ff0000*       188 <EXPANSION END>
+000000c4 64570100*       189 	st.w	r10,sdaoff(_g_icum_fdl_erase_status)[gp]
+                         190 --50:         icum_fdl_erase(ICUM_FDL_TEST_BLOCK_INDEX, 1u);
+                         191 --51:     if (R_FDL_OK != g_icum_fdl_erase_status) {
+                         192 --line51
+                         193 ..lin.9dcda709..d6cc3b2f.0_16::
+                         194 .LDWlin16:
+000000c8 240f0100*       195 	ld.w	sdaoff(_g_icum_fdl_erase_status)[gp],r1
+000000cc e009            196 	cmp	zero,r1
+000000ce a205*           197 	be	.L21
+                         198 --52:         goto cleanup;
+                         199 --line52
+                         200 ..lin.9dcda709..d6cc3b2f.0_17::
+                         201 .LDWlin17:
+000000d0 b55d*           202 	br	.L46
+                         203 .L21:
+                         204 --53:     }
+                         205 --55:     g_icum_fdl_blank_status =
+                         206 --line55
+                         207 ..lin.9dcda709..d6cc3b2f.0_18::
+                         208 .LDWlin18:
+000000d2 260600800100    209 	mov	98304,r6
+000000d8 203e1000        210 	movea	16,zero,r7
+                         211 .L555:
+                         212 	jarl	_icum_fdl_blank_check,lp
+                         212 <EXPANSION BEGIN>
+                         212 jarl22 _icum_fdl_blank_check , lp 
+000000dc 80ff0000*       212 <EXPANSION END>
+000000e0 64570100*       213 	st.w	r10,sdaoff(_g_icum_fdl_blank_status)[gp]
+                         214 --56:         icum_fdl_blank_check(ICUM_FDL_REGION_OFFSET,
+                         215 --57:                              ICUM_FDL_TEST_WORD_COUNT);
+
+                                                                      Page 5
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+                         216 --58:     if (R_FDL_OK != g_icum_fdl_blank_status) {
+                         217 --line58
+                         218 ..lin.9dcda709..d6cc3b2f.0_19::
+                         219 .LDWlin19:
+000000e4 240f0100*       220 	ld.w	sdaoff(_g_icum_fdl_blank_status)[gp],r1
+000000e8 e009            221 	cmp	zero,r1
+000000ea a205*           222 	be	.L24
+                         223 --59:         goto cleanup;
+                         224 --line59
+                         225 ..lin.9dcda709..d6cc3b2f.0_20::
+                         226 .LDWlin20:
+000000ec d54d*           227 	br	.L46
+                         228 .L24:
+                         229 --60:     }
+                         230 --62:     for (i = 0u; i < ICUM_FDL_TEST_WORD_COUNT; ++i) {
+                         231 --line62
+                         232 ..lin.9dcda709..d6cc3b2f.0_21::
+                         233 .LDWlin21:
+000000ee 00ea            234 	mov	0,r29
+000000f0 a515*           235 	br	.L30
+                         236 .L29:
+                         237 --63:         write_data[i] = 0xA5A55A5Au | i;
+                         238 --line63
+                         239 ..lin.9dcda709..d6cc3b2f.0_22::
+                         240 .LDWlin22:
+000000f2 1df0            241 	mov	r29,ep
+000000f4 c2f2            242 	shl	2,ep
+000000f6 23164000        243 	movea	64,sp,r2
+000000fa 21065a5aa5a5    244 	mov	-1515890086,r1
+00000100 c2f1            245 	add	r2,ep
+00000102 1d09            246 	or	r29,r1
+00000104 010d            247 	sst.w	r1,0[ep]
+                         248 --64:         read_data[i] = 0u;
+                         249 --line64
+                         250 ..lin.9dcda709..d6cc3b2f.0_23::
+                         251 .LDWlin23:
+00000106 1df0            252 	mov	r29,ep
+00000108 c2f2            253 	shl	2,ep
+0000010a 23160000        254 	movea	0,sp,r2
+0000010e c2f1            255 	add	r2,ep
+00000110 0105            256 	sst.w	zero,0[ep]
+00000112 41ea            257 	add	1,r29
+                         258 .L30:
+00000114 1d06f0ff        259 	addi	-16,r29,zero
+00000118 d9ed*           260 	bnl	.L29
+                         261 --65:     }
+                         262 --67:     g_icum_fdl_write_status =
+                         263 --line67
+                         264 ..lin.9dcda709..d6cc3b2f.0_24::
+                         265 .LDWlin24:
+0000011a 260600800100    266 	mov	98304,r6
+00000120 233e4000        267 	movea	64,sp,r7
+00000124 20461000        268 	movea	16,zero,r8
+                         269 .L557:
+                         270 	jarl	_icum_fdl_write,lp
+                         270 <EXPANSION BEGIN>
+                         270 jarl22 _icum_fdl_write , lp 
+00000128 80ff0000*       270 <EXPANSION END>
+0000012c 64570100*       271 	st.w	r10,sdaoff(_g_icum_fdl_write_status)[gp]
+                         272 --68:         icum_fdl_write(ICUM_FDL_REGION_OFFSET,
+                         273 --69:                        write_data,
+
+                                                                      Page 6
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+                         274 --70:                        ICUM_FDL_TEST_WORD_COUNT);
+                         275 --71:     if (R_FDL_OK != g_icum_fdl_write_status) {
+                         276 --line71
+                         277 ..lin.9dcda709..d6cc3b2f.0_25::
+                         278 .LDWlin25:
+00000130 240f0100*       279 	ld.w	sdaoff(_g_icum_fdl_write_status)[gp],r1
+00000134 e009            280 	cmp	zero,r1
+00000136 a205*           281 	be	.L31
+                         282 --72:         goto cleanup;
+                         283 --line72
+                         284 ..lin.9dcda709..d6cc3b2f.0_26::
+                         285 .LDWlin26:
+00000138 f525*           286 	br	.L46
+                         287 .L31:
+                         288 --73:     }
+                         289 --75:     g_icum_fdl_read_status =
+                         290 --line75
+                         291 ..lin.9dcda709..d6cc3b2f.0_27::
+                         292 .LDWlin27:
+0000013a 260600800100    293 	mov	98304,r6
+00000140 233e0000        294 	movea	0,sp,r7
+00000144 20461000        295 	movea	16,zero,r8
+                         296 .L559:
+                         297 	jarl	_icum_fdl_read,lp
+                         297 <EXPANSION BEGIN>
+                         297 jarl22 _icum_fdl_read , lp 
+00000148 80ff0000*       297 <EXPANSION END>
+0000014c 64570100*       298 	st.w	r10,sdaoff(_g_icum_fdl_read_status)[gp]
+                         299 --76:         icum_fdl_read(ICUM_FDL_REGION_OFFSET,
+                         300 --77:                       read_data,
+                         301 --78:                       ICUM_FDL_TEST_WORD_COUNT);
+                         302 --79:     if (R_FDL_OK != g_icum_fdl_read_status) {
+                         303 --line79
+                         304 ..lin.9dcda709..d6cc3b2f.0_28::
+                         305 .LDWlin28:
+00000150 240f0100*       306 	ld.w	sdaoff(_g_icum_fdl_read_status)[gp],r1
+00000154 e009            307 	cmp	zero,r1
+00000156 a205*           308 	be	.L34
+                         309 --80:         goto cleanup;
+                         310 --line80
+                         311 ..lin.9dcda709..d6cc3b2f.0_29::
+                         312 .LDWlin29:
+00000158 f515*           313 	br	.L46
+                         314 .L34:
+                         315 --81:     }
+                         316 --83:     for (i = 0u; i < ICUM_FDL_TEST_WORD_COUNT; ++i) {
+                         317 --line83
+                         318 ..lin.9dcda709..d6cc3b2f.0_30::
+                         319 .LDWlin30:
+0000015a 00ea            320 	mov	0,r29
+0000015c 9515*           321 	br	.L40
+                         322 .L39:
+                         323 --84:         if (read_data[i] != write_data[i]) {
+                         324 --line84
+                         325 ..lin.9dcda709..d6cc3b2f.0_31::
+                         326 .LDWlin31:
+0000015e 1d08            327 	mov	r29,r1
+00000160 c20a            328 	shl	2,r1
+00000162 03f0            329 	mov	sp,ep
+00000164 c1f1            330 	add	r1,ep
+00000166 23164000        331 	movea	64,sp,r2
+
+                                                                      Page 7
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+0000016a c209            332 	add	r2,r1
+0000016c 210f0100        333 	ld.w	0[r1],r1
+00000170 0015            334 	sld.w	0[ep],r2
+00000172 e111            335 	cmp	r1,r2
+00000174 c205*           336 	be	.L38
+                         337 --85:             g_icum_fdl_mismatch_index = i;
+                         338 --line85
+                         339 ..lin.9dcda709..d6cc3b2f.0_32::
+                         340 .LDWlin32:
+00000176 64ef0100*       341 	st.w	r29,sdaoff(_g_icum_fdl_mismatch_index)[gp]
+                         342 --86:             goto cleanup;
+0000017a e505*           343 	br	.L46
+                         344 .L38:
+                         345 --line83
+                         346 ..lin.9dcda709..d6cc3b2f.0_33::
+                         347 .LDWlin33:
+0000017c 41ea            348 	add	1,r29
+                         349 .L40:
+0000017e 1d06f0ff        350 	addi	-16,r29,zero
+00000182 e9ed*           351 	bnl	.L39
+                         352 --87:         }
+                         353 --88:     }
+                         354 --90:     result = 1u;
+                         355 --line90
+                         356 ..lin.9dcda709..d6cc3b2f.0_34::
+                         357 .LDWlin34:
+00000184 01e2            358 	mov	1,r28
+                         359 --92: cleanup:
+                         360 .L46:
+                         361 .LDW31:
+                         362 --93:     DISABLE_FLASHACCESS;
+                         363 --	    .bs
+                         364 .LDW41:
+00000186 200ea500        365 	movea	165,zero,r1
+0000018a 2b060400a0ff    366 	mov	-6291452,r11
+00000190 6b0f0100        367 	st.w	r1,0[r11]
+                         368 --line93
+                         369 ..lin.9dcda709..d6cc3b2f.0_35::
+                         370 .LDWlin35:
+00000194 405ea0ff        371 	movhi	65440,zero,r11
+00000198 6b070100        372 	st.w	zero,0[r11]
+                         373 --line93
+                         374 ..lin.9dcda709..d6cc3b2f.0_36::
+                         375 .LDWlin36:
+0000019c 200eff00        376 	movea	255,zero,r1
+000001a0 405ea0ff        377 	movhi	65440,zero,r11
+000001a4 6b0f0100        378 	st.w	r1,0[r11]
+                         379 --line93
+                         380 ..lin.9dcda709..d6cc3b2f.0_37::
+                         381 .LDWlin37:
+000001a8 405ea0ff        382 	movhi	65440,zero,r11
+000001ac 6b070100        383 	st.w	zero,0[r11]
+                         384 --line93
+                         385 ..lin.9dcda709..d6cc3b2f.0_38::
+                         386 .LDWlin38:
+000001b0 00d2            387 	mov	0,r26
+000001b2 a505*           388 	br	.L50
+                         389 .L48:
+                         390 --line93
+                         391 ..lin.9dcda709..d6cc3b2f.0_39::
+                         392 .LDWlin39:
+
+                                                                      Page 8
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+000001b4 41d2            393 	add	1,r26
+                         394 .L50:
+000001b6 1a06f0d8        395 	addi	-10000,r26,zero
+000001ba d9fd*           396 	bnl	.L48
+                         397 --	    .es
+                         398 .LDW51:
+                         399 --line93
+                         400 ..lin.9dcda709..d6cc3b2f.0_40::
+                         401 .LDWlin40:
+000001bc 0000            402 	nop
+                         403 --94:     if (icum_flash_handoff_end() == 0)
+                         404 .L561:
+                         405 	jarl	_icum_flash_handoff_end,lp
+                         405 <EXPANSION BEGIN>
+                         405 jarl22 _icum_flash_handoff_end , lp 
+000001be 80ff0000*       405 <EXPANSION END>
+000001c2 e051            406 	cmp	zero,r10
+000001c4 aa05*           407 	bne	.L51
+                         408 --95:     {
+                         409 --96:         result = 0u;
+                         410 --line96
+                         411 ..lin.9dcda709..d6cc3b2f.0_41::
+                         412 .LDWlin41:
+000001c6 00e2            413 	mov	0,r28
+                         414 .L51:
+                         415 --97:     }
+                         416 --98:     g_icum_fdl_test_result = result;
+000001c8 64e70100*       417 	st.w	r28,sdaoff(_g_icum_fdl_test_result)[gp]
+                         418 --99:     return result;
+000001cc 1c50            419 	mov	r28,r10
+                         420 .L2:
+                         421 --	    .ef
+                         422 .LDW61:
+000001ce 23ff9100        423 	ld.w	144[sp],lp
+000001d2 23ef8100        424 	ld.w	128[sp],r29
+000001d6 23e78500        425 	ld.w	132[sp],r28
+000001da 23df8900        426 	ld.w	136[sp],r27
+000001de 23d78d00        427 	ld.w	140[sp],r26
+000001e2 031e9400        428 	addi	148,sp,sp
+                         429 .L563:
+                         430 	.jumptype return
+000001e6 7f00            431 	jmp	[lp]
+                         432 --line96
+                         433 ..lin.9dcda709..d6cc3b2f.0_42::
+                         434 	.type	_icum_fdl_self_test,@function
+                         435 	.size	_icum_fdl_self_test,.-_icum_fdl_self_test
+                         436 	.align	2
+                         437 --_write_data	64[sp]	local
+                         438 --_read_data	0[sp]	local
+                         439 --_i	r29	local
+                         440 --_result	r28	local
+                         441 --_flash_access_delay	r27	local
+                         442 --_flash_access_delay	r26	local
+                         443 
+                         444 	.section ".bss","awb"
+                         445 .L338:
+                         446 	.type	.L338,@object
+                         447 	.size	.L338,0
+                         448 	.section ".ghcalltbl",""
+                         449 	.align	4
+00000000 00000000*       450 .L546:	.word	.L545
+
+                                                                      Page 9
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+                         451 	.type	.L546,@object
+                         452 	.size	.L546,4
+00000004 00000000*       453 .L548:	.word	.L547
+                         454 	.type	.L548,@object
+                         455 	.size	.L548,4
+00000008 00000000*       456 .L550:	.word	.L549
+                         457 	.type	.L550,@object
+                         458 	.size	.L550,4
+0000000c 00000000*       459 .L552:	.word	.L551
+                         460 	.type	.L552,@object
+                         461 	.size	.L552,4
+00000010 00000000*       462 .L554:	.word	.L553
+                         463 	.type	.L554,@object
+                         464 	.size	.L554,4
+00000014 00000000*       465 .L556:	.word	.L555
+                         466 	.type	.L556,@object
+                         467 	.size	.L556,4
+00000018 00000000*       468 .L558:	.word	.L557
+                         469 	.type	.L558,@object
+                         470 	.size	.L558,4
+0000001c 00000000*       471 .L560:	.word	.L559
+                         472 	.type	.L560,@object
+                         473 	.size	.L560,4
+00000020 00000000*       474 .L562:	.word	.L561
+                         475 	.type	.L562,@object
+                         476 	.size	.L562,4
+                         477 	.section ".ghrettbl",""
+                         478 	.align	4
+00000000 00000000*       479 .L564:	.word	.L563
+                         480 	.type	.L564,@object
+                         481 	.size	.L564,4
+                         482 	.data
+                         483 	.text
+                         484 
+                         485 --100: }
+                         486 	.align	2
+                         487 --_FLMD	4288675840	import
+                         488 
+                         489 	.data
+                         490 	.section ".sbss","awb"
+                         491 	.align	4
+                         492 	.align	4
+                         493 	.global	_g_icum_fdl_init_status
+00000000 00000000        494 _g_icum_fdl_init_status:	.space	4
+                         495 	.type	_g_icum_fdl_init_status,@object
+                         496 	.size	_g_icum_fdl_init_status,4
+                         497 	.align	4
+                         498 	.global	_g_icum_fdl_prepare_status
+00000004 00000000        499 _g_icum_fdl_prepare_status:	.space	4
+                         500 	.type	_g_icum_fdl_prepare_status,@object
+                         501 	.size	_g_icum_fdl_prepare_status,4
+                         502 	.align	4
+                         503 	.global	_g_icum_fdl_erase_status
+00000008 00000000        504 _g_icum_fdl_erase_status:	.space	4
+                         505 	.type	_g_icum_fdl_erase_status,@object
+                         506 	.size	_g_icum_fdl_erase_status,4
+                         507 	.align	4
+                         508 	.global	_g_icum_fdl_blank_status
+0000000c 00000000        509 _g_icum_fdl_blank_status:	.space	4
+                         510 	.type	_g_icum_fdl_blank_status,@object
+                         511 	.size	_g_icum_fdl_blank_status,4
+
+                                                                      Page 10
+                                                              C:\Users\a5152492\AppData\Local\Temp\gh_0000d481.s
+                         512 	.align	4
+                         513 	.global	_g_icum_fdl_write_status
+00000010 00000000        514 _g_icum_fdl_write_status:	.space	4
+                         515 	.type	_g_icum_fdl_write_status,@object
+                         516 	.size	_g_icum_fdl_write_status,4
+                         517 	.align	4
+                         518 	.global	_g_icum_fdl_read_status
+00000014 00000000        519 _g_icum_fdl_read_status:	.space	4
+                         520 	.type	_g_icum_fdl_read_status,@object
+                         521 	.size	_g_icum_fdl_read_status,4
+                         522 	.align	4
+                         523 	.global	_g_icum_fdl_mismatch_index
+00000018 00000000        524 _g_icum_fdl_mismatch_index:	.space	4
+                         525 	.type	_g_icum_fdl_mismatch_index,@object
+                         526 	.size	_g_icum_fdl_mismatch_index,4
+                         527 	.align	4
+                         528 	.global	_g_icum_fdl_test_result
+0000001c 00000000        529 _g_icum_fdl_test_result:	.space	4
+                         530 	.type	_g_icum_fdl_test_result,@object
+                         531 	.size	_g_icum_fdl_test_result,4
+                         532 	.data
+                         533 	.ghsnote version,30
+                         534 	.ghsnote tools,3
+                         535 	.ghsnote options,656
+                         536 	.text
+                         537 ..eof.C.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp.5Coutput.5Cobjects.5Cicum.5Cfdl_test...43.3A.5Cwork.5CSW.5Cdemo.5CSecurity.5CF1KM.2DICUM.5CF1KM.2DS4_dr7f701649_GHS_StartUp..6ADEC2AE..0::
+                         538 .rh850_flags REGMODE32,DATA_ALIGN8,GP_FIX,EP_NONFIX,TP_FIX,REG2_NONRESERVE,G3K,SDA_EXTRA_REGS_0
